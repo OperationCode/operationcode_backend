@@ -9,6 +9,11 @@ WORKDIR $APP_HOME
 
 ADD Gemfile $APP_HOME/
 ADD Gemfile.lock $APP_HOME/
+
+ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
+  BUNDLE_JOBS=2 \
+  BUNDLE_PATH=/bundle
+
 RUN bundle install --system
 
 ADD . $APP_HOME/

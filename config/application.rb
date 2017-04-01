@@ -28,5 +28,7 @@ module OperationcodeBackend
     config.api_only = true
     config.active_job.queue_adapter = :sidekiq
     config.lograge.enabled = true
+
+    config.secret_path = Rails.root.join('run/secrets')
   end
 end

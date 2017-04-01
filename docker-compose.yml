@@ -2,9 +2,11 @@ version: '2'
 services:
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
+    volumes_from:
+      - bundle
     ports:
       - "3000:3000"
     depends_on:
@@ -13,8 +15,16 @@ services:
     env_file:
       - .env
 
+  bundle:
+    image: operationcodebackend_web
+    command: echo bundle data container
+    volumes:
+      - /bundle
+
   operationcode-psql:
     image: postgres
+    env_file:
+      - .env
 
   redis:
     image: redis:latest
@@ -24,6 +34,8 @@ services:
     command: sidekiq -C config/sidekiq.yml.erb
     volumes:
       - .:/app
+    volumes_from:
+      - bundle
     depends_on:
       - operationcode-psql
       - redis

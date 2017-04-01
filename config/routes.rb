@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/status', to: 'status#all'
-      get '/test/slack', to: 'test#slack'
+      post '/users', to: 'users#create'
     end
   end
 
