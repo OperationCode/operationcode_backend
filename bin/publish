@@ -4,6 +4,8 @@
 # This script assumes docker push works.
 # You must set up docker push on your own.
 
+set -eu
+
 DOCKER_REPO="operationcode/operationcode_backend"
 
 RAILS_ROOT="$(dirname $0)/.."

@@ -6,4 +6,5 @@ class SlackJobs
       res = slack_client.post_message_to channel: channel, with_text: message
       Rails.logger.debug("Notified channel: #{res.inspect}")
     end
+  end
 end
