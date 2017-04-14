@@ -1,7 +1,7 @@
 class MailchimpInviterJob < ActiveJob::Base
   queue_as :default
 
-  def perform(email:, first_name:, last_name:)
+  def perform(email:, first_name: '', last_name: '')
     gibbon = Gibbon::Request.new(api_key: OperationCode.fetch_secret_with(name: :mailchimp_api_key))
     list_id = OperationCode.fetch_secret_with name: :mailchimp_list_id
 
