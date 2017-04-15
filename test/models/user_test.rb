@@ -16,4 +16,10 @@ class UserTest < ActiveSupport::TestCase
     refute User.new(email: 'bogusemail').valid?
     assert User.new(email: 'goodemail@example.com').valid?
   end
+
+  test 'email must be unique' do
+    test_email = 'test@example.com'
+    assert User.create(email: test_email)
+    refute User.new(email: test_email).valid?
+  end
 end
