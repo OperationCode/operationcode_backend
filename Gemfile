@@ -11,6 +11,7 @@ end
 gem 'active_model_serializers'
 gem 'gibbon'
 gem 'lograge'
+gem 'logstash-event'
 gem 'operationcode-airtable'
 gem 'operationcode-slack'
 gem 'pg', '~> 0.18'

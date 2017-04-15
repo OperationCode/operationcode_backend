@@ -27,6 +27,9 @@ module OperationcodeBackend
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.active_job.queue_adapter = :sidekiq
+    config.log_level = :debug
+
+    config.logger = Logger.new(STDOUT)
     config.lograge.enabled = true
 
     config.secret_path = Rails.root.join('run/secrets')
