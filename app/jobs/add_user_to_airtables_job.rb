@@ -10,14 +10,16 @@ class AddUserToAirtablesJob < ActiveJob::Base
       return
     end
 
-    @airtable.create(
+    result = @airtable.create(
       email: @user.email,
       zip: @user.zip,
-      latitude: @user.latitude.to_s,
-      longitude: @user.longitude.to_s,
+      latitude: @user.latitude,
+      longitude: @user.longitude,
       created_at: @user.created_at,
       updated_at: @user.updated_at
     )
+    Rails.logger.info "User created. Returned: #{result}"
+    result
   end
 
   def setup_airtable
