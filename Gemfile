@@ -9,6 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers'
+gem 'gibbon'
 gem 'lograge'
 gem 'operationcode-airtable'
 gem 'operationcode-slack'
