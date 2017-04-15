@@ -6,8 +6,8 @@ class AddUserToAirtablesJobTest < ActiveJob::TestCase
     Operationcode::Airtable.any_instance.expects(:create).with(
       email: 'user@example.com',
       zip: '11772',
-      latitude: user.latitude.to_s,
-      longitude: user.longitude.to_s,
+      latitude: user.latitude,
+      longitude: user.longitude,
       created_at: user.created_at,
       updated_at: user.updated_at
     )
@@ -19,8 +19,8 @@ class AddUserToAirtablesJobTest < ActiveJob::TestCase
     Operationcode::Airtable.any_instance.expects(:create).once.with(
       email: 'user@example.com',
       zip: '11772',
-      latitude: user.latitude.to_s,
-      longitude: user.longitude.to_s,
+      latitude: user.latitude,
+      longitude: user.longitude,
       created_at: user.created_at,
       updated_at: user.updated_at
     )

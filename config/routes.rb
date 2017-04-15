@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/status', to: 'status#all'
       post '/users', to: 'users#create'
+      get '/code_schools', to: 'code_schools#index'
     end
   end
 
