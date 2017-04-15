@@ -35,8 +35,8 @@ test:
 blog:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bin/build_blog'
 
-.PHONY: bundle_update
-bundle_update:
+.PHONY: bundle
+bundle:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bundle'
 
 setup: db_create db_migrate
