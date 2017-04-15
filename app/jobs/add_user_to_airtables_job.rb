@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class AddUserToAirtablesJob < ActiveJob::Base
   queue_as :default
 
