@@ -1,4 +1,5 @@
 This is a:
+<!-- Please check one of these boxes after you have created your issue -->
 - [ ] Feature request
 - [ ] Bug report
 
