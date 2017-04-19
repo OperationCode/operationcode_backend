@@ -9,13 +9,16 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers'
+gem 'devise'
 gem 'gibbon'
+gem 'jwt'
 gem 'lograge'
 gem 'logstash-event'
 gem 'operationcode-airtable'
 gem 'operationcode-slack'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
+gem 'pundit'
 gem 'rails', '~> 5.0.2'
 gem 'redis', '~> 3.0'
 gem 'sidekiq'
