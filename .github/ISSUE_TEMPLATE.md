@@ -1,16 +1,12 @@
-This is a:
-<!-- Please check one of these boxes after you have created your issue -->
-- [ ] Feature request
-- [ ] Bug report
-
-# Features
+<!-- Please fill out one of the sections below basd on the type of issue you're creating -->
+# Feature
 ## What is your new feature?
 
 ## What should your feature do?
 
 ---
 
-# Bug Reports
+# Bug Report
 ## What is the current behavior?
 
 ## What is the expected behavior?
