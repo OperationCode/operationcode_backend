@@ -25,4 +25,8 @@ class User < ApplicationRecord
   def add_to_airtables
     AddUserToAirtablesJob.perform_later(self)
   end
+
+  def token
+    JsonWebToken.encode(user_id: self.id, roles: [])
+  end
 end

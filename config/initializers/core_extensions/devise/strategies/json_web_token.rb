@@ -17,9 +17,19 @@ module Devise
       def claims
         strategy, token = request.headers['Authorization'].split(' ')
 
-        return nil if (strategy || '').downcase != 'bearer'
+        return nil unless valid_strategy?(strategy)
 
-        JsonWebToken.decode(token) rescue nil
+        claim = ::JsonWebToken.decode(token)
+        Rails.logger.debug "Claim decoded"
+        claim
+      rescue => e
+        Rails.logger.debug "Failed to decode token #{token}"
+        Rails.logger.debug e
+        nil
+      end
+
+      def valid_strategy?(strategy)
+        (strategy || '').downcase == 'bearer'
       end
     end
   end
