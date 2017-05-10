@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test 'actions are performed on user create' do
-    user_opts = { email: 'create_test@example.com', zip: '11772' }
+    user_opts = { email: 'create_test@example.com', zip: '11772', password: 'password', password_confirmation: 'password' }
     user = User.new(user_opts)
 
     SlackJobs::InviterJob.expects(:perform_later).with(email: user_opts[:email])
@@ -13,8 +13,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'must have a valid email' do
-    refute User.new(email: 'bogusemail').valid?
-    assert User.new(email: 'goodemail@example.com').valid?
+    refute User.new(email: 'bogusemail', password: 'password').valid?
+    assert User.new(email: 'goodemail@example.com', password: 'password').valid?
   end
 
   test 'email must be unique' do
