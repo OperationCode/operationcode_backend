@@ -10,6 +10,7 @@ end
 
 gem 'active_model_serializers'
 gem 'devise'
+gem 'geocoder'
 gem 'gibbon'
 gem 'jwt'
 gem 'lograge'
