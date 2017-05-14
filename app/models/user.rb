@@ -3,10 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  geocoded_by :zip
+
   after_create :welcome_user
+  before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
 
   validates_format_of :email, :with => /@/
   validates :email, uniqueness: true
+
 
   def welcome_user
     invite_to_slack
