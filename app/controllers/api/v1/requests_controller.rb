@@ -2,6 +2,10 @@ module Api
   module V1
     class RequestsController < ApplicationController
 
+      def index
+        render json: Request.unclaimed.order('created_at DESC')
+      end
+
       def create
         @request = Request.create(request_params)
         render json: @request

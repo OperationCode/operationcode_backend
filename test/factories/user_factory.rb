@@ -12,10 +12,10 @@ FactoryGirl.define do
     bio { Faker::Lorem.paragraph }
     timezone 'EST'
     mentor false
-  end
 
-  factory :mentor do
-    mentor true
+    factory :mentor do
+      mentor true
+    end
   end
 
 end
