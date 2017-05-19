@@ -1,13 +1,14 @@
 module Api
   module V1
     class RequestsController < ApplicationController
+      before_action :authenticate_user!
 
       def index
         render json: Request.unclaimed.order('created_at DESC')
       end
 
       def create
-        @request = Request.create(request_params)
+        @request = current_user.requests.create(request_params)
         render json: @request
       end
 
@@ -15,7 +16,7 @@ module Api
 
       def request_params
         params.require(:request)
-              .permit(:user_id, :details, :language,
+              .permit(:details, :language,
                       :service_id, :requested_mentor_id)
       end
 
