@@ -6,12 +6,12 @@ module Api
 
       def index
         services = [
-          'General Guidence - Voice Chat',
-          'General Guidence - Slack Chat',
-          'Pair Programming',
-          'Code Review',
-          'Mock Interview',
-          'Resume Review',
+          Service.create(name: 'General Guidence - Voice Chat'),
+          Service.create(name: 'General Guidence - Slack Chat'),
+          Service.create(name: 'Pair Programming'),
+          Service.create(name: 'Code Review'),
+          Service.create(name: 'Mock Interview'),
+          Service.create(name: 'Resume Review'),
         ]
         render json: services
       end
