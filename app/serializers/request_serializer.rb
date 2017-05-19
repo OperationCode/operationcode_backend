@@ -1,4 +1,9 @@
 class RequestSerializer < ActiveModel::Serializer
-  attributes :user_id, :details, :language,
-             :service_id, :requested_mentor_id
+  attributes :details,
+             :language,
+             :service_id
+
+  belongs_to :user
+  belongs_to :requested_mentor
+  belongs_to :assigned_mentor
 end
