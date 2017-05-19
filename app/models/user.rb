@@ -11,7 +11,6 @@ class User < ApplicationRecord
   validates_format_of :email, :with => /@/
   validates :email, uniqueness: true
 
-
   def welcome_user
     invite_to_slack
     add_to_mailchimp
