@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get '/services', to: 'services#index'
 
       resources :mentors, only: [:index, :create]
+      resources :requests, only: [:create]
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
