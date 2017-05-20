@@ -8,5 +8,11 @@ FactoryGirl.define do
     skill_level { Faker::Lorem.word }
     activities { Faker::Lorem.sentence }
     end_condition { Faker::Lorem.sentence }
+
+    trait(:with_mentors) do
+      after(:create) do |squad, evaluator|
+        squad.mentors << create_list(:mentor, 2)
+      end
+    end
   end
 end

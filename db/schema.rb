@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520144243) do
+ActiveRecord::Schema.define(version: 20170520150128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20170520144243) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "squad_mentors", force: :cascade do |t|
+    t.integer  "squad_id"
+    t.integer  "mentor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id"], name: "index_squad_mentors_on_mentor_id", using: :btree
+    t.index ["squad_id", "mentor_id"], name: "index_squad_mentors_on_squad_id_and_mentor_id", unique: true, using: :btree
+    t.index ["squad_id"], name: "index_squad_mentors_on_squad_id", using: :btree
   end
 
   create_table "squads", force: :cascade do |t|
@@ -77,4 +87,5 @@ ActiveRecord::Schema.define(version: 20170520144243) do
   end
 
   add_foreign_key "requests", "users"
+  add_foreign_key "squad_mentors", "squads"
 end
