@@ -25,6 +25,13 @@ module Api
         render json: @squad
       end
 
+      def join
+        @squad = Squad.find(params[:id])
+        authorize @squad
+        @squad.add_member(current_user)
+        render json: @squad
+      end
+
       private
 
       def squad_params

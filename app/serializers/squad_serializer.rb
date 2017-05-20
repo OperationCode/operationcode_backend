@@ -4,4 +4,5 @@ class SquadSerializer < ActiveModel::Serializer
 
   belongs_to :leader
   has_many :mentors
+  has_many :members
 end

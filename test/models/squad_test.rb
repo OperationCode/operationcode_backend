@@ -16,4 +16,12 @@ class SquadTest < ActiveSupport::TestCase
     squad.mentors << create(:user)
     refute squad.valid?
   end
+
+  test "can have many members" do
+    user = create(:user)
+    squad = create(:squad)
+    squad.add_member(user)
+    assert_equal 1, squad.members.count
+  end
+
 end

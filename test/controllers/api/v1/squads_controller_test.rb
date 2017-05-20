@@ -53,4 +53,14 @@ class Api::V1::SquadsControllerTest < ActionDispatch::IntegrationTest
     assert_equal squad.id, squad_json[:id]
   end
 
+  test 'users can join a squad' do
+    user = create(:user)
+    headers = authorization_headers(user)
+    squad = create(:squad)
+
+    post join_api_v1_squad_url(squad), headers: headers, as: :json
+    squad_json = response.parsed_body.symbolize_keys
+    assert_equal user.id, squad_json[:members].first['id']
+  end
+
 end

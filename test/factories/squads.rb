@@ -14,5 +14,11 @@ FactoryGirl.define do
         squad.mentors << create_list(:mentor, 2)
       end
     end
+
+    trait(:with_members) do
+      after(:create) do |squad, evaluator|
+        squad.members << create_list(:user, 3)
+      end
+    end
   end
 end
