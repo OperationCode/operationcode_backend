@@ -19,3 +19,8 @@ FactoryGirl.create(:request, language: 'Javascript')
 FactoryGirl.create(:request, language: 'Ruby')
 FactoryGirl.create(:request, assigned_mentor: rick)
 FactoryGirl.create(:request, assigned_mentor: nell)
+
+#Create services
+["General Guidance - Voice Chat", "General Guidance - Slack Chat", "Pair Programming", "Code Review", "Mock Interview", "Resume Interview"].each do |service|
+  Service.create!(:name => service)
+end
