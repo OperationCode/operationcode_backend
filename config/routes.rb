@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
       resources :mentors, only: [:index, :create]
       resources :requests, only: [:index, :create, :show]
+      resources :squads, only: [:index, :create, :show]
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'

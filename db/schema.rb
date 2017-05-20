@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(version: 20170520150128) do
 
   create_table "squad_mentors", force: :cascade do |t|
     t.integer  "squad_id"
-    t.integer  "mentor_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mentor_id"], name: "index_squad_mentors_on_mentor_id", using: :btree
-    t.index ["squad_id", "mentor_id"], name: "index_squad_mentors_on_squad_id_and_mentor_id", unique: true, using: :btree
+    t.index ["squad_id", "user_id"], name: "index_squad_mentors_on_squad_id_and_user_id", unique: true, using: :btree
     t.index ["squad_id"], name: "index_squad_mentors_on_squad_id", using: :btree
+    t.index ["user_id"], name: "index_squad_mentors_on_user_id", using: :btree
   end
 
   create_table "squads", force: :cascade do |t|
@@ -88,4 +88,5 @@ ActiveRecord::Schema.define(version: 20170520150128) do
 
   add_foreign_key "requests", "users"
   add_foreign_key "squad_mentors", "squads"
+  add_foreign_key "squad_mentors", "users"
 end
