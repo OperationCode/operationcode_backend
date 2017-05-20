@@ -8,6 +8,7 @@
 
 Request.destroy_all
 User.destroy_all
+Service.destroy_all
 
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
