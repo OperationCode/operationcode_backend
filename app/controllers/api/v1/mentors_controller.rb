@@ -6,4 +6,9 @@ class Api::V1::MentorsController < ApplicationController
     render json: mentors
   end
 
+  def show
+    mentor = User.mentors.find(params[:id])
+    render json: MentorSerializer.new(mentor)
+  end
+
 end
