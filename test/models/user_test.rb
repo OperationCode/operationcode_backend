@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'actions are performed on user create' do
-    user = User.new(user_opts)
+    user = build(:user, user_opts)
 
     SlackJobs::InviterJob.expects(:perform_later).with(email: user_opts[:email])
     MailchimpInviterJob.expects(:perform_later).with(email: user_opts[:email])
@@ -22,25 +22,21 @@ class UserTest < ActiveSupport::TestCase
 
   test 'email must be unique' do
     test_email = 'test@example.com'
-    assert User.create(email: test_email)
+    assert create(:user, email: test_email)
     refute User.new(email: test_email).valid?
   end
 
   test 'doesnt geocode until we save' do
-    u = User.new(user_opts)
+    u = build(:user, latitude: nil, longitude: nil)
     assert u.valid?
 
-    assert_nil u.latitude
-    assert_nil u.longitude
     u.save
     assert_equal 40.7143528, u.latitude
     assert_equal -74.0059731, u.longitude
   end
 
   test 'updates geocode after update' do
-    u = User.create(user_opts)
-    assert_equal 40.7143528, u.latitude
-    assert_equal -74.0059731, u.longitude
+    u = build(:user, latitude: 40.7143528, longitude: -74.0059731)
 
     u.update_attributes(zip: '80203')
     assert_equal 20.7143528, u.latitude
@@ -48,7 +44,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'only geocodes if zip is updated' do
-    u = User.create(user_opts)
+    u = create(:user, user_opts)
 
     Geocoder::Lookup::Test.any_instance.expects(:search).once.returns([])
     u.update_attributes(email: 'updated_email@example.com')
