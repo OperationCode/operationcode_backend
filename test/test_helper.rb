@@ -4,8 +4,10 @@ require 'rails/test_help'
 require 'mocha/mini_test'
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+  include FactoryGirl::Syntax::Methods
 
-  # Add more helper methods to be used by all tests here...
+  def authorization_headers(user)
+    { 'Authorization': "bearer #{user.token}" }
+  end
+
 end
