@@ -13,7 +13,7 @@ module Api
       end
 
       def show
-        render json: Request.unclaimed.find_by(id: params[:id])
+        render json: Request.find_by(id: params[:id])
       end
 
       private

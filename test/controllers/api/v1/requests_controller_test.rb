@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::ServicesControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
 
   test "create new requests for current user" do
     user = create(:user)
