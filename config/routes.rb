@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users #, controllers: { sessions: 'api/v1/sessions', registrations: 'api/v1/users' }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -8,6 +9,16 @@ Rails.application.routes.draw do
       get '/status/protected', to: 'status#protected'
       post '/users', to: 'users#create'
       get '/code_schools', to: 'code_schools#index'
+
+      get '/services', to: 'services#index'
+
+      resources :mentors, only: [:index, :create]
+      resources :requests, only: [:index, :create, :show, :update]
+      resources :squads, only: [:index, :create, :show] do
+        member do
+          post 'join'
+        end
+      end
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
