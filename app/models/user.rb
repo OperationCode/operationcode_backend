@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_many :requests
 
+  scope :mentors, -> { where(mentor: true) }
+
   def welcome_user
     invite_to_slack
     add_to_mailchimp

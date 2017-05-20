@@ -4,10 +4,11 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
 
   test "mentors can see all unclaimed requests" do
     user = create(:mentor)
+    headers = authorization_headers(user)
     request = create(:request)
     request = create(:request, :claimed)
-    headers = authorization_headers(user)
-    get api_v1_requests_url, headers: headers
+
+    get api_v1_requests_url, headers: headers, as: :json
     assert_equal 1, response.parsed_body.count
   end
 
