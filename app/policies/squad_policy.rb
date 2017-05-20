@@ -14,4 +14,8 @@ class SquadPolicy < ApplicationPolicy
     user.mentor?
   end
 
+  def show?
+    true
+  end
+
 end

@@ -19,11 +19,11 @@ module Api
         render json: @squad
       end
 
-      # def show
-      #   @request = Request.find_by(id: params[:id])
-      #   authorize @request
-      #   render json: @request
-      # end
+      def show
+        @squad = Squad.find(params[:id])
+        authorize @squad
+        render json: @squad
+      end
 
       private
 
