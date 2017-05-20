@@ -12,6 +12,10 @@ module Api
         render json: @request
       end
 
+      def show
+        render json: Request.unclaimed.find_by(id: params[:id])
+      end
+
       private
 
       def request_params
