@@ -15,20 +15,45 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
   test "create new requests for current user" do
     user = create(:user)
     headers = authorization_headers(user)
+    service = create(:service)
     params = {
       request: {
         details: 'New Request',
         language: 'Javascript',
-        service_id: 2
+        service_id: service.id
       }
     }
 
     post api_v1_requests_url, headers: headers, params: params, as: :json
 
     assert_equal user.id, response.parsed_body['user']['id']
+    assert_equal service.id, response.parsed_body['service']['id']
     assert_equal params[:request][:details], response.parsed_body['details']
     assert_equal params[:request][:language], response.parsed_body['language']
-    assert_equal params[:request][:service_id], response.parsed_body['service_id']
+  end
+
+  test "show individual request" do
+    user = create(:mentor)
+    headers = authorization_headers(user)
+    request = create(:request)
+
+    get api_v1_request_url(id: request.id), headers: headers, as: :json
+
+    assert_equal request.id, response.parsed_body['id']
+  end
+
+  test "update individual request" do
+    user = create(:user)
+    mentor = create(:mentor)
+    headers = authorization_headers(mentor)
+    request = create(:request)
+    params = { request: { assigned_mentor_id: mentor.id } }
+
+    put api_v1_request_url(id: request.id), params: params, headers: headers
+
+    request.reload
+
+    assert_equal mentor.id, request.assigned_mentor_id
   end
 
 end

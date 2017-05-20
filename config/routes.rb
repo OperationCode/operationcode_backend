@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get '/services', to: 'services#index'
 
       resources :mentors, only: [:index, :create]
-      resources :requests, only: [:index, :create, :show]
+      resources :requests, only: [:index, :create, :show, :update]
       resources :squads, only: [:index, :create, :show] do
         member do
           post 'join'
