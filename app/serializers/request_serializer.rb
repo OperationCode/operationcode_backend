@@ -2,6 +2,7 @@ class RequestSerializer < ActiveModel::Serializer
   attributes :id,
              :details,
              :language,
+             :status,
              :created_at
 
   belongs_to :user

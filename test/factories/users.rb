@@ -5,11 +5,11 @@ FactoryGirl.define do
     zip { Faker::Address.postcode }
     first_name { Faker::Name.first_name }
     last_name  { Faker::Name.last_name }
-    slack_name { Faker::Lorem.characters(8) }
+    slack_name { Faker::StarWars.character }
     latitude { Faker::Number.decimal(2, 5) }
     longitude { Faker::Number.decimal(2, 5) }
     password { Faker::Lorem.characters(32) }
-    bio { Faker::Lorem.paragraph }
+    bio { Faker::Company.bs }
     timezone 'EST'
     mentor false
 
