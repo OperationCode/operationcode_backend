@@ -10,6 +10,14 @@ class SquadTest < ActiveSupport::TestCase
     refute squad.valid?
   end
 
+  test "users can be mentors or mentees" do
+    squad = create(:squad)
+    squad.add_member(create(:user))
+    squad.add_member(create(:mentor))
+    assert_equal 1, squad.mentors.count
+    assert_equal 1, squad.members.count
+  end
+
   test "can have many mentors" do
     squad = create(:squad, :with_mentors)
     assert squad.valid?

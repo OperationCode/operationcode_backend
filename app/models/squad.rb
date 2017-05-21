@@ -9,7 +9,11 @@ class Squad < ApplicationRecord
   validate :mentors_must_be_mentors
 
   def add_member(user)
-    members << user unless members.include?(user)
+    if user.mentor?
+      mentors << user unless mentors.include?(user)
+    else
+      members << user unless members.include?(user)
+    end
   end
 
   private
