@@ -33,7 +33,8 @@ module Api
       def request_params
         params.require(:request)
               .permit(:details, :language,
-                      :service_id, :requested_mentor_id, :assigned_mentor_id)
+                      :service_id, :requested_mentor_id,
+                      :status, :assigned_mentor_id)
       end
 
     end
