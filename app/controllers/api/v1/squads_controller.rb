@@ -42,10 +42,6 @@ module Api
                       :end_condition)
       end
 
-      def squad_mentor_params
-        params.require(:squad).permit(mentors_ids: [])
-      end
-
     end
   end
 end
