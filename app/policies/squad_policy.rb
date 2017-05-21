@@ -15,7 +15,7 @@ class SquadPolicy < ApplicationPolicy
   end
 
   def join?
-    !user.mentor?
+    true
   end
 
   def show?
