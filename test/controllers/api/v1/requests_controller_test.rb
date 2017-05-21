@@ -47,13 +47,15 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
     mentor = create(:mentor)
     headers = authorization_headers(mentor)
     request = create(:request)
-    params = { request: { assigned_mentor_id: mentor.id } }
+    status = 'Completed'
+    params = { request: { assigned_mentor_id: mentor.id, status: status } }
 
     put api_v1_request_url(id: request.id), params: params, headers: headers
 
     request.reload
 
     assert_equal mentor.id, request.assigned_mentor_id
+    assert_equal status, request.status
   end
 
 end
