@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :service do
-    name { Faker::Lorem.sentence }
+    name { Faker::Company.name }
   end
 end
