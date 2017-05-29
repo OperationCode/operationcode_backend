@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Request.destroy_all
+SquadMentor.destroy_all
+SquadMember.destroy_all
+Squad.destroy_all
 User.destroy_all
 Service.destroy_all
 
@@ -24,4 +27,7 @@ FactoryGirl.create(:request, assigned_mentor: nell)
 #Create services
 ["General Guidance - Voice Chat", "General Guidance - Slack Chat", "Pair Programming", "Code Review", "Mock Interview", "Resume Interview"].each do |service|
   Service.create!(:name => service)
+end
+20.times do
+  FactoryGirl.create(:squad, :with_mentors, :with_members)
 end
