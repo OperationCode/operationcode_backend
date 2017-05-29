@@ -1,6 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
+
       def create
         user = User.new(user_params)
 
@@ -14,8 +15,9 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:email, :zip, :password)
+        params.require(:user).permit(:email, :zip, :password, :first_name, :last_name, :mentor, :slack_name)
       end
+
     end
   end
 end

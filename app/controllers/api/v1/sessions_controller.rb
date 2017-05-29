@@ -7,13 +7,15 @@ module Api
       def create
         Rails.logger.debug 'In Create'
         self.resource = warden.authenticate!(auth_options)
-        sign_in(resource_name, resource)
-        render json: { token: resource.token }
+        user = sign_in(resource_name, resource)
+        render json: { token: resource.token,
+                       user: UserSerializer.new(current_user) }
       end
 
       def set_default_response_format
         request.format = 'json'
       end
+
     end
   end
 end

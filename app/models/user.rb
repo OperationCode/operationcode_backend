@@ -11,6 +11,10 @@ class User < ApplicationRecord
   validates_format_of :email, :with => /@/
   validates :email, uniqueness: true
 
+  has_many :requests
+  has_many :led_squads, class_name: 'Squad', foreign_key: :leader_id
+
+  scope :mentors, -> { where(mentor: true) }
 
   def welcome_user
     invite_to_slack

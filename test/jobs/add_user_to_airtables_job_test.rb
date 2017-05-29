@@ -2,10 +2,10 @@ require 'test_helper'
 
 class AddUserToAirtablesJobTest < ActiveJob::TestCase
   test 'it adds a user to airtables' do
-    user = users(:standard)
+    user = build(:user)
     Operationcode::Airtable.any_instance.expects(:create).with(
-      email: 'user@example.com',
-      zip: '11772',
+      email: user.email,
+      zip: user.zip,
       latitude: user.latitude,
       longitude: user.longitude,
       created_at: user.created_at,
@@ -15,10 +15,10 @@ class AddUserToAirtablesJobTest < ActiveJob::TestCase
   end
 
   test 'it doesnt add a user if it exists' do
-    user = users(:standard)
+    user = build(:user)
     Operationcode::Airtable.any_instance.expects(:create).once.with(
-      email: 'user@example.com',
-      zip: '11772',
+      email: user.email,
+      zip: user.zip,
       latitude: user.latitude,
       longitude: user.longitude,
       created_at: user.created_at,
