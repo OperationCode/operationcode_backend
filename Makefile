@@ -39,7 +39,7 @@ blog:
 bundle:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bundle'
 
-setup: db_create db_migrate
+setup: build db_create db_migrate
 
 publish: build
 	bin/publish
