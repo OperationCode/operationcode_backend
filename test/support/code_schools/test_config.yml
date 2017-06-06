@@ -1,0 +1,18 @@
+- name: Test Name
+  url: https://www.test-name.example.com
+  full_time:  true
+  hardware_included: false
+  notes: Test Note
+  locations:
+    - va_accepted: false
+      address1: Test Address 1
+      address2: Test Address 2
+      city: Testcity
+      state: TS
+      zip: 11772
+    - va_accepted: true
+      address1: Test Address 3
+      address2: Test Address 4
+      city: Testcity
+      state: TS
+      zip: 11772
