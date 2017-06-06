@@ -1,4 +1,4 @@
-<!-- Please fill out one of the sections below basd on the type of issue you're creating -->
+<!-- Please fill out one of the sections below based on the type of issue you're creating -->
 # Feature
 ## What is your new feature?
 
