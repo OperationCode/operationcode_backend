@@ -1,6 +1,7 @@
 <!-- Please fill out one of the sections below based on the type of issue you're creating -->
 # Feature
-## What is your new feature?
+## Why is this feature being added?
+<!-- What problem is it solving? What value does it add? -->
 
 ## What should your feature do?
 
