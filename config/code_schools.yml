@@ -4,6 +4,8 @@
 #  logo: <Logo URL>
 #  full_time:  Is your school full time? [true|false]
 #  hardware_included: Does tuition include hardware? [true|false]
+#  has_online: Does your school have an online bootcamp? [true|false]
+#  online_only: Does your school ONLY have an online bootcamp? [true | false]
 #  notes: <Addtional Comments> [optional]
 #  locations:
 #   - va_accepted: <GI Bill Accepted>
@@ -21,9 +23,11 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/nss.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: true
-      address1: 500 Interstate Blvd South
+      address1: 500 Interstate Blvd S
       address2: Suite 300
       city: Nashville
       state: TN
@@ -34,6 +38,8 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/dev_bootcamp.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
       address1: 633 Folsom Street (at Hawthorne)
@@ -42,13 +48,13 @@
       state: CA
       zip: 94107
     - va_accepted: false
-      address1: 351 West Hubbard St. (at Orleans)
+      address1: 351 West Hubbard Street (at Orleans)
       address2: Suite 701
       city: Chicago
       state: IL
       zip: 60605
     - va_accepted: false
-      address1: 48 Wall St.
+      address1: 48 Wall Street
       address2: 15th Floor
       city: New York
       state: NY
@@ -59,16 +65,16 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/galvanize.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
       address1: 44 Tehama Street
-      address2:
       city: San Francisco
       state: CA
       zip: 94015
     - va_accepted: true
-      address1: Galvanize Denver - Golden Triangle
-      address2: 1062 Delaware Street
+      address1: 1062 Delaware Street
       city: Denver
       state: CO
       zip: 80204
@@ -83,35 +89,23 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/hack_reactor.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 944 Market St
+      address1: 944 Market Street
       address2: 8th Floor
       city: San Francisco
       state: CA
       zip: 94102
-
-- name: MakerSquare
-  url: http://www.makersquare.com
-  full_time: true
-  hardware_included: false
-  locations:
-    - va_accepted: false
-      address1: 611 Mission St, 2nd Floor
-      city: San Francisco
-      state: CA
-      zip: 94105
-    - va_accepted: false
-      address1: "716 Congress Ave., #100"
-      city: Austin
-      state: TX
-      zip: 78701
 
 - name: Sabio
   url: http://sabio.la/veterans
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/sabio.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   notes: Sabio enables Operation Code veterans to learn the skills needed to secure a full-time position in an awesome tech company in six months all while earning college credits towards an undergraduate degree. The New GI Bill is an option for non-BA degree holders.
   locations:
     - va_accepted: true
@@ -125,6 +119,8 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/tradecraft.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
       address1: 400 Corporate Pointe
@@ -137,6 +133,8 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/refactoru.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   notes: RefactorU is proud and honored to announce that its Web Development Bootcamp has been approved by the <a href="http://www.benefits.va.gov/gibill/">Colorado State Approving Agency for Veterans Education & Training</a>. Students eligible for the The Post-9/11 GI Bill, Montgomery GI Bill (Active Duty/Selected Reserve), Reserve Educational Assistance Program, Veterans Educational Assistance Program, and Survivors’ and Dependents’ Educational Assistance Program may be eligible to apply those benefits to RefactorU’s Web Application Development Bootcamp.
   locations:
     - va_accepted: true
@@ -151,6 +149,8 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/turing.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: true
       address1: 1510 Blake Street
@@ -164,20 +164,23 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/iron_yard.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 101 S. Garland Ave
+      address1: 101 S. Garland Avenue
       address2: Suite 102
       city: Orlando
       state: FL
       zip: 32801
     - va_accepted: false
-      address1: "260 1st Ave S #300"
+      address1: "260 1st Avenue S"
+      address2: Suite 300
       city: Tampa Bay
       state: FL
       zip: 33701
     - va_accepted: false
-      address1: 3423 Piedmont Road, NE
+      address1: 3423 Piedmont Road NE
       city: Atlanta
       state: GA
       zip: 30305
@@ -205,7 +208,7 @@
       state: TX
       zip: 78704
     - va_accepted: false
-      address1: 1121 Delano St.
+      address1: 1121 Delano Street
       city: Houstin
       state: TX
       zip: 77003
@@ -215,27 +218,113 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/general_assembly.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 675 Ponce de Leon Ave NE
+      address1: 675 Ponce de Leon Avenue NE
       city: Atlanta
       state: GA
       zip: 30308
     - va_accepted: false
-      address1: WeWork Seattle
-      address2: 500 Yale Avenue N.
+      address1: 1218 3rd Avenue
+      address2: 3rd Floor
       city: Seattle
       state: WA
       zip: 98109
+    - va_accepted: false
+      address1: 1113 15th Street NW
+      address2: 8th Floor
+      city: Washington
+      state: DC
+      zip: 20005
+    - va_accepted: false
+      address1: 2231 Crystal Drive
+      address2: 10th Floor
+      city: Arlington
+      state: VA
+      zip: 22202
+    - va_accepted: false
+      address1: 1218 3rd Avenue
+      address2: 3rd Floor
+      city: Seattle
+      state: WA
+      zip: 98109
+    - va_accepted: false
+      address1: 600 Congress Avenue
+      address2: 14th Floor
+      city: Austin
+      state: TX
+      zip: 78701
+    - va_accepted: false
+      address1: 125 Summer Street
+      address2: 13th Floor
+      city: Boston
+      state: MA
+      zip: 02110
+    - va_accepted: false
+      address1: 444 N Wabash Avenue
+      address2: 5th Floor
+      city: Chicago
+      state: IL
+      zip: 60611
+    - va_accepted: false
+      address1: 80 Washington Street, Room 423
+      address2: University of Rhode Island - Providence
+      city: Providence
+      state: RI
+      zip: 02903
+    - va_accepted: false
+      address1: 10 E 21st Street (Classes)
+      address2: 902 Broadway, 4th Floor (Admin)
+      city: New York
+      state: NY
+      zip: 10010
+- va_accepted: false
+      address1: 360 E 2nd Street
+      address2: Suite 400
+      city: Los Angeles
+      state: CA
+      zip: 90012
+- va_accepted: false
+      address1: 1520 2nd Street
+      city: Santa Monica
+      state: CA
+      zip: 90401
+- va_accepted: false
+      address1: 1621 Alton Parkway
+      city: Irvine
+      state: CA
+      zip: 92606
+- va_accepted: false
+      address1: 2420 17th Street
+      address2: 3rd Floor
+      city: Denver
+      state: CO
+      zip: 80202
+- va_accepted: false
+      address1: 225 Bush Street
+      address2: 5th Floor
+      city: San Francisco
+      state: CA
+      zip: 94104
+- va_accepted: false
+      address1: 75 E Santa Clara Street
+      address2: 6th Floor
+      city: San Jose
+      state: CA
+      zip: 95113
 
 - name: Code Platoon
   url: http://www.codeplatoon.org
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_platoon.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: Downtown
+      address1: 444 N Wabash Avenue
       city: Chicago
       state: IL
       zip: 60654
@@ -245,9 +334,11 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/starter_league.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 30 N Racine Ave.
+      address1: 30 N Racine Avenue
       city: Chicago
       state: IL
       zip: 60607
@@ -257,10 +348,12 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/deep_dive_fullstack.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: true
       address1: 20 1st Plaza Center NW
-      city: Albuquerque, NM
+      city: Albuquerque
       state: NM
       zip: 87102
 
@@ -269,6 +362,8 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/fullstack_academy.jpg
   full_time: true
   hardware_included: false
+  has_online: true
+  online_only: false
   locations:
     - va_accepted: false
       address1: 5 Hanover Square
@@ -278,7 +373,7 @@
       zip: 10004
     - va_accepted: false
       address1: 222 W Merchandise Mart Plaza
-      address2: "#1212"
+      address2: Suite 1212
       city: Chicago
       state: IL
       zip: 60654
@@ -288,6 +383,8 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/flatiron_school.jpg
   full_time: true
   hardware_included: false
+  has_online: true
+  online_only: false
   locations:
     - va_accepted: false
       address1: 11 Broadway
@@ -301,22 +398,27 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/thinkful.jpg
   full_time: true
   hardware_included: false
+  has_online: true
+  online_only: true
   locations:
     - va_accepted: false
-      address1: 304 Hudson St
-      address2: 5th floor
+      address1: 304 Hudson Street
+      address2: 5th Floor
       city: New York
       state: NY
       zip: 10013
 
 - name: Tradecraft
   url: http://tradecrafted.com
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/tradecraft.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 304 Hudson St
-      address2: 5th floor
+      address1: 304 Hudson Street
+      address2: 5th Floor
       city: New York
       state: NY
       zip: 10004
@@ -326,14 +428,17 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_fellows.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 920 SW Third Ave., 2nd Floor
-      city: Portaland
+      address1: 920 SW Third Avenue
+      address2: 2nd Floor
+      city: Portland
       state: OR
       zip: 97204
     - va_accepted: true
-      address1: 511 Boren Ave N.
+      address1: 511 Boren Avenue N
       city: Seattle
       state: WA
       zip: 98109
@@ -343,11 +448,13 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/epicodus.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   notes: (Also see, <a href="http://www.learnhowtoprogram.com/lessons/learn-how-to-program">Learn how to program</a>.)
   locations:
     - va_accepted: false
-      address1: 208 SW 5th Ave
-      city: Portaland
+      address1: 208 SW 5th Avenue
+      city: Portland
       state: OR
       zip: 97214
 
@@ -356,11 +463,13 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/pdx_code_guild.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 2626 SW Corbett Ave
+      address1: 2626 SW Corbett Avenue
       address2: Suite 100
-      city: Portaland
+      city: Portland
       state: OR
       zip: 97201
 
@@ -369,10 +478,13 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/ada_developers.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   notes: <strong>Women-only and tuition-free</strong>. One-year program.
   locations:
     - va_accepted: false
-      address1: Downtown Seattle
+      address1: 1215 4th Avenue
+      address2: Suite 1050
       city: Seattle
       state: WA
       zip: 98109
@@ -382,9 +494,11 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/operation_spark.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 748 Camp Street, 2nd floor
+      address1: 748 Camp Street, 2nd Floor
       city: New Orleans
       state: LA
       zip: 70130
@@ -394,15 +508,19 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/startup_institute.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 50 Milk Street, 14th Floor
+      address1: 50 Milk Street
+      address2: 14th Floor
       city: Boston
       state: MA
       zip: 02109
     - va_accepted: false
-      address1: 25 Broadway, 10th Floor
-      city: New York City
+      address1: 25 Broadway
+      address2: 10th Floor
+      city: New York
       state: NY
       zip: 10004
 
@@ -411,9 +529,12 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/codeup.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: true
-      address1: "600 Navarro St., #350"
+      address1: 600 Navarro Street
+      address2: Suite 350
       city: San Antonio
       state: TX
       zip: 78205
@@ -423,9 +544,11 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/devry_bootcamp.jpg
   full_time: true
   hardware_included: true
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 1870 W 122nd Ave
+      address1: 1870 W 122nd Avenue
       city: Westminster
       state: CO
       zip: 80234
@@ -435,10 +558,12 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/app_academy.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   notes: Deferred financing system (20% of your first year's salary)
   locations:
     - va_accepted: false
-      address1: 160 Spear St
+      address1: 160 Spear Street
       city: San Francisco
       state: CA
       zip: 94105
@@ -448,27 +573,32 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/tech_elevator.jpg
   full_time: true
   hardware_included: true
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 7100 Euclid Ave
+      address1: 7100 Euclid Avenue
       city: Cleveland
       state: OH
       zip: 44103
     - va_accepted: false
-      address1: 1275 Kinnear Rd
+      address1: 1275 Kinnear Road
       address2: Suite 121
       city: Columbus
       state: OH
       zip: 43212
 
-- name: Code Immersives (New York City, New York)
+- name: Code Immersives
   url:  https://web1.codeimmersives.com/
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_immersives.jpg
   full_time: true
   hardware_included: true
+  has_online: false
+  online_only: false
   notes: (Also see, <a href="https://web1.codeimmersives.com/students/veterans"> Veteran Student </a>.)
   locations:
     - va_accepted: true
-      address1: 630 9th Ave
+      address1: 630 9th Avenue
       address2: Suite 901
       city: New York
       state: NY
@@ -476,41 +606,44 @@
 
 - name: Coding Dojo
   url: http://www.codingdojo.com
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/coding_dojo.jpg
   full_time: true
   hardware_included: false
+  has_online: false
+  online_only: false
   locations:
     - va_accepted: false
-      address1: 1775 GREENSBORO STATION PLACE
+      address1: 1775 Greensboro Station Place
       address2: Suite 210
       city: McLean
       state: VA
       zip: 22102
     - va_accepted: false
-      address1: 1920 ZANKER ROAD
+      address1: 1920 Zanker Road
       address2: Suite 20
       city: San Jose
       state: CA
       zip: 95112
     - va_accepted: false
-      address1: 10777 MAIN ST
+      address1: 10777 Main Street
       address2: Suite 300
       city: Bellevue
       state: WA
       zip: 98004
     - va_accepted: false
-      address1: 175 E OLIVE AVE
-      address2: 3rd Fl
+      address1: 175 E Olive Avenue
+      address2: 3rd Floor
       city: Burbank
       state: CA
       zip: 91502
     - va_accepted: false
-      address1: 900 JACKSON ST
+      address1: 900 Jackson Street
       address2: Suite 410
       city: Dallas
       state: TX
       zip: 75202
     - va_accepted: false
-      address1: 213 WEST INSTITUTE PLACE
+      address1: 213 W Institute Place
       address2: Suite 610
       city: Chicago
       state: IL
@@ -518,13 +651,72 @@
 
 - name: Coder Camps
   url: https://www.codercamps.com
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/coder_camps.jpg
   full_time:  true
   hardware_included: false
+  has_online: false
+  online_only: false
   notes: Coder Camps offers two paths to taking a Full Stack Web Development course. A <strong>12 week</strong> full time Immersive on-campus/online program and a <strong>24 week</strong> part time Structured Online program.  Active military and veterans receive a <strong>20 percent discount</strong> on tuition, we are able to accept Chapter 31 &amp; 35 benefits.
   locations:
     - va_accepted: false
-      address1: 8444 N 90TH ST
+      address1: 8444 N 90th Street
       address2: Suite 110
       city: Scottsdale
       state: AZ
       zip: 85258
+
+- name: Bloc
+  url: https://bloc.io
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/bloc.jpg
+  full_time: false
+  hardware_included: false
+  has_online: true
+  online_only: true
+  locations:
+    - va_accepted: false
+      address1: 110 Sutter Street
+      address2: 10th Floor
+      city: San Francisco
+      state: CA
+      zip: 94104
+
+- name: LaunchCode
+  url: http://www.launchcode.org
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/launch_code.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  notes: Completely free for accepted applicants. This is a non-profit code school.
+  locations:
+    - va_accepted: false
+      address1: 4811 Delmar Boulevard
+      city: Saint Louis
+      state: MO
+      zip: 63108
+    - va_accepted: false
+      address1: 315 NE 2nd Avenue
+      city: Miami
+      state: FL
+      zip: 33132
+    - va_accepted: false
+      address1: 210 W 19th Terrace
+      city: Kansas City
+      state: MO
+      zip: 64108
+    - va_accepted: false
+      address1: 80 Washington Street
+      address2: University of Rhode Island - Providence
+      city: Providence
+      state: 02903
+      zip: 91502
+    - va_accepted: false
+      address1: TBA
+      city: Portland
+      state: OR
+      zip: 97204
+    - va_accepted: false
+      address1: TBA
+      city: Seattle
+      state: WA
+      zip: 98121
