@@ -23,6 +23,8 @@ services:
 
   operationcode-psql:
     image: postgres
+    ports:
+      - '5432'
     env_file:
       - .env
 
