@@ -29,11 +29,9 @@ db_migrate:
 
 .PHONY: test
 test:
+	docker-compose up -d operationcode-psql
+	while ! docker-compose run -T --rm operationcode-psql psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do echo 'Waiting for postgres...'; sleep 1; done
 	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake db:seed && rake test'
-
-.PHONY: blog
-blog:
-	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bin/build_blog'
 
 .PHONY: bundle
 bundle:
@@ -44,8 +42,4 @@ setup: build db_create db_migrate
 publish: build
 	bin/publish
 
-upgrade: publish
-	bin/rancher_update
-
-travis: build blog test
-
+travis: build test
