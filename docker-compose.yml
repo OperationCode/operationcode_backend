@@ -14,6 +14,8 @@ services:
       - redis
     env_file:
       - .env
+    links:
+      - operationcode-psql
 
   bundle:
     image: operationcodebackend_web
@@ -43,4 +45,5 @@ services:
       - redis
     env_file:
       - .env
-
+    links:
+      - operationcode-psql
