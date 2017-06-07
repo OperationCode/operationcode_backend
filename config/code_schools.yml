@@ -280,35 +280,35 @@
       city: New York
       state: NY
       zip: 10010
-- va_accepted: false
+    - va_accepted: false
       address1: 360 E 2nd Street
       address2: Suite 400
       city: Los Angeles
       state: CA
       zip: 90012
-- va_accepted: false
+    - va_accepted: false
       address1: 1520 2nd Street
       city: Santa Monica
       state: CA
       zip: 90401
-- va_accepted: false
+    - va_accepted: false
       address1: 1621 Alton Parkway
       city: Irvine
       state: CA
       zip: 92606
-- va_accepted: false
+    - va_accepted: false
       address1: 2420 17th Street
       address2: 3rd Floor
       city: Denver
       state: CO
       zip: 80202
-- va_accepted: false
+    - va_accepted: false
       address1: 225 Bush Street
       address2: 5th Floor
       city: San Francisco
       state: CA
       zip: 94104
-- va_accepted: false
+    - va_accepted: false
       address1: 75 E Santa Clara Street
       address2: 6th Floor
       city: San Jose
@@ -589,7 +589,7 @@
       zip: 43212
 
 - name: Code Immersives
-  url:  https://web1.codeimmersives.com/
+  url: https://web1.codeimmersives.com/
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_immersives.jpg
   full_time: true
   hardware_included: true
@@ -652,7 +652,7 @@
 - name: Coder Camps
   url: https://www.codercamps.com
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/coder_camps.jpg
-  full_time:  true
+  full_time: true
   hardware_included: false
   has_online: false
   online_only: false
