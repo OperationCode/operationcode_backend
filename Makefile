@@ -29,8 +29,7 @@ db_migrate:
 
 .PHONY: test
 test:
-	docker-compose up
-	docker ps
+	docker-compose up -d operationcode-psql
 	while ! docker-compose run -T --rm operationcode-psql psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do echo 'Waiting for postgres...'; sleep 1; done
 	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake db:seed && rake test'
 
