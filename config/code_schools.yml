@@ -708,8 +708,8 @@
       address1: 80 Washington Street
       address2: University of Rhode Island - Providence
       city: Providence
-      state: 02903
-      zip: 91502
+      state: RI
+      zip: 02903
     - va_accepted: false
       address1: TBA
       city: Portland
