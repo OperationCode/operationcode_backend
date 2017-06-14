@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/status/protected', to: 'status#protected'
       post '/users', to: 'users#create'
       get '/code_schools', to: 'code_schools#index'
+      get '/events', to: 'events#index'
 
       get '/services', to: 'services#index'
 
