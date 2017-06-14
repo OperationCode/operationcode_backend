@@ -3,7 +3,7 @@ module Api
     class EventsController < ApplicationController
       #before_action :authenticate_user!
       def index
-        render json: Event.first 
+        render json: Event.all
       end
 
     end
