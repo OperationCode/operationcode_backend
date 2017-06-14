@@ -3,6 +3,10 @@ RAILS_CONTAINER := web
 .PHONY: all
 all: run
 
+.PHONY: console-sandbox
+	console-sandbox:
+	 docker-compose run ${RAILS_CONTAINER} rails console --sandbox 
+
 .PHONY: run
 run:
 	docker-compose up --build
