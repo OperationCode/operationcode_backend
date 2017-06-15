@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def invite_to_slack
-    SlackJobs::InviterJob.perform_later(email: email)
+    SlackJobs::InviterJob.perform_later(email)
   end
 
   def add_to_mailchimp
