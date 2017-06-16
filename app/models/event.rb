@@ -9,10 +9,6 @@ class Event < ApplicationRecord
 	VALID_ZIP_REGEX= /\A\d{5}-?\d{4}?\z/
 	validates :zip, presence: true, format:{with:VALID_ZIP_REGEX}
 	validates :scholarship_available, inclusion: {in: [true, false]}
-	VALID_URL_REGEX = /\Awww\.+.+\.[a-z]+\z/i 
-	validates :URL, format: {with:VALID_URL_REGEX}
-
-	
-	
-
+	VALID_URL_REGEX = URI::regexp 
+	validates :url, format: {with:VALID_URL_REGEX}
 end
