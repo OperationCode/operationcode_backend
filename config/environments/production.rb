@@ -79,4 +79,16 @@ Rails.application.configure do
   config.lograge.enabled = true
 
   config.secret_path = '/run/secrets'
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 '587',
+    user_name:            OperationCode.fetch_secret_with(name: 'sendgrid_username'),
+    password:             OperationCode.fetch_secret_with(name: 'sendgrid_password'),
+    domain:               'operationcode.org',
+    authentication:       :plain,
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { host: 'operationcode.org' }
 end

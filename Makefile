@@ -35,10 +35,6 @@ db_migrate:
 test:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake db:seed && rake test'
 
-.PHONY: blog
-blog:
-	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bin/build_blog'
-
 .PHONY: bundle
 bundle:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bundle'
@@ -51,5 +47,5 @@ publish: build
 upgrade: publish
 	bin/rancher_update
 
-travis: build blog test
+travis: build test
 

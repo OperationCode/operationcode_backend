@@ -21,6 +21,7 @@ module Slack
     end
 
     def invite(email:, channels: [])
+      Rails.logger.info "Inviting user with email '#{email}'"
       body = send_api_request(
         to: INVITE_PATH,
         payload: {
@@ -69,6 +70,7 @@ module Slack
     private
 
     def send_api_request(to:, payload:)
+      Rails.logger.info "Sending payload '#{payload}' to '#{to}'"
       res = Net::HTTP.start(@domain, 443, use_ssl: true) do |http|
         req = Net::HTTP::Post.new("#{to}?t=#{Time.now.to_i}")
         req.set_form_data payload
