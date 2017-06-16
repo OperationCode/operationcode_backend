@@ -1,17 +1,14 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
 
   ##Testing the validations 
   def setup 
-  	@event = Event.new(name:"Test Event", description: "Test description", URL: "www.someurl.com", start_date: "2013-09-12 00:12:12", end_date: "", address1: "4321 Happy Way", address2: "", city:"Orlando", state:"FL", zip: "90210", scholarship_available: "true")
+  	@event = Event.new(name:"Test Event", description: "Test description", url: "http://www.someurl.com", start_date: "2013-09-12 00:12:12", end_date: "", address1: "4321 Happy Way", address2: "", city:"Orlando", state:"FL", zip: "90210", scholarship_available: "true")
   end
 
   test "should be valid" do 
-  	#Current user as described in setup should be valid
+  	#Current event as described in setup should be valid
   	assert @event.valid? 
   end
 
@@ -52,9 +49,9 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "website validation should accept valid websites" do
-  	valid_websites=%w[www.somewebsite.com www.1234.com www.foobar.net]
+  	valid_websites=%w[http://www.somewebsite.com https://www.1234.com http://www.foobar.net]
   	 valid_websites.each do |valid_website|
-  	 	@event.URL=valid_website
+  	 	@event.url=valid_website
   	 	assert @event.valid?, "#{valid_website.inspect} should be valid"
   	 end
   	end
@@ -62,7 +59,7 @@ class EventTest < ActiveSupport::TestCase
   test "website validation should reject invalid urls" do
   	bad_websites = %w[w.badwebsite.com www,stillbad.com abc.fail.com wwww.foobar.com]
   	 bad_websites.each do |bad_website|
-  	 	@event.URL = bad_website
+  	 	@event.url = bad_website
   	 	assert_not @event.valid?, "#{bad_website.inspect} should not be valid"
   	 end
   	end
