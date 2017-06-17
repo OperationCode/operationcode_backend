@@ -33,6 +33,7 @@ group :development, :test do
   gem 'mocha'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'awesome_print', '~> 1.8'
 end
 
 group :development do
