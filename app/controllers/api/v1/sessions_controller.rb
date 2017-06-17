@@ -7,7 +7,7 @@ module Api
       def create
         Rails.logger.debug 'In Create'
         self.resource = warden.authenticate!(auth_options)
-        user = sign_in(resource_name, resource)
+        sign_in(resource_name, resource)
         render json: { token: resource.token,
                        user: UserSerializer.new(current_user) }
       end
