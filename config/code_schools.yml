@@ -735,3 +735,18 @@
       city: Seattle
       state: WA
       zip: 98121
+
+- name: Code Platoon
+  url: https://www.codeplatoon.org
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_platoon.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  notes: Completely free for accepted applicants. This is a non-profit code school.
+  locations:
+    - va_accepted: false
+      address1: 73 W. Monroe St.
+      city: Chicago
+      state: IL
+      zip: 60603
