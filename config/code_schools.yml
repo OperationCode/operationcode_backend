@@ -747,6 +747,7 @@
   locations:
     - va_accepted: false
       address1: 73 W. Monroe St.
+      address2: Suite 303
       city: Chicago
       state: IL
       zip: 60603
