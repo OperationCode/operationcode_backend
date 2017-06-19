@@ -6,7 +6,13 @@ services:
   - docker
 
 script:
-  - make travis
+  - make build
+  - |
+    while ! psql --host=localhost --username=postgres -c 'SELECT 1'> /dev/null 2>&1; do
+      echo 'Waiting for postgres...'
+      sleep 1;
+    done;
+  - make test
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then make upgrade; fi
 
 env:

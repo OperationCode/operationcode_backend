@@ -8,7 +8,7 @@ class UserTest < ActiveSupport::TestCase
   test 'actions are performed on user create' do
     user = build(:user, user_opts)
 
-    SlackJobs::InviterJob.expects(:perform_later).with(email: user_opts[:email])
+    SlackJobs::InviterJob.expects(:perform_later).with(user_opts[:email])
     MailchimpInviterJob.expects(:perform_later).with(email: user_opts[:email])
     AddUserToAirtablesJob.expects(:perform_later).with(user)
 
