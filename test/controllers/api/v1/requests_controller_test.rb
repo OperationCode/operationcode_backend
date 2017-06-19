@@ -3,6 +3,7 @@ require 'test_helper'
 class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
 
   test "mentors can see all unclaimed requests" do
+    skip
     user = create(:mentor)
     headers = authorization_headers(user)
     request = create(:request)
