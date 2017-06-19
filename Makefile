@@ -47,6 +47,3 @@ publish: build
 
 upgrade: publish
 	bin/rancher_update
-
-travis: bg test
-
