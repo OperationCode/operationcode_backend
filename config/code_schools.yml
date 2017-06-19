@@ -408,6 +408,21 @@
       state: NY
       zip: 10013
 
+- name: RMOTR
+  url: https://rmotr.com/
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/rmotr.jpg
+  full_time: false
+  hardware_included: false
+  has_online: true
+  online_only: true
+  locations:
+    - va_accepted: false
+      address1: 2035 Sunset Lake Road
+      address2: Suite B-2
+      city: Newark, New Castle County
+      state: DE
+      zip: 19702
+
 - name: Tradecraft
   url: http://tradecrafted.com
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/tradecraft.jpg
