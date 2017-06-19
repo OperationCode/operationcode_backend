@@ -7,8 +7,7 @@ class JsonWebToken
 
     JWT.encode(payload, Rails.application.secrets.jwt_secret)
   rescue => e
-    Rails.logger.debug "Failed to encode JsonWebToken due to: #{e}"
-    nil
+    raise "Failed to encode JsonWebToken due to: #{e}"
   end
 
   def self.decode(token)
