@@ -91,4 +91,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
   config.action_mailer.default_url_options = { host: 'operationcode.org' }
+
+  Raven.configure {  |config| config.dsn = "https://#{OperationCode.fetch_secret_with(name: 'sentry_credentials')}@sentry.io/147247" }
 end
