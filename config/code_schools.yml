@@ -48,11 +48,11 @@
       state: CA
       zip: 94107
     - va_accepted: false
-      address1: 351 West Hubbard Street (at Orleans)
-      address2: Suite 701
+      address1: 1033 W. Van Buren Street
+      address2: 3rd Floor
       city: Chicago
       state: IL
-      zip: 60605
+      zip: 60607
     - va_accepted: false
       address1: 48 Wall Street
       address2: 15th Floor

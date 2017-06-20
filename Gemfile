@@ -23,6 +23,7 @@ gem 'pundit'
 gem 'rack-cors'
 gem 'rails', '~> 5.0.2'
 gem 'redis', '~> 3.0'
+gem 'sentry-raven'
 gem 'sidekiq'
 
 
@@ -32,6 +33,7 @@ group :development, :test do
   gem 'mocha'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'awesome_print', '~> 1.8'
 end
 
 group :development do
