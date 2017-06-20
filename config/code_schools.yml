@@ -738,7 +738,7 @@
 
 - name: Code Platoon
   url: https://www.codeplatoon.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_platoon.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_platoon.jpg
   full_time: true
   hardware_included: false
   has_online: true
