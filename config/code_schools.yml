@@ -329,20 +329,6 @@
       state: CA
       zip: 95113
 
-- name: Code Platoon
-  url: http://www.codeplatoon.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_platoon.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  locations:
-    - va_accepted: false
-      address1: 444 N Wabash Avenue
-      city: Chicago
-      state: IL
-      zip: 60654
-
 - name: The Starter League
   url: http://www.starterleague.com/
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/starter_league.jpg
@@ -760,7 +746,7 @@
   notes: Completely free for accepted applicants. This is a non-profit code school.
   locations:
     - va_accepted: false
-      address1: 73 W. Monroe St.
+      address1: 73 W Monroe Street
       address2: Suite 303
       city: Chicago
       state: IL
