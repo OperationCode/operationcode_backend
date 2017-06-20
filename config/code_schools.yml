@@ -18,6 +18,20 @@
 #   Each entry must start on a new line with "- name:"
 #   Each location must start on a new line with "- va_accepted:"
 ---
+- name: Wyncode Academy
+  url: http://wyncode.co
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/wyncode.png
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  locations:
+    - va_accepted: true
+      address1: 549 SW 28th St.
+      city: Miami
+      state: FL
+      zip: 33127
+      
 - name: Nashville Software School
   url: http://nashvillesoftwareschool.com/
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/nss.jpg
