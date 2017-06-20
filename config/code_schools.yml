@@ -481,7 +481,7 @@
   has_online: false
   online_only: false
   locations:
-    - va_accepted: false
+    - va_accepted: true
       address1: 2626 SW Corbett Avenue
       address2: Suite 100
       city: Portland
