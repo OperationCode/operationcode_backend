@@ -20,7 +20,7 @@
 ---
 - name: Wyncode Academy
   url: http://wyncode.co
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/wyncode.png
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/wyncode.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -31,7 +31,7 @@
       city: Miami
       state: FL
       zip: 33127
-      
+
 - name: Nashville Software School
   url: http://nashvillesoftwareschool.com/
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/nss.jpg
