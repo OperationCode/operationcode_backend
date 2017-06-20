@@ -6,6 +6,8 @@ class JsonWebToken
     payload['exp'] = expiration.to_i.hours.from_now.to_i
 
     JWT.encode(payload, Rails.application.secrets.jwt_secret)
+  rescue => e
+    raise "Failed to encode JsonWebToken due to: #{e}"
   end
 
   def self.decode(token)
