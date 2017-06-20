@@ -34,7 +34,7 @@
       
 - name: Nashville Software School
   url: http://nashvillesoftwareschool.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/nss.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/nss.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -49,7 +49,7 @@
 
 - name: Dev Bootcamp
   url: http://devbootcamp.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/dev_bootcamp.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/dev_bootcamp.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -76,7 +76,7 @@
 
 - name: Galvanize
   url: https://new.galvanize.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/galvanize.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/galvanize.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -100,7 +100,7 @@
 
 - name: Hack Reactor
   url: http://www.hackreactor.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/hack_reactor.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/hack_reactor.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -115,7 +115,7 @@
 
 - name: Sabio
   url: http://sabio.la/veterans
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/sabio.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/sabio.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -130,7 +130,7 @@
 
 - name: Tradecraft
   url: http://tradecrafted.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/tradecraft.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/tradecraft.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -144,7 +144,7 @@
 
 - name: RefactorU
   url: http://refactoru.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/refactoru.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/refactoru.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -160,7 +160,7 @@
 
 - name: Turing School of Software & Design
   url: http://turing.io/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/turing.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/turing.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -175,7 +175,7 @@
 
 - name: The Iron Yard
   url: https://www.theironyard.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/iron_yard.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/iron_yard.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -229,7 +229,7 @@
 
 - name: General Assembly
   url: https://generalassemb.ly
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/general_assembly.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/general_assembly.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -331,7 +331,7 @@
 
 - name: Code Platoon
   url: http://www.codeplatoon.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_platoon.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_platoon.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -345,7 +345,7 @@
 
 - name: The Starter League
   url: http://www.starterleague.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/starter_league.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/starter_league.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -359,7 +359,7 @@
 
 - name: Deep Dive Fullstack
   url: http://stemuluscenter.org/deep-dive-fullstack
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/deep_dive_fullstack.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/deep_dive_fullstack.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -373,7 +373,7 @@
 
 - name: Fullstack Academy
   url: http://fullstackacademy.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/fullstack_academy.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/fullstack_academy.jpg
   full_time: true
   hardware_included: false
   has_online: true
@@ -394,7 +394,7 @@
 
 - name: The Flatiron School
   url: http://flatironschool.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/flatiron_school.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/flatiron_school.jpg
   full_time: true
   hardware_included: false
   has_online: true
@@ -409,7 +409,7 @@
 
 - name: Thinkful
   url: http://www.thinkful.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/thinkful.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/thinkful.jpg
   full_time: true
   hardware_included: false
   has_online: true
@@ -424,7 +424,7 @@
 
 - name: RMOTR
   url: https://rmotr.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/rmotr.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/rmotr.jpg
   full_time: false
   hardware_included: false
   has_online: true
@@ -439,7 +439,7 @@
 
 - name: Tradecraft
   url: http://tradecrafted.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/tradecraft.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/tradecraft.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -454,7 +454,7 @@
 
 - name: Code Fellows
   url: https://www.codefellows.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_fellows.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_fellows.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -474,7 +474,7 @@
 
 - name: Epicodus
   url: http://www.epicodus.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/epicodus.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/epicodus.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -489,7 +489,7 @@
 
 - name: PDX Code Guild
   url: http://pdxcodeguild.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/pdx_code_guild.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/pdx_code_guild.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -504,7 +504,7 @@
 
 - name: Ada Developers Academy
   url: http://adadevelopersacademy.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/ada_developers.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/ada_developers.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -520,7 +520,7 @@
 
 - name: Operation Spark
   url: https://operationspark.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/operation_spark.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/operation_spark.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -534,7 +534,7 @@
 
 - name: Startup Institute
   url: https://www.startupinstitute.com/boston/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/startup_institute.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/startup_institute.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -555,7 +555,7 @@
 
 - name: Codeup
   url: http://codeup.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/codeup.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/codeup.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -570,7 +570,7 @@
 
 - name: DeVry Bootcamp
   url: http://partner.devry.edu/bootcamp/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/devry_bootcamp.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/devry_bootcamp.jpg
   full_time: true
   hardware_included: true
   has_online: false
@@ -584,7 +584,7 @@
 
 - name: App Academy
   url: https://www.appacademy.io/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/app_academy.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/app_academy.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -599,7 +599,7 @@
 
 - name: Tech Elevator
   url: http://www.techelevator.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/tech_elevator.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/tech_elevator.jpg
   full_time: true
   hardware_included: true
   has_online: false
@@ -619,7 +619,7 @@
 
 - name: Code Immersives
   url: https://web1.codeimmersives.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/code_immersives.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_immersives.jpg
   full_time: true
   hardware_included: true
   has_online: false
@@ -635,7 +635,7 @@
 
 - name: Coding Dojo
   url: http://www.codingdojo.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/coding_dojo.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/coding_dojo.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -680,7 +680,7 @@
 
 - name: Coder Camps
   url: https://www.codercamps.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/coder_camps.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/coder_camps.jpg
   full_time: true
   hardware_included: false
   has_online: false
@@ -696,7 +696,7 @@
 
 - name: Bloc
   url: https://bloc.io
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/bloc.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/bloc.jpg
   full_time: false
   hardware_included: false
   has_online: true
@@ -711,7 +711,7 @@
 
 - name: LaunchCode
   url: http://www.launchcode.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/code-schools-cooper-kyle/src/images/codeSchoolLogos/launch_code.jpg
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/launch_code.jpg
   full_time: true
   hardware_included: false
   has_online: false
