@@ -16,3 +16,6 @@ Operation Code allows veterans to find a mentor in the field of software develop
 Diagrams can be found at (doc/data_models):
 ...doc/data_models/request.png - Illustrates how a mentee user can request a mentoring session
 ...doc/data_models/squad.png - Illustrates the mentor/mentee relationship of a squad.
+
+# License
+This project is licensed under the terms of the MIT license.
