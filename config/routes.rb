@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get '/events', to: 'events#index'
 
       get '/services', to: 'services#index'
+      post '/users/profile/verify', to: 'users#verify'
 
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
