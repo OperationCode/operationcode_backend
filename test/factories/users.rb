@@ -12,6 +12,7 @@ FactoryGirl.define do
     bio { Faker::Company.bs }
     timezone 'EST'
     mentor false
+    verified false
 
     factory :mentor do
       mentor true
