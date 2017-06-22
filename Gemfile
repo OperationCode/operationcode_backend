@@ -25,6 +25,7 @@ gem 'rails', '~> 5.0.2'
 gem 'redis', '~> 3.0'
 gem 'sentry-raven'
 gem 'sidekiq'
+gem 'httparty'
 
 
 group :development, :test do
