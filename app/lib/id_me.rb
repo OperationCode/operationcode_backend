@@ -10,9 +10,9 @@ class IdMe
     get("/api/public/v2/attributes.json?access_token=#{access_token}", options)
   end
 
-  private
+private
 
-  def headers
+  def self.headers
     { "Accepts" => "application/json" }
   end
 end
