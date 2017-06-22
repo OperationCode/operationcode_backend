@@ -13,6 +13,19 @@ module Api
         end
       end
 
+      def verify
+        response = IdMe.verify! params[:access_token]
+
+        render json: { status: response.status } unless response.status == 200
+
+        verified = response.body["verified"]
+        current_user.update! verified: verified
+        render json: { status: :ok, verified: verified }
+      rescue => e
+        Rails.logger.debug "When verifying User id #{current_user.id} through ID.me, experienced this error: #{e}"
+        render json: { status: :unprocessable_entity }
+      end
+
       private
 
       def user_params
