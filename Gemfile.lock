@@ -197,6 +197,7 @@ DEPENDENCIES
   faker
   geocoder
   gibbon
+  httparty
   jwt
   listen (~> 3.0.5)
   lograge
