@@ -9,7 +9,7 @@ class IdMe
 
     response = get("/api/public/v2/attributes.json?access_token=#{access_token}", options)
 
-    fail response.status unless verified.status == 200
+    fail response.body unless response.code == 200
 
     verified.body['verified'] == 'true' ? true : false
   end
