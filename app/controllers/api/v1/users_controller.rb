@@ -19,6 +19,8 @@ module Api
         # FIXME use current user
         #current_user.update! verified: verified
 
+        Rails.logger.debug "Got verified status '#{verified}'"
+
         User.last.update! verified: verified
         current_user.update! verified: verified
         render json: { status: :ok, verified: verified }
