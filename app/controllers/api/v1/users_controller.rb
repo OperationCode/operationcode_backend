@@ -16,13 +16,10 @@ module Api
       def verify
         verified = IdMe.verify! params[:access_token]
 
-        # FIXME use current user
-        #current_user.update! verified: verified
-
         Rails.logger.debug "Got verified status '#{verified}'"
+        Rails.logger.debug "Updating user'#{current_user.inspect}'"
+        current_user.update_attribute(:verified, verified)
         Rails.logger.debug "Updating user'#{User.last.inspect}'"
-
-        User.last.update_attribute(:verified, verified)
         render json: { status: :ok, verified: verified }
       rescue => e
         Rails.logger.debug "When verifying User id #{User.last.id} through ID.me, experienced this error: #{e}"
