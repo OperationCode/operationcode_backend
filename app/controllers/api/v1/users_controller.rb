@@ -14,11 +14,7 @@ module Api
       end
 
       def verify
-        response = IdMe.verify! params[:access_token]
-
-        render json: { status: response.status } unless response.status == 200
-
-        verified = response.body["verified"]
+        verified = IdMe.verify! params[:access_token]
         current_user.update! verified: verified
         render json: { status: :ok, verified: verified }
       rescue => e
