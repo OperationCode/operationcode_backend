@@ -20,9 +20,9 @@ module Api
         #current_user.update! verified: verified
 
         Rails.logger.debug "Got verified status '#{verified}'"
+        Rails.logger.debug "Updating user'#{User.last}'"
 
-        User.last.update! verified: verified
-        current_user.update! verified: verified
+        User.last.update_attribute(:verified, verified)
         render json: { status: :ok, verified: verified }
       rescue => e
         Rails.logger.debug "When verifying User id #{User.last.id} through ID.me, experienced this error: #{e}"

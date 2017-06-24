@@ -11,7 +11,7 @@ class IdMe
 
     fail response.body unless response.code == 200
 
-    verified.body['verified'] == 'true' ? true : false
+    response.body['verified'] == 'verified' ? true : false
   end
 
 private
