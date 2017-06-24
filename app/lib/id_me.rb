@@ -7,12 +7,16 @@ class IdMe
   def self.verify!(access_token)
     options = { headers: headers }
 
-    get("/api/public/v2/attributes.json?access_token=#{access_token}", options)
+    response = get("/api/public/v2/attributes.json?access_token=#{access_token}", options)
+
+    fail response.status unless verified.status == 200
+
+    verified.body['verified'] == 'true' ? true : false
   end
 
 private
 
   def self.headers
-    { "Accepts" => "application/json" }
+    { 'Accepts' => 'application/json' }
   end
 end
