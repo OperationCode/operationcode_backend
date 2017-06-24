@@ -15,10 +15,15 @@ module Api
 
       def verify
         verified = IdMe.verify! params[:access_token]
+
+        # FIXME use current user
+        #current_user.update! verified: verified
+
+        User.last.update! verified: verified
         current_user.update! verified: verified
         render json: { status: :ok, verified: verified }
       rescue => e
-        Rails.logger.debug "When verifying User id #{current_user.id} through ID.me, experienced this error: #{e}"
+        Rails.logger.debug "When verifying User id #{User.last.id} through ID.me, experienced this error: #{e}"
         render json: { status: :unprocessable_entity }
       end
 
