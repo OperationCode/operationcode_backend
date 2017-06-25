@@ -25,7 +25,7 @@ module Api
         Rails.logger.debug "When verifying User id #{User.last.id} through ID.me, experienced this error: #{e}"
         render json: { status: :unprocessable_entity }, status: :unprocessable_entity
       end
-
+      
       def user_params
         params.require(:user).permit(:email, :zip, :password, :first_name, :last_name, :mentor, :slack_name, :verified)
       end
