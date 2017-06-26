@@ -4,6 +4,8 @@ class IdMe
   include HTTParty
   base_uri 'api.id.me'
 
+  private_class_method :headers
+
   def self.verify!(access_token)
     options = { headers: headers }
 
@@ -15,8 +17,6 @@ class IdMe
 
     verified
   end
-
-private
 
   def self.headers
     { 'Accepts' => 'application/json' }
