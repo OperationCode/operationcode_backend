@@ -16,6 +16,8 @@ class IdMe
     verified
   end
 
+private
+
   def self.headers
     { 'Accepts' => 'application/json' }
   end
