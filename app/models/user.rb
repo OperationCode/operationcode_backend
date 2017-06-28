@@ -8,7 +8,7 @@ class User < ApplicationRecord
   after_create :welcome_user
   before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
 
-  validates_format_of :email, :with => /@/
+  validates_format_of :email, :with => /\A.*@.*\z/
   validates :email, uniqueness: true
 
   has_many :requests
