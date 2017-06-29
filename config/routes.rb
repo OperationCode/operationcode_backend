@@ -21,6 +21,7 @@ Rails.application.routes.draw do
           post 'join'
         end
       end
+      resources :team_members, only: :index
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
