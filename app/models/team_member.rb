@@ -1,0 +1,2 @@
+class TeamMember < ApplicationRecord
+end
