@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :team_member do
-    name "MyString"
-    role "MyString"
+    name "John Smith"
+    role "Board Advisor"
   end
 end
