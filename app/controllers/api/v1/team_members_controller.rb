@@ -1,6 +1,7 @@
 module Api
   module V1
     class TeamMembersController < ApplicationController
+      before_action :authenticate_user!, except: :index
 
       # :GET, "/api/v1/team_members", "Returns JSON index of all TeamMembers"
       def index
