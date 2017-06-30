@@ -1,9 +1,13 @@
 module Api
   module V1
     class TeamMembersController < ApplicationController
+
+      # :GET, "/api/v1/team_members", "Returns JSON index of all TeamMembers"
       def index
         render json: TeamMember.all
       end
+
+      # :POST, "/api/v1/team_members", "Creates a new TeamMember"
       def create
         team_member = TeamMember.create! team_member_params
 
@@ -12,6 +16,7 @@ module Api
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
+      # :PUT, "/api/v1/team_members/:id", "Updates an existing TeamMember"
       def update
         team_member = TeamMember.find params[:id]
 
@@ -21,6 +26,7 @@ module Api
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
+      # :DELETE, "/api/v1/team_members/:id", "Deletes an existing TeamMember"
       def destroy
         team_member = TeamMember.find params[:id]
 
