@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :events, only: :index
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
+      resources :resources, only: [:index, :create, :show, :update, :destroy] do
       resources :services, only: :index
       resources :squads, only: [:index, :create, :show] do
         member do
