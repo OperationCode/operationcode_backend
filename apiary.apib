@@ -1,0 +1,273 @@
+FORMAT: 1A
+HOST: https://operationcode.org/
+
+# Operation Code API Documentation
+
+API endpoints that Operation Code's Rails backend makes available to its React frontend.
+
+## Resources Collection [/api/v1/resources/{tags}]
+
++ Parameters
+
+    + tags (optional) - Optional array of tags to filter the search results on (i.e. { tags: ["books", "videos"] })
+
+### List All Resources [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Free Programming Books",
+                "url": "https://github.com/vhf/free-programming-books",
+                "category": "Books",
+                "language": "multiple",
+                "paid": false,
+                "notes": "Wiki book on everything computers",
+                "votes_count": 3,
+                "created_at": "2017-07-01T22:01:48.966Z",
+                "updated_at": "2017-07-01T22:01:48.966Z"
+            },
+            {
+                "id": 2,
+                "name": "Packtpub free programming books",
+                "url": "https://www.packtpub.com/packt/offers/free-learning",
+                "category": "Books",
+                "language": "multiple",
+                "paid": false,
+                "notes": null,
+                "votes_count": 0,
+                "created_at": "2017-07-01T22:01:49.145Z",
+                "updated_at": "2017-07-01T22:01:49.145Z"
+            }
+        ]
+
++ Response 422 (application/json)
+        
+        { 
+            errors: "Some error message" 
+        }
+
+## Resource [/api/v1/resources/{resource_id}]
+
++ Parameters
+
+    + resource_id (number) - ID of the Resource in the form of an integer        
+
+### View a Resource's Detail [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 53,
+            "name": "The Code Player",
+            "url": "http://thecodeplayer.com/",
+            "category": "Tutorials",
+            "language": "multiple",
+            "paid": false,
+            "notes": null,
+            "votes_count": 5,
+            "created_at": "2017-07-01T22:01:50.324Z",
+            "updated_at": "2017-07-01T22:01:50.324Z"
+        }
+
+## Team Members Collection [/api/v1/team_members]
+
+### List All Team Members [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 65,
+                "name": "Rick Rein",
+                "role": "CTO",
+                "created_at": "2017-06-30T15:05:39.242Z",
+                "updated_at": "2017-06-30T15:05:39.242Z"
+            },
+            {
+                "id": 66,
+                "name": "Rob Kriner",
+                "role": "Director of Marketing",
+                "created_at": "2017-06-30T15:05:39.255Z",
+                "updated_at": "2017-06-30T15:05:39.255Z"
+            }
+        ]
+
+### Create a New Team Member [POST]
+
++ Request (application/json)
+    
+    + Headers
+
+            Authorization: Bearer Access-Token
+        
+
+    + Body
+    
+            {
+                "team_member": {
+                    "name": "Alex Johnson",
+                    "role": "Board Member"
+                }
+            }        
+
++ Response 201 (application/json)
+
+    + Body
+
+            {   
+                "team_member": 1
+            }
+
++ Response 422 (application/json)
+        
+        { 
+            errors: "Some error message" 
+        }
+
+## Update a Team Member [/api/v1/team_members/{team_member_id}]
+
++ Parameters
+
+    + team_member_id (number) - ID of the Team Member in the form of an integer
+
+### Update an Existing Team Member [PUT]
+
++ Request (application/json)
+    
+    + Headers
+
+            Authorization: Bearer Access-Token
+        
+
+    + Body
+    
+            {
+                "team_member": {
+                    "id": 1,
+                    "name": "Alex Johnson",
+                    "role": "Board Member"
+                }
+            }        
+
++ Response 200 (application/json)
+
+    + Body
+
+            {   
+                status: 200
+            }
+
++ Response 422 (application/json)
+        
+        { 
+            errors: "Some error message" 
+        }
+
+### Delete an Existing Team Member [DELETE]
+
++ Request (application/json)
+    
+    + Headers
+
+            Authorization: Bearer Access-Token
+        
+
+    + Body
+    
+            {
+                "team_member": {
+                    "id": 1
+                }
+            }        
+
++ Response 200 (application/json)
+
+    + Body
+
+            {   
+                status: 200
+            }
+
++ Response 422 (application/json)
+        
+        { 
+            errors: "Some error message" 
+        }
+
+## Votes Collection [/api/v1/resources/{resource_id}/votes]
+
++ Parameters
+
+    + resource_id (number) - ID of the Resource the User is voting on in the form of an integer
+
+### Create a New Vote [POST]
+
++ Request (application/json)
+    
+    + Headers
+
+            Authorization: Bearer Access-Token
+        
+
+    + Body
+    
+            {
+                "vote": {
+                    "user_id": 1,
+                    "resource_id": 23
+                }
+            }        
+
++ Response 201 (application/json)
+
+    + Body
+
+            {   
+                "vote": 1
+            }
+
++ Response 422 (application/json)
+        
+        { 
+            errors: "Some error message" 
+        }
+
+## Update an Existing Vote [/api/v1/resources/{resource_id}/votes/{vote_id}]
+
++ Parameters
+
+    + resource_id (number) - ID of the Resource the User is voting on in the form of an integer
+    + vote_id (number) - ID of the Vote the User is deleting in the form of an integer
+
+### Delete an Existing Vote [DELETE]
+
++ Request (application/json)
+    
+    + Headers
+
+            Authorization: Bearer Access-Token
+        
+
+    + Body
+    
+            {
+                "vote": {
+                    "id": 1
+                }
+            }        
+
++ Response 200 (application/json)
+
+    + Body
+
+            {   
+                status: 200
+            }
+
++ Response 422 (application/json)
+        
+        { 
+            errors: "Some error message" 
+        }
