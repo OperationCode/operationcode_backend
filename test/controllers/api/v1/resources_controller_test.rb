@@ -26,7 +26,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     @videos.tag_list.add 'screencast'
     @videos.save
 
-    get api_v1_resources_url, headers: @headers, params: params, as: :json
+    get api_v1_resources_url(params), headers: @headers, as: :json
 
     assert_equal response.parsed_body.size, 2
     [blog.name, @videos.name].each do |resource|
