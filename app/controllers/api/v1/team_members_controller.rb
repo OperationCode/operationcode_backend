@@ -5,14 +5,14 @@ module Api
 
       # :GET, "/api/v1/team_members", "Returns JSON index of all TeamMembers"
       def index
-        render json: TeamMember.all
+        render json: TeamMember.all, status: :ok
       end
 
       # :POST, "/api/v1/team_members", "Creates a new TeamMember"
       def create
         team_member = TeamMember.create! team_member_params
 
-        render json: { team_member: team_member.id }
+        render json: { team_member: team_member.id }, status: :created
       rescue StandardError => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
