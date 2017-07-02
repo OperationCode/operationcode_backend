@@ -4,6 +4,9 @@ language: c
 
 services:
   - docker
+  
+before_install:
+  - npm install -g dredd@4.1.1
 
 script:
   - make build
@@ -13,6 +16,7 @@ script:
       sleep 1;
     done;
   - make test
+  - dredd
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then make upgrade; fi
 
 env:
