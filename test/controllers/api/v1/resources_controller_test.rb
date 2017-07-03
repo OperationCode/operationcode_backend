@@ -43,4 +43,59 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     assert_equal @books.url, response.parsed_body["url"]
     assert_equal @books.category, response.parsed_body["category"]
   end
+
+  test ":create endpoint creates a new Resource" do
+    params = {
+      resource: {
+        name: 'Free videos site',
+        url: 'free@videos.com',
+        category: 'videos',
+        language: 'multiple',
+        paid: false,
+      }
+    }
+
+    post api_v1_resources_url, headers: @headers, params: params, as: :json
+
+    videos = Resource.last
+    assert_equal({ 'resource' => videos.id }, response.parsed_body)
+  end
+
+  test ":update endpoint updates an existing Resource" do
+    new_url = "more_free_videos@videos.com"
+    params = {
+      resource: {
+        id: @videos.id,
+        name: @videos.name,
+        url: new_url,
+        category: @videos.category,
+        language: @videos.language,
+        paid: @videos.paid
+      }
+    }
+
+    put api_v1_resource_url(@videos.id), headers: @headers, params: params, as: :json
+
+    @videos.reload
+    assert_equal response.status, 200
+    assert_equal @videos.url, new_url
+  end
+
+  test ":destroy endpoint destroys an existing Resource" do
+    params = {
+      resource: {
+        id: @videos.id,
+        name: @videos.name,
+        url: @videos.url,
+        category: @videos.category,
+        language: @videos.language,
+        paid: @videos.paid
+      }
+    }
+
+    delete api_v1_resource_url(@videos.id), headers: @headers, params: params, as: :json
+
+    assert_equal response.status, 200
+    assert_equal 1, Resource.count
+  end
 end
