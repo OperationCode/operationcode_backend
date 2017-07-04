@@ -58,7 +58,32 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     post api_v1_resources_url, headers: @headers, params: params, as: :json
 
     videos = Resource.last
-    assert_equal({ 'resource' => videos.id }, response.parsed_body)
+    assert_equal({ 'resource' => videos.id, 'tags' => [] }, response.parsed_body)
+  end
+
+  test ":create endpoint creates a new Resource with Tags" do
+    params = {
+      resource: {
+        name: 'Free videos site',
+        url: 'free@videos.com',
+        category: 'videos',
+        language: 'multiple',
+        paid: false,
+      },
+      tags: ["free", "top 100"]
+    }
+
+    post api_v1_resources_url, headers: @headers, params: params, as: :json
+
+    videos = Resource.last
+    assert_equal(
+      { 'resource' => videos.id, 'tags' => videos.tags.map(&:name) },
+      response.parsed_body
+    )
+
+    ["free", "top 100"].each do |tag_name|
+      assert_equal true, videos.tags.map(&:name).any? { |tag| tag == tag_name }
+    end
   end
 
   test ":update endpoint updates an existing Resource" do
@@ -78,7 +103,43 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
 
     @videos.reload
     assert_equal response.status, 200
+    assert_equal(
+      { 'resource' => @videos.id, 'tags' => @videos.tags.map(&:name) },
+      response.parsed_body
+    )
     assert_equal @videos.url, new_url
+  end
+
+  test ":update endpoint updates an existing Resource's tags" do
+    old_tags = ['that', 'this']
+    new_tags = ['nada']
+    guides = build(:resource, name: 'Free guides')
+    guides.tag_list.add old_tags
+    guides.save
+
+    assert_equal guides.tags.map(&:name).sort, old_tags
+
+    params = {
+      resource: {
+        id: guides.id,
+        name: guides.name,
+        url: guides.url,
+        category: guides.category,
+        language: guides.language,
+        paid: guides.paid
+      },
+      tags: new_tags
+    }
+
+    put api_v1_resource_url(guides.id), headers: @headers, params: params, as: :json
+
+    guides.reload
+    assert_equal response.status, 200
+    assert_equal(
+      { 'resource' => guides.id, 'tags' => guides.tags.map(&:name) },
+      response.parsed_body
+    )
+    assert_equal guides.tags.map(&:name), new_tags
   end
 
   test ":destroy endpoint destroys an existing Resource" do
