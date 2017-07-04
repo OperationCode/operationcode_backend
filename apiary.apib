@@ -48,7 +48,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                     language: 'multiple',
                     paid: false,
                     notes: 'some note'
-                }
+                },
+                tags: [
+                    "books",
+                    "videos"
+                ]
             }
 
 + Response 200 (application/json)
@@ -56,7 +60,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                resource: {
+                    id: 1
+                },
+                tags: [
+                    "books",
+                    "videos"
+                ]
             }
 
 + Response 422 (application/json)
@@ -158,7 +168,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                     language: 'multiple',
                     paid: false,
                     notes: 'some note'
-                }
+                },
+                tags: [
+                    "books",
+                    "videos"
+                ]
             }
 
 + Response 201 (application/json)
@@ -166,7 +180,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "resource": 1
+                resource: {
+                    id: 1
+                },
+                tags: [
+                    "books",
+                    "videos"
+                ]
             }
 
 + Response 422 (application/json)

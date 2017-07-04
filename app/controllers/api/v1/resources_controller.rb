@@ -19,16 +19,24 @@ module Api
       end
 
       def create
-        resource = Resource.create! resource_params
+        ActiveRecord::Base.transaction do
+          resource = Resource.new resource_params
+          resource.tag_list.add(params[:tags]) if params[:tags].present?
+          resource.save!
 
-        render json: { resource: resource.id }, status: :created
+          render json: { resource: resource.id, tags: resource.tags.map(&:name) }, status: :created
+        end
       rescue StandardError => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
       def update
-        @resource.update! resource_params
-        render json: { status: :ok }
+        ActiveRecord::Base.transaction do
+          @resource.update! resource_params
+          update_tags!
+
+          render json: { resource: @resource.id, tags: @resource.tags.map(&:name) }, status: :ok
+        end
       rescue StandardError => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
@@ -56,6 +64,16 @@ module Api
 
       def set_resource
         @resource = Resource.find params[:id]
+      end
+
+      def update_tags!
+        old_tags = @resource.tags.map(&:name)
+
+        @resource.tag_list.remove old_tags
+        @resource.tag_list.add(params[:tags]) if params[:tags].present?
+
+        @resource.save!
+        @resource.reload
       end
     end
   end
