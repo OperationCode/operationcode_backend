@@ -5,6 +5,97 @@ HOST: https://operationcode.org/
 
 API endpoints that Operation Code's Rails backend makes available to its React frontend.
 
+## Resource [/api/v1/resources/{resource_id}]
+
++ Parameters
+
+    + resource_id (number) - ID of the Resource in the form of an integer
+
+### View a Resource's Detail [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 53,
+            "name": "The Code Player",
+            "url": "http://thecodeplayer.com/",
+            "category": "Tutorials",
+            "language": "multiple",
+            "paid": false,
+            "notes": null,
+            "votes_count": 5,
+            "created_at": "2017-07-01T22:01:50.324Z",
+            "updated_at": "2017-07-01T22:01:50.324Z"
+        }
+
+### Update an Existing Resource [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                resource: {
+                    id: 1,
+                    name: 'Free videos site',
+                    url: 'free@videos.com',
+                    category: 'videos',
+                    language: 'multiple',
+                    paid: false,
+                    notes: 'some note'
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+### Delete an Existing Resource [DELETE]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                "resource": {
+                    "id": 1
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
 ## Resource | Collection [/api/v1/resources/{tags}]
 
 + Parameters
@@ -43,32 +134,140 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         ]
 
 + Response 422 (application/json)
-        
-        { 
-            errors: "Some error message" 
+
+        {
+            errors: "Some error message"
         }
 
-## Resource [/api/v1/resources/{resource_id}]
+### Create a New Resource [POST]
 
-+ Parameters
++ Request (application/json)
 
-    + resource_id (number) - ID of the Resource in the form of an integer        
+    + Headers
 
-### View a Resource's Detail [GET]
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                resource: {
+                    name: 'Free videos site',
+                    url: 'free@videos.com',
+                    category: 'videos',
+                    language: 'multiple',
+                    paid: false,
+                    notes: 'some note'
+                }
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "resource": 1
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Tag | Collection [/api/v1/tags]
+
+### List All Tags [GET]
 
 + Response 200 (application/json)
 
+        [
+            {
+                "id": 3,
+                "name": "books",
+                "taggings_count": 0
+            },
+            {
+                "id": 2,
+                "name": "videos",
+                "taggings_count": 0
+            }
+        ]
+
++ Response 422 (application/json)
+
         {
-            "id": 53,
-            "name": "The Code Player",
-            "url": "http://thecodeplayer.com/",
-            "category": "Tutorials",
-            "language": "multiple",
-            "paid": false,
-            "notes": null,
-            "votes_count": 5,
-            "created_at": "2017-07-01T22:01:50.324Z",
-            "updated_at": "2017-07-01T22:01:50.324Z"
+            errors: "Some error message"
+        }
+
+## Team Member [/api/v1/team_members/{team_member_id}]
+
++ Parameters
+
+    + team_member_id (number) - ID of the Team Member in the form of an integer
+
+### Update an Existing Team Member [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                "team_member": {
+                    "id": 1,
+                    "name": "Alex Johnson",
+                    "role": "Board Member"
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+### Delete an Existing Team Member [DELETE]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                "team_member": {
+                    "id": 1
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
         }
 
 ## Team Member | Collection [/api/v1/team_members]
@@ -97,103 +296,71 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ### Create a New Team Member [POST]
 
 + Request (application/json)
-    
+
     + Headers
 
             Authorization: Bearer Access-Token
-        
+
 
     + Body
-    
+
             {
                 "team_member": {
                     "name": "Alex Johnson",
                     "role": "Board Member"
                 }
-            }        
+            }
 
 + Response 201 (application/json)
 
     + Body
 
-            {   
+            {
                 "team_member": 1
             }
 
 + Response 422 (application/json)
-        
-        { 
-            errors: "Some error message" 
+
+        {
+            errors: "Some error message"
         }
 
-## Team Member | Update [/api/v1/team_members/{team_member_id}]
+## Vote [/api/v1/resources/{resource_id}/votes/{vote_id}]
 
 + Parameters
 
-    + team_member_id (number) - ID of the Team Member in the form of an integer
+    + resource_id (number) - ID of the Resource the User is voting on in the form of an integer
+    + vote_id (number) - ID of the Vote the User is deleting in the form of an integer
 
-### Update an Existing Team Member [PUT]
+### Delete an Existing Vote [DELETE]
 
 + Request (application/json)
-    
+
     + Headers
 
             Authorization: Bearer Access-Token
-        
+
 
     + Body
-    
+
             {
-                "team_member": {
-                    "id": 1,
-                    "name": "Alex Johnson",
-                    "role": "Board Member"
-                }
-            }        
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {   
-                status: 200
-            }
-
-+ Response 422 (application/json)
-        
-        { 
-            errors: "Some error message" 
-        }
-
-### Delete an Existing Team Member [DELETE]
-
-+ Request (application/json)
-    
-    + Headers
-
-            Authorization: Bearer Access-Token
-        
-
-    + Body
-    
-            {
-                "team_member": {
+                "vote": {
                     "id": 1
                 }
-            }        
+            }
 
 + Response 200 (application/json)
 
     + Body
 
-            {   
+            {
                 status: 200
             }
 
 + Response 422 (application/json)
-        
-        { 
-            errors: "Some error message" 
+
+        {
+            errors: "Some error message"
         }
 
 ## Vote | Collection [/api/v1/resources/{resource_id}/votes]
@@ -205,69 +372,31 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ### Create a New Vote [POST]
 
 + Request (application/json)
-    
+
     + Headers
 
             Authorization: Bearer Access-Token
-        
+
 
     + Body
-    
+
             {
                 "vote": {
                     "user_id": 1,
                     "resource_id": 23
                 }
-            }        
+            }
 
 + Response 201 (application/json)
 
     + Body
 
-            {   
+            {
                 "vote": 1
             }
 
 + Response 422 (application/json)
-        
-        { 
-            errors: "Some error message" 
-        }
 
-## Vote | Update [/api/v1/resources/{resource_id}/votes/{vote_id}]
-
-+ Parameters
-
-    + resource_id (number) - ID of the Resource the User is voting on in the form of an integer
-    + vote_id (number) - ID of the Vote the User is deleting in the form of an integer
-
-### Delete an Existing Vote [DELETE]
-
-+ Request (application/json)
-    
-    + Headers
-
-            Authorization: Bearer Access-Token
-        
-
-    + Body
-    
-            {
-                "vote": {
-                    "id": 1
-                }
-            }        
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {   
-                status: 200
-            }
-
-+ Response 422 (application/json)
-        
-        { 
-            errors: "Some error message" 
+        {
+            errors: "Some error message"
         }
