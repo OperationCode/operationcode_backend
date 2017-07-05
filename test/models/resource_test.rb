@@ -14,6 +14,6 @@ class ResourceTest < ActiveSupport::TestCase
   end
 
   test ".with_tags returns only relevant tagged resources when tagged arguments are passed" do
-    assert_equal Resource.with_tags(['books']), [@books]
+    assert_equal Resource.with_tags('books'), [@books]
   end
 end

@@ -5,9 +5,13 @@ class Resource < ApplicationRecord
 
   validates :name, :url, :category, presence: true
 
-  def self.with_tags(tags=[])
+  # Uses ActsAsTaggableOn gem to return relevant Resources.
+  #
+  # @see https://github.com/mbleigh/acts-as-taggable-on#usage
+  #
+  def self.with_tags(tags="")
     if tags.present?
-      tagged_with(tags, any: true)
+      tagged_with(tags, any: true, parse: true)
     else
       all
     end
