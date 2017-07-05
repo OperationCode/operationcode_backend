@@ -21,7 +21,7 @@ module Api
       def create
         ActiveRecord::Base.transaction do
           resource = Resource.new resource_params
-          resource.tag_list.add(params[:tags]) if params[:tags].present?
+          resource.tag_list.add(params[:tags], parse: true) if params[:tags].present?
           resource.save!
 
           render json: { resource: resource.id, tags: resource.tags.map(&:name) }, status: :created
@@ -69,8 +69,8 @@ module Api
       def update_tags!
         old_tags = @resource.tags.map(&:name)
 
-        @resource.tag_list.remove old_tags
-        @resource.tag_list.add(params[:tags]) if params[:tags].present?
+        @resource.tag_list.remove old_tags, parse: true
+        @resource.tag_list.add(params[:tags], parse: true) if params[:tags].present?
 
         @resource.save!
         @resource.reload

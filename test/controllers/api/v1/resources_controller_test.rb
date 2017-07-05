@@ -19,11 +19,11 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test ":index endpoint returns correct tagged Resources when :tags param is passed" do
-    params = { tags: ['screencast', 'articles'] }
+    params = { tags: 'screencast, articles' }
     blog = create(:resource, name: 'Blog posts')
-    blog.tag_list.add 'articles'
+    blog.tag_list.add 'articles', parse: true
     blog.save
-    @videos.tag_list.add 'screencast'
+    @videos.tag_list.add 'screencast',parse: true
     @videos.save
 
     get api_v1_resources_url(params), as: :json
@@ -70,7 +70,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
         language: 'multiple',
         paid: false,
       },
-      tags: ["free", "top 100"]
+      tags: 'free, top 100'
     }
 
     post api_v1_resources_url, headers: @headers, params: params, as: :json
@@ -81,7 +81,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
       response.parsed_body
     )
 
-    ["free", "top 100"].each do |tag_name|
+    ['free', 'top 100'].each do |tag_name|
       assert_equal true, videos.tags.map(&:name).any? { |tag| tag == tag_name }
     end
   end
@@ -111,13 +111,13 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test ":update endpoint updates an existing Resource's tags" do
-    old_tags = ['that', 'this']
-    new_tags = ['nada']
+    old_tags = 'that, this'
+    new_tags = 'nada'
     guides = build(:resource, name: 'Free guides')
-    guides.tag_list.add old_tags
+    guides.tag_list.add old_tags, parse: true
     guides.save
 
-    assert_equal guides.tags.map(&:name).sort, old_tags
+    assert_equal guides.tags.map(&:name).sort.join(", "), old_tags
 
     params = {
       resource: {
@@ -139,7 +139,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
       { 'resource' => guides.id, 'tags' => guides.tags.map(&:name) },
       response.parsed_body
     )
-    assert_equal guides.tags.map(&:name), new_tags
+    assert_equal guides.tags.map(&:name).join, new_tags
   end
 
   test ":destroy endpoint destroys an existing Resource" do
