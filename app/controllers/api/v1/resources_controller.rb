@@ -50,16 +50,21 @@ module Api
 
     private
 
-      def resource_params
-        params.require(:resource).permit(
+      def permitted_params
+        params.permit(
           :name,
           :url,
           :category,
           :language,
           :paid,
           :notes,
-          :votes_count
+          :votes_count,
+          :tags
         )
+      end
+
+      def resource_params
+        permitted_params.reject { |k, _v| k == 'tags' }
       end
 
       def set_resource
@@ -69,7 +74,7 @@ module Api
       def update_tags!
         old_tags = @resource.tags.map(&:name)
 
-        @resource.tag_list.remove old_tags, parse: true
+        @resource.tag_list.remove old_tags
         @resource.tag_list.add(params[:tags], parse: true) if params[:tags].present?
 
         @resource.save!

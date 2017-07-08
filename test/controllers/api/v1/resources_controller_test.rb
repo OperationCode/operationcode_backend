@@ -46,13 +46,11 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
 
   test ":create endpoint creates a new Resource" do
     params = {
-      resource: {
-        name: 'Free videos site',
-        url: 'free@videos.com',
-        category: 'videos',
-        language: 'multiple',
-        paid: false,
-      }
+      name: 'Free videos site',
+      url: 'free@videos.com',
+      category: 'videos',
+      language: 'multiple',
+      paid: false,
     }
 
     post api_v1_resources_url, headers: @headers, params: params, as: :json
@@ -63,13 +61,11 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
 
   test ":create endpoint creates a new Resource with Tags" do
     params = {
-      resource: {
-        name: 'Free videos site',
-        url: 'free@videos.com',
-        category: 'videos',
-        language: 'multiple',
-        paid: false,
-      },
+      name: 'Free videos site',
+      url: 'free@videos.com',
+      category: 'videos',
+      language: 'multiple',
+      paid: false,
       tags: 'free, top 100'
     }
 
@@ -89,14 +85,12 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
   test ":update endpoint updates an existing Resource" do
     new_url = "more_free_videos@videos.com"
     params = {
-      resource: {
-        id: @videos.id,
-        name: @videos.name,
-        url: new_url,
-        category: @videos.category,
-        language: @videos.language,
-        paid: @videos.paid
-      }
+      id: @videos.id,
+      name: @videos.name,
+      url: new_url,
+      category: @videos.category,
+      language: @videos.language,
+      paid: @videos.paid
     }
 
     put api_v1_resource_url(@videos.id), headers: @headers, params: params, as: :json
@@ -120,14 +114,12 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     assert_equal guides.tags.map(&:name).sort.join(", "), old_tags
 
     params = {
-      resource: {
-        id: guides.id,
-        name: guides.name,
-        url: guides.url,
-        category: guides.category,
-        language: guides.language,
-        paid: guides.paid
-      },
+      id: guides.id,
+      name: guides.name,
+      url: guides.url,
+      category: guides.category,
+      language: guides.language,
+      paid: guides.paid,
       tags: new_tags
     }
 
@@ -144,14 +136,12 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
 
   test ":destroy endpoint destroys an existing Resource" do
     params = {
-      resource: {
-        id: @videos.id,
-        name: @videos.name,
-        url: @videos.url,
-        category: @videos.category,
-        language: @videos.language,
-        paid: @videos.paid
-      }
+      id: @videos.id,
+      name: @videos.name,
+      url: @videos.url,
+      category: @videos.category,
+      language: @videos.language,
+      paid: @videos.paid
     }
 
     delete api_v1_resource_url(@videos.id), headers: @headers, params: params, as: :json

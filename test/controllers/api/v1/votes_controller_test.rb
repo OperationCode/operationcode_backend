@@ -9,10 +9,8 @@ class Api::V1::VotesControllerTest < ActionDispatch::IntegrationTest
 
   test ":create endpoint creates a new Vote" do
     params = {
-      vote: {
-        user_id: @user.id,
-        resource_id: @resource.id
-      }
+      user_id: @user.id,
+      resource_id: @resource.id
     }
 
     post api_v1_resource_votes_url(@resource), headers: @headers, params: params, as: :json
@@ -28,10 +26,8 @@ class Api::V1::VotesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, @user.votes.count
 
     params = {
-      vote: {
-        user_id: @user.id,
-        resource_id: @resource.id
-      }
+      user_id: @user.id,
+      resource_id: @resource.id
     }
 
     post api_v1_resource_votes_url(@resource), headers: @headers, params: params, as: :json
@@ -45,11 +41,9 @@ class Api::V1::VotesControllerTest < ActionDispatch::IntegrationTest
     vote = create :vote, user: @user, resource: @resource
 
     params = {
-      vote: {
-        id: vote.id,
-        user_id: vote.user_id,
-        resource_id: vote.resource_id
-      }
+      id: vote.id,
+      user_id: vote.user_id,
+      resource_id: vote.resource_id
     }
 
     delete api_v1_resource_vote_url(@resource, vote), headers: @headers, params: params, as: :json
