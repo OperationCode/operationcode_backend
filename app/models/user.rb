@@ -30,6 +30,17 @@ class User < ApplicationRecord
     by_zip(zips).count
   end
 
+  # Returns a count of all users within the passed in location.  The location can
+  # be either a city, or a set of coordinates.
+  #
+  # @param location [String || Array] Either a 'City, State, County' or [Latitude, Longitude]
+  #   For example, 'Denver, CO, US'.
+  # @param radius [Integer] Include results within the radius' distance from the location, in miles.
+  # @see https://github.com/alexreisner/geocoder#for-activerecord-models
+  #
+  def self.count_by_location(location, radius=20)
+    near(location, radius.to_i)&.size
+  end
 
   def welcome_user
     invite_to_slack
