@@ -50,7 +50,7 @@ module Api
 
     private
 
-      def permitted_params
+      def resource_params
         params.permit(
           :name,
           :url,
@@ -58,13 +58,8 @@ module Api
           :language,
           :paid,
           :notes,
-          :votes_count,
-          :tags
+          :votes_count
         )
-      end
-
-      def resource_params
-        permitted_params.reject { |k, _v| k == 'tags' }
       end
 
       def set_resource
