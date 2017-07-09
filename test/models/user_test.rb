@@ -85,4 +85,20 @@ class UserTest < ActiveSupport::TestCase
       ]
     )
   end
+
+  test '.count_by_zip returns a count of all users within the passed in zip code(s)' do
+    tom = create :user, zip: '80112'
+    sam = create :user, zip: '80126'
+    bob = create :user, zip: '80126'
+
+    results = User.count_by_zip '80126'
+    assert_equal 2, results
+
+    results = User.count_by_zip '80126, 80112'
+    assert_equal 3, results
+
+    results = User.count_by_zip ''
+    assert_equal 0, results
+  end
+
 end
