@@ -9,6 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers'
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'devise'
 gem 'geocoder'
 gem 'gibbon'
@@ -26,7 +27,6 @@ gem 'redis', '~> 3.0'
 gem 'sentry-raven'
 gem 'sidekiq'
 gem 'httparty'
-gem 'acts-as-taggable-on', '~> 5.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
