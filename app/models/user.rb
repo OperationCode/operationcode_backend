@@ -16,6 +16,20 @@ class User < ApplicationRecord
   has_many :votes
 
   scope :mentors, -> { where(mentor: true) }
+  scope :by_zip, ->(zip) { where(zip: zip) }
+
+  # Returns a count of all users with the passed in zip code(s)
+  #
+  # @param zip_codes [String] String of comma-separated zip code(s), i.e. '80126', or '80126, 80203'
+  #
+  def self.count_by_zip(zip_codes)
+    return 0 unless zip_codes.present?
+
+    zips = zip_codes.split(',').map(&:strip)
+
+    by_zip(zips).count
+  end
+
 
   def welcome_user
     invite_to_slack
