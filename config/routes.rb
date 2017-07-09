@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/status/protected', to: 'status#protected'
 
       post '/users/profile/verify', to: 'users#verify'
+      get '/users/by_location', to: 'users#by_location'
 
       resources :code_schools, only: :index
       resources :events, only: :index
