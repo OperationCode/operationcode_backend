@@ -2,6 +2,7 @@ require 'test_helper'
 
 class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
+    User.destroy_all
     user = create(:user)
     @headers = authorization_headers(user)
   end
