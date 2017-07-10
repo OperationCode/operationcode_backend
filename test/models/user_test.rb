@@ -102,17 +102,18 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '.count_by_location returns a count of all users within the passed in city, or coordinates, and radius from that location' do
-    tom = create :user, zip: '80238'
-    sam = create :user, zip: '80202'
-    bob = create :user, zip: '10004'
+    tom = create :user, zip: '78705'
+    sam = create :user, zip: '78756'
+    bob = create :user, zip: '83704'
 
-    tom.update latitude: 39.762920, longitude: -104.872770
-    sam.update latitude: 39.745211, longitude: -104.991638
+    tom.update latitude: 30.285648, longitude: -97.742052
+    sam.update latitude: 30.312601, longitude: -97.738591
+    bob.update latitude: 43.606690, longitude: -116.282246
 
-    results = User.count_by_location [39.762920, -104.872770]
+    results = User.count_by_location [30.285648, -97.742052]
     assert_equal 2, results
 
-    results = User.count_by_location [40.704540, -74.013087]
+    results = User.count_by_location [43.606690, -116.282246]
     assert_equal 1, results
 
     results = User.count_by_location ''
