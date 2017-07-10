@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   # Returns a count of all users within the passed in location.  The location can
-  # be either a city, or a set of coordinates.
+  # be either a city, or a set of latitude/longitude.
   #
   # @param location [String || Array] Either a 'City, State, County' or [Latitude, Longitude]
   #   For example, 'Denver, CO, US'.

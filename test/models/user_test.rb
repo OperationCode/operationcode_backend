@@ -101,7 +101,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 0, results
   end
 
-  test '.count_by_location returns a count of all users within the passed in city, or coordinates, and radius from that location' do
+  test '.count_by_location returns a count of all users within the passed in city, or latitude/longitude, and radius from that location' do
     tom = create :user, zip: '78705'
     sam = create :user, zip: '78756'
     bob = create :user, zip: '83704'
