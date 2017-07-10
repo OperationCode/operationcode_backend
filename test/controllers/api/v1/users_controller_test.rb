@@ -28,15 +28,11 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 2 }, response.parsed_body)
 
-    params = { city: 'Austin, TX, US' }
+    params = { lat_long: [30.285648, -97.742052] }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 2 }, response.parsed_body)
 
-    params = { coordinates: [30.285648, -97.742052] }
-    get api_v1_users_by_location_url(params), headers: @headers, as: :json
-    assert_equal({ 'user_count' => 2 }, response.parsed_body)
-
-    params = { coordinates: [30.285648, -97.742052], radius: 2 }
+    params = { lat_long: [30.285648, -97.742052], radius: 2 }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 1 }, response.parsed_body)
   end

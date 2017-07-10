@@ -34,7 +34,7 @@ module Api
       end
 
       def by_location
-        render json: { user_count: user_count }, status: :ok
+        render json: { user_count: UsersByLocation.new(params).count }, status: :ok
       rescue StandardError => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
@@ -43,22 +43,6 @@ module Api
 
       def user_params
         params.require(:user).permit(:email, :zip, :password, :first_name, :last_name, :mentor, :slack_name, :verified)
-      end
-
-      def radius
-        params[:radius] || 20
-      end
-
-      def user_count
-        if params[:zip].present?
-          User.count_by_zip(params[:zip])
-        elsif params[:city].present?
-          User.count_by_location(params[:city], radius)
-        elsif params[:coordinates].present?
-          User.count_by_location(params[:coordinates], radius)
-        else
-          raise 'A city, zip code, or coordinates must be provided'
-        end
       end
     end
   end
