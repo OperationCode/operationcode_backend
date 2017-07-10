@@ -2,7 +2,6 @@ require 'test_helper'
 
 class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    User.destroy_all
     user = create(:user)
     @headers = authorization_headers(user)
   end
@@ -12,34 +11,32 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 
     get api_v1_users_url, headers: @headers, as: :json
 
-    assert_equal({ 'user_count' => 3 }, response.parsed_body)
+    assert_equal({ 'user_count' => User.count }, response.parsed_body)
     assert_equal 200, response.status
   end
 
   test ":by_location returns User.count of users located in the passed in location" do
-    create :user, zip: '80238', latitude: 39.762920, longitude: -104.872770
-    create :user, zip: '80202', latitude: 39.745211, longitude: -104.991638
+    create :user, zip: '78705', latitude: 30.285648, longitude: -97.742052
+    create :user, zip: '78756', latitude: 30.312601, longitude: -97.738591
 
-    assert_equal User.count, 3
-
-    params = { zip: '80238' }
+    params = { zip: '78705' }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 1 }, response.parsed_body)
     assert_equal 200, response.status
 
-    params = { zip: '80238, 80202' }
+    params = { zip: '78705, 78756' }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 2 }, response.parsed_body)
 
-    params = { city: 'Denver, CO, US' }
+    params = { city: 'Austin, TX, US' }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 2 }, response.parsed_body)
 
-    params = { coordinates: [39.762920, -104.872770] }
+    params = { coordinates: [30.285648, -97.742052] }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 2 }, response.parsed_body)
 
-    params = { coordinates: [39.762920, -104.872770], radius: 2 }
+    params = { coordinates: [30.285648, -97.742052], radius: 2 }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 1 }, response.parsed_body)
   end
