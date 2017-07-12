@@ -7,7 +7,7 @@ So, you want to learn how to program? Contributing to Operation Code is a great 
 2. [Setting Up Your Environment](#setting-up-your-environment)
 3. [Finding an Issue](#finding-an-issue)
 4. [Working on Your Issue](#working-on-your-issue)
-5. [Submitting Your Changes](#pull-request-guidelines)
+5. [Submitting Your Changes](#submitting-your-changes)
 
 ## Quickstart
 1. [Setting Up Your Environment](#setting-up-your-environment)
@@ -107,7 +107,7 @@ So, you want to learn how to program? Contributing to Operation Code is a great 
   git checkout master
   ```
 
-## Pull Request Guidelines; Submitting Your Changes
+## Submitting Your Changes
 * When you have completed work on your feature branch, you are ready to submit a [pull request](https://help.github.com/articles/using-pull-requests/).
 
 * Each pull request should:
