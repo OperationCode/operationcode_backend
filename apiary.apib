@@ -28,43 +28,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             "updated_at": "2017-07-01T22:01:50.324Z"
         }
 
-### Update an Existing Resource [PUT]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
-
-
-    + Body
-
-            {
-                resource: {
-                    id: 1,
-                    name: 'Free videos site',
-                    url: 'free@videos.com',
-                    category: 'videos',
-                    language: 'multiple',
-                    paid: false,
-                    notes: 'some note'
-                }
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                status: 200
-            }
-
-+ Response 422 (application/json)
-
-        {
-            errors: "Some error message"
-        }
-
 ### Delete an Existing Resource [DELETE]
 
 + Request (application/json)
@@ -96,13 +59,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Resource | Collection [/api/v1/resources/{tags}]
+## Resource | Collection [/api/v1/resources{?tags}]
+
+### List All Resources [GET]
 
 + Parameters
 
-    + tags (optional) - Optional array of tags to filter the search results on (i.e. { tags: ["books", "videos"] })
-
-### List All Resources [GET]
+    + tags (string, optional) - Comma-separated list of tags to filter the search results on (i.e. "books, videos")
 
 + Response 200 (application/json)
 
@@ -139,6 +102,18 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Resource | Create [/api/v1/resources{?name,url,category,language,paid,notes,tags}]
+
++ Parameters
+
+    + name (string, required) - Description of the resource
+    + url (string, required) - Web address to access the resource
+    + category (string, required) - General category grouping the resource
+    + language (string, optional) - Programming language that best represents the resource
+    + paid (boolean, optional) - If the resource is free or not
+    + notes (text, optional) - A broader description of resource, its details, etc.
+    + tags (string, optional) - Comma-separated list of tags to filter the search results on (i.e. "books, videos")
+
 ### Create a New Resource [POST]
 
 + Request (application/json)
@@ -151,14 +126,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                resource: {
-                    name: 'Free videos site',
-                    url: 'free@videos.com',
-                    category: 'videos',
-                    language: 'multiple',
-                    paid: false,
-                    notes: 'some note'
-                }
+                name: 'Free videos site',
+                url: 'free@videos.com',
+                category: 'videos',
+                language: 'multiple',
+                paid: false,
+                notes: 'some note',
+                tags: "books, videos"
             }
 
 + Response 201 (application/json)
@@ -166,7 +140,68 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "resource": 1
+                resource: {
+                    id: 1
+                },
+                tags: [
+                    "books",
+                    "videos"
+                ]
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Resource | Update [/api/v1/resources/{resource_id}{?name,url,category,language,paid,notes,tags}]
+
++ Parameters
+
+    + resource_id (number, required) - ID of the Resource in the form of an integer
+    + name (string, required) - Description of the resource
+    + url (string, required) - Web address to access the resource
+    + category (string, required) - General category grouping the resource
+    + language (string, optional) - Programming language that best represents the resource
+    + paid (boolean, optional) - If the resource is free or not
+    + notes (text, optional) - A broader description of resource, its details, etc.
+    + tags (string, optional) - Comma-separated list of tags to filter the search results on (i.e. "books, videos")
+
+### Update an Existing Resource [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                id: 1,
+                name: 'Free videos site',
+                url: 'free@videos.com',
+                category: 'videos',
+                language: 'multiple',
+                paid: false,
+                notes: 'some note',
+                tags: 'books, videos'
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                resource: {
+                    id: 1
+                },
+                tags: [
+                    "books",
+                    "videos"
+                ]
             }
 
 + Response 422 (application/json)
@@ -200,76 +235,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Team Member [/api/v1/team_members/{team_member_id}]
-
-+ Parameters
-
-    + team_member_id (number) - ID of the Team Member in the form of an integer
-
-### Update an Existing Team Member [PUT]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
-
-
-    + Body
-
-            {
-                "team_member": {
-                    "id": 1,
-                    "name": "Alex Johnson",
-                    "role": "Board Member"
-                }
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                status: 200
-            }
-
-+ Response 422 (application/json)
-
-        {
-            errors: "Some error message"
-        }
-
-### Delete an Existing Team Member [DELETE]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
-
-
-    + Body
-
-            {
-                "team_member": {
-                    "id": 1
-                }
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                status: 200
-            }
-
-+ Response 422 (application/json)
-
-        {
-            errors: "Some error message"
-        }
-
 ## Team Member | Collection [/api/v1/team_members]
 
 ### List All Team Members [GET]
@@ -293,6 +258,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
         ]
 
+## Team Member | Create [/api/v1/team_members{?name,role}]
+
++ Parameters
+
+    + name (string, required) - The team member's name
+    + role (string, required) - The team member's role title
+
 ### Create a New Team Member [POST]
 
 + Request (application/json)
@@ -305,10 +277,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "team_member": {
-                    "name": "Alex Johnson",
-                    "role": "Board Member"
-                }
+                "name": "Alex Johnson",
+                "role": "Board Member"
             }
 
 + Response 201 (application/json)
@@ -325,7 +295,118 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Vote [/api/v1/resources/{resource_id}/votes/{vote_id}]
+## Team Member | Delete [/api/v1/team_members/{team_member_id}]
+
++ Parameters
+
+    + team_member_id (number) - ID of the Team Member in the form of an integer
+
+### Delete an Existing Team Member [DELETE]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                "id": 1
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Team Member | Update [/api/v1/team_members/{team_member_id}{?name,role}]
+
++ Parameters
+
+    + team_member_id (number) - ID of the Team Member in the form of an integer
+    + name (string, required) - The team member's name
+    + role (string, required) - The team member's role title
+
+### Update an Existing Team Member [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                "id": 1,
+                "name": "Alex Johnson",
+                "role": "Board Member"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Vote | Create [/api/v1/resources/{resource_id}/votes{?user_id}]
+
++ Parameters
+
+    + resource_id (number, required) - ID of the Resource the User is voting on in the form of an integer
+    + user_id (number, required) - ID of the user that is makig the vote
+
+### Create a New Vote [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                "user_id": 1,
+                "resource_id": 23
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "vote": 1
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Vote | Delete [/api/v1/resources/{resource_id}/votes/{vote_id}]
 
 + Parameters
 
@@ -344,9 +425,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "vote": {
-                    "id": 1
-                }
+                "id": 1
             }
 
 + Response 200 (application/json)
@@ -355,44 +434,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             {
                 status: 200
-            }
-
-+ Response 422 (application/json)
-
-        {
-            errors: "Some error message"
-        }
-
-## Vote | Collection [/api/v1/resources/{resource_id}/votes]
-
-+ Parameters
-
-    + resource_id (number) - ID of the Resource the User is voting on in the form of an integer
-
-### Create a New Vote [POST]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
-
-
-    + Body
-
-            {
-                "vote": {
-                    "user_id": 1,
-                    "resource_id": 23
-                }
-            }
-
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                "vote": 1
             }
 
 + Response 422 (application/json)
