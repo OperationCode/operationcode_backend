@@ -22,7 +22,7 @@ So, you want to learn how to program? Contributing to Operation Code is a great 
 
   * [Mac](https://www.docker.com/docker-mac)
   * [Windows](https://www.docker.com/docker-windows)
-  * [Linux (Ubuntu 16.04)](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04)
+  * [Linux (Ubuntu)](https://www.docker.com/docker-ubuntu)
 
   ### Git
   Git is a distributed version control system. This is how our code is stored and managed. Git can be frustrating, but it is an essential tool. If you want to learn more about Git, a great resource is [Think Like a Git](http://think-like-a-git.net/). If you find yourself in a real git pickle, see ["Oh, shit, git!"](http://ohshitgit.com/).
