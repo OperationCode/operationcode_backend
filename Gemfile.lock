@@ -158,6 +158,9 @@ GEM
     redis (3.3.3)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    ruby_http_client (3.0.2)
+    sendgrid-ruby (4.0.8)
+      ruby_http_client (~> 3.0.1)
     sentry-raven (2.5.3)
       faraday (>= 0.7.6, < 1.0)
     sidekiq (4.2.10)
@@ -214,6 +217,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.2)
   redis (~> 3.0)
+  sendgrid-ruby
   sentry-raven
   sidekiq
   spring
