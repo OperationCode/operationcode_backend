@@ -16,8 +16,11 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test ":by_location returns User.count of users located in the passed in location" do
-    create :user, zip: '78705', latitude: 30.285648, longitude: -97.742052
-    create :user, zip: '78756', latitude: 30.312601, longitude: -97.738591
+    tom = create :user, zip: '78705'
+    sam = create :user, zip: '78756'
+
+    tom.update latitude: 30.285648, longitude: -97.742052
+    sam.update latitude: 30.312601, longitude: -97.738591
 
     params = { zip: '78705' }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
@@ -36,7 +39,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 2 }, response.parsed_body)
 
-    params = { lat_long: [30.285648, -97.742052], radius: 2 }
+    params = { lat_long: [30.285648, -97.742052], radius: 1 }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
     assert_equal({ 'user_count' => 1 }, response.parsed_body)
   end
