@@ -18,14 +18,17 @@ So, you want to learn how to program? Contributing to Operation Code is a great 
 * In order to work on the backend of the **Operation Code** site, you will need to install a few things.
 
   ### Docker
-  Docker is a container system. Click the link below to install Docker on your Operating System.
+  Docker is a container system. Click the appropriate link below to install Docker on your operating system.
 
   * [Mac](https://www.docker.com/docker-mac)
-  * [Windows](https://www.docker.com/docker-windows)
+  * [Windows 10 Professional or Enterprise edition](https://www.docker.com/docker-windows)
+  * [Windows 10 Home edition or earlier version of Windows](https://www.docker.com/products/docker-toolbox)
   * [Linux (Ubuntu)](https://www.docker.com/docker-ubuntu)
+  
+  Note that a full installation of the Docker Toolbox includes Git as well, which is also needed to work on the backend and is mentioned below.
 
   ### Git
-  Git is a distributed version control system. This is how our code is stored and managed. Git can be frustrating, but it is an essential tool. If you want to learn more about Git, a great resource is [Think Like a Git](http://think-like-a-git.net/). If you find yourself in a real git pickle, see ["Oh, shit, git!"](http://ohshitgit.com/).
+  Git is a distributed version control system. This is how our code is stored and managed. Git can be frustrating, but it is an essential tool. If you want to learn more about Git, a great resource is [Think Like a Git](http://think-like-a-git.net/). If you find yourself in a real git pickle, see ["Oh, shit, git!"](http://ohshitgit.com/). If you have already installed Git as a part of the Docker Toolbox, you don't need to install it again using the following link.
 
   * [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -52,7 +55,7 @@ So, you want to learn how to program? Contributing to Operation Code is a great 
     ```
 
   #### Database Setup:
-  To setup the database simply run the following command in the root directory of the project.
+  To setup the database simply run the following command in the root directory of the project. For those using the Docker Toolbox, run this command from the Docker Quickstart Terminal.
 
   ```bash
   make setup
@@ -66,7 +69,7 @@ So, you want to learn how to program? Contributing to Operation Code is a great 
   make
   ```
 
-  You can now visit http://localhost:3000 (or run `make open`) and you should see Operation Code running locally!
+  You can now visit http://localhost:3000 (or run `make open`) and you should see a Rails welcome message! In case you used the Docker Toolbox, you might have also installed VirtualBox, which creates its own virtual network adapters. In that case, the server might be running on that IP address and may not be reachable via localhost, 127.0.0.1 or even 0.0.0.0. So, you will need to use `netstat` on the command line to figure out the IP address on which the server is bound.
 
 ## Finding An Issue
 * Now you have everything setup, you will need to find issues to work on. **Operation Code** uses Github's built in issue tracker. A listing of all our issues can be found [here](https://github.com/OperationCode/operationcode_backend/issues).
