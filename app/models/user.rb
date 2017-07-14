@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   geocoded_by :zip
 
+  # These attributes are what we send to sendgrid as custom fields
+  SENDGRID_ATTRIBUTES = %w[first_name last_name email]
+
   after_create :welcome_user
   before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
 
@@ -46,6 +49,7 @@ class User < ApplicationRecord
     invite_to_slack
     add_to_mailchimp
     add_to_airtables
+    add_to_send_grid
   end
 
   def invite_to_slack
@@ -58,6 +62,10 @@ class User < ApplicationRecord
 
   def add_to_airtables
     AddUserToAirtablesJob.perform_later(self)
+  end
+
+  def add_to_send_grid
+    AddUserToSendGridJob.perform_later(self)
   end
 
   def token
