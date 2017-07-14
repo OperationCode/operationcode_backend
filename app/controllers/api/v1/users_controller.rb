@@ -1,6 +1,13 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      before_action :authenticate_user!, except: [:create, :verify]
+
+      def index
+        render json: { user_count: User.count }, status: :ok
+      rescue StandardError => e
+        render json: { errors: e.message }, status: :unprocessable_entity
+      end
 
       def create
         user = User.new(user_params)
@@ -26,12 +33,17 @@ module Api
         render json: { status: :unprocessable_entity }, status: :unprocessable_entity
       end
 
-    private
+      def by_location
+        render json: { user_count: UsersByLocation.new(params).count }, status: :ok
+      rescue StandardError => e
+        render json: { errors: e.message }, status: :unprocessable_entity
+      end
+
+      private
 
       def user_params
         params.require(:user).permit(:email, :zip, :password, :first_name, :last_name, :mentor, :slack_name, :verified)
       end
-
     end
   end
 end

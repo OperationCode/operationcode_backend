@@ -5,7 +5,7 @@ all: run
 
 .PHONY: console-sandbox
 	console-sandbox:
-	 docker-compose run ${RAILS_CONTAINER} rails console --sandbox 
+	 docker-compose run ${RAILS_CONTAINER} rails console --sandbox
 
 .PHONY: run
 run:
@@ -38,7 +38,7 @@ db_migrate:
 .PHONY: test
 test: bg
 	docker-compose run operationcode-psql bash -c "while ! psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do sleep 5; done;"
-	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake db:seed && rake test'
+	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake test'
 
 .PHONY: bundle
 bundle:

@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       get '/status', to: 'status#all'
       get '/status/protected', to: 'status#protected'
 
-      post '/users', to: 'users#create'
       post '/users/profile/verify', to: 'users#verify'
+      get '/users/by_location', to: 'users#by_location'
 
       resources :code_schools, only: :index
       resources :events, only: :index
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       end
       resources :tags, only: :index
       resources :team_members, only: [:index, :create, :update, :destroy]
+      resources :users, only: [:index, :create]
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
