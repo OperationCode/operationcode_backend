@@ -369,6 +369,90 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## User | Count By Location [/api/v1/users/by_location{?zip,city,lat_long,radius}]
+
+### By Location [GET]
+
++ Parameters
+
+    + zip (string, optional) - String of comma-separated zip code(s), i.e. '80126', or '80126, 80203'
+    + city (string, optional) - A string of a 'City, State, County' (i.e. 'Denver, CO, US')
+    + lat_long (integer, optional) - Comma-separated integer latitude and longitude, i.e. 30.285648, -97.742052
+    + radius (integer, optional) - Includes results within the radius' distance from the location, in miles.  Works in conjunction with city or lat_long, not zip code. Defaults to 20 miles, if not supplied.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                zip: '80126, 80203'
+            }
+
+            /*or*/
+
+            {
+                city: 'Denver, CO, US'
+            }
+
+            /*or*/
+
+            {
+                city: 'Denver, CO, US',
+                radius: 30
+            }
+
+            /*or*/
+
+            {
+                lat_long: 30.285648, -97.742052
+            }
+
+            /*or*/
+
+            {
+                lat_long: 30.285648, -97.742052,
+                radius: 30
+            }
+
++ Response 200 (application/json)
+
+        {
+            user_count: 2
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## User | Total Count [/api/v1/users]
+
+### Total User Count [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+        {
+            user_count: 2
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
 ## Vote | Create [/api/v1/resources/{resource_id}/votes{?user_id}]
 
 + Parameters
