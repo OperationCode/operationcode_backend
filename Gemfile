@@ -23,6 +23,7 @@ gem 'pundit'
 gem 'rack-cors'
 gem 'rails', '~> 5.0.2'
 gem 'redis', '~> 3.0'
+gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
 
