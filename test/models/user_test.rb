@@ -9,7 +9,6 @@ class UserTest < ActiveSupport::TestCase
     user = build(:user, user_opts)
 
     SlackJobs::InviterJob.expects(:perform_later).with(user_opts[:email])
-    MailchimpInviterJob.expects(:perform_later).with(email: user_opts[:email])
     AddUserToAirtablesJob.expects(:perform_later).with(user)
     AddUserToSendGridJob.expects(:perform_later).with(user)
 
