@@ -47,17 +47,12 @@ class User < ApplicationRecord
 
   def welcome_user
     invite_to_slack
-    add_to_mailchimp
     add_to_airtables
     add_to_send_grid
   end
 
   def invite_to_slack
     SlackJobs::InviterJob.perform_later(email)
-  end
-
-  def add_to_mailchimp
-    MailchimpInviterJob.perform_later(email: email)
   end
 
   def add_to_airtables
