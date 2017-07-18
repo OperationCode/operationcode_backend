@@ -34,4 +34,5 @@ test:
 
 production:
   <<: *default
+  host: operationcode-psql-postgresql
   database: operationcode_production
