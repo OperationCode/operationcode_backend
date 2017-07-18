@@ -669,7 +669,7 @@
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/coder_camps.jpg
   full_time: true
   hardware_included: false
-  has_online: false
+  has_online: true
   online_only: false
   notes: Coder Camps offers two paths to taking a Full Stack Web Development course. A <strong>12 week</strong> full time Immersive on-campus/online program and a <strong>24 week</strong> part time Structured Online program.  Active military and veterans receive a <strong>20 percent discount</strong> on tuition, we are able to accept Chapter 31 &amp; 35 benefits.
   locations:
@@ -679,6 +679,12 @@
       city: Scottsdale
       state: AZ
       zip: 85258
+    - va_accepted: false
+      address1: 7530 164th AVE NE
+      address2: Suite A112
+      city: Redmond
+      state: WA
+      zip: 98052
 
 - name: Bloc
   url: https://bloc.io
