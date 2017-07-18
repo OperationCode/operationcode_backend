@@ -17,3 +17,5 @@ ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
 RUN bundle install --system
 
 ADD . $APP_HOME/
+
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
