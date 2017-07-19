@@ -50,4 +50,4 @@ publish: build
 	bin/publish
 
 upgrade: publish
-	bin/rancher_update
+	bin/deploy
