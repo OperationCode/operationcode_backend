@@ -61,6 +61,7 @@ class SendGridClient
   rescue => e
     Rails.logger.error "Failed to send email to #{options[:to]} re: #{options[:subject]} due to: #{e}"
     Rails.logger.error e.backtrace.join("\n")
+    raise "Failed to send email to #{options[:to]} re: #{options[:subject]} due to: #{e}"
   end
 
   private
