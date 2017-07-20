@@ -120,4 +120,8 @@ class UserTest < ActiveSupport::TestCase
     results = User.count_by_location ''
     assert_equal 0, results
   end
+
+  test 'it returns a users full name' do
+    assert_equal 'first last', User.new(first_name: 'first', last_name: 'last').name
+  end
 end

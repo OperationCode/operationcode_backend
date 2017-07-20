@@ -54,6 +54,10 @@ class User < ApplicationRecord
     near(location, radius.to_i)&.size
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def welcome_user
     invite_to_slack
     add_to_airtables
