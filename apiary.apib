@@ -210,6 +210,30 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Slack | Invite [/api/v1/slack]
+
+### Invite a User to Slack [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
 ## Tag | Collection [/api/v1/tags]
 
 ### List All Tags [GET]
