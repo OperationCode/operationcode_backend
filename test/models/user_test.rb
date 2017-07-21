@@ -124,4 +124,23 @@ class UserTest < ActiveSupport::TestCase
   test 'it returns a users full name' do
     assert_equal 'first last', User.new(first_name: 'first', last_name: 'last').name
   end
+
+  test '.count_by_state returns a count of all users within the passed in state(s)' do
+    tom = create :user
+    sam = create :user
+    bob = create :user
+
+    tom.update_columns state: 'TX'
+    sam.update_columns state: 'TX'
+    bob.update_columns state: 'CA'
+
+    results = User.count_by_state 'TX'
+    assert_equal 2, results
+
+    results = User.count_by_state 'TX, CA'
+    assert_equal 3, results
+
+    results = User.count_by_state ''
+    assert_equal 0, results
+  end
 end
