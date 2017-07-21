@@ -19,7 +19,7 @@ Rails.application.routes.draw do
         resources :votes, only: [:create, :destroy]
       end
       resources :services, only: :index
-      resources :slacks, only: :create, path: 'slack'
+      resources :slack_users, only: :create
       resources :squads, only: [:index, :create, :show] do
         member do
           post 'join'
