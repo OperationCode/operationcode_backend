@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       get '/status', to: 'status#all'
       get '/status/protected', to: 'status#protected'
 
-      post '/users/profile/verify', to: 'users#verify'
       get '/users/by_location', to: 'users#by_location'
+      post '/users/profile/verify', to: 'users#verify'
 
       resources :code_schools, only: :index
       resources :events, only: :index
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         resources :votes, only: [:create, :destroy]
       end
       resources :services, only: :index
+      resources :slacks, only: :create, path: 'slack'
       resources :squads, only: [:index, :create, :show] do
         member do
           post 'join'
