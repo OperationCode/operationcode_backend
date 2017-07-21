@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   geocoded_by :zip do |user, results|
-    if geocoded_object = results.first
+    geocoded_object = results.first
+
+    if geocoded_object.present?
       user.latitude  = geocoded_object.latitude
       user.longitude = geocoded_object.longitude
       user.state     = geocoded_object.state_code
