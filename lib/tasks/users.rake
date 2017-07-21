@@ -18,6 +18,8 @@ namespace :users do
         begin
           results = Geocoder.search([user.latitude, user.longitude]).try(:first)
 
+          raise "Could not geocode User id #{user.id}" unless results.present?
+
           user.update! state: results.state_code
         rescue => e
           p "When adding the :state for User id #{user.id}, experienced this error: #{e}"
