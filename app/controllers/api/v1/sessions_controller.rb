@@ -25,7 +25,7 @@ module Api
       private
 
       def sso_request?
-        return true if params[:sso].present? && params[:sig].present?
+        params[:sso].present? && params[:sig].present?
       end
 
       def sso_params
