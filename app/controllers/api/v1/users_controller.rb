@@ -1,8 +1,6 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :authenticate_user!, except: [:create, :verify]
-
       def index
         render json: { user_count: User.count }, status: :ok
       rescue StandardError => e
