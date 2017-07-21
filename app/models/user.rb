@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   scope :mentors, -> { where(mentor: true) }
   scope :by_zip, ->(zip) { where(zip: zip) }
+  scope :by_state, ->(state) { where(state: state) }
 
   # Returns a count of all users with the passed in zip code(s)
   #
@@ -40,6 +41,17 @@ class User < ApplicationRecord
     zips = zip_codes.split(',').map(&:strip)
 
     by_zip(zips).count
+  # Returns a count of all users with the passed in state abbreviations.
+  #
+  # @param state_abbreviations [String] String of comma-separated state_abbreviations, i.e. 'CO', or 'CO, TX'
+  # @return [Integer] A count of the requested users.
+  #
+  def self.count_by_state(state_abbreviations)
+    return 0 unless state_abbreviations.present?
+
+    states = FormatData.csv_to_array(state_abbreviations)
+
+    self.by_state(states).count
   end
 
   # Returns a count of all users within the passed in location.  The location can
