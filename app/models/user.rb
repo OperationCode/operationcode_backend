@@ -34,6 +34,7 @@ class User < ApplicationRecord
   # Returns a count of all users with the passed in zip code(s)
   #
   # @param zip_codes [String] String of comma-separated zip code(s), i.e. '80126', or '80126, 80203'
+  # @return [Integer] A count of the requested users.
   #
   def self.count_by_zip(zip_codes)
     return 0 unless zip_codes.present?
@@ -62,6 +63,7 @@ class User < ApplicationRecord
   # @param location [String || Array] Either a 'City, State, County' or [Latitude, Longitude]
   #   For example, 'Denver, CO, US'.
   # @param radius [Integer] Include results within the radius' distance from the location, in miles.
+  # @return [Integer] A count of the requested users.
   # @see https://github.com/alexreisner/geocoder#for-activerecord-models
   #
   def self.count_by_location(location, radius=20)
