@@ -39,6 +39,10 @@ db_migrate:
 db_rollback:
 	docker-compose run ${RAILS_CONTAINER} rake db:rollback
 
+.PHONY: db_seed
+db_seed:
+	docker-compose run ${RAILS_CONTAINER} rake db:seed
+
 .PHONY: test
 test: bg
 	docker-compose run operationcode-psql bash -c "while ! psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do sleep 5; done;"
