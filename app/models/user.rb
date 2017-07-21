@@ -38,9 +38,11 @@ class User < ApplicationRecord
   def self.count_by_zip(zip_codes)
     return 0 unless zip_codes.present?
 
-    zips = zip_codes.split(',').map(&:strip)
+    zips = FormatData.csv_to_array(zip_codes)
 
-    by_zip(zips).count
+    self.by_zip(zips).count
+  end
+
   # Returns a count of all users with the passed in state abbreviations.
   #
   # @param state_abbreviations [String] String of comma-separated state_abbreviations, i.e. 'CO', or 'CO, TX'
