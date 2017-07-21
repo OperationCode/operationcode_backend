@@ -393,12 +393,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## User | Count By Location [/api/v1/users/by_location{?zip,city,lat_long,radius}]
+## User | Count By Location [/api/v1/users/by_location{?state,zip,city,lat_long,radius}]
 
 ### By Location [GET]
 
 + Parameters
 
+    + state (string, optional) - String of comma-separated state abbreviations, i.e. 'TX', or 'TX, CA'
     + zip (string, optional) - String of comma-separated zip code(s), i.e. '80126', or '80126, 80203'
     + city (string, optional) - A string of a 'City, State, County' (i.e. 'Denver, CO, US')
     + lat_long (integer, optional) - Comma-separated integer latitude and longitude, i.e. 30.285648, -97.742052
@@ -407,6 +408,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 + Request (application/json)
 
     + Body
+
+            {
+                state: 'TX, CA'
+            }
+
+            /*or*/
 
             {
                 zip: '80126, 80203'
