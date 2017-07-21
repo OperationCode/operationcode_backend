@@ -24,7 +24,7 @@ class SendGridClient
   #     to: 'tom@gmail.com',
   #     from: 'frank@oc.com',
   #     subject: 'Hello',
-  #     user_count: 5,
+  #     user_count: '5',
   #     body: 'Hello world!',
   #     template_id: 'asdfas-123123-asdfasf-2qwerqwe'
   #   }
@@ -43,6 +43,9 @@ class SendGridClient
             }
           ],
           "subject" => options[:subject],
+          "substitutions" => {
+            "-user_count-" => options[:user_count]
+          },
           "template_id" => options[:transactional_template_id]
         }
       ],
