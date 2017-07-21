@@ -41,6 +41,7 @@ class UserTest < ActiveSupport::TestCase
     u.update_attributes(zip: '80203')
     assert_equal 20.7143528, u.latitude
     assert_equal -174.0059731, u.longitude
+    assert_equal 'CO', u.state
   end
 
   test 'only geocodes if zip is updated' do

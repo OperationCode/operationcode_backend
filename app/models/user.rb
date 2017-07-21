@@ -3,7 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  geocoded_by :zip
+
+  geocoded_by :zip do |user, results|
+    if geocoded_object = results.first
+      user.latitude  = geocoded_object.latitude
+      user.longitude = geocoded_object.longitude
+      user.state     = geocoded_object.state_code
+    end
+  end
 
   # These attributes are what we send to sendgrid as custom fields
   SENDGRID_ATTRIBUTES = %w[first_name last_name email]
