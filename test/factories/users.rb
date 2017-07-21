@@ -13,6 +13,7 @@ FactoryGirl.define do
     timezone 'EST'
     mentor false
     verified false
+    state { Faker::Address.state_abbr }
 
     factory :mentor do
       mentor true
