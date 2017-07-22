@@ -44,7 +44,7 @@ class SendGridClient
           ],
           "subject" => options[:subject],
           "substitutions" => {
-            "-user_count-" => options[:user_count]
+            "-user_count-" => options[:user_count].to_s
           },
           "template_id" => options[:transactional_template_id]
         }
