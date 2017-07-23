@@ -33,4 +33,17 @@ namespace :users do
     remaining = User.where.not(latitude: nil, longitude: nil).where(state: nil).count
     p "#{remaining} users left to be updated.  Task can be reran in 24 hours."
   end
+
+  desc "Downcases the user#state attribute if present"
+  task downcase_states: :environment do
+    users = User.where.not(state: nil)
+
+    users.each do |user|
+      begin
+        user.update! state: user.state.downcase
+      rescue => e
+        Rails.logger.info "When downcasing :state for User id #{user.id}, experienced this error: #{e}"
+      end
+    end
+  end
 end
