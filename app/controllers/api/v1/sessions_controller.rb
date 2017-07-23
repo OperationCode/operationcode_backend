@@ -40,7 +40,7 @@ module Api
         @sso.external_id = current_user.id
         @sso.sso_secret = Discourse::SingleSignOn::SECRET
 
-        @redirect_path = @sso.to_url('https://community.operationcode.org')
+        @redirect_path = @sso.to_url('https://community.operationcode.org/session/sso_login')
       end
     end
   end
