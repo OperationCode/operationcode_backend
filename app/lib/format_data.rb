@@ -6,6 +6,6 @@ class FormatData
   # @return [Array] An array of strings, i.e. ['80123', '80202']
   #
   def self.csv_to_array(comma_separated_string)
-    comma_separated_string.split(',').map(&:strip)
+    comma_separated_string.downcase.split(',').map(&:strip)
   end
 end
