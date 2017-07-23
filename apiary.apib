@@ -457,6 +457,36 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## User | Reset Password [/api/v1/users/passwords/reset{?email}]
+
++ Parameters
+
+    + email (string, required) - The email address of the requesting User
+
+### Reset the User's Password  [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "email": "frank@example.com"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: 200
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
 ## User | Total Count [/api/v1/users]
 
 ### Total User Count [GET]
