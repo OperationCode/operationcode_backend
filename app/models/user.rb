@@ -47,7 +47,7 @@ class User < ApplicationRecord
 
   # Returns a count of all users with the passed in state abbreviations.
   #
-  # @param state_abbreviations [String] String of comma-separated state_abbreviations, i.e. 'CO', or 'CO, TX'
+  # @param state_abbreviations [String] String of comma-separated state_abbreviations, i.e. 'co', or 'co, tx'
   # @return [Integer] A count of the requested users.
   #
   def self.count_by_state(state_abbreviations)
