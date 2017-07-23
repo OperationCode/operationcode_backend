@@ -5,8 +5,8 @@ class UsersByLocationTest < ActiveSupport::TestCase
     tom = create :user
     sam = create :user
 
-    tom.update_columns latitude: 39.763034, longitude: -104.961969, zip: '80205', state: 'CO'
-    sam.update_columns latitude: 30.312601, longitude: -97.738591, zip: '78756', state: 'TX'
+    tom.update_columns latitude: 39.763034, longitude: -104.961969, zip: '80205', state: 'co'
+    sam.update_columns latitude: 30.312601, longitude: -97.738591, zip: '78756', state: 'tx'
   end
 
   test '#count by state' do
@@ -19,6 +19,10 @@ class UsersByLocationTest < ActiveSupport::TestCase
     assert_equal 1, results
 
     params  = { state: 'CO, TX' }
+    results = UsersByLocation.new(params).count
+    assert_equal 2, results
+
+    params  = { state: 'co, tx' }
     results = UsersByLocation.new(params).count
     assert_equal 2, results
   end
