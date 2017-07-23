@@ -32,6 +32,10 @@ Rails.application.routes.draw do
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
       end
+
+      namespace :users do
+        post '/passwords/reset', to: 'passwords#reset'
+      end
     end
   end
 end
