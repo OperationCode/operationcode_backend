@@ -37,16 +37,6 @@ class UsersByLocationTest < ActiveSupport::TestCase
     assert_equal 2, results
   end
 
-  test '#count by city' do
-    params  = { city: 'Denver, CO, US' }
-    results = UsersByLocation.new(params).count
-    assert_equal 1, results
-
-    params  = { city: 'Austin, TX, US' }
-    results = UsersByLocation.new(params).count
-    assert_equal 1, results
-  end
-
   test '#count by lat_long' do
     params  = { lat_long: [39.763034, -104.961969] }
     results = UsersByLocation.new(params).count
