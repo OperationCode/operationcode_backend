@@ -13,6 +13,7 @@ gem 'acts-as-taggable-on', '~> 5.0'
 gem 'devise'
 gem 'geocoder'
 gem 'gibbon'
+gem 'httparty'
 gem 'jwt'
 gem 'lograge'
 gem 'logstash-event'
@@ -27,7 +28,6 @@ gem 'redis', '~> 3.0'
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
-gem 'httparty'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
