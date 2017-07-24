@@ -41,7 +41,7 @@ class UserTest < ActiveSupport::TestCase
     u.update_attributes(zip: '80203')
     assert_equal 20.7143528, u.latitude
     assert_equal -174.0059731, u.longitude
-    assert_equal 'co', u.state
+    assert_equal 'CO', u.state
   end
 
   test 'only geocodes if zip is updated' do
@@ -130,14 +130,14 @@ class UserTest < ActiveSupport::TestCase
     sam = create :user
     bob = create :user
 
-    tom.update_columns state: 'tx'
-    sam.update_columns state: 'tx'
-    bob.update_columns state: 'ca'
+    tom.update_columns state: 'TX'
+    sam.update_columns state: 'TX'
+    bob.update_columns state: 'CA'
 
-    results = User.count_by_state 'tx'
+    results = User.count_by_state 'TX'
     assert_equal 2, results
 
-    results = User.count_by_state 'tx, ca'
+    results = User.count_by_state 'TX, CA'
     assert_equal 3, results
 
     results = User.count_by_state ''
