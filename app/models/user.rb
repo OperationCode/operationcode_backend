@@ -19,7 +19,6 @@ class User < ApplicationRecord
 
   after_create :welcome_user
   before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
-  before_save :downcase_state
 
   validates_format_of :email, :with => /\A.*@.*\z/
   validates :email, uniqueness: true
@@ -95,11 +94,5 @@ class User < ApplicationRecord
 
   def token
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email)
-  end
-
-  private
-
-  def downcase_state
-    state.downcase! if state
   end
 end
