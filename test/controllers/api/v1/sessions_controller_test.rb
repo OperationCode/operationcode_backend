@@ -35,7 +35,7 @@ class Api::V1::ServicesControllerTest < ActionDispatch::IntegrationTest
   test 'it returns a redirect_to path to discourse for an sso login' do
     post api_v1_sessions_url, params: @user_params.merge(sso_params), as: :json
     json = response.parsed_body
-    assert_match /^https:\/\/community\.operationcode\.org\?sso=.*sig=.*$/, json['redirect_to']
+    assert_match /^https:\/\/community\.operationcode\.org\/session\/sso_login\?sso=.*sig=.*$/, json['redirect_to']
   end
 
   def discourse_sso_url
