@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720215043) do
+ActiveRecord::Schema.define(version: 20170723213338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,25 +136,39 @@ ActiveRecord::Schema.define(version: 20170720215043) do
     t.string   "zip"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "encrypted_password",              default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                   default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.boolean  "mentor",                 default: false
+    t.boolean  "mentor",                          default: false
     t.string   "slack_name"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "timezone"
     t.text     "bio"
-    t.boolean  "verified",               default: false, null: false
+    t.boolean  "verified",                        default: false, null: false
     t.string   "state"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "username"
+    t.boolean  "volunteer",                       default: false
+    t.string   "branch_of_service"
+    t.float    "years_of_service"
+    t.string   "pay_grade"
+    t.string   "military_occupational_specialty"
+    t.string   "github"
+    t.string   "twitter"
+    t.string   "linkedin"
+    t.string   "employment_status"
+    t.string   "education"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
