@@ -76,6 +76,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def email
+    self[:email]
+  end
+
   def welcome_user
     invite_to_slack
     add_to_airtables
