@@ -26,6 +26,7 @@ gem 'redis', '~> 3.0'
 gem 'sentry-raven'
 gem 'sidekiq'
 gem 'httparty'
+gem 'jbuilder', '~> 2.5'
 
 
 group :development, :test do
@@ -44,7 +45,7 @@ group :development do
 end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
