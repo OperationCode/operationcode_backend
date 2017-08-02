@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :requests
   has_many :led_squads, class_name: 'Squad', foreign_key: :leader_id
   has_many :votes
+  has_many :applications
 
   scope :mentors, -> { where(mentor: true) }
   scope :by_zip, ->(zip) { where(zip: zip) }
