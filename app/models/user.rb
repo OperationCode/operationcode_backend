@@ -94,7 +94,7 @@ class User < ApplicationRecord
   end
 
   def token
-    JsonWebToken.encode(user_id: self.id, roles: [], email: self.email)
+    JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
   end
 
   private
