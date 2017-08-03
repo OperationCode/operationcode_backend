@@ -3,6 +3,7 @@ module Api
     class SessionsController < Devise::SessionsController
       respond_to :json
       before_action :set_default_response_format
+      before_action :authenticate_user!, only: %i[sso]
 
       def create
         self.resource = warden.authenticate!(auth_options)
@@ -16,6 +17,11 @@ module Api
           user: UserSerializer.new(current_user),
           redirect_to: @redirect_path
         }
+      end
+
+      def sso
+        set_sso_response
+        render json: { redirect_to: @redirect_path }
       end
 
       def set_default_response_format

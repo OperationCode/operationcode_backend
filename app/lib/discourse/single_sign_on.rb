@@ -75,8 +75,6 @@ module Discourse
     end
 
     def sign(payload)
-      puts sso_secret
-      puts payload
       OpenSSL::HMAC.hexdigest("sha256", sso_secret, payload)
     end
 

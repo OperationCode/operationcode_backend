@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
+        get '/sessions/sso', to: 'sessions#sso'
       end
 
       namespace :users do
