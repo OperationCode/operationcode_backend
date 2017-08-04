@@ -4,7 +4,7 @@ FactoryGirl.define do
     description "MyText"
     location "MyString"
     terms "MyText"
-    start_date "2017-08-02 15:15:11"
-    end_date "2017-08-02 15:15:11"
+    open_time "2017-08-02 15:15:11"
+    close_time "2017-08-02 15:15:11"
   end
 end
