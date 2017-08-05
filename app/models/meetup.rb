@@ -1,34 +1,36 @@
 class Meetup
 	include HTTParty 
 	base_uri 'api.meetup.com'
-	API_KEY = ENV["MEETUP_API_KEY"]
-
-	# def api_key
-	# 	@api_key = '5187488' #Should be an ENV variable 
-	# end
-
-	# def api_key_two
-	# 	@api_key_two = '05b5d92d7a520168cf978bc769da4fdb4630f0e9'
-	# end
-
-	# def base_path 
-	# 	"/operation-code-hampton-roads/events?photo-host=public&page=20&sig_id=#{api_key}&sig=#{api_key_two}"
-	# end
-
-	# def get_events
-	# 	self.class.get(base_path).parsed_response
-	# end
-	# #url should be /pro/operation-code/events/.....
-
+	#API_KEY = ENV["MEETUP_API_KEY"]
+	
   def base_path
-  	#{}"/operation-code-hampton-roads/events?photo-host=public&page=20"
-  	#{}"/pro/operationcode/groups?key=47634e2c5f583c1d677e79162d1264b&sign=true"
-  	"/pro/operationcode/groups?key=#{MEETUP_API_KEY}&sign=true"
-
+  	"/pro/operationcode/groups?key=47634e2c5f583c1d677e79162d1264b&sign=true"
   end
 
-  def get_events
-  	self.class.get(base_path).parsed_response
+  def group_path
+  	"/events?photo-host=public&page=20"
   end
 
+  def get_all_pro_data
+  	operation_code_group = self.class.get(base_path).parsed_response
+  end
+
+  def get_groups
+  		@group_names = [] #Blank array of group names 
+  		operation_code_group = get_all_pro_data 
+  		operation_code_group.each do |group|
+  			@group_names << group["urlname"]
+  		end
+  		@group_names 
+  end
+
+  def get_all_meetups
+  	@all_meetups = []
+  	array_of_groups = get_groups 
+  	array_of_groups.each do |group|
+  		url= "api.meetup.com/#{group}#{group_path}"
+  		@all_meetups << self.class.get(url)
+  	end
+  	@all_meetups
+  end
 end 
