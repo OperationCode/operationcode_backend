@@ -1,6 +1,8 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      before_action :authenticate_user!, only: %i[update]
+
       def index
         render json: { user_count: User.count }, status: :ok
       rescue StandardError => e
@@ -15,6 +17,14 @@ module Api
           render json: user
         else
           render json: user.errors, status: :unprocessable_entity
+        end
+      end
+
+      def update
+        if current_user.update_attributes(user_params)
+          render json: current_user
+        else
+          render json: current_user.errors, status: :unprocessable_entity
         end
       end
 
@@ -40,7 +50,31 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:email, :zip, :password, :first_name, :last_name, :mentor, :slack_name, :verified, :state)
+        params.require(:user).permit(
+          :email,
+          :zip,
+          :password,
+          :mentor,
+          :slack_name,
+          :first_name,
+          :last_name,
+          :bio,
+          :verified,
+          :state,
+          :address1,
+          :address2,
+          :username,
+          :volunteer,
+          :branch_of_service,
+          :years_of_service,
+          :pay_grade,
+          :military_occupational_specialty,
+          :github,
+          :twitter,
+          :linked_in,
+          :employment_status,
+          :education
+        )
       end
     end
   end

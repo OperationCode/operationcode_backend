@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       end
       resources :tags, only: :index
       resources :team_members, only: [:index, :create, :update, :destroy]
-      resources :users, only: [:index, :create]
+      resources :users, only: [:index, :create, :update]
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
