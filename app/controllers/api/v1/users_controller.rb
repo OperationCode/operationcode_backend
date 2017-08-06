@@ -73,7 +73,11 @@ module Api
           :twitter,
           :linked_in,
           :employment_status,
-          :education
+          :education,
+          :company_role,
+          :company_name,
+          :education_level,
+          :interests
         )
       end
     end
