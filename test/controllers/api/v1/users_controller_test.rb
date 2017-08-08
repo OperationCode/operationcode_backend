@@ -15,7 +15,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     headers = authorization_headers(user)
 
     refute_equal 'new first name', user.first_name
-    patch api_v1_user_url(user), params: { user: { first_name: 'new first name'} }, headers: headers, as: :json
+    patch api_v1_users_url, params: { user: { first_name: 'new first name'} }, headers: headers, as: :json
     user.reload
     assert_equal 'new first name', user.first_name
     assert_response :success
