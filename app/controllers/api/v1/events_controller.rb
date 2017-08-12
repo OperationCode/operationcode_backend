@@ -2,8 +2,7 @@ module Api
   module V1
     class EventsController < ApplicationController
       def index
-        @meetups = Meetup.new.get_all_meetups 
-        render json:@meetups 
+        render json: Meetup.new.event_details_by_group
       end
 
     end
