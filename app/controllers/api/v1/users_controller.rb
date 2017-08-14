@@ -77,7 +77,8 @@ module Api
           :company_role,
           :company_name,
           :education_level,
-          :interests => []
+          :scholarship_info,
+          interests: []
         )
       end
     end
