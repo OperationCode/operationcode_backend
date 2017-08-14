@@ -1,7 +1,7 @@
 # README
 
 * Ruby version
-    2.3.1
+    2.3.3
 * System dependencies
     PostgreSQL 9.5.6
     React 2.0.1
