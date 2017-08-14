@@ -46,7 +46,7 @@
       city: Nashville
       state: TN
       zip: 37210
-      
+
 - name: Galvanize
   url: https://new.galvanize.com
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/galvanize.jpg
