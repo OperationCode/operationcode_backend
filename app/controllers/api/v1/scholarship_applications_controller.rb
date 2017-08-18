@@ -8,7 +8,7 @@ module Api
         if @scholarship_application.save
           render json: { redirect_to: '/success' }
         else
-          render json: @scholarship_application.errors, status: :unauthorized
+          render json: { errors: @scholarship_application.errors.values }, status: :bad_request
         end
       end
     end
