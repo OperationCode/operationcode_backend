@@ -14,7 +14,8 @@ module Api
 
         if user.save
           UserMailer.welcome(user).deliver unless user.invalid?
-          render json: user
+          sign_in(user)
+          render json: { token: user.token }
         else
           render json: user.errors, status: :unprocessable_entity
         end
