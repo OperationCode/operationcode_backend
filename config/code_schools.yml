@@ -688,3 +688,18 @@
       city: Downtown Salt Lake City 
       state: UT
       zip: 84111
+
+- name: Rithm School
+  url: http://rithmschool.com
+  logo: https://user-images.githubusercontent.com/334550/28784283-f047a8ee-75e0-11e7-85ec-0c50e12024b4.png
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  locations:
+    - va_accepted: false
+      address1: 3338 17th St.
+      address2:
+      city: San Francisco
+      state: CA
+      zip: 94110
