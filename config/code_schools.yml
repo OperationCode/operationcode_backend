@@ -47,33 +47,6 @@
       state: TN
       zip: 37210
 
-- name: Dev Bootcamp
-  url: http://devbootcamp.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/dev_bootcamp.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  locations:
-    - va_accepted: false
-      address1: 633 Folsom Street (at Hawthorne)
-      address2: 6th Floor
-      city: San Francisco
-      state: CA
-      zip: 94107
-    - va_accepted: false
-      address1: 1033 W. Van Buren Street
-      address2: 3rd Floor
-      city: Chicago
-      state: IL
-      zip: 60607
-    - va_accepted: false
-      address1: 48 Wall Street
-      address2: 15th Floor
-      city: New York
-      state: NY
-      zip: 10005
-
 - name: Galvanize
   url: https://new.galvanize.com
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/galvanize.jpg
@@ -142,22 +115,6 @@
       state: CA
       zip: 94105
 
-- name: RefactorU
-  url: http://refactoru.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/refactoru.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  notes: RefactorU is proud and honored to announce that its Web Development Bootcamp has been approved by the <a href="http://www.benefits.va.gov/gibill/">Colorado State Approving Agency for Veterans Education & Training</a>. Students eligible for the The Post-9/11 GI Bill, Montgomery GI Bill (Active Duty/Selected Reserve), Reserve Educational Assistance Program, Veterans Educational Assistance Program, and Survivors’ and Dependents’ Educational Assistance Program may be eligible to apply those benefits to RefactorU’s Web Application Development Bootcamp.
-  locations:
-    - va_accepted: true
-      address1: 5717 Arapahoe Avenue
-      address2: "Suite #216"
-      city: Boulder
-      state: CO
-      zip: 80303
-
 - name: Turing School of Software & Design
   url: http://turing.io/
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/turing.jpg
@@ -172,60 +129,6 @@
       city: Denver
       state: CO
       zip: 80202
-
-- name: The Iron Yard
-  url: https://www.theironyard.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/iron_yard.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  locations:
-    - va_accepted: false
-      address1: 101 S. Garland Avenue
-      address2: Suite 102
-      city: Orlando
-      state: FL
-      zip: 32801
-    - va_accepted: false
-      address1: "260 1st Avenue S"
-      address2: Suite 300
-      city: Tampa Bay
-      state: FL
-      zip: 33701
-    - va_accepted: false
-      address1: 3423 Piedmont Road NE
-      city: Atlanta
-      state: GA
-      zip: 30305
-    - va_accepted: false
-      address1: 334 Blackwell Street
-      address2: Suite B017
-      city: Durham
-      state: NC
-      zip: 27701
-    - va_accepted: false
-      address1: 510 Mill Street
-      city: Mount Pleasant
-      state: SC
-      zip: 29464
-    - va_accepted: false
-      address1: 411 University Ridge
-      address2: Suite 220
-      city: Greenville
-      state: SC
-      zip: 29601
-    - va_accepted: false
-      address1: 3601 South Congress Avenue
-      address2: Suite c304
-      city: Austin
-      state: TX
-      zip: 78704
-    - va_accepted: false
-      address1: 1121 Delano Street
-      city: Houstin
-      state: TX
-      zip: 77003
 
 - name: General Assembly
   url: https://generalassemb.ly
@@ -771,3 +674,17 @@
       city: Chicago
       state: IL
       zip: 60603
+
+- name: DevPoint Labs
+  url: http://www.devpointlabs.com/
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/DPL_logo.png
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  locations:
+    - va_accepted: true
+      address1: 370 South 300 East
+      city: Downtown Salt Lake City 
+      state: UT
+      zip: 84111

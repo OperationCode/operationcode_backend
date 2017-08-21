@@ -10,6 +10,17 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal 200, response.status
   end
 
+  test 'can update a user' do
+    user = create(:user)
+    headers = authorization_headers(user)
+
+    refute_equal 'new first name', user.first_name
+    patch api_v1_users_url, params: { user: { first_name: 'new first name'} }, headers: headers, as: :json
+    user.reload
+    assert_equal 'new first name', user.first_name
+    assert_response :success
+  end
+
   test ":by_location returns User.count of users located in the passed in location" do
     tom = create :user
     sam = create :user

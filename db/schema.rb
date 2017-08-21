@@ -191,6 +191,11 @@ ActiveRecord::Schema.define(version: 20170821193457) do
     t.string   "linkedin"
     t.string   "employment_status"
     t.string   "education"
+    t.string   "company_role"
+    t.string   "company_name"
+    t.string   "education_level"
+    t.string   "interests"
+    t.boolean  "scholarship_info",                default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
