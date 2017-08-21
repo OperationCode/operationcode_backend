@@ -6,7 +6,12 @@ module Api
       end
 
       def show
-        render json: Scholarship.find(params[:id])
+        scholarship = Scholarship.find_by(id: params[:id])
+        if scholarship
+          render json: scholarship
+        else
+          render json: { error: 'No such record' }, status: :not_found
+        end
       end
     end
   end
