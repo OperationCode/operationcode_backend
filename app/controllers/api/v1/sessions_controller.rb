@@ -44,6 +44,7 @@ module Api
         @sso.name = current_user.name
         @sso.username = current_user.email
         @sso.external_id = current_user.id
+        @sso.custom_fields['verified'] = current_user.verified
         @sso.sso_secret = Discourse::SingleSignOn::SECRET
 
         @redirect_path = @sso.to_url('https://community.operationcode.org/session/sso_login')
