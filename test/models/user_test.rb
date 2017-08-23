@@ -26,10 +26,15 @@ class UserTest < ActiveSupport::TestCase
     refute User.new(email: test_email).valid?
   end
 
-  test 'email must be saved downcased' do
-    new_email = 'NEW_EMAIL@exaMple.cOm'
-    assert create(:user, email: new_email.downcase)
-    refute User.new(email: new_email).valid?
+  test 'email is downcased on create' do
+    u = create(:user, email: 'NEW_EMAIL@exaMple.cOm')
+    assert_equal 'new_email@example.com', u.email
+  end
+
+  test 'email is downcased after update' do
+    u = create(:user, email: 'UPDATE_EMAIL@exaMple.cOm')
+    u.update!(email: 'UPDATE_EMAIL@exaMple.cOm')
+    assert_equal 'update_email@example.com', u.email
   end
 
   test 'doesnt geocode until we save' do
