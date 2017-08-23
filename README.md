@@ -17,5 +17,11 @@ Diagrams can be found at (doc/data_models):
 ...doc/data_models/request.png - Illustrates how a mentee user can request a mentoring session
 ...doc/data_models/squad.png - Illustrates the mentor/mentee relationship of a squad.
 
+# Contributing
+
+We use Apiary for our API documentation, API mocking server, etc.
+
+Please ensure that any PRs that change the behavior of the API are updated in the documentation as well. The API blueprint file is at `apiary.apib`, and the documentation itself is at http://docs.operationcodeapi.apiary.io/.
+
 # License
 This project is licensed under the terms of the MIT license.
