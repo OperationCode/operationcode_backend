@@ -20,6 +20,7 @@ class User < ApplicationRecord
   after_create :welcome_user
   before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
+  before_save :downcase_email
 
   validates_format_of :email, :with => /\A.*@.*\z/
   validates :email, uniqueness: true
@@ -102,5 +103,9 @@ class User < ApplicationRecord
 
   def upcase_state
    state.upcase! if state
+  end
+
+  def downcase_email
+    email.downcase! if email
   end
 end
