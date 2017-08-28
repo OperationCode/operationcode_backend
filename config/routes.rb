@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       post '/users/profile/verify', to: 'users#verify'
 
       resources :code_schools, only: :index
+      resources :scholarships, only: [:index, :show]
+      resources :scholarship_applications, only: :create
       resources :events, only: :index
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]

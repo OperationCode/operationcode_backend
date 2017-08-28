@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809164559) do
+ActiveRecord::Schema.define(version: 20170821193457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170809164559) do
 
   create_table "scholarship_applications", force: :cascade do |t|
     t.text     "reason"
-    t.boolean  "terms_accpeted"
+    t.boolean  "terms_accepted"
     t.integer  "user_id"
     t.integer  "scholarship_id"
     t.datetime "created_at",     null: false
