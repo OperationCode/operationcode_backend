@@ -31,3 +31,18 @@ end
 20.times do
   FactoryGirl.create(:squad, :with_mentors, :with_members)
 end
+
+case Rails.env
+when "development"
+  terms = "* I am a servicemember, veteran and/or member of military family.
+* I am willing to be interviewed pre-conference to share my story by a member of the Operation Code team.
+* I am willing to document my experience and lessons learned on the conference within 48 hours of attendance.
+
+NOTE: Unfortunately, at this time Operation Code is unable to cover travel/lodging. However, our team is actively pursuing fundraising opportunities to provide funding for this as well. "
+  Scholarship.create(name: "Node Summit 2017", description: "Node Summit is the largest conference focused exclusively on Node.js and “The Ecosystem of Node”. Join us to hear from business leaders and technology experts as they discuss Node.js’ transformative role in the future of computing.", location: "MISSION BAY CONFERENCE CENTER IN SAN FRANCISCO", terms: terms, open_time: DateTime.now, close_time: DateTime.now + 30)
+  Scholarship.create(name: "Open Source Summit 2017", description: "Over 2,000 developers, operators and community leadership professionals to collaborate, share information and learn about the latest in open technologies, including Linux, containers, cloud computing, DevOps and more. There’s going to be over 200+ sessions and new events including the Diversity Empowerment Summit, Open Community Conference and Hacking for Humanity - A Social Innovation Hackathon with Girls in Tech.", location: "Los Angeles, CA", terms: terms, open_time: DateTime.now, close_time: DateTime.now + 30)
+  Scholarship.create(name: "Github Universe 2017", description: "Universe is the flagship user conference for the GitHub community. It is intended for developers, operations and system administrators, technical leads, entrepreneurs, and business leaders. The event includes advanced training, executive keynotes, deep-dives on open source projects, and case studies of successful software teams.
+", location: "Pier 70
+420 22nd Street
+San Francisco, CA 94107", terms: terms, open_time: DateTime.now, close_time: DateTime.now + 30)
+end
