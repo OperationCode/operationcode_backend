@@ -45,6 +45,8 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (5.0.0)
       activerecord (>= 4.2.8)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     airtable (0.0.9)
       httparty
     arel (7.1.4)
@@ -56,6 +58,8 @@ GEM
       activesupport
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     devise (4.2.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -79,6 +83,7 @@ GEM
       multi_json (>= 1.11.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    hashdiff (0.3.6)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.8.1)
@@ -119,6 +124,7 @@ GEM
       httparty
     orm_adapter (0.5.0)
     pg (0.20.0)
+    public_suffix (3.0.0)
     puma (3.8.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -159,6 +165,7 @@ GEM
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     ruby_http_client (3.0.2)
+    safe_yaml (1.0.4)
     sendgrid-ruby (4.0.8)
       ruby_http_client (~> 3.0.1)
     sentry-raven (2.5.3)
@@ -184,8 +191,13 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
+    vcr (3.0.3)
     warden (1.2.7)
       rack (>= 1.0)
+    webmock (3.0.1)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -222,6 +234,8 @@ DEPENDENCIES
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
+  vcr (~> 3.0, >= 3.0.3)
+  webmock (~> 3.0, >= 3.0.1)
 
 BUNDLED WITH
-   1.15.1
+   1.15.4
