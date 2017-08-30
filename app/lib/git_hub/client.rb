@@ -10,14 +10,12 @@ module GitHub
     include HTTParty
     base_uri 'api.github.com'
 
-    attr_reader :commits, :issues, :repositories, :owner, :options
+    attr_reader :owner, :options, :repositories
 
     def initialize
-      @repositories = GitHub::Settings.repositories
       @owner = GitHub::Settings.owner
-      @commits = []
-      @issues = []
       @options = GitHub::Authentication.new(base_options).set_options
+      @repositories = GitHub::Settings.repositories
     end
 
     # Gets a list of pull requests or issues, that meet the passed in
