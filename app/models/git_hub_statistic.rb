@@ -31,7 +31,7 @@ class GitHubStatistic < ApplicationRecord
     default_date date
   end
 
-  # For the most recently closed pull request, gets its :completed_on date.
+  # For the most recently closed issues, gets its :completed_on date.
   # If none exist, returns '1970-01-01'
   #
   # @return [String] A date in its string format
