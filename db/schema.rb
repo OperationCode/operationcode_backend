@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20171022215418) do
     t.index ["git_hub_user_id"], name: "index_git_hub_statistics_on_git_hub_user_id", using: :btree
   end
 
+  create_table "git_hub_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "git_hub_login"
+    t.string   "avatar_url"
+    t.string   "api_url"
+    t.string   "html_url"
+    t.integer  "git_hub_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_git_hub_users_on_user_id", using: :btree
+  end
+
   create_table "locations", force: :cascade do |t|
     t.boolean  "va_accepted"
     t.string   "address1"
