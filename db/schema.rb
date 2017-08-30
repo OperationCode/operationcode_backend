@@ -44,6 +44,23 @@ ActiveRecord::Schema.define(version: 20171022215418) do
     t.datetime "updated_at",            null: false
   end
 
+  create_table "git_hub_statistics", force: :cascade do |t|
+    t.integer  "git_hub_user_id"
+    t.string   "source_id"
+    t.string   "source_type"
+    t.string   "state"
+    t.integer  "additions"
+    t.integer  "deletions"
+    t.string   "repository"
+    t.string   "url"
+    t.string   "title"
+    t.string   "number"
+    t.date     "completed_on"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["git_hub_user_id"], name: "index_git_hub_statistics_on_git_hub_user_id", using: :btree
+  end
+
   create_table "locations", force: :cascade do |t|
     t.boolean  "va_accepted"
     t.string   "address1"
@@ -201,6 +218,7 @@ ActiveRecord::Schema.define(version: 20171022215418) do
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
+  add_foreign_key "git_hub_statistics", "git_hub_users"
   add_foreign_key "locations", "code_schools"
   add_foreign_key "requests", "users"
   add_foreign_key "scholarship_applications", "scholarships"
