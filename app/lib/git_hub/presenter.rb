@@ -27,7 +27,6 @@ module GitHub
           total_users: base_query.for_repository(repo).users_made_a_commit,
           total_additions: base_query.for_repository(repo).sum(:additions),
           total_deletions: base_query.for_repository(repo).sum(:deletions),
-          avg_closed_prs_per_user: base_query
         }
       end
     end
