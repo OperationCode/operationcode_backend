@@ -12,6 +12,7 @@ SquadMember.destroy_all
 Squad.destroy_all
 User.destroy_all
 Service.destroy_all
+TeamMember.destroy_all
 
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
@@ -31,3 +32,8 @@ end
 20.times do
   FactoryGirl.create(:squad, :with_mentors, :with_members)
 end
+
+# Create team members
+team_members_seed_file = Rails.root.join('config', 'team_members.yml')
+config = YAML::load_file(team_members_seed_file)
+TeamMember.create!(config)
