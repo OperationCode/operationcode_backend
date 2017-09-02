@@ -78,8 +78,8 @@ class GitHubStatistic < ApplicationRecord
     where completed_on: (start_date..end_date)
   end
 
-  def self.respositories
-    @respositories ||= pluck(:repository).uniq
+  def self.repositories
+    pluck(:repository).uniq
   end
 
   # Returns the unique count of repositories we have statistics on.
@@ -87,7 +87,7 @@ class GitHubStatistic < ApplicationRecord
   # @return [Integer]
   #
   def self.repository_count
-    @repository_count ||= respositories.size
+    repositories.size
   end
 
   def self.average_closed_prs_per_user

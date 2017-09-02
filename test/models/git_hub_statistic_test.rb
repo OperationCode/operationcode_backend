@@ -102,4 +102,9 @@ class GitHubStatisticTest < ActiveSupport::TestCase
 
     users
   end
+
+  teardown do
+    GitHubStatistic.delete_all
+    GitHubUser.delete_all
+  end
 end

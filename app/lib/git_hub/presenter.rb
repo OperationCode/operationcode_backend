@@ -19,7 +19,7 @@ module GitHub
     end
 
     def totals_by_repository
-      GitHubStatistic.respositories.each_with_object({}) do |repo, totals|
+      GitHubStatistic.repositories.each_with_object({}) do |repo, totals|
         totals[repo.to_sym] = {
           total_closed_pull_requests: base_query.for_repository(repo).pull_requests.count,
           total_closed_issues: base_query.for_repository(repo).issues.closed.count,

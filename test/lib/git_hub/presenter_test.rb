@@ -36,6 +36,8 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
   end
 
   test "#totals_by_repository returns totals grouped by repository" do
+    GitHubStatistic.stubs(:repositories).returns([@backend, @frontend])
+
     results = GitHub::Presenter.new({}).totals_by_repository
 
     assert results == {
@@ -143,7 +145,7 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     }
 
     assert with_both == {
-      total_repositories: 2,
+      total_repositories: 0,
       total_closed_pull_requests: 0,
       total_closed_issues: 0,
       total_commits: 0,
