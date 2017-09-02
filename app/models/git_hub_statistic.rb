@@ -111,8 +111,10 @@ class GitHubStatistic < ApplicationRecord
   def self.per_user_average_in(grouped_records)
     per_group_totals = []
 
-    grouped_records.each do |key, value|
-      per_group_totals << value.length
+    grouped_records.each do |grouped_record|
+      statistics = grouped_record.last
+
+      per_group_totals << statistics.length
     end
 
     per_group_totals.sum / per_group_totals.size.to_f

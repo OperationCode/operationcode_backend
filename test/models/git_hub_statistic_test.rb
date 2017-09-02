@@ -68,6 +68,26 @@ class GitHubStatisticTest < ActiveSupport::TestCase
     assert_equal GitHubStatistic.date_range(start_date: '2014-01-10', end_date: '2014-01-19'), [twenty_14]
   end
 
+  test ".average_closed_prs_per_user returns a float value of the average number of pull requests closed, across all repositories, per user" do
+    john = create :git_hub_user
+    jack = create :git_hub_user
+
+    3.times { create :git_hub_statistic, git_hub_user: john }
+    5.times { create :git_hub_statistic, git_hub_user: jack }
+
+    assert GitHubStatistic.average_closed_prs_per_user == 4.0
+  end
+
+  test ".average_commits_prs_per_user returns a float value of the average number of commits, across all repositories, per user" do
+    john = create :git_hub_user
+    jack = create :git_hub_user
+
+    3.times { create :git_hub_statistic, :commit, git_hub_user: john }
+    5.times { create :git_hub_statistic, :commit, git_hub_user: jack }
+
+    assert GitHubStatistic.average_commits_prs_per_user == 4.0
+  end
+
   def create_users(number)
     users = []
 
