@@ -10,7 +10,7 @@ module GitHub
       {
         total_repositories: base_query.repository_count,
         total_closed_pull_requests: base_query.pull_requests.count,
-        total_open_issues: base_query.issues.open.count,
+        total_closed_issues: base_query.issues.closed.count,
         total_commits: base_query.commits.count,
         total_users: base_query.users_made_a_commit,
         total_additions: base_query.sum(:additions),
@@ -22,7 +22,7 @@ module GitHub
       GitHubStatistic.respositories.each_with_object({}) do |repo, totals|
         totals[repo.to_sym] = {
           total_closed_pull_requests: base_query.for_repository(repo).pull_requests.count,
-          total_open_issues: base_query.for_repository(repo).issues.open.count,
+          total_closed_issues: base_query.for_repository(repo).issues.closed.count,
           total_commits: base_query.for_repository(repo).commits.count,
           total_users: base_query.for_repository(repo).users_made_a_commit,
           total_additions: base_query.for_repository(repo).sum(:additions),
@@ -38,7 +38,7 @@ module GitHub
 
       {
         total_closed_pull_requests: base_query.for_git_hub_user(user).pull_requests.count,
-        total_open_issues: base_query.for_git_hub_user(user).issues.open.count,
+        total_closed_issues: base_query.for_git_hub_user(user).issues.closed.count,
         total_commits: base_query.for_git_hub_user(user).commits.count,
         total_additions: base_query.for_git_hub_user(user).sum(:additions),
         total_deletions: base_query.for_git_hub_user(user).sum(:deletions),
@@ -61,7 +61,7 @@ module GitHub
 
       {
         total_closed_pull_requests: user_in_repository(user, repo).pull_requests.count,
-        total_open_issues: user_in_repository(user, repo).issues.open.count,
+        total_closed_issues: user_in_repository(user, repo).issues.closed.count,
         total_commits: user_in_repository(user, repo).commits.count,
         total_additions: user_in_repository(user, repo).sum(:additions),
         total_deletions: user_in_repository(user, repo).sum(:deletions),
