@@ -56,6 +56,7 @@ GEM
     byebug (9.0.6)
     case_transform (0.2)
       activesupport
+    chronic (0.10.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crack (0.4.3)
@@ -201,6 +202,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    whenever (0.9.7)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -236,6 +239,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   vcr (~> 3.0, >= 3.0.3)
   webmock (~> 3.0, >= 3.0.1)
+  whenever (~> 0.9.7)
 
 BUNDLED WITH
    1.15.4

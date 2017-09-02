@@ -28,6 +28,7 @@ gem 'redis', '~> 3.0'
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
+gem 'whenever', '~> 0.9.7'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'
