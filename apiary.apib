@@ -190,6 +190,33 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## GitHub Statistic | OC Totals [/api/v1/git_hub_statistics/totals{?start_date,end_date}]
+
++ Parameters
+
+    + start_date (string, optional) - Sets the start date for the query, regarding the statistic's "completed on" value (i.e. 2016-10-21).  Defaults to '1970-01-01'
+    + end_date (string, optional) - Sets the end date for the query, regarding the statistic's "completed on" value (i.e. 2016-11-21).  Defaults to 'Date.today'
+
+### Totals Across All Operation Code Repositories [GET]
+
++ Response 200 (application/json)
+
+        {
+            "total_repositories": 4,
+            "total_closed_pull_requests": 144,
+            "total_closed_issues": 50,
+            "total_commits": 475,
+            "total_users": 31,
+            "total_additions": 43848,
+            "total_deletions": 35676
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
 ## Resource [/api/v1/resources/{resource_id}]
 
 + Parameters
