@@ -10,7 +10,7 @@ module GitHub
     end
 
     def self.find_or_create_statistic!(stat_attrs, source_type, git_hub_user_id)
-      GitHubStatistic.find_or_create_by!(source_type: source_type, source_id: stat_attrs[:id]) do |stat|
+      GitHubStatistic.find_or_create_by!(source_type: source_type, source_id: stat_attrs[:source_id]) do |stat|
         stat.git_hub_user_id = git_hub_user_id
         stat.state = stat_attrs[:state]
         stat.additions = stat_attrs[:additions].to_i

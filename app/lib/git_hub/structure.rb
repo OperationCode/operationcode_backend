@@ -10,7 +10,7 @@ module GitHub
     def pull_request
       {
         source_type: GitHubStatistic::PR,
-        id: response['id'],
+        source_id: response['id'],
         repository: repository,
         number: response['number'],
         state: response['state'],
@@ -32,7 +32,7 @@ module GitHub
     def commit
       {
         source_type: GitHubStatistic::COMMIT,
-        id: response['sha'],
+        source_id: response['sha'],
         url: response['html_url'],
         title: response['commit']['message'],
         repository: repository,
@@ -50,7 +50,7 @@ module GitHub
     def issue
       {
         source_type: GitHubStatistic::ISSUE,
-        id: response['id'],
+        source_id: response['id'],
         url: response['html_url'],
         title: response['title'],
         number: response['number'],

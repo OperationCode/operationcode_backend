@@ -57,6 +57,6 @@ class IssuesTest < Minitest::Test
     assert @issue_instance.compiled_issues.first[:url] == 'https://github.com/OperationCode/operationcode_backend/issues/133'
     assert @issue_instance.compiled_issues.first[:title] == 'Support for multi step profiles'
     assert @issue_instance.compiled_issues.first[:number] == 133
-    assert @issue_instance.compiled_issues.first[:id] == 248273181
+    assert @issue_instance.compiled_issues.first[:source_id] == 248273181
   end
 end
