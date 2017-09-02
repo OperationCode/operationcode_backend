@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class GitHubStatisticTest < ActiveSupport::TestCase
+  setup do
+    GitHubStatistic.delete_all
+    GitHubUser.delete_all
+  end
+
   test ".last_pr_completed_on returns the most recently closed pull request's :completed_on date, else '1970-01-01'" do
     GitHubStatistic.delete_all
     assert_equal '1970-01-01', GitHubStatistic.last_pr_completed_on
