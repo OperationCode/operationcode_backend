@@ -1,5 +1,6 @@
 class ScholarshipApplication < ApplicationRecord
   validate :user_is_verified
+  validates :user_id, uniqueness: {scope: :scholarship_id}
 
   belongs_to :user
   belongs_to :scholarship
