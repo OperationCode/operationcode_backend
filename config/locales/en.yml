@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        scholarship_application:
+          attributes:
+            user_id:
+              taken: "One application per scholarship."
