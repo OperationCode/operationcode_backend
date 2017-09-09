@@ -119,9 +119,10 @@
   url: http://turing.io/
   logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/turing.jpg
   full_time: true
-  hardware_included: false
+  hardware_included: true
   has_online: false
   online_only: false
+  notes: <strong> Turing offers two diversity scholarships each cohort that veterans are eligible to apply for. This funding will be used as tuition credit to offset tuition costs. </strong>
   locations:
     - va_accepted: true
       address1: 1510 Blake Street
