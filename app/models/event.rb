@@ -3,8 +3,9 @@ class Event < ApplicationRecord
 	  validates :name, presence: true
 	# validates :description, presence: true
 	  validates :start_date, presence: true
-	  validates :meetup_id, presence: true, uniqueness: {case_sensitive: false}
-	  validates :meetup_updated, presence: true 
+	  validates :source_id, presence: true, uniqueness: {case_sensitive: false}
+	  validates :source_updated, presence: true 
+	  validates :source, presence: true 
 	# validates :address1, presence: true
 	# validates :city, presence: true
 	# validates :state, presence: true, length: {is: 2} #Dropdown selection on front end?  

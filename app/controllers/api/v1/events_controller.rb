@@ -3,7 +3,10 @@ module Api
     class EventsController < ApplicationController
       
       def index
+       
         render json: Event.all, status: :ok
+        
+        #render json: Meetup.new.add_events_to_database
      #  rescue StandardError=>EventsController
     	# render json: {errors:e.message}, status: :unprocessable_entity 
       end
