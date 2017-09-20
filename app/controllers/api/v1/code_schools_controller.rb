@@ -16,11 +16,11 @@ module Api
       end
       
       def show 
-        @school = CodeSchool.find(params[:id])
+        @school = CodeSchool.where(id: params[:id]).first
         if @school
           render json: @school
-        else 
-          render json: { :errors => @school.errors.full_messages }
+        else
+          render json: { error: 'No such record' }, status: :not_found
         end
       end
       
