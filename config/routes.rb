@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get '/users/by_location', to: 'users#by_location'
       post '/users/profile/verify', to: 'users#verify'
 
-      resources :code_schools, only: :index
+      resources :code_schools
       resources :scholarships, only: [:index, :show]
       resources :scholarship_applications, only: :create
       resources :events, only: :index
