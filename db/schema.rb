@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920093217) do
+ActiveRecord::Schema.define(version: 20170921055331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170920093217) do
     t.boolean  "online_only"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.text     "notes"
   end
 
   create_table "events", force: :cascade do |t|

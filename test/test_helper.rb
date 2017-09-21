@@ -5,6 +5,7 @@ require 'mocha/mini_test'
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
+  include Rails.application.routes.url_helpers
 
   def authorization_headers(user)
     { 'Authorization': "bearer #{user.token}" }
