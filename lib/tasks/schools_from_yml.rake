@@ -2,7 +2,7 @@ namespace :schools do
   desc "Reads from the ./config/code_schools.yml and creates records in the database."
   task populate: :environment do 
     schools =  YAML::load_file(File.join("./config", "code_schools.yml"), "r")    
-    schools.each do |school, value|
+    schools.each do |school|
       object = CodeSchool.new(
         name: school["name"], 
         url: school["url"], 
