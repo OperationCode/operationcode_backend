@@ -9,7 +9,7 @@ module Api
         school = CodeSchool.new(code_school_params)
         
         if school.save 
-          render json: school
+          render json: { code_school: school.id }
         else 
           render json: { :errors => school.errors.full_messages }
         end
