@@ -4,9 +4,16 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   setup do 
     @school = create(:code_school)
   end
+  
   test "Schools cannot save without required fields" do 
-    school = CodeSchool.create name: "Only Name Included"
-    assert_equal false, school.valid?
+    params = {
+      code_school: {
+        name: "CoderSchool"
+      }
+    }    
+    post api_v1_code_schools_url, params: params, as: :json
+    
+    assert JSON.parse(response.body)["errors"].include? "Url can't be blank"
   end
   
   test ":index endpoint returns a JSON list of all CodeSchools" do 
@@ -20,7 +27,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
   
-  test ":show ill work for a valid record"do
+  test ":show works for a valid record"do
     get api_v1_code_school_path(@school), as: :json
     assert_response :ok
   end
