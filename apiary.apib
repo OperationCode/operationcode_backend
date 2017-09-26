@@ -577,3 +577,168 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
+## CodeSchool | Collection [/api/v1/code_schools]
+
+### List All CodeSchool Members [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 112,
+                "name": "Wyncode Academy",
+                "url": "http://wyncode.co",
+                "logo": "https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/wyncode.jpg",
+                "full_time": true,
+                "hardware_included": false,
+                "has_online": false,
+                "online_only": false,
+                "created_at": "2017-09-21T05:48:50.056Z",
+                "updated_at": "2017-09-21T05:48:50.056Z",
+                "notes": null
+            },
+            {
+                "id": 113,
+                "name": "Nashville Software School",
+                "url": "http://nashvillesoftwareschool.com/",
+                "logo": "https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/nss.jpg",
+                "full_time": true,
+                "hardware_included": false,
+                "has_online": false,
+                "online_only": false,
+                "created_at": "2017-09-21T05:48:50.108Z",
+                "updated_at": "2017-09-21T05:48:50.108Z",
+                "notes": null
+            }
+        ]
+        
+        
+### CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
++ Parameters 
+  
+  + name (string, required) - The CodeSchool's name
+  + url (string, required) - The CodeSchool's url for homepage
+  + logo (string, required) - The CodeSchool's logo url
+  + full_time (boolean, required) - Are the CodeSchool's courses full time 
+  + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
+  + has_online (boolean, required) - Does the CodeSchool have an online component
+  + online_only (boolean, required) - Is the CodeSchool online only?
+  + notes (text, not-required) - Any additional information about the CodeSchool
+
+## Create a CodeSchool Member [POST]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+      + Body
+
+              {
+              	"code_school": {
+              		"name": "CoderSchool",
+              		"url": "http://www.CoderSchool.vn",
+              		"logo": "https://d388w23p6r1vqc.cloudfront.net/img/startups/11852/logo-1457327647.png",
+              		"full_time": "false",
+              		"hardware_included": "false",
+              		"has_online": "true",
+              		"online_only": "false"
+              	}
+              }              
+
+  + Response 201 (application/json)
+
+      + Body
+
+              {
+                  "team_member": 1
+              }
+
+  + Response 422 (application/json)
+
+          {
+              errors: "Some error message"
+          }
+
+## CodeSchool | Delete [/api/v1/code_school/{code_school_id}]
+
+  + Parameters
+
+      + code_school_id (number) - ID of the CodeSchool in the form of an integer
+
+### Delete an Existing CodeSchool [DELETE]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+
+      + Body
+
+              {
+                  "id": 1
+              }
+
+  + Response 200 (application/json)
+
+      + Body
+
+              {
+                  status: 200
+              }
+
+  + Response 422 (application/json)
+
+          {
+              errors: "Some error message"
+          }
+
+## CodeSchool | Update [/api/v1/code_school/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+
+  + Parameters 
+    
+    + name (string, required) - The CodeSchool's name
+    + url (string, required) - The CodeSchool's url for homepage
+    + logo (string, required) - The CodeSchool's logo url
+    + full_time (boolean, required) - Are the CodeSchool's courses full time 
+    + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
+    + has_online (boolean, required) - Does the CodeSchool have an online component
+    + online_only (boolean, required) - Is the CodeSchool online only?
+    + notes (text, not-required) - Any additional information about the CodeSchool
+
+### Update an Existing CodeSchool [PUT]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+
+      + Body
+
+              {
+              	"code_school": {
+                  "id": "182"
+              		"name": "CoderSchool"
+              	}
+              }              
+
+  + Response 200 (application/json)
+
+      + Body
+
+              {
+                  status: 200
+              }
+
+  + Response 422 (application/json)
+
+          {
+              errors: "Some error message"
+          }
+  

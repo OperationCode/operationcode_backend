@@ -5,7 +5,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     @school = create(:code_school)
   end
   
-  test "Schools cannot save without required fields" do 
+  test ":validation cannot save without required fields" do 
     params = {
       code_school: {
         name: "CoderSchool"
