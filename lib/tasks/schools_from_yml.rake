@@ -23,7 +23,7 @@ namespace :schools do
             state: location["state"],
             zip: location["zip"]
           )
-          end
+        end
       rescue ActiveRecord::RecordInvalid => e
         puts "Failed to create CodeSchool: #{e}"
       end
