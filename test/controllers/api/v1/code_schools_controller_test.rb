@@ -1,14 +1,25 @@
 require 'test_helper'
 
-class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest  
   test "Schools cannot save without required fields" do 
     school = CodeSchool.create name: "Only Name Included"
     assert_equal false, school.valid?
   end
   
-  test ":index will find schools" do 
-    get api_v1_code_schools_path
-    assert_response :success
+  test ":index endpoint returns a JSON list of all CodeSchools" do 
+    
+    # FactoryGirl fails to create code_school object
+    # Factory is set up just like team_members which works correctly
+    school = create(:code_school)
+    school.save
+    
+    get api_v1_code_schools_path, as: :json
+    
+    puts "\n\n\nTesting for CoderSchool"
+    puts response.body
+    puts "\n\n\n"
+    
+    assert_equal true, response.parsed_body.include?("CoderSchool")
   end
   
   test ":show will not work for a invalid record" do

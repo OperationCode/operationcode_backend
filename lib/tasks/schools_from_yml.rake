@@ -3,7 +3,7 @@ namespace :schools do
   task populate: :environment do 
     schools =  YAML::load_file(File.join("./config", "code_schools.yml"), "r")    
     schools.each do |school|
-      object = CodeSchool.new(
+      object = CodeSchool.create!(
         name: school["name"], 
         url: school["url"], 
         logo: school["logo"], 
@@ -13,9 +13,8 @@ namespace :schools do
         online_only: school["online_only"],
         notes: school["notes"]
         )
-      object.save
       school["locations"].each do |location|
-        object.locations.new(
+        object.locations.create!(
           va_accepted: location["va_accepted"],
           address1: location["address1"],
           address2: location["address2"],
