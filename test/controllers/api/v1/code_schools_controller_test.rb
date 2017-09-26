@@ -20,13 +20,18 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
   
-  test ":update" do
+  test ":show ill work for a valid record"do
+    get api_v1_code_school_path(@school), as: :json
+    assert_response :ok
+  end
+  
+  test ":update endpoint updates an existing CodeSchool" do
     put api_v1_code_school_url(@school), params: {name: "CoddderrrrSchool"}, as: :json
     assert_equal response.status, 200
     assert_equal JSON.parse(response.body)["name"], "CoddderrrrSchool"
   end
   
-  test ":destroy" do
+  test ":destroy endpoint destroys an existing CodeSchool" do
     id = @school.id
     delete api_v1_code_school_url(@school)
     
