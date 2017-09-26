@@ -36,7 +36,7 @@ module Api
       def destroy
         school = CodeSchool.find(params[:id])
         if school.destroy
-          render json: { status: :ok }
+          render json: { status: 200 }
         else 
           render json: { :errors => school.errors.full_messages }
         end        

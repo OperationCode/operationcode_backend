@@ -661,13 +661,36 @@ API endpoints that Operation Code's Rails backend makes available to its React f
           {
               errors: "Some error message"
           }
+          
+## CodeSchool | Get [/api/v1/code_schools/{code_school_id}]
 
-## CodeSchool | Delete [/api/v1/code_school/{code_school_id}]
+
++ Response 200 (application/json)
+        {
+            "id": 180,
+            "name": "CoderSchool",
+            "url": "http://www.CoderSchool.vn",
+            "logo": "https://d388w23p6r1vqc.cloudfront.net/img/startups/11852/logo-1457327647.png",
+            "full_time": false,
+            "hardware_included": false,
+            "has_online": true,
+            "online_only": false,
+            "created_at": "2017-09-26T06:54:58.607Z",
+            "updated_at": "2017-09-26T06:54:58.607Z",
+            "notes": null
+        }
+
++ Response 404 (application/json)
+        {
+            error: 'No such record'
+        }
+              
+## CodeSchool | Delete [/api/v1/code_schools/{code_school_id}]
 
   + Parameters
 
       + code_school_id (number) - ID of the CodeSchool in the form of an integer
-
+            
 ### Delete an Existing CodeSchool [DELETE]
 
   + Request (application/json)
@@ -697,7 +720,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
               errors: "Some error message"
           }
 
-## CodeSchool | Update [/api/v1/code_school/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
 
   + Parameters 
     
