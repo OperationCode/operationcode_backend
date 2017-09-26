@@ -9,9 +9,9 @@ module Api
         school = CodeSchool.new(code_school_params)
         
         if school.save 
-          render json: { code_school: school.id }
+          render json: school
         else 
-          render json: { :errors => school.errors.full_messages }
+          render json: { errors: school.errors.full_messages }
         end
       end
       
@@ -29,16 +29,16 @@ module Api
         if school.update(code_school_params)
           render json: school
         else 
-          render json: { :errors => school.errors.full_messages }
+          render json: { errors: school.errors.full_messages }
         end
       end
       
       def destroy
         school = CodeSchool.find(params[:id])
         if school.destroy
-          render json: { status: 200 }
+          render json: { status: :ok }
         else 
-          render json: { :errors => school.errors.full_messages }
+          render json: { errors: school.errors.full_messages }
         end        
       end
       

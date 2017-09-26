@@ -3,9 +3,11 @@ require 'test_helper'
 class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   setup do 
     @school = create(:code_school)
+    @school.name = "CoderSchool"
+    @school.save
   end
   
-  test ":validation cannot save without required fields" do 
+  test ":validates CodeSchool's required fields" do 
     params = {
       code_school: {
         name: "CoderSchool"
@@ -21,6 +23,11 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_equal JSON.parse(response.body)[0]["name"], "CoderSchool"
   end
   
+  test ":create endpoint creates a CodeSchool successfully" do    
+    post api_v1_code_schools_path(@school), params: {code_school: @school}, as: :json
+    assert_response :ok
+  end
+  
   test ":show will not work for a invalid record" do
     school_count = CodeSchool.count + 1
     get api_v1_code_school_path(school_count), as: :json
@@ -33,19 +40,18 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   end
   
   test ":update endpoint updates an existing CodeSchool" do
-    put api_v1_code_school_url(@school), params: {name: "CoddderrrrSchool"}, as: :json
+    put api_v1_code_school_path(@school), params: {name: "CoddderrrrSchool"}, as: :json
     assert_equal response.status, 200
     assert_equal JSON.parse(response.body)["name"], "CoddderrrrSchool"
   end
   
   test ":destroy endpoint destroys an existing CodeSchool" do
     id = @school.id
-    delete api_v1_code_school_url(@school)
     
+    delete api_v1_code_school_path(@school)    
     assert_equal response.status, 200
     
     get api_v1_code_school_path(id), as: :json
     assert_response :missing
   end
 end
-
