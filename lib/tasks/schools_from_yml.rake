@@ -22,7 +22,6 @@ namespace :schools do
           state: location["state"],
           zip: location["zip"]
         )
-      object.save
       end
     end
   end
