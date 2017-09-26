@@ -21,13 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   user: postgres
-  
-  # USE FOR PRODUCTION. UNCOMMENT FOR PRODUCTION
-  # host: operationcode-psql
-  
-  # USE FOR DEVELOPMENT. REMOVE BEFORE CHECKING INTO PRODUCTION.
-  host: localhost
-  
+  host: operationcode-psql
   password: <%= OperationCode.fetch_secret_with name: :postgres_password %>
 
 development:
