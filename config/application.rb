@@ -34,6 +34,8 @@ module OperationcodeBackend
 
     config.secret_path = Rails.root.join('run/secrets')
     
+    
+    # Used to configure locally 
     Raven.configure do |config|
       config.dsn = 'https://d85c1b1efbd54287996ab632fb279cc7:9a90b74c47b24de389fcc5971b047c4c@sentry.io/219717'
     end
