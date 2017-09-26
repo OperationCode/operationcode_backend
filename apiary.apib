@@ -666,6 +666,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 
 + Response 200 (application/json)
+
         {
             "id": 180,
             "name": "CoderSchool",
@@ -699,7 +700,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
               Authorization: Bearer Access-Token
 
-
       + Body
 
               {
@@ -716,9 +716,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
   + Response 422 (application/json)
 
-          {
-              errors: "Some error message"
-          }
+      + Body
+
+              {
+                  errors: "Some error message"
+              }
 
 ## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
 
@@ -740,7 +742,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
       + Headers
 
               Authorization: Bearer Access-Token
-
 
       + Body
 
