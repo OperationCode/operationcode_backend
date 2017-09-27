@@ -1,19 +1,25 @@
 require 'test_helper'
 
 class EventsCreateTest < ActionDispatch::IntegrationTest
-  test 'invalid event information does not save' do
-  	assert_no_difference 'Event.count' do
-  		post api_v1_events_path, params: {events:{name:"", description: "Incomplete event data"}}
-  	end
+  setup do
+    Event.delete_all
   end
 
   test 'valid event information saves' do
-  	assert_difference 'Event.count', 1 do
-  		post api_v1_events_url params:{event:{name:"Test Event 5", 
-  			description: "Test description", url: "http://www.someurl.com", 
-  			start_date: "2013-09-12 00:12:12", end_date: "", address1: "4321 Happy Way", 
-  			address2: "", city:"Orlando", state:"FL", zip: "90210", scholarship_available: "true"}}, as: :json 
-  		end
-  	end
-end
- 	
+    assert_difference 'Event.count', 1 do
+      create :event, :updated_today
+    end
+  end
+
+  test 'find_or_initialize_by finds duplicate event by source_id and source' do
+    event_in_database = create :event, :updated_today
+    meetup_event = event_in_database
+    my_event = Event.find_or_initialize_by(source_id: meetup_event[:source_id], source: "Meetup") 
+    assert_equal my_event, meetup_event
+  end
+
+  test 'find_or_initialize_by creates new event if event is not in database' do
+    meetup_event = build :event, :updated_today
+    my_event = Event.find_or_initialize_by(source_id: meetup_event[:source_id], source: "Meetup") 
+    assert my_event.new_record?
+  end

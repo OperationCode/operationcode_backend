@@ -8,14 +8,14 @@ FactoryGirl.define do
         source_updated { Date.today }
     end
     name "MyEvent"
-    description "A fun meetup"
-    url "http://www.foobar.com"
-    start_date "2017-06-12 21:24:05"
-    end_date "2017-06-12 24:24:05"
-    address1 "1234 Coding Way"
-    address2 "Building 4" 
-    city "Norfolk"
+    description { Faker::Hacker.say_something_smart }
+    url { Faker::Internet.url }
+    start_date { Faker::Time.forward(30, :morning) }
+    end_date { Faker::Time.forward(30, :morning) }
+    address1 { Faker::Address.street_address }
+    address2 { Faker::Address.street_address }
+    city { Faker::Address.city }
     source "Meetup"
-    source_id "1232434"
+    source_id { Faker::Lorem.characters(7) }
   end
 end
