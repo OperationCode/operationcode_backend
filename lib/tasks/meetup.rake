@@ -8,6 +8,3 @@ namespace :meetup do
    	end
 	end
 end
-
-      
-   

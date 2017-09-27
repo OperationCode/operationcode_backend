@@ -23,3 +23,4 @@ class EventsCreateTest < ActionDispatch::IntegrationTest
     my_event = Event.find_or_initialize_by(source_id: meetup_event[:source_id], source: "Meetup") 
     assert my_event.new_record?
   end
+end

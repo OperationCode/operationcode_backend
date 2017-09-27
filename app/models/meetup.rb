@@ -92,7 +92,4 @@ class Meetup
     }
   end
 end
-
-
-
   
