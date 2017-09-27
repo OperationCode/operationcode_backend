@@ -41,7 +41,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         ]
         
         
-### CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
 + Parameters 
   
   + name (string, required) - The CodeSchool's name
@@ -53,7 +53,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
   + online_only (boolean, required) - Is the CodeSchool online only?
   + notes (text, optional) - Any additional information about the CodeSchool
 
-## Create a CodeSchool Member [POST]
+### Create a CodeSchool Member [POST]
 
   + Request (application/json)
 
@@ -89,8 +89,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
               errors: "Some error message"
           }
           
-## CodeSchool | Show [/api/v1/code_schools/{code_school_id}] [GET]
+## CodeSchool | Show or Delete [/api/v1/code_schools/{code_school_id}]
++ Parameters
 
+    + code_school_id (number) - ID of the CodeSchool in the form of an integer
+  
+### Get an Existing CodeSchool [GET]
 
 + Response 200 (application/json)
 
@@ -114,12 +118,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             error: 'No such record'
         }
               
-## CodeSchool | Delete [/api/v1/code_schools/{code_school_id}]
-
-  + Parameters
-
-      + code_school_id (number) - ID of the CodeSchool in the form of an integer
-            
 ### Delete an Existing CodeSchool [DELETE]
 
   + Request (application/json)
