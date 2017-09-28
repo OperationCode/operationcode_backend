@@ -1,5 +1,12 @@
 # README
 
+## Hacktoberfest
+
+If you're here looking for a place to contribute pull requests as part of GitHub's "Hacktoberfest", you're in the right place! Please look forward to an increased amount of documentation and tickets. We highly recommend joining our organization at operationcode.org to receive an invite to our Slack team. From there, you'll join the `#oc-projects` channel. You can get help from multiple professional developers and people who have worked on the application since day 1! Happy hacking!
+
+
+# Tech Summary
+
 * Ruby version
     2.3.3
 * System dependencies
