@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :git_hub_statistic do
     git_hub_user
-    source_id { Faker::Number.number(5) }
+    sequence(:source_id, 10000) { |n| n.to_s }
     source_type GitHubStatistic::PR
     repository 'operationcode_backend'
     url { Faker::Internet.url }
