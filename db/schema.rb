@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821193457) do
+ActiveRecord::Schema.define(version: 20170921055331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "code_schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "logo"
+    t.boolean  "full_time"
+    t.boolean  "hardware_included"
+    t.boolean  "has_online"
+    t.boolean  "online_only"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "notes"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -29,6 +42,19 @@ ActiveRecord::Schema.define(version: 20170821193457) do
     t.boolean  "scholarship_available"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.boolean  "va_accepted"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.integer  "code_school_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["code_school_id"], name: "index_locations_on_code_school_id", using: :btree
   end
 
   create_table "requests", force: :cascade do |t|
@@ -209,6 +235,7 @@ ActiveRecord::Schema.define(version: 20170821193457) do
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
+  add_foreign_key "locations", "code_schools"
   add_foreign_key "requests", "users"
   add_foreign_key "scholarship_applications", "scholarships"
   add_foreign_key "scholarship_applications", "users"
