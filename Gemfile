@@ -26,7 +26,6 @@ gem 'redis', '~> 3.0'
 gem 'sentry-raven'
 gem 'sidekiq'
 gem 'httparty'
-gem 'jbuilder', '~> 2.5'
 
 
 group :development, :test do

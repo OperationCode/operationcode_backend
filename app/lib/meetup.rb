@@ -1,15 +1,15 @@
 class Meetup
-  include HTTParty 
+  include HTTParty
   base_uri 'api.meetup.com'
 
-  attr_reader :options 
+  attr_reader :options
 
   def initialize
     api_key  = OperationCode.fetch_secret_with(name: :meetup_api_key)
     @options = {
-        query: {
-        key: api_key,
-		    sign: "true"
+      query: {
+      key: api_key,
+		  sign: "true"
 		  }
     }
   end
@@ -28,11 +28,11 @@ class Meetup
 
   #Return all meetups based on group names if venue is present. Return array of all op-code events
   def event_details_by_group
-    events = []  
-    group_names.each do |group| 
+    events = []
+    group_names.each do |group|
       get_events_for(group).each do |event|
         next unless event['venue'].present?
-        events<<details_for(event)
+        events << details_for(event)
       end
     end
     events.flatten
@@ -40,13 +40,15 @@ class Meetup
 
   def add_events_to_database!
     event_details_by_group.each do |event|
-      my_event = Event.find_or_initialize_by(source_id: event[:source_id], source: "Meetup") 
-      if my_event.new_record?
-        my_event.update!(event)
-      elsif my_event[:source_updated] < event[:source_updated] 
+      my_event = Event.find_or_initialize_by(source_id: event[:source_id], source_type: "Meetup") 
+      if my_event.new_record? || my_event_updated?(my_event)
         my_event.update!(event)
       end
     end
+  end
+
+  def my_event_updated?(my_event)
+    my_event[:source_updated] < event[:source_updated] 
   end
 
  private 
@@ -57,22 +59,21 @@ class Meetup
 
   def event_duration(event)
     if event['duration'].present? 
-      duration = event['duration'] / 1000
+      event['duration'] / 1000
     else
-      duration = 0
+      0
     end
   end
 
   def return_value_for(response)
-    if response.code.to_i==200
+    if response.code.to_i == 200
       response.parsed_response
     else 
-      error_message "Error fetching data from Meetup API"
-      raise error_message
+      raise "Error fetching data from Meetup API"
     end
   end
 
-  def details_for(event) 
+  def details_for(event)
     start_date = Time.at(event['time'] / 1000)
     {
       source_id:event['id'],
@@ -88,8 +89,7 @@ class Meetup
       state: event['venue']['state'],
       zip: event['venue']['zip'],  
       group: event['group']['name'],
-      source: "Meetup"
+      source_type: "Meetup"
     }
   end
 end
-  

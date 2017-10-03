@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20170903130609) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "source_id"
-    t.string   "source"
+    t.string   "source_type"
     t.datetime "source_updated"
     t.string   "group"
-    t.index ["source"], name: "index_events_on_source", using: :btree
     t.index ["source_id"], name: "index_events_on_source_id", using: :btree
+    t.index ["source_type"], name: "index_events_on_source_type", using: :btree
   end
 
   create_table "requests", force: :cascade do |t|
