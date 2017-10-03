@@ -9,8 +9,8 @@ class Meetup
     @options = {
       query: {
       key: api_key,
-		  sign: "true"
-		  }
+      sign: "true"
+      }
     }
   end
 
