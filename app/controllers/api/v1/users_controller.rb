@@ -1,15 +1,31 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      before_action :authenticate_user!, only: %i[update]
+
+      def index
+        render json: { user_count: User.count }, status: :ok
+      rescue StandardError => e
+        render json: { errors: e.message }, status: :unprocessable_entity
+      end
 
       def create
         user = User.new(user_params)
 
         if user.save
           UserMailer.welcome(user).deliver unless user.invalid?
-          render json: user
+          sign_in(user)
+          render json: { token: user.token }
         else
           render json: user.errors, status: :unprocessable_entity
+        end
+      end
+
+      def update
+        if current_user.update_attributes(user_params)
+          render json: current_user
+        else
+          render json: current_user.errors, status: :unprocessable_entity
         end
       end
 
@@ -26,12 +42,46 @@ module Api
         render json: { status: :unprocessable_entity }, status: :unprocessable_entity
       end
 
-    private
-
-      def user_params
-        params.require(:user).permit(:email, :zip, :password, :first_name, :last_name, :mentor, :slack_name, :verified)
+      def by_location
+        render json: { user_count: UsersByLocation.new(params).count }, status: :ok
+      rescue StandardError => e
+        render json: { errors: e.message }, status: :unprocessable_entity
       end
 
+      private
+
+      def user_params
+        params.require(:user).permit(
+          :email,
+          :zip,
+          :password,
+          :mentor,
+          :slack_name,
+          :first_name,
+          :last_name,
+          :bio,
+          :verified,
+          :state,
+          :address1,
+          :address2,
+          :username,
+          :volunteer,
+          :branch_of_service,
+          :years_of_service,
+          :pay_grade,
+          :military_occupational_specialty,
+          :github,
+          :twitter,
+          :linked_in,
+          :employment_status,
+          :education,
+          :company_role,
+          :company_name,
+          :education_level,
+          :scholarship_info,
+          interests: []
+        )
+      end
     end
   end
 end

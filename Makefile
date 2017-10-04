@@ -5,7 +5,7 @@ all: run
 
 .PHONY: console-sandbox
 	console-sandbox:
-	 docker-compose run ${RAILS_CONTAINER} rails console --sandbox 
+	 docker-compose run ${RAILS_CONTAINER} rails console --sandbox
 
 .PHONY: run
 run:
@@ -35,10 +35,18 @@ db_create:
 db_migrate:
 	docker-compose run ${RAILS_CONTAINER} rake db:migrate
 
+.PHONY: db_rollback
+db_rollback:
+	docker-compose run ${RAILS_CONTAINER} rake db:rollback
+
+.PHONY: db_seed
+db_seed:
+	docker-compose run ${RAILS_CONTAINER} rake db:seed
+
 .PHONY: test
 test: bg
 	docker-compose run operationcode-psql bash -c "while ! psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do sleep 5; done;"
-	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake db:seed && rake test'
+	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake test'
 
 .PHONY: bundle
 bundle:
@@ -50,4 +58,4 @@ publish: build
 	bin/publish
 
 upgrade: publish
-	bin/rancher_update
+	bin/deploy
