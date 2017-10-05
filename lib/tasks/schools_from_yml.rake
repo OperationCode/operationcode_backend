@@ -1,13 +1,13 @@
 namespace :schools do
   desc "Reads from the ./config/code_schools.yml and creates records in the database."
-  task populate: :environment do 
-    schools =  YAML::load_file(File.join("./config", "code_schools.yml"), "r")    
+  task populate: :environment do
+    schools =  YAML::load_file(File.join("./config", "code_schools.yml"), "r")
     schools.each do |school|
       begin
         object = CodeSchool.create!(
-          name: school["name"], 
-          url: school["url"], 
-          logo: school["logo"], 
+          name: school["name"],
+          url: school["url"],
+          logo: school["logo"],
           full_time: school["full_time"],
           hardware_included: school["hardware_included"],
           has_online: school["has_online"],
@@ -24,10 +24,15 @@ namespace :schools do
             zip: location["zip"]
           )
         end
-      rescue ActiveRecord::RecordInvalid => e
-        puts "Failed to create CodeSchool: #{e}"
-        Rails.logger.error e 
+      rescue StandardError => e
+        message = "Failed to create CodeSchool: #{e}"
+
+        puts message
+        Rails.logger.error message
       end
+
+      p "Created #{CodeSchool.count} code schools"
+      p "Created #{Location.count} locations"
     end
   end
 end
