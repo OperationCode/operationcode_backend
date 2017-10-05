@@ -11,7 +11,7 @@ namespace :schools do
           full_time: school["full_time"],
           hardware_included: school["hardware_included"],
           has_online: school["has_online"],
-          # online_only: school["online_only"],
+          online_only: school["online_only"],
           notes: school["notes"]
           )
         school["locations"].each do |location|
