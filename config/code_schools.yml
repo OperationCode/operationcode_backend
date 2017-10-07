@@ -7,6 +7,7 @@
 #  has_online: Does your school have an online bootcamp? [true|false]
 #  online_only: Does your school ONLY have an online bootcamp? [true | false]
 #  notes: <Addtional Comments> [optional]
+#  email: <E-mail Address> [optional]
 #  locations:
 #   - va_accepted: <GI Bill Accepted>
 #     address1: <Address Line1>
@@ -161,7 +162,6 @@
   hardware_included: false
   has_online: false
   online_only: false
-  email:
   locations:
     - va_accepted: false
       address1: 150 Minna Street
@@ -333,7 +333,7 @@
   hardware_included: false
   has_online: true
   online_only: false
-  email:
+  email: hello@fullstackacademy.com
   locations:
     - va_accepted: false
       address1: 5 Hanover Square
