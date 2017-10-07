@@ -134,8 +134,8 @@ We use [Apiary](https://apiary.io/) for our API documentation, API mocking serve
 
 Please ensure that any PRs that change the behavior of the API are updated in the documentation as well. To do so:
 
-- Create a free account at apiary.io
-- Use their editor to confirm that all of these changes do not create any **semantic issues**
+- Create a free account at [apiary.io](https://apiary.io/)
+- Use [their editor](https://help.apiary.io/tools/apiary-editor/) to confirm that all of these changes do not create any **semantic issues**
 - The API endpoints are alphabetized, so all additions will need to be placed accordingly
 
 The API blueprint file is at `apiary.apib`, and the documentation itself is at http://docs.operationcodeapi.apiary.io/
