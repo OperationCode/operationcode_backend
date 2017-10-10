@@ -19,10 +19,8 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
 
   test ":create endpoint creates a new TeamMember" do
     params = {
-      team_member: {
-        name: "Alex Johnson",
-        role: "Board Member"
-      }
+      name: "Alex Johnson",
+      role: "Board Member"
     }
 
     post api_v1_team_members_url, headers: @headers, params: params, as: :json
@@ -36,11 +34,9 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     alex = create(:team_member, name: "Alex Johnson")
     new_role = "Legislative Affairs"
     params = {
-      team_member: {
-        id: alex.id,
-        name: alex.name,
-        role: new_role
-      }
+      id: alex.id,
+      name: alex.name,
+      role: new_role
     }
 
     put api_v1_team_member_url(alex.id), headers: @headers, params: params, as: :json
@@ -53,11 +49,9 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
   test ":destroy endpoint destroys an existing TeamMember" do
     alex = create(:team_member, name: "Alex Johnson")
     params = {
-      team_member: {
-        id: alex.id,
-        name: alex.name,
-        role: alex.role
-      }
+      id: alex.id,
+      name: alex.name,
+      role: alex.role
     }
 
     delete api_v1_team_member_url(alex.id), headers: @headers, params: params, as: :json

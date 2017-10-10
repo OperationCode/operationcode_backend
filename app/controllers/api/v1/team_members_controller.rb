@@ -3,21 +3,18 @@ module Api
     class TeamMembersController < ApplicationController
       before_action :authenticate_user!, except: :index
 
-      # :GET, "/api/v1/team_members", "Returns JSON index of all TeamMembers"
       def index
-        render json: TeamMember.all
+        render json: TeamMember.all, status: :ok
       end
 
-      # :POST, "/api/v1/team_members", "Creates a new TeamMember"
       def create
         team_member = TeamMember.create! team_member_params
 
-        render json: { team_member: team_member.id }
+        render json: { team_member: team_member.id }, status: :created
       rescue StandardError => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
-      # :PUT, "/api/v1/team_members/:id", "Updates an existing TeamMember"
       def update
         team_member = TeamMember.find params[:id]
 
@@ -27,7 +24,6 @@ module Api
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
-      # :DELETE, "/api/v1/team_members/:id", "Deletes an existing TeamMember"
       def destroy
         team_member = TeamMember.find params[:id]
 
@@ -40,7 +36,7 @@ module Api
     private
 
       def team_member_params
-        params.require(:team_member).permit(:name, :role)
+        params.permit(:name, :role)
       end
     end
   end
