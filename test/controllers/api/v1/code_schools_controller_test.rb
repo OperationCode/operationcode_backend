@@ -34,7 +34,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
   
-  test ":show works for a valid record"do
+  test ":show works for a valid record" do
     get api_v1_code_school_path(@school), as: :json
     assert_response :ok
   end
