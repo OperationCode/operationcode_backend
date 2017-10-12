@@ -5,9 +5,7 @@ module Api
       
       def index
         @schools = CodeSchool.all
-        respond_to do |format|
-          format.json
-        end
+        render json: @schools
       end
 
       def create
