@@ -1,8 +1,13 @@
 module Api
   module V1
     class CodeSchoolsController < ApplicationController
+      include ActionController::MimeResponds
+      
       def index
-        render json: CodeSchools.all
+        @schools = CodeSchool.all
+        respond_to do |format|
+          format.json
+        end
       end
 
       def create
