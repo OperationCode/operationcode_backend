@@ -20,7 +20,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
 
   test ":index endpoint returns a JSON list of all CodeSchools" do
     get api_v1_code_schools_path, as: :json
-    assert_equal JSON.parse(response.body)[0]["name"], "Wyncode Academy"
+    assert_equal "CoderSchool", JSON.parse(response.body)[0]["name"]
   end
 
   test ":create endpoint creates a CodeSchool successfully" do
