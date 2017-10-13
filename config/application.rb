@@ -32,6 +32,11 @@ module OperationcodeBackend
     config.logger = Logger.new(STDOUT)
     config.lograge.enabled = true
 
-    config.secret_path = Rails.root.join('run/secrets')   
+    config.secret_path = Rails.root.join('run/secrets')
+    
+    # Development only, remove when in production
+    Raven.configure do |config|
+      config.dsn = 'https://d85c1b1efbd54287996ab632fb279cc7:9a90b74c47b24de389fcc5971b047c4c@sentry.io/219717'
+    end    
   end
 end

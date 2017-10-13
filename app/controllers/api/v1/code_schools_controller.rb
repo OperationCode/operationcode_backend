@@ -2,8 +2,7 @@ module Api
   module V1
     class CodeSchoolsController < ApplicationController
       def index
-        @schools = CodeSchool.all
-        render json: @schools
+        render json: CodeSchool.all
       end
 
       def create

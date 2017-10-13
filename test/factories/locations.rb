@@ -6,6 +6,6 @@ FactoryGirl.define do
     city Faker::Address.city
     state Faker::Address.state
     zip Faker::Address.zip_code
-    code_school nil
+    code_school 1
   end
 end
