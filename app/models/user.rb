@@ -33,6 +33,7 @@ class User < ApplicationRecord
   scope :mentors, -> { where(mentor: true) }
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
+  scope :verified, -> { where(verified: true) }
 
   # Returns a count of all users with the passed in zip code(s)
   #
@@ -71,6 +72,26 @@ class User < ApplicationRecord
   #
   def self.count_by_location(location, radius=20)
     near(location, radius.to_i)&.size
+  end
+
+  # Returns a count of users that were created since the passed in date,
+  # up through today.
+  #
+  # @param date [Date] The date the range should begin at (i.e. Date.today, 1.week.ago)
+  # @return [Intenger] A count of users
+  #
+  def self.count_created_since(date)
+    range = date.beginning_of_day..Date.today.end_of_day
+
+    where(created_at: range).count
+  end
+
+  def self.uniq_states
+    self
+      .order(:state)
+      .pluck(:state)
+      .uniq
+      .compact
   end
 
   def name
