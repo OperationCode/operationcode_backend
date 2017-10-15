@@ -1,6 +1,6 @@
 module Api
   module V1
-    class SquadsController < ApiController
+    class SquadsController < ApplicationController
       before_action :authenticate_user!
 
       def index
