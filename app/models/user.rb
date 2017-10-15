@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  LEADER = 'community leader'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -120,6 +122,10 @@ class User < ApplicationRecord
 
   def token
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
+  end
+
+  def has_tag?(tag)
+    tag_list.include? tag
   end
 
   private
