@@ -84,5 +84,9 @@ ActiveAdmin.register User do
 
   preserve_default_filters!
   filter :state, as: :select, collection: ->{ User.uniq_states }
+  remove_filter :tags
+  remove_filter :base_tags
+  remove_filter :taggings
+  remove_filter :tag_taggings
   filter :with_tags, label: 'Tagged With', as: :select, collection: ->{ User.all_tags }
 end
