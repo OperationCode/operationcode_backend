@@ -117,8 +117,7 @@ class User < ApplicationRecord
     [:with_tags]
   end
 
-  # This calls the ActsAsTaggableOn#tagged_with method with the passed
-  # in tag.
+  # This calls the ActsAsTaggableOn#tagged_with method with the passed in tag(s)
   #
   # By setting any: true, it returns results with any of the specified tags.
   #
