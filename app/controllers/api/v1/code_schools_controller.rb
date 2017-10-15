@@ -2,7 +2,7 @@ module Api
   module V1
     class CodeSchoolsController < ApplicationController
       def index
-        render json: CodeSchool.all
+        render json: CodeSchools.all
       end
 
       def create
