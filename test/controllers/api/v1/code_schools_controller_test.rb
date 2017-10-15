@@ -22,10 +22,10 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   test ":index endpoint returns a JSON list of all CodeSchools" do
     get api_v1_code_schools_path, as: :json
     
-    assert_equal JSON.parse(response.body)[0]["name"], "CoderSchool"
+    assert_equal JSON.parse(response.body)[0]["name"], "Wyncode Academy"
     assert_not_nil JSON.parse(response.body)[0]["locations"]
     assert_not_nil JSON.parse(response.body)[0]["locations"].first["address1"]
-    assert_equal JSON.parse(response.body)[0]["locations"].first["address1"], "2405 Nugget Lane"
+    assert_equal JSON.parse(response.body)[0]["locations"].first["address1"], "549 NW 28th Street"
   end
 
   test ":create endpoint creates a CodeSchool successfully" do
