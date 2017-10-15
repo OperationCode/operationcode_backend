@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_taggable
+
   geocoded_by :zip do |user, results|
     geocoded_object = results.first
 
