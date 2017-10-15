@@ -88,5 +88,5 @@ ActiveAdmin.register User do
   remove_filter :base_tags
   remove_filter :taggings
   remove_filter :tag_taggings
-  filter :with_tags, label: 'Tagged With', as: :select, collection: ->{ User.all_tags }
+  filter :with_tags, label: 'Tagged With', as: :select, collection: ->{ User.all_tag_names }
 end

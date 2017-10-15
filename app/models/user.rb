@@ -98,7 +98,7 @@ class User < ApplicationRecord
       .compact
   end
 
-  def self.all_tags
+  def self.all_tag_names
     tag_counts.order(:name).map(&:name)
   end
 
