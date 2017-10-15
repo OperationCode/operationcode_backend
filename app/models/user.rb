@@ -108,7 +108,7 @@ class User < ApplicationRecord
   # @see User.with_tags
   # @see https://github.com/activerecord-hackery/ransack#using-scopesclass-methods
   #
-  def self.ransackable_scopes(auth_object = nil)
+  def self.ransackable_scopes(_auth_object = nil)
     [:with_tags]
   end
 
