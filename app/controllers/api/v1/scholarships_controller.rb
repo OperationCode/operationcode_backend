@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ScholarshipsController < ApplicationController
+    class ScholarshipsController < ApiController
       def index
         render json: Scholarship.all
       end

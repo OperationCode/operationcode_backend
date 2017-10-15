@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CodeSchoolsController < ApplicationController
+    class CodeSchoolsController < ApiController
       def index
         render json: CodeSchools.all
       end
