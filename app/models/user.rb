@@ -98,6 +98,34 @@ class User < ApplicationRecord
       .compact
   end
 
+  def self.all_tags
+    tag_counts.order(:name).map(&:name)
+  end
+
+  # The presence of this method is a necessary dependency in order to
+  # add a custom scope in ActiveAdmin, using Ransack
+  #
+  # @see User.with_tags
+  # @see https://github.com/activerecord-hackery/ransack#using-scopesclass-methods
+  #
+  def self.ransackable_scopes(auth_object = nil)
+    [:with_tags]
+  end
+
+  # This calls the ActsAsTaggableOn#tagged_with method with the passed
+  # in tag.
+  #
+  # By setting any: true, it returns results with any of the specified tags.
+  #
+  # @param *args [Array<String>] Array of passed in tag name(s)
+  # @return [User] ActiveRecord collection of User objects
+  # @see User.ransackable_scopes
+  # @see https://github.com/mbleigh/acts-as-taggable-on#finding-tagged-objects
+  #
+  def self.with_tags(*args)
+    tagged_with(args, any: true)
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
