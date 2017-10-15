@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TagsController < ApiController
+    class TagsController < ApplicationController
       def index
         render json: ActsAsTaggableOn::Tag.all, status: :ok
       rescue StandardError => e
