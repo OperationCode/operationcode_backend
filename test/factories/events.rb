@@ -19,5 +19,6 @@ FactoryGirl.define do
     city { Faker::Address.city }
     source_type "Meetup"
     source_id { Faker::Lorem.characters(7) }
+    group { Faker::Lorem.characters(10) }
   end
 end

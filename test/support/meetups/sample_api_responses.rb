@@ -312,6 +312,6 @@ def group_endpoint_parsed_response
       "type": "event",
       "base_url": "https://secure.meetupstatic.com"
     }
-  }
+    }
   ]
 end

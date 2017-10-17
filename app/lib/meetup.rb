@@ -14,10 +14,10 @@ class Meetup
     }
   end
 
-  # GET all Operation Code Pro data. Returns all op-code groups. 
-  def operationcode_data	 
+  # GET all Operation Code Pro data. Returns all op-code groups.
+  def operationcode_data
     response = self.class.get("/pro/operationcode/groups", options)
-    return_value_for response 
+    return_value_for response
   end
 
   # GET events for each group
@@ -40,25 +40,25 @@ class Meetup
 
   def add_events_to_database!
     event_details_by_group.each do |event|
-      my_event = Event.find_or_initialize_by(source_id: event[:source_id], source_type: "Meetup") 
-      if my_event.new_record? || my_event_updated?(my_event)
+      my_event = Event.find_or_initialize_by(source_id: event[:source_id], source_type: "Meetup")
+      if my_event.new_record? || my_event_updated?(my_event, event)
         my_event.update!(event)
       end
     end
   end
 
-  def my_event_updated?(my_event)
-    my_event[:source_updated] < event[:source_updated] 
+  def my_event_updated?(my_event, event)
+    my_event[:source_updated] < event[:source_updated]
   end
 
- private 
-	
+ private
+
   def group_names
-    operationcode_data.map { |group| group["urlname"]  }
+    operationcode_data.map { |group| group["urlname"] }
   end
 
   def event_duration(event)
-    if event['duration'].present? 
+    if event['duration'].present?
       event['duration'] / 1000
     else
       0
@@ -68,7 +68,7 @@ class Meetup
   def return_value_for(response)
     if response.code.to_i == 200
       response.parsed_response
-    else 
+    else
       raise "Error fetching data from Meetup API"
     end
   end
@@ -77,17 +77,17 @@ class Meetup
     start_date = Time.at(event['time'] / 1000)
     {
       source_id:event['id'],
-      source_updated: Time.at(event['updated']).to_datetime,
+      source_updated: Time.at(event['updated']).to_datetime, #Look into this further. giving weird date
       name:event['name'],
       description: event['description'],
       url:event['link'],
       start_date:start_date.to_datetime,
-      end_date: (start_date + event_duration(event)).to_datetime,  #end time is not provided, only start time and duration. 
+      end_date: (start_date + event_duration(event)).to_datetime,  #end time is not provided, only start time and duration.
       address1:event['venue']['address_1'],
       address2:event['venue']['address_2'],
       city: event['venue']['city'],
       state: event['venue']['state'],
-      zip: event['venue']['zip'],  
+      zip: event['venue']['zip'],
       group: event['group']['name'],
       source_type: "Meetup"
     }
