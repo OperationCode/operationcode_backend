@@ -40,15 +40,15 @@ class Meetup
 
   def add_events_to_database!
     event_details_by_group.each do |event|
-      my_event = Event.find_or_initialize_by(source_id: event[:source_id], source_type: "Meetup")
-      if my_event.new_record? || my_event_updated?(my_event, event)
-        my_event.update!(event)
+      saved_event = Event.find_or_initialize_by(source_id: event[:source_id], source_type: "Meetup")
+      if saved_event.new_record? || saved_event_updated?(saved_event, event)
+        saved_event.update!(event)
       end
     end
   end
 
-  def my_event_updated?(my_event, event)
-    my_event[:source_updated] < event[:source_updated]
+  def saved_event_updated?(saved_event, event)
+    saved_event[:source_updated] < event[:source_updated]
   end
 
  private
