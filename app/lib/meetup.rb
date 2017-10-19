@@ -75,16 +75,17 @@ class Meetup
 
   def details_for(event)
     start_date = Time.at(event['time'] / 1000)
+
     {
-      source_id:event['id'],
+      source_id: event['id'],
       source_updated: Time.at(event['updated']).to_datetime, #Look into this further. giving weird date
-      name:event['name'],
+      name: event['name'],
       description: event['description'],
-      url:event['link'],
-      start_date:start_date.to_datetime,
+      url: event['link'],
+      start_date: start_date.to_datetime,
       end_date: (start_date + event_duration(event)).to_datetime,  #end time is not provided, only start time and duration.
-      address1:event['venue']['address_1'],
-      address2:event['venue']['address_2'],
+      address1: event['venue']['address_1'],
+      address2: event['venue']['address_2'],
       city: event['venue']['city'],
       state: event['venue']['state'],
       zip: event['venue']['zip'],
