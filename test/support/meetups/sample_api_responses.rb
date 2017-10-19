@@ -314,4 +314,5 @@ def group_endpoint_parsed_response
     }
     }
   ]
+  ].as_json
 end
