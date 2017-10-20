@@ -2,6 +2,7 @@ version: '2'
 services:
   web:
     build: .
+    entrypoint: ["lib/docker-entrypoint.sh"]
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/app
@@ -41,4 +42,3 @@ services:
       - redis
     env_file:
       - .env
-
