@@ -15,11 +15,9 @@ class Api::V1::MentorsControllerTest < ActionDispatch::IntegrationTest
     user = create(:user)
     headers = authorization_headers(user)
     mentor = create(:mentor)
-    squad = create(:squad, leader: mentor)
 
     get api_v1_mentor_url(mentor), headers: headers, as: :json
     assert_equal mentor.bio, response.parsed_body['bio']
-    assert_equal squad.id, response.parsed_body['led_squads'].first['id']
   end
 
 end

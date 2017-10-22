@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get '/users/by_location', to: 'users#by_location'
       post '/users/profile/verify', to: 'users#verify'
 
-      resources :code_schools do 
+      resources :code_schools do
         resources :locations
       end
       resources :scholarships, only: [:index, :show]
@@ -24,11 +24,6 @@ Rails.application.routes.draw do
       end
       resources :services, only: :index
       resources :slack_users, only: :create
-      resources :squads, only: [:index, :create, :show] do
-        member do
-          post 'join'
-        end
-      end
       resources :tags, only: :index
       resources :team_members, only: [:index, :create, :update, :destroy]
       resources :users, only: [:index, :create]

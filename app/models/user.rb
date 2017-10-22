@@ -26,7 +26,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many :requests
-  has_many :led_squads, class_name: 'Squad', foreign_key: :leader_id
   has_many :votes
   has_many :scholarship_applications
 
