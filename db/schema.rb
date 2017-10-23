@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921055331) do
+ActiveRecord::Schema.define(version: 20171022215418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,40 +113,6 @@ ActiveRecord::Schema.define(version: 20170921055331) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "squad_members", force: :cascade do |t|
-    t.integer  "squad_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["squad_id", "user_id"], name: "index_squad_members_on_squad_id_and_user_id", unique: true, using: :btree
-    t.index ["squad_id"], name: "index_squad_members_on_squad_id", using: :btree
-    t.index ["user_id"], name: "index_squad_members_on_user_id", using: :btree
-  end
-
-  create_table "squad_mentors", force: :cascade do |t|
-    t.integer  "squad_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["squad_id", "user_id"], name: "index_squad_mentors_on_squad_id_and_user_id", unique: true, using: :btree
-    t.index ["squad_id"], name: "index_squad_mentors_on_squad_id", using: :btree
-    t.index ["user_id"], name: "index_squad_mentors_on_user_id", using: :btree
-  end
-
-  create_table "squads", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "leader_id"
-    t.integer  "minimum"
-    t.integer  "maximum"
-    t.string   "skill_level"
-    t.text     "activities"
-    t.text     "end_condition"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["leader_id"], name: "index_squads_on_leader_id", using: :btree
-  end
-
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
@@ -239,10 +205,6 @@ ActiveRecord::Schema.define(version: 20170921055331) do
   add_foreign_key "requests", "users"
   add_foreign_key "scholarship_applications", "scholarships"
   add_foreign_key "scholarship_applications", "users"
-  add_foreign_key "squad_members", "squads"
-  add_foreign_key "squad_members", "users"
-  add_foreign_key "squad_mentors", "squads"
-  add_foreign_key "squad_mentors", "users"
   add_foreign_key "votes", "resources"
   add_foreign_key "votes", "users"
 end

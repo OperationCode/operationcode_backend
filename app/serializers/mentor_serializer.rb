@@ -1,4 +1,4 @@
 class MentorSerializer < UserSerializer
-  attributes :bio, :led_squads
+  attributes :bio
 
 end
