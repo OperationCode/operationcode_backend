@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
+      get 'git_hub_statistics/averages', to: 'git_hub_statistics#oc_averages'
+      get 'git_hub_statistics/totals', to: 'git_hub_statistics#oc_totals'
+      get 'git_hub_statistics/by_repository', to: 'git_hub_statistics#totals_by_repository'
+      get 'git_hub_statistics/for_user', to: 'git_hub_statistics#totals_for_user'
+      get 'git_hub_statistics/user_in_repository', to: 'git_hub_statistics#totals_for_user_in_repository'
+
       get '/status', to: 'status#all'
       get '/status/protected', to: 'status#protected'
 
