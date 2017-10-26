@@ -86,6 +86,20 @@ class MeetupTest < ActiveSupport::TestCase
     Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(group_endpoint_response)
     Meetup.stubs(:get).with("/#{url}/events", options).returns(event_endpoint_response)
 
+    attributes = create_and_save_old_event
+
+    Meetup.new.add_events_to_database!
+
+    assert_equal 3, Event.count #Duplicate event was not saved
+    assert_equal Event.first[:source_updated], attributes[:source_updated]
+    assert_equal Event.first[:name], attributes[:name]
+  end
+
+  def options
+    Meetup.new.options
+  end
+
+  def create_and_save_old_event
     # create a Event record from first item in `event_endpoint_parsed_response`
     assert_equal 0, Event.count
     meetup = Meetup.new
@@ -100,19 +114,9 @@ class MeetupTest < ActiveSupport::TestCase
     event.name = old_name
     event.save
     event.reload
-
     assert_equal 1, Event.count
     assert_equal Event.first[:source_updated], old_date
     assert_equal Event.first[:name], old_name
-
-    Meetup.new.add_events_to_database!
-
-    assert_equal 3, Event.count #Duplicate event was not saved
-    assert_equal Event.first[:source_updated], attributes[:source_updated]
-    assert_equal Event.first[:name], attributes[:name]
-  end
-
-  def options
-    Meetup.new.options
+    attributes
   end
 end

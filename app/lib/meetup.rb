@@ -47,11 +47,12 @@ class Meetup
     end
   end
 
+ private
+
+
   def saved_event_updated?(saved_event, event)
     saved_event[:source_updated] < event[:source_updated]
   end
-
- private
 
   def group_names
     operationcode_data.map { |group| group["urlname"] }

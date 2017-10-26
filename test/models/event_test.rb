@@ -2,21 +2,21 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
 
-  ##Testing the validations 
-  def setup 
+  ##Testing the validations
+  def setup
     @event = build :event, :updated_today
   end
 
-  test "should be valid" do 
+  test "should be valid" do
   	#Current event as described in setup should be valid
-  	assert @event.valid? 
+  	assert @event.valid?
   end
 
   test "name should be present" do
-  	#Confirm empty event name is not valid 
+  	#Confirm empty event name is not valid
   	@event.name = "    "
   	assert_not @event.valid?
-  end 
+  end
 
   test "start_date should be present" do
   	@event.start_date = "   "
@@ -30,11 +30,6 @@ class EventTest < ActiveSupport::TestCase
 
   test "city should be present" do
   	@event.city = " "
-  	assert_not @event.valid?
-  end
-
-  test "state should be present" do
-  	@event.state = " "
   	assert_not @event.valid?
   end
 
