@@ -13,41 +13,38 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
         [
             {
-                "id": 112,
-                "name": "Wyncode Academy",
-                "url": "http://wyncode.co",
-                "logo": "https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/wyncode.jpg",
-                "full_time": true,
-                "hardware_included": false,
-                "has_online": false,
-                "online_only": false,
-                "created_at": "2017-09-21T05:48:50.056Z",
-                "updated_at": "2017-09-21T05:48:50.056Z",
-                "notes": null
+                "name"=>"Galvanize",
+                "url"=>"https://new.galvanize.com", "logo"=>"https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/galvanize.jpg",
+                "full_time"=>true,
+                "hardware_included"=>false,
+                "has_online"=>false,
+                "online_only"=>false,
+                "locations"=> [
+                      {
+                          "va_accepted"=>false,
+                          "address1"=>"44 Tehama Street",
+                          "city"=>"San Francisco",
+                          "state"=>"CA",
+                          "zip"=>94015
+                      },
+                      {
+                          "va_accepted"=>true,
+                          "address1"=>"1062 Delaware Street",
+                          "city"=>"Denver",
+                          "state"=>"CO",
+                          "zip"=>80204
+                      },
+                  ]
             },
-            {
-                "id": 113,
-                "name": "Nashville Software School",
-                "url": "http://nashvillesoftwareschool.com/",
-                "logo": "https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/nss.jpg",
-                "full_time": true,
-                "hardware_included": false,
-                "has_online": false,
-                "online_only": false,
-                "created_at": "2017-09-21T05:48:50.108Z",
-                "updated_at": "2017-09-21T05:48:50.108Z",
-                "notes": null
-            }
         ]
-        
-        
+
 ## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
-+ Parameters 
-  
++ Parameters
+
   + name (string, required) - The CodeSchool's name
   + url (string, required) - The CodeSchool's url for homepage
   + logo (string, required) - The CodeSchool's logo url
-  + full_time (boolean, required) - Are the CodeSchool's courses full time 
+  + full_time (boolean, required) - Are the CodeSchool's courses full time
   + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
   + has_online (boolean, required) - Does the CodeSchool have an online component
   + online_only (boolean, required) - Is the CodeSchool online only?
@@ -62,7 +59,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
               Authorization: Bearer Access-Token
 
       + Body
-      
+
                   {
                       "code_school": {
                       "name": "CoderSchool",
@@ -73,7 +70,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                       "has_online": "true",
                       "online_only": "false"
                       }
-                  } 
+                  }
 
   + Response 201 (application/json)
 
@@ -88,12 +85,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
           {
               errors: "Some error message"
           }
-          
+
 ## CodeSchool | Show or Delete [/api/v1/code_schools/{code_school_id}]
 + Parameters
 
     + code_school_id (number) - ID of the CodeSchool in the form of an integer
-  
+
 ### Get an Existing CodeSchool [GET]
 
 + Response 200 (application/json)
@@ -117,7 +114,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             error: 'No such record'
         }
-              
+
 ### Delete an Existing CodeSchool [DELETE]
 
   + Request (application/json)
@@ -150,12 +147,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 ## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
 
-+ Parameters 
-    
++ Parameters
+
     + name (string, required) - The CodeSchool's name
     + url (string, required) - The CodeSchool's url for homepage
     + logo (string, required) - The CodeSchool's logo url
-    + full_time (boolean, required) - Are the CodeSchool's courses full time 
+    + full_time (boolean, required) - Are the CodeSchool's courses full time
     + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
@@ -185,6 +182,160 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             {
                 status: 200
             }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## GitHub Statistic | OC Averages [/api/v1/git_hub_statistics/averages{?start_date,end_date}]
+
++ Parameters
+
+    + start_date (string, optional) - Sets the start date for the query, regarding the statistic's "completed on" value (i.e. 2016-10-21).  Defaults to '1970-01-01'
+    + end_date (string, optional) - Sets the end date for the query, regarding the statistic's "completed on" value (i.e. 2016-11-21).  Defaults to 'Date.today'
+
+### Averages Across All Operation Code Repositories [GET]
+
++ Response 200 (application/json)
+
+        {
+            "average_commits_per_user": 25,
+            "average_closed_prs_per_user": 3,
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## GitHub Statistic | OC Totals [/api/v1/git_hub_statistics/totals{?start_date,end_date}]
+
++ Parameters
+
+    + start_date (string, optional) - Sets the start date for the query, regarding the statistic's "completed on" value (i.e. 2016-10-21).  Defaults to '1970-01-01'
+    + end_date (string, optional) - Sets the end date for the query, regarding the statistic's "completed on" value (i.e. 2016-11-21).  Defaults to 'Date.today'
+
+### Totals Across All Operation Code Repositories [GET]
+
++ Response 200 (application/json)
+
+        {
+            "total_repositories": 4,
+            "total_closed_pull_requests": 144,
+            "total_closed_issues": 50,
+            "total_commits": 475,
+            "total_users": 31,
+            "total_additions": 43848,
+            "total_deletions": 35676
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## GitHub Statistic | Totals by Repository [/api/v1/git_hub_statistics/by_repository{?start_date,end_date}]
+
++ Parameters
+
+    + start_date (string, optional) - Sets the start date for the query, regarding the statistic's "completed on" value (i.e. 2016-10-21).  Defaults to '1970-01-01'
+    + end_date (string, optional) - Sets the end date for the query, regarding the statistic's "completed on" value (i.e. 2016-11-21).  Defaults to 'Date.today'
+
+### Totals Broken Out Repository [GET]
+
++ Response 200 (application/json)
+
+        {
+            "operationcode": {
+                "total_closed_pull_requests": 2,
+                "total_closed_issues": 1,
+                "total_commits": 8,
+                "total_users": 2,
+                "total_additions": 3,
+                "total_deletions": 3
+            },
+            "operationcode_backend": {
+                "total_closed_pull_requests": 32,
+                "total_closed_issues": 10,
+                "total_commits": 122,
+                "total_users": 13,
+                "total_additions": 5942,
+                "total_deletions": 359
+            },
+            "operationcode_frontend": {
+                "total_closed_pull_requests": 100,
+                "total_closed_issues": 30,
+                "total_commits": 334,
+                "total_users": 21,
+                "total_additions": 37806,
+                "total_deletions": 35127
+            },
+            "operationcode_bot": {
+                "total_closed_pull_requests": 10,
+                "total_closed_issues": 3,
+                "total_commits": 11,
+                "total_users": 6,
+                "total_additions": 97,
+                "total_deletions": 187
+            }
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## GitHub Statistic | Totals for User [/api/v1/git_hub_statistics/for_user{?git_hub_login,start_date,end_date}]
+
++ Parameters
+
+    + git_hub_login (string, required) - The GitHub login for the given user (i.e. "hollomancer")
+    + start_date (string, optional) - Sets the start date for the query, regarding the statistic's "completed on" value (i.e. 2016-10-21).  Defaults to '1970-01-01'
+    + end_date (string, optional) - Sets the end date for the query, regarding the statistic's "completed on" value (i.e. 2016-11-21).  Defaults to 'Date.today'
+
+### Totals For A Given User [GET]
+
++ Response 200 (application/json)
+
+        {
+            "total_closed_pull_requests": 23,
+            "total_closed_issues": 4,
+            "total_commits": 11,
+            "total_additions": 1248,
+            "total_deletions": 408
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## GitHub Statistic | Totals for a User in a Repository [/api/v1/git_hub_statistics/user_in_repository{?git_hub_login,repository,start_date,end_date}]
+
++ Parameters
+
+    + git_hub_login (string, required) - The GitHub login for the given user (i.e. "hollomancer")
+    + repository (string, required) - The name of the GitHub repository (i.e. "operationcode_frontend")
+    + start_date (string, optional) - Sets the start date for the query, regarding the statistic's "completed on" value (i.e. 2016-10-21).  Defaults to '1970-01-01'
+    + end_date (string, optional) - Sets the end date for the query, regarding the statistic's "completed on" value (i.e. 2016-11-21).  Defaults to 'Date.today'
+
+### Totals For A Given User in a Given Repository [GET]
+
++ Response 200 (application/json)
+
+        {
+            "total_closed_pull_requests": 23,
+            "total_closed_issues": 4,
+            "total_commits": 11,
+            "total_additions": 1248,
+            "total_deletions": 408
+        }
 
 + Response 422 (application/json)
 
@@ -255,7 +406,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + tags (string, optional) - Comma-separated list of tags to filter the search results on (i.e. "books, videos")
 
 + Response 200 (application/json)
-            
+
         [
             {
                 "id": 1,

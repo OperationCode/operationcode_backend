@@ -31,12 +31,14 @@ gem 'sidekiq'
 gem 'pry-rails'
 
 group :development, :test do
+  gem 'awesome_print', '~> 1.8'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'mocha'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'awesome_print', '~> 1.8'
+  gem 'mocha'
+  gem 'vcr', '~> 3.0', '>= 3.0.3'
+  gem 'webmock', '~> 3.0', '>= 3.0.1'
 end
 
 group :development do

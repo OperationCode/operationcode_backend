@@ -35,6 +35,10 @@ db_create:
 db_migrate:
 	docker-compose run ${RAILS_CONTAINER} rake db:migrate
 
+.PHONY: db_status
+db_status:
+	docker-compose run ${RAILS_CONTAINER} rake db:migrate:status
+
 .PHONY: db_rollback
 db_rollback:
 	docker-compose run ${RAILS_CONTAINER} rake db:rollback
