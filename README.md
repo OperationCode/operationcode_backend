@@ -173,13 +173,17 @@ High level overview of upcoming Operation Code goals.  This is the source of upc
 
 We use [Apiary](https://apiary.io/) for our API documentation, API mocking server, etc.
 
+The API blueprint file is at `apiary.apib`, and the documentation itself is at http://docs.operationcodeapi.apiary.io/
+
 Please ensure that any PRs that change the behavior of the API are updated in the documentation as well. To do so:
 
 - Create a free account at [apiary.io](https://apiary.io/)
-- Use [their editor](https://help.apiary.io/tools/apiary-editor/) to confirm that all of these changes do not create any **semantic issues**
+- Make your additions in the repository's `apiary.apib` file in your text editor
+- Cut & paste the *whole* file into [the apiary editor](https://help.apiary.io/tools/apiary-editor/) to confirm that all of these changes do not create any **semantic issues**
+- Repeat until there are no semantic errors
+- Commit the `apiary.apib` file as part of a normal commit in your pull request
 - The API endpoints are alphabetized, so all additions will need to be placed accordingly
 
-The API blueprint file is at `apiary.apib`, and the documentation itself is at http://docs.operationcodeapi.apiary.io/
 
 ## Submitting Your Changes
 * When you have completed work on your feature branch, you are ready to submit a [pull request](https://help.github.com/articles/using-pull-requests/).
