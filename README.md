@@ -15,12 +15,53 @@ Happy hacking!
 So, you want to learn how to program? Contributing to Operation Code is a great place to get started. This document will help you march from zero to deploying code in no time!
 
 ## Table of Contents
-1. [Quickstart](#quickstart)
-2. [Setting Up Your Environment](#setting-up-your-environment)
-3. [Finding an Issue](#finding-an-issue)
-4. [Working on Your Issue](#working-on-your-issue)
-5. [Submitting Your Changes](#submitting-your-changes)
-6. [Code of Conduct](#code-of-conduct)
+1. [Technologies Used](#operation-code-technologies)
+2. [Quickstart](#quickstart)
+3. [Setting Up Your Environment](#setting-up-your-environment)
+4. [Finding an Issue](#finding-an-issue)
+5. [Working on Your Issue](#working-on-your-issue)
+6. [Submitting Your Changes](#submitting-your-changes)
+7. [Code of Conduct](#code-of-conduct)
+
+## Operation Code Technologies
+
+The Operation Code site is comprised of a Rails API backend, and a React frontend.
+
+#### What is a frontend?
+
+When you visit our website you're interacting with two systems, a frontend application and a backend application. The frontend application is responsible for displaying images, text and data on our web pages.
+
+Frontend applications are usually written using a combination of HTML, CSS, and Javascript and utilize one or more frameworks such as Angular, Backbone, Vue, and React.
+
+https://operationcode.org uses React and can be viewed at https://github.com/OperationCode/operationcode_frontend.
+
+#### What is a backend?
+
+The backend (where you are now) is responsible for:
+
+- exchanging data with the frontend via custom API endpoints
+- running various background jobs like inviting new users to Slack, or signing them up for our newsletter
+- interacting with third party services like SendGrid, GitHub and ID.me
+- validating the integrity of our data
+- authentication and security protocols
+- and more
+
+As a contributor to the https://operationcode.org backend, you will have the opportunity to work with the following technologies, services, and popular gems:
+
+- [Ruby](https://www.ruby-lang.org/en/)
+- [Ruby on Rails](http://rubyonrails.org/)
+- [Redis](https://redis.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
+- [GitHub](https://github.com/)
+- [Travis CI](https://travis-ci.org/)
+- [Code Climate](https://codeclimate.com/)
+- [Apiary.io](https://apiary.io/)
+- [Devise](https://github.com/plataformatec/devise)
+- [Geocoder](https://github.com/alexreisner/geocoder)
+- [ActsAsTaggableOn](https://github.com/mbleigh/acts-as-taggable-on)
+- [JWT](https://github.com/jwt/ruby-jwt)
+- [HTTParty](https://github.com/jnunemaker/httparty)
 
 ## Quickstart
 1. [Setting Up Your Environment](#setting-up-your-environment)
