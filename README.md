@@ -173,7 +173,7 @@ High level overview of upcoming Operation Code goals.  This is the source of upc
 
 We use [Apiary](https://apiary.io/) for our API documentation, API mocking server, etc.
 
-The API blueprint file is located at [/operationcode_backend/apiary.apib](https://github.com/OperationCode/operationcode_backend/blob/master/apiary.apib), and our live API documentation itself is at http://docs.operationcodeapi.apiary.io/
+The API blueprint file is located at [/operationcode_backend/apiary.apib](https://github.com/OperationCode/operationcode_backend/blob/master/apiary.apib), and our live API documentation itself is located at http://docs.operationcodeapi.apiary.io/
 
 Please ensure that any PRs that change the behavior of the API are updated in the documentation as well. To do so:
 
