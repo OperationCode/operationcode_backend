@@ -49,7 +49,6 @@ class Meetup
 
  private
 
-
   def saved_event_updated?(saved_event, event)
     saved_event[:source_updated] < event[:source_updated]
   end

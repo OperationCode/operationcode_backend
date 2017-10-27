@@ -189,6 +189,35 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Event | Collection [/api/v1/events]
+
+### List all Events [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 25,
+                "name": "Code and Coffee",
+                "description": "<p>Have you always wanted to try programming? Are you just getting started and have questions? Or maybe you have some experience under your belt and want to chat with people that get what you're talking about.</p> <p>Join us at Between Friends Coffeshop &amp; Cafe! Drinks and treats provided! Make sure to RSVP so we how many people to prepare for :)</p> ",
+                "url": "https://www.meetup.com/MilSpouseCoders-Robins-AFB/events/243869029/",
+                "start_date": "2017-10-28T00:00:00.000Z",
+                "end_date": "2017-10-28T00:00:00.000Z",
+                "address1": "1080 Georgia 96",
+                "address2": null,
+                "city": "Warner Robins",
+                "state": null,
+                "zip": null,
+                "scholarship_available": null,
+                "created_at": "2017-10-16T15:18:12.711Z",
+                "updated_at": "2017-10-16T15:18:12.711Z",
+                "source_id": "243869029",
+                "source_type": "Meetup",
+                "source_updated": "49724-07-09T02:30:00.000Z",
+                "group": "MilSpouseCoders - Robins AFB"
+            }
+        ]
+
 ## GitHub Statistic | OC Averages [/api/v1/git_hub_statistics/averages{?start_date,end_date}]
 
 + Parameters
