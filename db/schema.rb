@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 20171022215418) do
     t.boolean  "scholarship_available"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.string   "source_id"
+    t.string   "source_type"
+    t.datetime "source_updated"
+    t.string   "group"
+    t.index ["source_id"], name: "index_events_on_source_id", using: :btree
+    t.index ["source_type"], name: "index_events_on_source_type", using: :btree
   end
 
   create_table "git_hub_statistics", force: :cascade do |t|

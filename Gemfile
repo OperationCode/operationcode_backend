@@ -28,6 +28,7 @@ gem 'redis', '~> 3.0'
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
+gem 'pry-rails'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'
@@ -47,7 +48,7 @@ group :development do
 end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
