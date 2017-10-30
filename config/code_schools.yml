@@ -787,3 +787,18 @@
       city: San Francisco
       state: CA
       zip: 94110
+
+- name: Cincy Code IT Bootcamps
+  url: https://maxtrain.com/career/
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/cincy_code_it_bootcamps.jpg
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: false
+  locations:
+    - va_accepted: true
+      address1: 4900 Parkway Dr
+      address2: Suite 160
+      city: Cincinnati
+      state: OH
+      zip: 45040
