@@ -2,4 +2,6 @@
 
 set -e
 
-exec bundle exec rake db:migrate
+bundle exec rake db:migrate || bundle exec rake db:setup
+
+exec bundle exec "$@"
