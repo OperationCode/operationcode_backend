@@ -16,7 +16,7 @@ module Api
       end
 
       def show
-        school = CodeSchool.find_by(id: params[:id])
+        school = CodeSchool.find(params[:id])
         if school
           render json: school
         else
