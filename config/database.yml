@@ -21,7 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   user: postgres
-  host: operationcode-psql
+  host: <%= ENV['POSTGRES_HOST'].present? ? ENV['POSTGRES_HOST'] : 'operationcode-psql' %>
   password: <%= OperationCode.fetch_secret_with name: :postgres_password %>
 
 development:
@@ -34,5 +34,5 @@ test:
 
 production:
   <<: *default
-  host: operationcode-psql-postgresql
+  host: <%= ENV['POSTGRES_HOST'].present? ? ENV['POSTGRES_HOST'] : 'operationcode-psql-postgresql' %>
   database: operationcode_production
