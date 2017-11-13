@@ -824,7 +824,7 @@
       city: Co Springs
       state: CO
       zip: 80903
-    - va_accepted: true
+    - va_accepted: false
       address1: 1915 N. Ave Republica de Cuba
       city: Tampa
       state: FL
