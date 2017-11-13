@@ -810,6 +810,7 @@
   hardware_included: false
   has_online: false
   online_only: false
+  notes: Not a traditional coding bootcamp. SecureSet focuses on security training relevant to the IT industry.
   email: academy@secureset.com
   locations:
     - va_accepted: true
