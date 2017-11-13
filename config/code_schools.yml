@@ -802,3 +802,30 @@
       city: Cincinnati
       state: OH
       zip: 45040
+
+- name: SecureSet
+  url: https://secureset.com/
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/secureset.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  notes: Offers full-time and part-time evening courses.
+  locations:
+    - va_accepted: true
+      address1: 2228 Blake Street
+      address2: Suite 100
+      city: Denver
+      state: CO
+      zip: 80205
+    - va_accepted: true
+      address1: 523 S Cascade Ave
+      address2: Suite 140
+      city: Co Springs
+      state: CO
+      zip: 80903
+    - va_accepted: true
+      address1: 1915 N. Ave Republica de Cuba
+      city: Tampa
+      state: FL
+      zip: 33605
