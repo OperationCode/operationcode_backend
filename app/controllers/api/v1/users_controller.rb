@@ -11,7 +11,6 @@ module Api
 
       def create
         user = User.new(user_params)
-
         if user.save
           UserMailer.welcome(user).deliver unless user.invalid?
           sign_in(user)
@@ -33,7 +32,9 @@ module Api
         Rails.logger.info "************ got to create = #{params.inspect}"
           @user = User.from_social(params[:user])
           Rails.logger.info "************ here!"
-          if @user.persisted?
+          Rails.logger.info "************ user is = #{@user.email}"
+          if @user.save
+            UserMailer.welcome(@user).deliver unless @user.invalid?
             Rails.logger.info "************ success!"
             Rails.logger.info "************ resource = #{@user.zip}"
             #sign_in_and_redirect @user, event: :authentication
