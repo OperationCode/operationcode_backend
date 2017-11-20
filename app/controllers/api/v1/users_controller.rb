@@ -29,6 +29,30 @@ module Api
         end
       end
 
+      def social
+        Rails.logger.info "************ got to create = #{params.inspect}"
+          @user = User.from_social(params[:user])
+          Rails.logger.info "************ here!"
+          if @user.persisted?
+            Rails.logger.info "************ success!"
+            Rails.logger.info "************ resource = #{@user.zip}"
+            #sign_in_and_redirect @user, event: :authentication
+            #resource = warden.authenticate!(params)
+            sign_in @user, event: :authenticate_user
+            @redirect_path ||= '/additional-info'
+            render json: {
+              token: @user.token,
+              user: UserSerializer.new(current_user),
+              redirect_to: @redirect_path
+            }
+            #redirect_to new_user_session_url
+            #sign_in_and_redirect @user, event: :authentication
+          else
+            Rails.logger.info "************ failure"
+            redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
+          end
+      end
+
       def verify
         verified = IdMe.verify! params[:access_token]
 

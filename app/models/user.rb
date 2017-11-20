@@ -98,6 +98,20 @@ class User < ApplicationRecord
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
   end
 
+  def self.from_social(data)
+    Rails.logger.info "************ email is = #{data[:email]}"
+    user = User.where(email: data[:email]).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+     unless user
+         user = User.create(first_name: data[:first_name],
+            last_name: data[:last_name],
+            email: data[:email]
+         )
+     end
+     user
+  end
+
   private
 
   def upcase_state
