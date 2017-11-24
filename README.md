@@ -142,6 +142,8 @@ High level overview of upcoming Operation Code goals.  This is the source of upc
 
 ## Working On Your Issue
 
+* Please first **read** Operation Code's [guidelines for working an issue](https://github.com/OperationCode/operationcode/blob/master/CONTRIBUTING.md#guidelines-for-working-an-issue)
+
 * From the forked and cloned repository on your environment, you can now create a [feature branch](http://nvie.com/posts/a-successful-git-branching-model/). It is a good idea to name your branch after the issue it is attached to.
 
    ```bash
