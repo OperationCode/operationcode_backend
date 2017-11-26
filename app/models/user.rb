@@ -107,16 +107,18 @@ class User < ApplicationRecord
   def self.from_social(data)
     Rails.logger.info "************ email is = #{data[:email]}"
     user = User.where(email: data[:email]).first
-
+    path ||= '/profile'
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
          user = User.new(first_name: data[:first_name],
             last_name: data[:last_name],
             email: data[:email],
-            password: Devise.friendly_token[0,20]
+            zip: data[:zip],
+            password: password[:password]
          )
+         path ||= '/signup-info'
     end
-    user
+    arr = [user, path]
   end
 
   private
