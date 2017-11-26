@@ -28,9 +28,25 @@ module Api
         end
       end
 
+      def exist
+        user = params[:user]
+        Rails.logger.info "************ exist is = #{user[:email]}"
+        user = User.where(email: user[:email]).first
+        @redirect_path ||= '/profile' #change this to actually redirect to the social login function
+        unless user
+             @redirect_path ||= '/additional-info'
+        end
+        render json: {
+          redirect_to: @redirect_path
+        }
+      end
+
       def social
         Rails.logger.info "************ got to create = #{params.inspect}"
-          @user = User.from_social(params[:user])
+          path = ''
+          arr = User.from_social(params[:user])
+          @user = arr[0]
+          @redirect_path = arr[1]
           Rails.logger.info "************ here!"
           Rails.logger.info "************ user is = #{@user.email}"
           if @user.save
@@ -40,12 +56,12 @@ module Api
             #sign_in_and_redirect @user, event: :authentication
             #resource = warden.authenticate!(params)
             sign_in @user, event: :authenticate_user
-            @redirect_path ||= '/additional-info'
             render json: {
               token: @user.token,
               user: UserSerializer.new(current_user),
               redirect_to: @redirect_path
             }
+            Rails.logger.info "************ path: #{@redirect_path}"
             #redirect_to new_user_session_url
             #sign_in_and_redirect @user, event: :authentication
           else

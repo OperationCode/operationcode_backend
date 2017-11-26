@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get '/users/by_location', to: 'users#by_location'
       post '/users/profile/verify', to: 'users#verify'
       post '/users/social', to: 'users#social'
+      post '/users/exist', to: 'users#exist'
 
       resources :code_schools do
         resources :locations
