@@ -102,7 +102,7 @@ class User < ApplicationRecord
     Rails.logger.info "************ email is = #{data[:email]}"
     user = User.where(email: data[:email]).first
 
-    path ||= '/profile'
+    path = '/profile'
     unless user
       user = User.new(first_name: data[:first_name],
         last_name: data[:last_name],
@@ -110,7 +110,7 @@ class User < ApplicationRecord
         zip: data[:zip],
         password: password[:password]
       )
-      path ||= '/signup-info'
+      path = '/signup-info'
     end
     arr = [user, path]
   end

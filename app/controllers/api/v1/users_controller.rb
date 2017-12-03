@@ -33,11 +33,12 @@ module Api
         userData = params[:user]
         Rails.logger.info "************ exist is = #{userData[:email]}"
         user = User.where(email: userData[:email]).first
-
-        @redirect_path ||= '/profile' #change this to actually redirect to the social login function
+        Rails.logger.info "************ user is = #{user}"
+        @redirect_path = '/profile' #change this to actually redirect to the social login function
         unless user
-             @redirect_path ||= '/additional-info'
+             @redirect_path = '/additional_info'
         end
+        Rails.logger.info "!!!!!!!!!!!! path is #{@redirect_path}"
         render json: {
           redirect_to: @redirect_path
         }
@@ -51,7 +52,7 @@ module Api
           @redirect_path = arr[1]
           Rails.logger.info "************ here!"
           Rails.logger.info "************ user is = #{@user.email}"
-          
+
           if @user.save
             UserMailer.welcome(@user).deliver unless @user.invalid?
             Rails.logger.info "************ success!"
