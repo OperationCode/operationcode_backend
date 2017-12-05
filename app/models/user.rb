@@ -110,14 +110,16 @@ class User < ApplicationRecord
 
     path = '/profile'
     unless user
+      Rails.logger.info "!!!!!! path is = #{path}"
       user = User.new(first_name: data[:first_name],
         last_name: data[:last_name],
         email: data[:email],
         zip: data[:zip],
-        password: password[:password]
+        password: data[:password]
       )
       path = '/signup-info'
     end
+
     arr = [user, path]
   end
 
