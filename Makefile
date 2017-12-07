@@ -27,7 +27,7 @@ build:
 console:
 	docker-compose run ${RAILS_CONTAINER} rails console
 
-.PHONY: db_create
+.PHONY: routes
 routes:
 	docker-compose run ${RAILS_CONTAINER} rake routes
 
