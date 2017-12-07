@@ -110,8 +110,8 @@ class User < ApplicationRecord
   # @return [Json] A serialied JSON object derived from current_user
   # @return [Token] A token that the frontend stores to know the user is logged in
   # @return [user, path] The user and the redirect path, in an array
+  # @see https://github.com/zquestz/omniauth-google-oauth2#devise
   #
-
   def self.from_social(data)
     Rails.logger.info "************ email is = #{data[:email]}"
     user = User.find_by(email: data[:email])

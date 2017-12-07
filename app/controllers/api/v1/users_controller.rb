@@ -35,8 +35,8 @@ module Api
       # For example: { user: { email: "john@example.com" } }
       #
       # @return [String] A string of the user's redirect_to path
+      # @see https://github.com/zquestz/omniauth-google-oauth2#devise
       #
-
       def exist
         user = User.find_by(email: params[:user][:email])
         Rails.logger.info "************ user is = #{user}"
@@ -55,8 +55,8 @@ module Api
       # @return [String] A string of the user's redirect_to path
       # @return [Json] A serialied JSON object derived from current_user
       # @return [Token] A token that the frontend stores to know the user is logged in
+      # @see https://github.com/OperationCode/operationcode_backend/blob/master/app/controllers/api/v1/sessions_controller.rb#L8-L20
       #
-
       def social
         Rails.logger.info "************ got to create = #{params.inspect}"
           path = ''
