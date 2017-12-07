@@ -21,6 +21,49 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  #test "social login can log in a user" do
+  #  params = { user: { first_name: 'new first name',last_name: 'new last name',email: 'test@email.com',zip: '12345',password: 'Password'} }
+  #  get api_v1_users_by_location_url(params), headers: @headers, as: :json
+  #  assert_equal({ 'user_count' => 2 }, response.parsed_body)
+  #  assert_equal 200, response.status
+  #end
+
+  #test "social login can register and log in a user" do
+
+  #end
+
+  test "exist returns /profile if the user is already registered" do
+    params = { user: { email: 'test@email.com'} }
+    post api_v1_users_exist, params: params, as: :json
+    json = response.parsed_body
+    assert_equal '/profile', json['redirect_to']
+  end
+
+  test "exist returns /social_login if the user is not registered" do
+    params = { user: { email: 'test@email.com'} }
+    post api_v1_users_exist, params: params, as: :json
+    json = response.parsed_body
+    assert_equal '/social_login', json['redirect_to']
+  end
+
+  test "social returns token, user and redirect path /profile when the user is already registered" do
+    params = { user: { first_name: 'new first name',last_name: 'new last name',email: 'test@email.com',zip: '12345',password: 'Password'} }
+    post api_v1_users_social, params: params, as: :json
+    json = response.parsed_body
+    assert_equal '/profile', json['redirect_to']
+    assert_equal @user.id, json['user']['id']
+    assert_equal @user.first_name, json['user']['first_name']
+    assert_equal @user.last_name, json['user']['last_name']
+    refute_nil json['token']
+  end
+
+  test "social returns token, user and redirect path /social-login when the user is not registered" do
+    params = { user: { first_name: 'new first name',last_name: 'new last name',email: 'test@email.com',zip: '12345',password: 'Password'} }
+    post api_v1_users_social, params: params, as: :json
+    json = response.parsed_body
+    assert_equal '/signup-info', json['redirect_to']
+  end
+
   test ":by_location returns User.count of users located in the passed in location" do
     tom = create :user
     sam = create :user

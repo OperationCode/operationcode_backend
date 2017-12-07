@@ -155,6 +155,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 0, results
   end
 
+<<<<<<< 2705a6fd884c123713a3c5b372de6f3745cfbe1f
   test 'VALID_EMAIL regex ensures valid formatting' do
     # valid email formats
     assert "john@gmail.com" =~ User::VALID_EMAIL
@@ -169,5 +170,13 @@ class UserTest < ActiveSupport::TestCase
     refute "john#gmail.com" =~ User::VALID_EMAIL
     refute "john@gmail" =~ User::VALID_EMAIL
     refute "@example.com" =~ User::VALID_EMAIL
+  end
+=======
+  test '.from_social returns the user and redirect path in an array' do
+    results = User.from_social(data)
+    assert_equal 2, results.size
+    assert_equal data, results[0]
+    refute_nil results[1]
+>>>>>>> fixed login info bug again
   end
 end
