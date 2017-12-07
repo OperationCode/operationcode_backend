@@ -30,12 +30,12 @@ module Api
       end
 
       # For social media logins, renders the appropriate `redirect_to` path depending on whether the user is registered.
-           #
-           # Requires that the ActionController::Parameters contain a :user key, with a nested :email key.
-           # For example: { user: { email: "john@example.com" } }
-           #
-           # @return [String] A string of the user's redirect_to path
-           #
+      #
+      # Requires that the ActionController::Parameters contain a :user key, with a nested :email key.
+      # For example: { user: { email: "john@example.com" } }
+      #
+      # @return [String] A string of the user's redirect_to path
+      #
 
       def exist
         user = User.find_by(email: params[:user][:email])
@@ -51,16 +51,16 @@ module Api
       # For social media logins, creates the user in the database if necessary,
       # then logs them in, and renders the appropriate `redirect_to` path depending on whether the user is logging in
       # for the first time.
-           #
-           # @return [String] A string of the user's redirect_to path
-           # @return [Json] A serialied JSON object derived from current_user
-           # @return [Token] A token that the frontend stores to know the user is logged in
-           #
+      #
+      # @return [String] A string of the user's redirect_to path
+      # @return [Json] A serialied JSON object derived from current_user
+      # @return [Token] A token that the frontend stores to know the user is logged in
+      #
 
       def social
         Rails.logger.info "************ got to create = #{params.inspect}"
           path = ''
-          set_social_user
+          set_social_user_and_redirect
           Rails.logger.info "************ here!"
           Rails.logger.info "************ user is = #{@user.email}"
 
@@ -106,7 +106,7 @@ module Api
 
       private
 
-      def set_social_user
+      def set_social_user_and_redirect
         user_and_redirect = User.from_social(params[:user])
         @user = user_and_redirect[0]
         @redirect_path = user_and_redirect[1]
