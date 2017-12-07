@@ -29,27 +29,33 @@ module Api
         end
       end
 
+      # exist
+      #
+      # When given a user's email, checks if that user is already registered in the database
+      # and sends the proper redirect url to the frontend accordingly. Called when logging in
+      # via social media.
+      # @param params The data passed in from the frontend, from which [:user][:email] (the user's email) is extracted. Expecting :user in params with parameter :email inside.
+
       def exist
-        userData = params[:user]
-        Rails.logger.info "************ exist is = #{userData[:email]}"
-        user = User.where(email: userData[:email]).first
+        user = User.find_by(email: params[:user][:email])
         Rails.logger.info "************ user is = #{user}"
         @redirect_path = '/profile' #change this to actually redirect to the social login function
         unless user
-             @redirect_path = '/additional_info'
+          @redirect_path = '/additional_info'
         end
         Rails.logger.info "!!!!!!!!!!!! path is #{@redirect_path}"
-        render json: {
-          redirect_to: @redirect_path
-        }
+        render json: { redirect_to: @redirect_path }
       end
+
+      # social
+      #
+      # When using social logins, creates the user in the database if necessary, then logs them in
+      # and sends the proper redirect url to the frontend accordingly.
 
       def social
         Rails.logger.info "************ got to create = #{params.inspect}"
           path = ''
-          arr = User.from_social(params[:user])
-          @user = arr[0]
-          @redirect_path = arr[1]
+          set_social_user
           Rails.logger.info "************ here!"
           Rails.logger.info "************ user is = #{@user.email}"
 
@@ -94,6 +100,17 @@ module Api
       end
 
       private
+
+      # set_social_user
+      #
+      # When given a user's calls the method to create the user if needed, which returns the user and the redirect path.
+      # @param params The data passed in from the frontend, from which the user's data is extracted. Expecting :user in params.
+
+      def set_social_user
+        arr = User.from_social(params[:user])
+        @user = arr[0]
+        @redirect_path = arr[1]
+      end
 
       def user_params
         params.require(:user).permit(

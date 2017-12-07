@@ -104,14 +104,22 @@ class User < ApplicationRecord
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
   end
 
+  # self.from_social
+  #
+  # When given a user's info creates their database entry if they do not already have one, and
+  # sets the redirect path for the frontend to go to after the user is logged in, returning both the user and redirect path.
+  # @param data The data passed in from the frontend, from which the user's info is extracted. Expecting :email in data.
+  # @return [user, path] The user and the redirect path, in an array
+
   def self.from_social(data)
     Rails.logger.info "************ email is = #{data[:email]}"
-    user = User.where(email: data[:email]).first
+    user = User.find_by(email: data[:email])
 
     path = '/profile'
     unless user
       Rails.logger.info "!!!!!! path is = #{path}"
-      user = User.new(first_name: data[:first_name],
+      user = User.new(
+        first_name: data[:first_name],
         last_name: data[:last_name],
         email: data[:email],
         zip: data[:zip],
@@ -119,8 +127,7 @@ class User < ApplicationRecord
       )
       path = '/signup-info'
     end
-
-    arr = [user, path]
+    [user, path]
   end
 
   private
