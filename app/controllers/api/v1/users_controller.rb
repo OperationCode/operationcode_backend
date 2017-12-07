@@ -42,7 +42,7 @@ module Api
         Rails.logger.info "************ user is = #{user}"
         @redirect_path = '/profile' #change this to actually redirect to the social login function
         unless user
-          @redirect_path = '/additional_info'
+          @redirect_path = '/social_login'
         end
         Rails.logger.info "!!!!!!!!!!!! path is #{@redirect_path}"
         render json: { redirect_to: @redirect_path }

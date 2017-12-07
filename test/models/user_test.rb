@@ -154,4 +154,11 @@ class UserTest < ActiveSupport::TestCase
     results = User.count_by_state ''
     assert_equal 0, results
   end
+
+  test '.from_social returns the user and redirect path in an array' do
+    results = User.from_social(data)
+    assert_equal 2, results.size
+    assert_equal data, results[0]
+    refute_nil results[1]
+  end
 end
