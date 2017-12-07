@@ -101,16 +101,16 @@ class User < ApplicationRecord
   # For social media logins, When given a user's info creates their database entry if they do not already have one, and
   # sets the redirect path for the frontend to go to after the user is logged in
   # for the first time.
-       #
-       # Requires that data contains :first_name, :last_name, :email, :zip, and :password keys.
-       # For example: { user: {first_name: "Jane"},{last_name: "Doe"},{ email: "jane@example.com" },{ zip: "12345"},{ password: "Th!sIs@Pa22w0rd"} }
-       #
-       # @param data The data passed in from the frontend, from which the user's info is extracted.
-       # @return [String] A string of the user's redirect_to path
-       # @return [Json] A serialied JSON object derived from current_user
-       # @return [Token] A token that the frontend stores to know the user is logged in
-       # @return [user, path] The user and the redirect path, in an array
-       #
+  #
+  # Requires that data contains :first_name, :last_name, :email, :zip, and :password keys.
+  # For example: { user: {first_name: "Jane"},{last_name: "Doe"},{ email: "jane@example.com" },{ zip: "12345"},{ password: "Th!sIs@Pa22w0rd"} }
+  #
+  # @param data The data passed in from the frontend, from which the user's info is extracted.
+  # @return [String] A string of the user's redirect_to path
+  # @return [Json] A serialied JSON object derived from current_user
+  # @return [Token] A token that the frontend stores to know the user is logged in
+  # @return [user, path] The user and the redirect path, in an array
+  #
 
   def self.from_social(data)
     Rails.logger.info "************ email is = #{data[:email]}"
