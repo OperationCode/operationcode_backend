@@ -183,9 +183,11 @@ class UserTest < ActiveSupport::TestCase
 =======
   test '.from_social creates the user if there is none and returns the user and /signup-info in an array' do
     data = { first_name: 'Leia', last_name: 'Organa', email: 'organa@resistance.net', zip: '66666', password: 'RestInPeace' }
+
     results = User.from_social(data)
     userInfo = results[0]
     redirect = results[1]
+
     assert_equal 2, results.length
     assert_equal data[:first_name], userInfo[:first_name]
     assert_equal data[:last_name], userInfo[:last_name]
@@ -197,9 +199,11 @@ class UserTest < ActiveSupport::TestCase
   test '.from_social returns the user and /profile in an array' do
     mary = create(:user, first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' )
     data = { first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' }
+
     results = User.from_social(data)
     userInfo = results[0]
     redirect = results[1]
+
     assert_equal 2, results.length
     assert_equal data[:first_name], userInfo[:first_name]
     assert_equal data[:last_name], userInfo[:last_name]

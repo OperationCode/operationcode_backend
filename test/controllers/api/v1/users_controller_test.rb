@@ -24,23 +24,29 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   test "exist returns /profile if the user is already registered" do
     bob = create(:user, first_name: 'Bob', last_name: 'Belcher', email: 'bobs@burgers.com', zip: '62149', password: 'Archer' )
     params = { user: { email: 'bobs@burgers.com'} }
+
     post api_v1_users_exist_url, params: params, as: :json
     json = response.parsed_body
+
     assert_equal '/profile', json['redirect_to']
   end
 
   test "exist returns /social_login if the user is not registered" do
     params = { user: { email: 'bobs@burgers.com'} }
+
     post api_v1_users_exist_url, params: params, as: :json
     json = response.parsed_body
+
     assert_equal '/social_login', json['redirect_to']
   end
 
   test "social returns token, user and redirect path /profile when the user is already registered" do
     james = create(:user, first_name: 'James', last_name: 'Kirk', email: 'kirk@starfleet.gov', zip: '13124', password: 'XOSpock' )
     params = { user: { first_name: 'James',last_name: 'Kirk',email: 'kirk@starfleet.gov',zip: '13124',password: 'XOSpock'} }
+
     post api_v1_users_social_url, params: params, as: :json
     json = response.parsed_body
+
     assert_equal '/profile', json['redirect_to']
     assert_equal params[:user][:first_name], json['user']['first_name']
     assert_equal params[:user][:last_name], json['user']['last_name']
@@ -51,8 +57,10 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "social returns token, user and redirect path /social-login when the user is not registered" do
     params = { user: { first_name: 'Jean Luc',last_name: 'Picard',email: 'picard@tng.com',zip: '41153',password: 'Engage'} }
+
     post api_v1_users_social_url, params: params, as: :json
     json = response.parsed_body
+
     assert_equal '/signup-info', json['redirect_to']
     assert_equal params[:user][:first_name], json['user']['first_name']
     assert_equal params[:user][:last_name], json['user']['last_name']
