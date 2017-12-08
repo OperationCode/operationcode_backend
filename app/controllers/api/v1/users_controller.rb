@@ -39,12 +39,11 @@ module Api
       #
       def exist
         user = User.find_by(email: params[:user][:email])
-        Rails.logger.info "************ user is = #{user}"
-        @redirect_path = '/profile' #change this to actually redirect to the social login function
+
+        @redirect_path = '/profile'
         unless user
           @redirect_path = '/social_login'
         end
-        Rails.logger.info "!!!!!!!!!!!! path is #{@redirect_path}"
         render json: { redirect_to: @redirect_path }
       end
 
@@ -58,29 +57,17 @@ module Api
       # @see https://github.com/OperationCode/operationcode_backend/blob/master/app/controllers/api/v1/sessions_controller.rb#L8-L20
       #
       def social
-        Rails.logger.info "************ got to create = #{params.inspect}"
           path = ''
           set_social_user_and_redirect
-          Rails.logger.info "************ here!"
-          Rails.logger.info "************ user is = #{@user.email}"
 
           if @user.save
-            UserMailer.welcome(@user).deliver unless @user.invalid?
-            Rails.logger.info "************ success!"
-            Rails.logger.info "************ resource = #{@user.zip}"
-            #sign_in_and_redirect @user, event: :authentication
-            #resource = warden.authenticate!(params)
             sign_in @user, event: :authenticate_user
             render json: {
               token: @user.token,
               user: UserSerializer.new(current_user),
               redirect_to: @redirect_path
             }
-            Rails.logger.info "************ path: #{@redirect_path}"
-            #redirect_to new_user_session_url
-            #sign_in_and_redirect @user, event: :authentication
           else
-            Rails.logger.info "************ failure"
             redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
           end
       end

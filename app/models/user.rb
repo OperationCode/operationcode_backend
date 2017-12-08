@@ -113,12 +113,10 @@ class User < ApplicationRecord
   # @see https://github.com/zquestz/omniauth-google-oauth2#devise
   #
   def self.from_social(data)
-    Rails.logger.info "************ email is = #{data[:email]}"
     user = User.find_by(email: data[:email])
 
     path = '/profile'
     unless user
-      Rails.logger.info "!!!!!! path is = #{path}"
       user = User.new(
         first_name: data[:first_name],
         last_name: data[:last_name],
@@ -127,8 +125,8 @@ class User < ApplicationRecord
         password: data[:password]
       )
       path = '/signup-info'
+      UserMailer.welcome(user).deliver unless user.invalid?
     end
-    Rails.logger.info "************ password is = #{user[:password]}"
     [user, path]
   end
 
