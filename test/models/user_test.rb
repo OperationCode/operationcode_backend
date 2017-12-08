@@ -155,6 +155,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 0, results
   end
 
+<<<<<<< a445b7f693b8419c2d0a0167f877140f2fa21953
 <<<<<<< 2705a6fd884c123713a3c5b372de6f3745cfbe1f
   test 'VALID_EMAIL regex ensures valid formatting' do
     # valid email formats
@@ -177,6 +178,34 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 2, results.size
     assert_equal data, results[0]
     refute_nil results[1]
+  end
 >>>>>>> fixed login info bug again
+=======
+  test '.from_social creates the user if there is none and returns the user and /signup-info in an array' do
+    data = { first_name: 'Leia', last_name: 'Organa', email: 'organa@resistance.net', zip: '66666', password: 'RestInPeace' }
+    results = User.from_social(data)
+    userInfo = results[0]
+    redirect = results[1]
+    assert_equal 2, results.length
+    assert_equal data[:first_name], userInfo[:first_name]
+    assert_equal data[:last_name], userInfo[:last_name]
+    assert_equal data[:email], userInfo[:email]
+    assert_equal data[:zip], userInfo[:zip]
+    assert_equal '/signup-info', redirect
+  end
+
+  test '.from_social returns the user and /profile in an array' do
+    mary = create(:user, first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' )
+    data = { first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' }
+    results = User.from_social(data)
+    userInfo = results[0]
+    redirect = results[1]
+    assert_equal 2, results.length
+    assert_equal data[:first_name], userInfo[:first_name]
+    assert_equal data[:last_name], userInfo[:last_name]
+    assert_equal data[:email], userInfo[:email]
+    assert_equal data[:zip], userInfo[:zip]
+    assert_equal '/profile', redirect
+>>>>>>> added unit tests for social login
   end
 end
