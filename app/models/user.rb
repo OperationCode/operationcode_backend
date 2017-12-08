@@ -128,6 +128,7 @@ class User < ApplicationRecord
       )
       path = '/signup-info'
     end
+    Rails.logger.info "************ password is = #{user[:password]}"
     [user, path]
   end
 
