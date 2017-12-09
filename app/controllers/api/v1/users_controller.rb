@@ -57,7 +57,6 @@ module Api
       # @see https://github.com/OperationCode/operationcode_backend/blob/master/app/controllers/api/v1/sessions_controller.rb#L8-L20
       #
       def social
-          path = ''
           set_social_user_and_redirect
 
           if @user.save
