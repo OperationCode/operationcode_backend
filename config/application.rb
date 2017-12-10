@@ -32,6 +32,6 @@ module OperationcodeBackend
     config.logger = Logger.new(STDOUT)
     config.lograge.enabled = true
 
-    config.secret_path = Rails.root.join('run/secrets')   
+    config.secret_path = Rails.root.join('run/secrets')
   end
 end
