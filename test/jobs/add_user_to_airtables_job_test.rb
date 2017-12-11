@@ -2,31 +2,49 @@ require 'test_helper'
 
 class AddUserToAirtablesJobTest < ActiveJob::TestCase
   test 'it adds a user to airtables' do
-    user = build(:user)
-    Operationcode::Airtable.any_instance.expects(:create).with(
+    user = create(:user)
+    mock_member = mock_air_table_member_for(user)
+
+    AirTableMember.expects(:new).with(
+      id: user.id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      slack_name: user.slack_name,
+      education: user.education,
+      employment_status: user.employment_status,
       email: user.email,
       zip: user.zip,
-      latitude: user.latitude,
-      longitude: user.longitude,
-      created_at: user.created_at,
-      updated_at: user.updated_at
-    )
+    ).returns(mock_member)
+
+    AirTableMember.any_instance.expects(:create).once
+
     AddUserToAirtablesJob.perform_now(user)
   end
 
-  test 'it doesnt add a user if it exists' do
+  test 'it logs an error when the AirTable record exists' do
     user = build(:user)
-    Operationcode::Airtable.any_instance.expects(:create).once.with(
+    mock_member = mock_air_table_member_for(user)
+
+    AirTableMember.stubs(:new).returns(mock_member)
+    AirTableMember.stubs(:all).returns([mock_member])
+    
+    AirTableMember.any_instance.expects(:create).never
+
+    AddUserToAirtablesJob.perform_now(user)
+  end
+
+  private
+
+  def mock_air_table_member_for(user)
+    AirTableMember.new(
+      id: user.id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      slack_name: user.slack_name,
+      education: user.education,
+      employment_status: user.employment_status,
       email: user.email,
       zip: user.zip,
-      latitude: user.latitude,
-      longitude: user.longitude,
-      created_at: user.created_at,
-      updated_at: user.updated_at
     )
-    AddUserToAirtablesJob.perform_now(user)
-
-    Operationcode::Airtable.any_instance.stubs(:find_by).returns(true)
-    AddUserToAirtablesJob.perform_now(user)
   end
 end

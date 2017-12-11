@@ -1,35 +1,28 @@
 class AddUserToAirtablesJob < ActiveJob::Base
   queue_as :default
 
+  Airrecord.api_key = OperationCode.fetch_secret_with(name: :airtable_api_key)
+
   def perform(user)
     @user = user
-    @airtable = setup_airtable
 
-    if user_exists?
-      Rails.logger.info "User with email '#{@user.email}' already exists in airtables"
-      return
-    end
-
-    result = @airtable.create(
+    member_entry = AirTableMember.new(
+      id: @user.id,
+      first_name: @user.first_name,
+      last_name: @user.last_name,
+      slack_name: @user.slack_name,
+      education: @user.education,
+      employment_status: @user.employment_status,
       email: @user.email,
       zip: @user.zip,
-      latitude: @user.latitude,
-      longitude: @user.longitude,
-      created_at: @user.created_at,
-      updated_at: @user.updated_at
     )
-    Rails.logger.info "User created. Returned: #{result}"
-    result
-  end
 
-  def setup_airtable
-    api_key  = OperationCode.fetch_secret_with(name: :airtable_api_key)
-    base_id  = OperationCode.fetch_secret_with(name: :airtable_add_user_base_id)
-    table_id = OperationCode.fetch_secret_with(name: :airtable_add_user_table_name)
-    Operationcode::Airtable.new(api_key: api_key, base_id: base_id, table: table_id)
-  end
+    member_exist = AirTableMember.all(filter: "ID = #{user.id}")
 
-  def user_exists?
-    @airtable.find_by(email: @user.email)
+    if member_exist.empty? 
+      member_entry.create 
+    else
+      Rails.logger.info "User with email '#{@user.email}' already exists in Airtable"
+    end
   end
 end
