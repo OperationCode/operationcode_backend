@@ -8,7 +8,7 @@ Check out [how Operation Code Open Source projects are maintained](https://githu
 
 * [Harry Levine](https://github.com/hpjaj)
 
-# Lieutenant
+# Sergeant
 
 * [Colleen Schnettler](http://www.github.com/leenyburger)
 
