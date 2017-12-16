@@ -19,8 +19,10 @@ class SendGridClient::Response
 
   # Some requests don't return a body so we default to just checking
   # the status code
+  #
   def successful_error_count
     return true if body.blank?
+
     body['error_count'] == 0
   end
 end

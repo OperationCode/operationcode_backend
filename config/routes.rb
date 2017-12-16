@@ -20,14 +20,14 @@ Rails.application.routes.draw do
       resources :code_schools do
         resources :locations
       end
-      resources :scholarships, only: [:index, :show]
-      resources :scholarship_applications, only: :create
       resources :events, only: :index
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
       resources :resources, only: [:index, :create, :show, :update, :destroy] do
         resources :votes, only: [:create, :destroy]
       end
+      resources :scholarships, only: [:index, :show]
+      resources :scholarship_applications, only: :create
       resources :services, only: :index
       resources :slack_users, only: :create
       resources :tags, only: :index
