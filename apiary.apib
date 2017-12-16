@@ -190,6 +190,40 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Email List Recipients | Create [/api/v1/email_list_recipients{?email}]
++ Parameters
+
+  + email (string, required) - The email address of the OC guest to be added to the OC's email list
+
+### Add a guest (non-user) to the OC's email list [POST]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+      + Body
+
+                  {
+                      "email": "john@gmail.com",
+                  }
+
+  + Response 201 (application/json)
+
+      + Body
+
+              {
+                  "email": "john@gmail.com",
+                  "guest": true
+              }
+
+  + Response 422 (application/json)
+
+          {
+              errors: "Some error message"
+          }
+
 ## Event | Collection [/api/v1/events]
 
 ### List all Events [GET]
