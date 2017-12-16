@@ -8,4 +8,16 @@ class AddUserToSendGridJobTest < ActiveJob::TestCase
 
     AddUserToSendGridJob.perform_now(user)
   end
+
+  test "with a user-like Struct wrapped in an array, it adds the Struct user to send grid" do
+    guest = [SendGridClient::Guest.user(valid_email)]
+
+    SendGridClient.any_instance.expects(:add_user).with(guest.first)
+
+    AddUserToSendGridJob.perform_now(guest)
+  end
+end
+
+def valid_email
+  "john@gmail.com"
 end
