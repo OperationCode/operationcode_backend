@@ -10,6 +10,7 @@ end
 
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 5.0'
+gem 'airrecord' # Gem for interfacing with AirTable
 gem 'devise'
 gem 'geocoder'
 gem 'gibbon'
@@ -17,7 +18,6 @@ gem 'httparty'
 gem 'jwt'
 gem 'lograge'
 gem 'logstash-event'
-gem 'operationcode-airtable'
 gem 'operationcode-slack'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'

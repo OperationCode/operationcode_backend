@@ -47,8 +47,9 @@ GEM
       activerecord (>= 4.2.8)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    airtable (0.0.9)
-      httparty
+    airrecord (0.2.3)
+      faraday (~> 0.10)
+      net-http-persistent (~> 2.9)
     arel (7.1.4)
     awesome_print (1.8.0)
     bcrypt (3.1.11)
@@ -114,12 +115,10 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    net-http-persistent (2.9.4)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
-    operationcode-airtable (0.3.0)
-      activesupport
-      airtable
     operationcode-slack (0.6.0)
       activesupport
       httparty
@@ -214,6 +213,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   acts-as-taggable-on (~> 5.0)
+  airrecord
   awesome_print (~> 1.8)
   byebug
   devise
@@ -227,7 +227,6 @@ DEPENDENCIES
   lograge
   logstash-event
   mocha
-  operationcode-airtable
   operationcode-slack
   pg (~> 0.18)
   pry-rails
