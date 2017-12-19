@@ -1,8 +1,10 @@
 module Api
   module V1
     class LocationsController < ApplicationController
-      before_action :set_school
+      before_action :set_location, only: [:update, :destroy]
+
       def create
+        @school = CodeSchool.find(params[:code_school_id])
         @school.locations.build(location_params)
         if @school.save
           render json: @school
@@ -12,23 +14,17 @@ module Api
       end
 
       def update
-        location = Location.find(params[:id])
-        if location.update(location_params)
-          render json: location
-        else
-          render json: { errors: location.errors.full_messages }
-        end
+        render json: @location.update(location_params) ? @location : { errors: @location.errors.full_messages }
       end
 
       def destroy
-        location = Location.find(params[:id])
-        render json: location ? { status: :ok } : { errors: location.errors.full_messages }
+        render json: @location.destroy ? { status: :ok } : { errors: @location.errors.full_messages }
       end
 
       private
 
-      def set_school
-        @school = CodeSchool.find(params[:code_school_id])
+      def set_location
+        @location = Location.find(params[:id])
       end
 
       def location_params
