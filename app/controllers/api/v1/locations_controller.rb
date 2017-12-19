@@ -22,11 +22,7 @@ module Api
 
       def destroy
         location = Location.find(params[:id])
-        if location.destroy
-          render json: { status: :ok }
-        else
-          render json: { errors: location.errors.full_messages }
-        end
+        render json: location ? { status: :ok } : { errors: location.errors.full_messages }
       end
 
       private

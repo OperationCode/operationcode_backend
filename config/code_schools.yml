@@ -829,15 +829,3 @@
       city: Tampa
       state: FL
       zip: 33605
-
-- name: devCodeCamp
-  url: https://devcodecamp.com/
-  logo: https://user-images.githubusercontent.com/21281011/33676906-44ac1922-da74-11e7-807c-63ca0672f1bc.png
-  email: hello@devcodecamp.com
-  locations:
-    - va_accepted: true
-      address1: 313 North Plankinton Avenue
-      address2: Suite 209
-      city: Milwaukee
-      state: WI
-      zip: 53203
