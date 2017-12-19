@@ -71,15 +71,19 @@ class SendGridClient
 
   def add_recipient(data)
     response = Response.new(add_recipient_request(data))
+
     Rails.logger.info("Response: #{response.body}")
     raise(SendGridClientError, response.body) unless response.successful?
+
     response.body['persisted_recipients']
   end
 
   def add_recipient_to_list(recipient_id)
     response = Response.new(add_recipient_to_list_request(recipient_id))
+
     Rails.logger.info("Response: #{response.body}")
     raise(SendGridClientError, response.body) unless response.successful?
+
     true
   end
 
@@ -89,7 +93,9 @@ class SendGridClient
 
   # The method chains in these request methods represents the path of the API request.
   # SendGrid calls this it's Fluent Interface
-  # https://github.com/sendgrid/sendgrid-ruby#general-v3-web-api-usage-with-fluent-interface
+  #
+  # @see https://github.com/sendgrid/sendgrid-ruby#general-v3-web-api-usage-with-fluent-interface
+  #
   def add_recipient_request(data)
     @sendgrid.client.contactdb.recipients.post(request_body: [data])
   end

@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.github.com/repos/OperationCode/operationcode/pulls/753/commits?page=1&per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Content-Length:
+      - '0'
+      Location:
+      - https://api.github.com/repos/OperationCode/operationcode/pulls/753/commits?page=1&per_page=100
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:42:25 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/OperationCode/operationcode/pulls/753/commits?page=1&per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 27 Aug 2017 19:42:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3132'
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '57'
+      X-Ratelimit-Reset:
+      - '1503866476'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - '"06747788f0b389e9559aa0280e3a1154"'
+      Last-Modified:
+      - Thu, 24 Aug 2017 04:18:34 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.047020'
+      X-Github-Request-Id:
+      - D871:2254:1E9026A:444920E:59A320A0
+    body:
+      encoding: UTF-8
+      string: '[{"sha":"3d4ff7164a33fa1c6006d34942872d1c22594b99","commit":{"author":{"name":"Conrad
+        Hollomon","email":"hollomancer@users.noreply.github.com","date":"2017-07-02T20:31:56Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2017-07-02T20:31:56Z"},"message":"Revert
+        \"waffle.io Badge (#752)\"\n\nThis reverts commit ac38898ddeae5ddd17cdb6addba1b52fc6da923a.","tree":{"sha":"83507ffb72b056a3b6b534ad830602550a06b1d8","url":"https://api.github.com/repos/OperationCode/operationcode/git/trees/83507ffb72b056a3b6b534ad830602550a06b1d8"},"url":"https://api.github.com/repos/OperationCode/operationcode/git/commits/3d4ff7164a33fa1c6006d34942872d1c22594b99","comment_count":0},"url":"https://api.github.com/repos/OperationCode/operationcode/commits/3d4ff7164a33fa1c6006d34942872d1c22594b99","html_url":"https://github.com/OperationCode/operationcode/commit/3d4ff7164a33fa1c6006d34942872d1c22594b99","comments_url":"https://api.github.com/repos/OperationCode/operationcode/commits/3d4ff7164a33fa1c6006d34942872d1c22594b99/comments","author":{"login":"hollomancer","id":9288648,"avatar_url":"https://avatars3.githubusercontent.com/u/9288648?v=4","gravatar_id":"","url":"https://api.github.com/users/hollomancer","html_url":"https://github.com/hollomancer","followers_url":"https://api.github.com/users/hollomancer/followers","following_url":"https://api.github.com/users/hollomancer/following{/other_user}","gists_url":"https://api.github.com/users/hollomancer/gists{/gist_id}","starred_url":"https://api.github.com/users/hollomancer/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/hollomancer/subscriptions","organizations_url":"https://api.github.com/users/hollomancer/orgs","repos_url":"https://api.github.com/users/hollomancer/repos","events_url":"https://api.github.com/users/hollomancer/events{/privacy}","received_events_url":"https://api.github.com/users/hollomancer/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"ac38898ddeae5ddd17cdb6addba1b52fc6da923a","url":"https://api.github.com/repos/OperationCode/operationcode/commits/ac38898ddeae5ddd17cdb6addba1b52fc6da923a","html_url":"https://github.com/OperationCode/operationcode/commit/ac38898ddeae5ddd17cdb6addba1b52fc6da923a"}]}]'
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:42:25 GMT
+recorded_with: VCR 3.0.3

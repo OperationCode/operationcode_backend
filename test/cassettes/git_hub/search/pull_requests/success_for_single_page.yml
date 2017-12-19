@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.github.com/search/issues?page=1&per_page=100&q=type:pr%20is:merged%20repo:OperationCode/operationcode_slashbot%20merged:%3E=1970-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Content-Length:
+      - '0'
+      Location:
+      - https://api.github.com/search/issues?q=type:pr+is:merged+repo:OperationCode/operationcode_slashbot+merged:%3E=1970-01-01&page=1&per_page=100
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:40:20 GMT
+- request:
+    method: get
+    uri: https://api.github.com/search/issues?page=1&per_page=100&q=type:pr%20is:merged%20repo:OperationCode/operationcode_slashbot%20merged:%3E=1970-01-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 27 Aug 2017 19:40:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4266'
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '10'
+      X-Ratelimit-Remaining:
+      - '8'
+      X-Ratelimit-Reset:
+      - '1503862841'
+      Cache-Control:
+      - no-cache
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.046226'
+      X-Github-Request-Id:
+      - D85E:2255:4910FA7:932C725:59A32024
+    body:
+      encoding: UTF-8
+      string: '{"total_count":2,"incomplete_results":false,"items":[{"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/7","repository_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot","labels_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/7/labels{/name}","comments_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/7/comments","events_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/7/events","html_url":"https://github.com/OperationCode/operationcode_slashbot/pull/7","id":221728378,"number":7,"title":"Add
+        /android case","user":{"login":"wcriss44","id":24770046,"avatar_url":"https://avatars3.githubusercontent.com/u/24770046?v=4","gravatar_id":"","url":"https://api.github.com/users/wcriss44","html_url":"https://github.com/wcriss44","followers_url":"https://api.github.com/users/wcriss44/followers","following_url":"https://api.github.com/users/wcriss44/following{/other_user}","gists_url":"https://api.github.com/users/wcriss44/gists{/gist_id}","starred_url":"https://api.github.com/users/wcriss44/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/wcriss44/subscriptions","organizations_url":"https://api.github.com/users/wcriss44/orgs","repos_url":"https://api.github.com/users/wcriss44/repos","events_url":"https://api.github.com/users/wcriss44/events{/privacy}","received_events_url":"https://api.github.com/users/wcriss44/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2017-04-14T02:34:30Z","updated_at":"2017-04-14T04:07:28Z","closed_at":"2017-04-14T04:07:28Z","pull_request":{"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/7","html_url":"https://github.com/OperationCode/operationcode_slashbot/pull/7","diff_url":"https://github.com/OperationCode/operationcode_slashbot/pull/7.diff","patch_url":"https://github.com/OperationCode/operationcode_slashbot/pull/7.patch"},"body":"Added
+        a /android case for upcoming android app. ","score":1.0},{"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/6","repository_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot","labels_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/6/labels{/name}","comments_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/6/comments","events_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/issues/6/events","html_url":"https://github.com/OperationCode/operationcode_slashbot/pull/6","id":220076252,"number":6,"title":"Add
+        OpenCollective donation CTA","user":{"login":"hollomancer","id":9288648,"avatar_url":"https://avatars3.githubusercontent.com/u/9288648?v=4","gravatar_id":"","url":"https://api.github.com/users/hollomancer","html_url":"https://github.com/hollomancer","followers_url":"https://api.github.com/users/hollomancer/followers","following_url":"https://api.github.com/users/hollomancer/following{/other_user}","gists_url":"https://api.github.com/users/hollomancer/gists{/gist_id}","starred_url":"https://api.github.com/users/hollomancer/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/hollomancer/subscriptions","organizations_url":"https://api.github.com/users/hollomancer/orgs","repos_url":"https://api.github.com/users/hollomancer/repos","events_url":"https://api.github.com/users/hollomancer/events{/privacy}","received_events_url":"https://api.github.com/users/hollomancer/received_events","type":"User","site_admin":false},"labels":[],"state":"closed","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2017-04-07T00:51:43Z","updated_at":"2017-04-07T01:47:58Z","closed_at":"2017-04-07T01:47:58Z","pull_request":{"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/6","html_url":"https://github.com/OperationCode/operationcode_slashbot/pull/6","diff_url":"https://github.com/OperationCode/operationcode_slashbot/pull/6.diff","patch_url":"https://github.com/OperationCode/operationcode_slashbot/pull/6.patch"},"body":"","score":1.0}]}'
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:40:20 GMT
+recorded_with: VCR 3.0.3

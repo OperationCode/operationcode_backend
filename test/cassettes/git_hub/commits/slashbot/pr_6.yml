@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/6/commits?page=1&per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Content-Length:
+      - '0'
+      Location:
+      - https://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/6/commits?page=1&per_page=100
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:47:14 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/6/commits?page=1&per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 27 Aug 2017 19:47:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1381'
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '54'
+      X-Ratelimit-Reset:
+      - '1503866476'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - '"4bd2ca6e96d78535707cef31dc960c55"'
+      Last-Modified:
+      - Thu, 24 Aug 2017 04:18:34 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.062000'
+      X-Github-Request-Id:
+      - D8A5:2255:4922E37:934F0CC:59A321C2
+    body:
+      encoding: UTF-8
+      string: '[{"sha":"0eb6352bf30b71b31f3059ac94340b3953fbb369","commit":{"author":{"name":"Conrad
+        Hollomon","email":"hollomancer@vpn-oncampus-91134.bu.edu","date":"2017-04-07T00:49:00Z"},"committer":{"name":"Conrad
+        Hollomon","email":"hollomancer@vpn-oncampus-91134.bu.edu","date":"2017-04-07T00:49:00Z"},"message":"Add
+        OpenCollective donation CTA","tree":{"sha":"0b932008a748f45582e64379bd5dc78aa416493e","url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/git/trees/0b932008a748f45582e64379bd5dc78aa416493e"},"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/git/commits/0eb6352bf30b71b31f3059ac94340b3953fbb369","comment_count":0},"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/0eb6352bf30b71b31f3059ac94340b3953fbb369","html_url":"https://github.com/OperationCode/operationcode_slashbot/commit/0eb6352bf30b71b31f3059ac94340b3953fbb369","comments_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/0eb6352bf30b71b31f3059ac94340b3953fbb369/comments","author":null,"committer":null,"parents":[{"sha":"ad07c5181a06d45228aee9f33ccc9831c81f514f","url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/ad07c5181a06d45228aee9f33ccc9831c81f514f","html_url":"https://github.com/OperationCode/operationcode_slashbot/commit/ad07c5181a06d45228aee9f33ccc9831c81f514f"}]}]'
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:47:14 GMT
+recorded_with: VCR 3.0.3

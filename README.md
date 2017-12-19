@@ -1,26 +1,57 @@
 # OperationCode Backend
 
-## Hacktoberfest
-
-If you're here looking for a place to contribute pull requests as part of GitHub's "Hacktoberfest", you're in the right place!
-
-Please look forward to an increased amount of documentation and tickets. We highly recommend joining our organization at operationcode.org to receive an invite to our Slack team.
-
-From there, you'll join the `#oc-projects` channel. You can get help from multiple professional developers and people who have worked on the application since day 1!
-
-Happy hacking!
-
 ## Contributing to Operation Code
 
 So, you want to learn how to program? Contributing to Operation Code is a great place to get started. This document will help you march from zero to deploying code in no time!
 
 ## Table of Contents
-1. [Quickstart](#quickstart)
-2. [Setting Up Your Environment](#setting-up-your-environment)
-3. [Finding an Issue](#finding-an-issue)
-4. [Working on Your Issue](#working-on-your-issue)
-5. [Submitting Your Changes](#submitting-your-changes)
-6. [Code of Conduct](#code-of-conduct)
+1. [Technologies Used](#operation-code-technologies)
+2. [Quickstart](#quickstart)
+3. [Setting Up Your Environment](#setting-up-your-environment)
+4. [Finding an Issue](#finding-an-issue)
+5. [Working on Your Issue](#working-on-your-issue)
+6. [Submitting Your Changes](#submitting-your-changes)
+7. [Code of Conduct](#code-of-conduct)
+
+## Operation Code Technologies
+
+The Operation Code site is comprised of a Rails API backend, and a React frontend.
+
+#### What is a frontend?
+
+When you visit our website you're interacting with two systems, a frontend application and a backend application. The frontend application is responsible for displaying images, text and data on our web pages.
+
+Frontend applications are usually written using a combination of HTML, CSS, and Javascript and utilize one or more frameworks such as Angular, Backbone, Vue, and React.
+
+https://operationcode.org uses React and can be viewed at https://github.com/OperationCode/operationcode_frontend.
+
+#### What is a backend?
+
+The backend (where you are now) is responsible for:
+
+- exchanging data with the frontend via custom API endpoints
+- running various background jobs like inviting new users to Slack, or signing them up for our newsletter
+- interacting with third party services like SendGrid, GitHub and ID.me
+- validating the integrity of our data
+- authentication and security protocols
+- and more
+
+As a contributor to the https://operationcode.org backend, you will have the opportunity to work with the following technologies, services, and popular gems:
+
+- [Ruby](https://www.ruby-lang.org/en/)
+- [Ruby on Rails](http://rubyonrails.org/)
+- [Redis](https://redis.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
+- [GitHub](https://github.com/)
+- [Travis CI](https://travis-ci.org/)
+- [Code Climate](https://codeclimate.com/)
+- [Apiary.io](https://apiary.io/)
+- [Devise](https://github.com/plataformatec/devise)
+- [Geocoder](https://github.com/alexreisner/geocoder)
+- [ActsAsTaggableOn](https://github.com/mbleigh/acts-as-taggable-on)
+- [JWT](https://github.com/jwt/ruby-jwt)
+- [HTTParty](https://github.com/jnunemaker/httparty)
 
 ## Quickstart
 1. [Setting Up Your Environment](#setting-up-your-environment)
@@ -111,6 +142,8 @@ High level overview of upcoming Operation Code goals.  This is the source of upc
 
 ## Working On Your Issue
 
+* Please first **read** Operation Code's [guidelines for working an issue](https://github.com/OperationCode/operationcode/blob/master/CONTRIBUTING.md#guidelines-for-working-an-issue)
+
 * From the forked and cloned repository on your environment, you can now create a [feature branch](http://nvie.com/posts/a-successful-git-branching-model/). It is a good idea to name your branch after the issue it is attached to.
 
    ```bash
@@ -132,13 +165,17 @@ High level overview of upcoming Operation Code goals.  This is the source of upc
 
 We use [Apiary](https://apiary.io/) for our API documentation, API mocking server, etc.
 
+The API blueprint file is located at [/operationcode_backend/apiary.apib](https://github.com/OperationCode/operationcode_backend/blob/master/apiary.apib), and our live API documentation itself is located at http://docs.operationcodeapi.apiary.io/
+
 Please ensure that any PRs that change the behavior of the API are updated in the documentation as well. To do so:
 
 - Create a free account at [apiary.io](https://apiary.io/)
-- Use [their editor](https://help.apiary.io/tools/apiary-editor/) to confirm that all of these changes do not create any **semantic issues**
+- Make your additions in the repository's `apiary.apib` file in your text editor
+- Cut & paste the *whole* file into [the apiary editor](https://help.apiary.io/tools/apiary-editor/) to confirm that all of these changes do not create any **semantic issues**
+- Repeat until there are no semantic errors
+- Commit the `apiary.apib` file as part of a normal commit in your pull request
 - The API endpoints are alphabetized, so all additions will need to be placed accordingly
 
-The API blueprint file is at `apiary.apib`, and the documentation itself is at http://docs.operationcodeapi.apiary.io/
 
 ## Submitting Your Changes
 * When you have completed work on your feature branch, you are ready to submit a [pull request](https://help.github.com/articles/using-pull-requests/).

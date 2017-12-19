@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/7/commits?page=1&per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Content-Length:
+      - '0'
+      Location:
+      - https://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/7/commits?page=1&per_page=100
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:47:15 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/OperationCode/operationcode_slashbot/pulls/7/commits?page=1&per_page=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accepts:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - OperationCode
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 27 Aug 2017 19:47:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '6152'
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '53'
+      X-Ratelimit-Reset:
+      - '1503866476'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - '"a0e20c216bd165659a66a7c4efea8c92"'
+      Last-Modified:
+      - Fri, 18 Aug 2017 15:53:51 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.050797'
+      X-Github-Request-Id:
+      - D8A7:2255:4922E88:934F177:59A321C2
+    body:
+      encoding: UTF-8
+      string: '[{"sha":"570b7b5b0029f0c7e9506a0dd533a7d10cdce530","commit":{"author":{"name":"William
+        Criss","email":"wcriss44@gmail.com","date":"2017-04-14T02:28:56Z"},"committer":{"name":"William
+        Criss","email":"wcriss44@gmail.com","date":"2017-04-14T02:28:56Z"},"message":"Add
+        /android case","tree":{"sha":"69da01de7b4f74f8165cef8a8d1155d8c6c75875","url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/git/trees/69da01de7b4f74f8165cef8a8d1155d8c6c75875"},"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/git/commits/570b7b5b0029f0c7e9506a0dd533a7d10cdce530","comment_count":0},"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/570b7b5b0029f0c7e9506a0dd533a7d10cdce530","html_url":"https://github.com/OperationCode/operationcode_slashbot/commit/570b7b5b0029f0c7e9506a0dd533a7d10cdce530","comments_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/570b7b5b0029f0c7e9506a0dd533a7d10cdce530/comments","author":{"login":"wcriss44","id":24770046,"avatar_url":"https://avatars3.githubusercontent.com/u/24770046?v=4","gravatar_id":"","url":"https://api.github.com/users/wcriss44","html_url":"https://github.com/wcriss44","followers_url":"https://api.github.com/users/wcriss44/followers","following_url":"https://api.github.com/users/wcriss44/following{/other_user}","gists_url":"https://api.github.com/users/wcriss44/gists{/gist_id}","starred_url":"https://api.github.com/users/wcriss44/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/wcriss44/subscriptions","organizations_url":"https://api.github.com/users/wcriss44/orgs","repos_url":"https://api.github.com/users/wcriss44/repos","events_url":"https://api.github.com/users/wcriss44/events{/privacy}","received_events_url":"https://api.github.com/users/wcriss44/received_events","type":"User","site_admin":false},"committer":{"login":"wcriss44","id":24770046,"avatar_url":"https://avatars3.githubusercontent.com/u/24770046?v=4","gravatar_id":"","url":"https://api.github.com/users/wcriss44","html_url":"https://github.com/wcriss44","followers_url":"https://api.github.com/users/wcriss44/followers","following_url":"https://api.github.com/users/wcriss44/following{/other_user}","gists_url":"https://api.github.com/users/wcriss44/gists{/gist_id}","starred_url":"https://api.github.com/users/wcriss44/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/wcriss44/subscriptions","organizations_url":"https://api.github.com/users/wcriss44/orgs","repos_url":"https://api.github.com/users/wcriss44/repos","events_url":"https://api.github.com/users/wcriss44/events{/privacy}","received_events_url":"https://api.github.com/users/wcriss44/received_events","type":"User","site_admin":false},"parents":[{"sha":"933f4774321290f296af2aad84f23dab511e36d7","url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/933f4774321290f296af2aad84f23dab511e36d7","html_url":"https://github.com/OperationCode/operationcode_slashbot/commit/933f4774321290f296af2aad84f23dab511e36d7"}]},{"sha":"ee165464a40ee2a53938331b3d0c993b8ac29334","commit":{"author":{"name":"William
+        Criss","email":"wcriss44@gmail.com","date":"2017-04-14T02:57:03Z"},"committer":{"name":"William
+        Criss","email":"wcriss44@gmail.com","date":"2017-04-14T02:57:03Z"},"message":"Change
+        environment variable for node","tree":{"sha":"ee45aba4ed11be03d2cccf3cd76ac3daeff04492","url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/git/trees/ee45aba4ed11be03d2cccf3cd76ac3daeff04492"},"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/git/commits/ee165464a40ee2a53938331b3d0c993b8ac29334","comment_count":0},"url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/ee165464a40ee2a53938331b3d0c993b8ac29334","html_url":"https://github.com/OperationCode/operationcode_slashbot/commit/ee165464a40ee2a53938331b3d0c993b8ac29334","comments_url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/ee165464a40ee2a53938331b3d0c993b8ac29334/comments","author":{"login":"wcriss44","id":24770046,"avatar_url":"https://avatars3.githubusercontent.com/u/24770046?v=4","gravatar_id":"","url":"https://api.github.com/users/wcriss44","html_url":"https://github.com/wcriss44","followers_url":"https://api.github.com/users/wcriss44/followers","following_url":"https://api.github.com/users/wcriss44/following{/other_user}","gists_url":"https://api.github.com/users/wcriss44/gists{/gist_id}","starred_url":"https://api.github.com/users/wcriss44/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/wcriss44/subscriptions","organizations_url":"https://api.github.com/users/wcriss44/orgs","repos_url":"https://api.github.com/users/wcriss44/repos","events_url":"https://api.github.com/users/wcriss44/events{/privacy}","received_events_url":"https://api.github.com/users/wcriss44/received_events","type":"User","site_admin":false},"committer":{"login":"wcriss44","id":24770046,"avatar_url":"https://avatars3.githubusercontent.com/u/24770046?v=4","gravatar_id":"","url":"https://api.github.com/users/wcriss44","html_url":"https://github.com/wcriss44","followers_url":"https://api.github.com/users/wcriss44/followers","following_url":"https://api.github.com/users/wcriss44/following{/other_user}","gists_url":"https://api.github.com/users/wcriss44/gists{/gist_id}","starred_url":"https://api.github.com/users/wcriss44/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/wcriss44/subscriptions","organizations_url":"https://api.github.com/users/wcriss44/orgs","repos_url":"https://api.github.com/users/wcriss44/repos","events_url":"https://api.github.com/users/wcriss44/events{/privacy}","received_events_url":"https://api.github.com/users/wcriss44/received_events","type":"User","site_admin":false},"parents":[{"sha":"570b7b5b0029f0c7e9506a0dd533a7d10cdce530","url":"https://api.github.com/repos/OperationCode/operationcode_slashbot/commits/570b7b5b0029f0c7e9506a0dd533a7d10cdce530","html_url":"https://github.com/OperationCode/operationcode_slashbot/commit/570b7b5b0029f0c7e9506a0dd533a7d10cdce530"}]}]'
+    http_version: 
+  recorded_at: Sun, 27 Aug 2017 19:47:15 GMT
+recorded_with: VCR 3.0.3

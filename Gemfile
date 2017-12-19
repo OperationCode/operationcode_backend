@@ -28,14 +28,17 @@ gem 'redis', '~> 3.0'
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
+gem 'pry-rails'
 
 group :development, :test do
+  gem 'awesome_print', '~> 1.8'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'mocha'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'awesome_print', '~> 1.8'
+  gem 'mocha'
+  gem 'vcr', '~> 3.0', '>= 3.0.3'
+  gem 'webmock', '~> 3.0', '>= 3.0.1'
 end
 
 group :development do
@@ -45,7 +48,7 @@ group :development do
 end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
