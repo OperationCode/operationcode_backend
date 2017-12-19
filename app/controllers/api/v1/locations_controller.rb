@@ -1,34 +1,40 @@
 module Api
   module V1
     class LocationsController < ApplicationController
-      before_action :set_location, only: [:update, :destroy]
+      before_action :set_location, except: :create
 
       def create
-        @school = CodeSchool.find(params[:code_school_id])
-        @school.locations.build(location_params)
-        if @school.save
-          render json: @school
-        else
-          render json: { errors: @school.errors.full_messages }
-        end
+        location = Location.create!(location_params)
+
+        render json: { location: location.id }, status: :created
+      rescue StandardError => e
+        render json: { errors: e.message }, status: :unprocessable_entity
       end
 
       def update
-        render json: @location.update(location_params) ? @location : { errors: @location.errors.full_messages }
+        @location.update!(location_params)
+
+        render json: { status: :ok }
+      rescue StandardError => e
+        render json: { errors: e.message }, status: :unprocessable_entity
       end
 
       def destroy
-        render json: @location.destroy ? { status: :ok } : { errors: @location.errors.full_messages }
+        @location.destroy!
+
+        render json: { status: :ok }
+      rescue StandardError => e
+        render json: { errors: e.message }, status: :unprocessable_entity
       end
 
       private
 
       def set_location
-        @location = Location.find(params[:id])
+        @location = Location.find_by(id: params[:id])
       end
 
       def location_params
-        params.require(:location).permit(:va_accepted, :address1, :address2, :city, :state, :zip)
+        params.require(:location).permit(:code_school_id, :va_accepted, :address1, :address2, :city, :state, :zip)
       end
     end
   end

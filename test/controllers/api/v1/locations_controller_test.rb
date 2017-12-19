@@ -1,10 +1,11 @@
 require 'test_helper'
 
 class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
-  test "POST /api/v1/code_schools/:code_school_id/locations" do
+  test ":create POST /api/v1/code_schools/:code_school_id/locations" do
     school = create(:code_school)
     params = {
       location: {
+        code_school_id: school.id,
         va_accepted: Faker::Boolean.boolean,
         address1: Faker::Address.street_address,
         address2: Faker::Address.street_address,
@@ -15,14 +16,16 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     }
 
     post api_v1_code_school_locations_path(school, params)
+
     assert_response :success
   end
 
-  test "PATCH /api/v1/code_schools/:code_school_id/locations/:id" do
+  test ":update PATCH /api/v1/code_schools/:code_school_id/locations/:id" do
     school = create(:code_school)
     location = create(:location)
     params = {
       location: {
+        code_school_id: school.id,
         va_accepted: Faker::Boolean.boolean,
         address1: Faker::Address.street_address,
         address2: Faker::Address.street_address,
@@ -31,14 +34,18 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
         zip: Faker::Address.zip_code
       }
     }
+
     patch api_v1_code_school_location_path(school, location, params: params)
+
     assert_response :success
   end
 
-  test "DELETE /api/v1/code_schools/:code_school_id/locations/:id" do
+  test ":destroy DELETE /api/v1/code_schools/:code_school_id/locations/:id" do
     school = create(:code_school)
     location = create(:location)
+
     delete api_v1_code_school_location_path(school, location)
+
     assert_response :success
   end
 end
