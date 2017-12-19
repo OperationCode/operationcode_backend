@@ -17,16 +17,21 @@ class User < ApplicationRecord
   # These attributes are what we send to sendgrid as custom fields
   SENDGRID_ATTRIBUTES = %w[first_name last_name email]
 
+  # This regex comes from the `validates_format_of` Rails docs
+  #
+  # @see http://api.rubyonrails.org/classes/ActiveModel/Validations/HelperMethods.html#method-i-validates_format_of
+  #
+  VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
   after_create :welcome_user
   before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
 
-  validates_format_of :email, :with => /\A.*@.*\z/
+  validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
 
   has_many :requests
-  has_many :led_squads, class_name: 'Squad', foreign_key: :leader_id
   has_many :votes
   has_many :scholarship_applications
 

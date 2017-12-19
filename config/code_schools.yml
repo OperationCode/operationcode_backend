@@ -788,6 +788,48 @@
       state: CA
       zip: 94110
 
+- name: Cincy Code IT Bootcamps
+  url: https://maxtrain.com/career-2/veterans-gi-bill-career-changers/
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/cincy_code_it_bootcamps.jpg
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: false
+  locations:
+    - va_accepted: true
+      address1: 4900 Parkway Dr
+      address2: Suite 160
+      city: Cincinnati
+      state: OH
+      zip: 45040
+
+- name: SecureSet
+  url: https://secureset.com/
+  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/secureset.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  notes: Offers full-time and part-time evening courses.
+  locations:
+    - va_accepted: true
+      address1: 2228 Blake Street
+      address2: Suite 100
+      city: Denver
+      state: CO
+      zip: 80205
+    - va_accepted: true
+      address1: 523 S Cascade Ave
+      address2: Suite 140
+      city: Co Springs
+      state: CO
+      zip: 80903
+    - va_accepted: false
+      address1: 1915 N. Ave Republica de Cuba
+      city: Tampa
+      state: FL
+      zip: 33605
+
 - name: devCodeCamp
   url: https://devcodecamp.com/
   logo: https://user-images.githubusercontent.com/21281011/33676906-44ac1922-da74-11e7-807c-63ca0672f1bc.png
