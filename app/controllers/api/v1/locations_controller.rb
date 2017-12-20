@@ -7,7 +7,7 @@ module Api
         location = Location.create!(location_params)
 
         render json: { location: location.id }, status: :created
-      rescue StandardError => e
+      rescue ActiveRecord::RecordInvalid => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
@@ -23,7 +23,7 @@ module Api
         @location.destroy!
 
         render json: { status: :ok }
-      rescue StandardError => e
+      rescue ActiveRecord::RecordNotDestroyed, NoMethodError => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
