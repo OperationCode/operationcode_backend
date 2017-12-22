@@ -4,7 +4,7 @@ module Api
       def create
         raise "Invalid email address: #{permitted_params[:email]}" unless valid_email?
 
-        AddUserToSendGridJob.perform_later(guest)
+        AddUserToSendGridJob.perform_later(nil, guest_email: permitted_params[:email])
 
         render json: { email: permitted_params[:email], guest: true }, status: :created
       rescue StandardError => e
@@ -15,17 +15,6 @@ module Api
 
       def permitted_params
         params.permit(:email)
-      end
-
-      # Guest is a Struct.  ActiveJob does not support the passing of Structs
-      # as an argument. An ActiveJob::SerializationError < ArgumentError is raised.
-      #
-      # It does permit Arrays.  As such, the Struct is being passed within an Array.
-      #
-      # @see http://api.rubyonrails.org/classes/ActiveJob/SerializationError.html
-      #
-      def guest
-        [SendGridClient::Guest.user(permitted_params[:email])]
       end
 
       def valid_email?
