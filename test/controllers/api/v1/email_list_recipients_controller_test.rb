@@ -17,10 +17,8 @@ class Api::V1::EmailListRecipientsControllerTest < ActionDispatch::IntegrationTe
     assert response.status == 201
   end
 
-  test ":create with a valid email address, it calls the AddUserToSendGridJob" do
-    guest = [SendGridClient::Guest.user(valid_email)]
-
-    AddUserToSendGridJob.expects(:perform_later).with(guest)
+  test ":create with a valid email address, and a nil user, it calls the AddUserToSendGridJob" do
+    AddUserToSendGridJob.expects(:perform_later).with(nil, guest_email: valid_email)
 
     post api_v1_email_list_recipients_path, params: { email: valid_email }, as: :json
   end
