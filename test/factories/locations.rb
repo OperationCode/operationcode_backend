@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :location do
-    code_school { CodeSchool.first || association(:code_school) }
+    code_school { association(:code_school) || CodeSchool.last  }
     va_accepted Faker::Boolean.boolean
     address1 Faker::Address.street_address
     address2 Faker::Address.street_address

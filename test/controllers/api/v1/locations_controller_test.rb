@@ -41,11 +41,11 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
 
   test "INVALID :update PATCH /api/v1/code_schools/:code_school_id/locations/:id" do
     school = create(:code_school)
-    location = create(:location)
+    location = create(:location, code_school: school)
     params = {
       location: {
-        code_school_id: nil,
-        va_accepted: Faker::Boolean.boolean,
+        code_school_id: school.id,
+        va_accepted: nil,
         address1: Faker::Address.street_address,
         address2: Faker::Address.street_address,
         city: Faker::Address.city,
@@ -61,7 +61,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
 
   test ":update PATCH /api/v1/code_schools/:code_school_id/locations/:id" do
     school = create(:code_school)
-    location = create(:location)
+    location = create(:location, code_school: school)
     params = {
       location: {
         code_school_id: school.id,
@@ -90,7 +90,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
 
   test ":destroy DELETE /api/v1/code_schools/:code_school_id/locations/:id" do
     school = create(:code_school)
-    location = create(:location)
+    location = create(:location, code_school: school)
 
     delete api_v1_code_school_location_path(school, location)
 

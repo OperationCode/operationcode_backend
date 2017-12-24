@@ -15,7 +15,7 @@ module Api
         @location.update!(location_params)
 
         render json: { status: :ok }
-      rescue StandardError => e
+      rescue ActiveRecord::RecordInvalid => e
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 

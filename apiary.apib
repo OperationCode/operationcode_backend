@@ -135,7 +135,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
       + Body
 
               {
-                  status: 200
+                  status: "ok"
               }
 
   + Response 422 (application/json)
@@ -181,7 +181,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                status: "ok"
             }
 
 + Response 422 (application/json)
@@ -413,6 +413,134 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+
+## Location | Create [/api/v1/code_schools/:code_school_id/locations{?code_school_id,va_accepted,address1,address2,city,state,zip}]
+
++ Parameters
+
+    + code_school_id (integer, required) - The Locations CodeSchool
+    + va_accepted (boolean, required) - Does the CodeSchool accepted VA?
+    + address1 (string, required) - What is the address?
+    + address2 (string, optional) - Optional address
+    + city (string, required) - What city is the location in?
+    + state (string, required) - What state is the location in?
+    + zip (integer, required) - What is the zipcode of the location?
+
+### Create a Location Member [POST]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+      + Body
+
+            {
+                location: {
+                    code_school_id: 1,
+                    va_accepted: true,
+                    address1: 2405 Nugget Lane,
+                    address2: Suite 302,
+                    city: Tallahassee,
+                    state: FL,
+                    zip: 32303
+                }
+            }
+
+  + Response 201 (application/json)
+
+      + Body
+
+              {
+                  "location": 182
+              }
+
+  + Response 422 (application/json)
+
+          {
+              errors: "Some error message"
+          }
+## Location | Update [/api/v1/code_schools/:code_school_id/locations/:id?{?code_school_id,va_accepted,address1,address2,city,state,zip}]
+
++ Parameters
+
+    + code_school_id (integer, required) - The Locations CodeSchool
+    + va_accepted (boolean, required) - Does the CodeSchool accepted VA?
+    + address1 (string, required) - What is the address?
+    + address2 (string, optional) - Optional address
+    + city (string, required) - What city is the location in?
+    + state (string, required) - What state is the location in?
+    + zip (integer, required) - What is the zipcode of the location?
+
+### Update an Existing Location [PATCH]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+    + Body
+
+            {
+                "code_school": {
+                    code_school_id: school.id,
+                    va_accepted: true,
+                    address1: 2405 Nugget Lane,
+                    address2: Suite 302,
+                    city: Tallahassee,
+                    state: FL,
+                    zip: 32303
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: "ok"
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Location | Delete [/api/v1/code_schools/:code_school_id/locations/:id]
+
+### Delete an Existing Location [DELETE]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+      + Body
+
+              {
+                  "id": 1
+              }
+
+  + Response 200 (application/json)
+
+      + Body
+
+              {
+                  status: "ok"
+              }
+
+  + Response 422 (application/json)
+
+      + Body
+
+              {
+                  errors: "Some error message"
+              }
+
 ## Resource [/api/v1/resources/{resource_id}]
 
 + Parameters
@@ -458,7 +586,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                status: "ok"
             }
 
 + Response 422 (application/json)
@@ -633,7 +761,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                status: "ok"
             }
 
 + Response 422 (application/json)
@@ -753,7 +881,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                status: "ok"
             }
 
 + Response 422 (application/json)
@@ -792,7 +920,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                status: "ok"
             }
 
 + Response 422 (application/json)
@@ -886,7 +1014,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                status: "ok"
             }
 
 + Response 422 (application/json)
@@ -977,7 +1105,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                status: 200
+                status: "ok"
             }
 
 + Response 422 (application/json)
