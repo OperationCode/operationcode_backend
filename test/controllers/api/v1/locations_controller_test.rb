@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    user = create(:user)
+    @headers = authorization_headers(user)
+  end
+
   test "INVALID :create POST /api/v1/code_schools/:code_school_id/locations" do
     school = create(:code_school)
     params = {
@@ -15,9 +20,28 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    post api_v1_code_school_locations_path(school, params)
+    post api_v1_code_school_locations_path(school, params), headers: @headers
 
     assert_response :unprocessable_entity
+  end
+
+  test "UNAUTHORIZED :create POST /api/v1/code_schools/:code_school_id/locations" do
+    school = create(:code_school)
+    params = {
+      location: {
+        code_school_id: school.id,
+        va_accepted: Faker::Boolean.boolean,
+        address1: Faker::Address.street_address,
+        address2: Faker::Address.street_address,
+        city: Faker::Address.city,
+        state: Faker::Address.state,
+        zip: Faker::Address.zip_code
+      }
+    }
+
+    post api_v1_code_school_locations_path(school, params)
+
+    assert_response :unauthorized
   end
 
   test ":create POST /api/v1/code_schools/:code_school_id/locations" do
@@ -34,7 +58,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    post api_v1_code_school_locations_path(school, params)
+    post api_v1_code_school_locations_path(school, params), headers: @headers
 
     assert_response :success
   end
@@ -54,7 +78,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    patch api_v1_code_school_location_path(school, location, params: params)
+    patch api_v1_code_school_location_path(school, location, params: params), headers: @headers
 
     assert_response :unprocessable_entity
   end
@@ -74,7 +98,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    patch api_v1_code_school_location_path(school, location, params: params)
+    patch api_v1_code_school_location_path(school, location, params: params), headers: @headers
 
     assert_response :success
   end
@@ -83,7 +107,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     school = create(:code_school)
     location = create(:location, code_school: school)
 
-    delete api_v1_code_school_location_path(school, 1)
+    delete api_v1_code_school_location_path(school, 1), headers: @headers
 
     assert_response :unprocessable_entity
   end
@@ -92,7 +116,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     school = create(:code_school)
     location = create(:location, code_school: school)
 
-    delete api_v1_code_school_location_path(school, location)
+    delete api_v1_code_school_location_path(school, location), headers: @headers
 
     assert_response :success
   end
