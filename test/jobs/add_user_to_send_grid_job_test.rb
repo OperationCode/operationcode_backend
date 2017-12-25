@@ -14,7 +14,7 @@ class AddUserToSendGridJobTest < ActiveJob::TestCase
 
     SendGridClient.any_instance.expects(:add_user).with(guest)
 
-    AddUserToSendGridJob.perform_now(nil, guest_email: valid_email)
+    AddUserToSendGridJob.perform_now(nil, valid_email)
   end
 
   test "with a guest_email, and a valid user, it adds the User to send grid" do
@@ -22,7 +22,7 @@ class AddUserToSendGridJobTest < ActiveJob::TestCase
 
     SendGridClient.any_instance.expects(:add_user).with(user)
 
-    AddUserToSendGridJob.perform_now(user, guest_email: valid_email)
+    AddUserToSendGridJob.perform_now(user, valid_email)
   end
 end
 

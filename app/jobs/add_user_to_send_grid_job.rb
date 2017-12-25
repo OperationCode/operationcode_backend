@@ -8,7 +8,7 @@ class AddUserToSendGridJob < ApplicationJob
   #   A guest_email is only provided when we do not have a User object,
   #   and vice versa.
   #
-  def perform(user, guest_email: nil)
+  def perform(user, guest_email = nil)
     end_user = type_of_user(user, guest_email)
 
     SendGridClient.new.add_user(end_user)
