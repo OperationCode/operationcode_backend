@@ -5,6 +5,148 @@ HOST: https://operationcode.org/
 
 API endpoints that Operation Code's Rails backend makes available to its React frontend.
 
+## Users | Create [/api/v1/users{?first_name,last_name,email,zip,password,mentor}]
+
++ Parameters
+
+  + first_name (string, required) - First Name of the user in the form of an string
+  + last_name (string, required) - Last Name of the user in the form of an string
+  + email (string, required) - Email of the User in the form of a string
+  + zip (string, required) - Zipcode of the User in the form of a string
+  + password (string, required) - Password of the User in the form on a string
+  + mentor (boolean, required) - Is User requesting mentor in the form of a boolean
+
+### Create new user record [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {            
+            first_name: "Mike",
+            last_name: "Johnson",
+            email: "dreams@operationcode.org"  ,     
+            zip: "80020" ,        
+            password: "hunter2",    
+            mentor: "true",   
+            }
+
+
++ Response 201 (application/json)
+
+        {
+        token: Bearer Access-Token
+        }
+
++ Response 422 (application/json)
+
+        {
+        errors: "Some error message"
+        }
+
+## Users | Update [/api/v1/users{?education_level,mentor,scholarship_info,employment_status,company_name,company_role,volunteer,branch_of_service,interests}]
+
++ Parameters
+
+  + education_level (string, required) - Users highest level of education in the form of a string
+  + mentor (boolean, required) - Is User requesting mentor in the form of a boolean
+  + scholarship_info (boolean, required) - Is User interested in scholarship info in the form of a boolean
+  + employment_status (string, required) - Users employment status in the form of a string
+  + company_name (string, required) - Users name of employer in the form on a string
+  + company_role (string, required) - Users role at company in the form of a string
+  + volunteer (boolean, required) - Is User wanting to volunteer in the form of a boolean
+  + branch_of_service (string) - Users branch of service in the form of a string
+  + interests (string) - User interests in the form of a string.
+
+### Update user record [PATCH]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+    + Body
+
+            {            
+            education_level: "College Graduate" ,   
+            mentor: "true",              
+            scholarship_info: "true",  
+            employment_status: "Employed",
+            company_name: "Comcast",
+            company_role: "Developer",      
+            volunteer: "false",         
+            branch_of_service: "Air Force", 
+            interests: "Python, Python, Python, Python"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+            first_name: "Mike",
+            last_name: "Johnson",
+            email: "dreams@operationcode.org",     
+            zip: "80020",        
+            password: "hunter2",    
+            mentor: "true",   
+            education_level: "College Graduate",              
+            scholarship_info: "true",  
+            employment_status: "Employed",
+            company_name: "Comcast",
+            company_role: "Developer",      
+            volunteer: "false",         
+            branch_of_service: "Air Force", 
+            interests: "Python, Python, Python, Python"
+            }
+
++ Response 422 (application/json)
+
+    + Body
+
+            {
+            errors: "Some error message"
+            }
+    
+## Users | Verify [/api/v1/users/profile/verify{?verified}]
+
++ Parameters
+
+  + verified (boolean, required) - Users verified veteran status in the form of a boolean
+
+### Modify User record verified status [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token,
+            verified: true
+
+    + Body
+
+            {
+            verified: true
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+            status: "ok",
+            verified: "verified"
+            }
+
++ Response 422 (application/json)
+
+    + Body
+
+            {
+            errors: "Some error message"
+            }
+            
 ## CodeSchool | Collection [/api/v1/code_schools]
 
 ### List All CodeSchool Members [GET]
