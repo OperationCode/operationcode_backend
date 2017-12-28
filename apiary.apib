@@ -932,8 +932,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-
-
 ## User | Count By Location [/api/v1/users/by_location{?state,zip,city,lat_long,radius}]
 
 ### By Location [GET]
@@ -1027,13 +1025,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 + Response 201 (application/json)
 
         {
-        token: Bearer Access-Token
+            token: Bearer Access-Token
         }
 
 + Response 422 (application/json)
 
         {
-        errors: "Some error message"
+            errors: "Some error message"
         }
 
 ## User | Reset Password [/api/v1/users/passwords/reset{?email}]
@@ -1108,15 +1106,15 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-            education_level: "College Graduate" ,
-            mentor: "true",
-            scholarship_info: "true",
-            employment_status: "Employed",
-            company_name: "Comcast",
-            company_role: "Developer",
-            volunteer: "false",
-            branch_of_service: "Air Force",
-            interests: "Python, Python, Python, Python"
+                education_level: "College Graduate" ,
+                mentor: "true",
+                scholarship_info: "true",
+                employment_status: "Employed",
+                company_name: "Comcast",
+                company_role: "Developer",
+                volunteer: "false",
+                branch_of_service: "Air Force",
+                interests: "Python, Python, Python, Python"
             }
 
 + Response 200 (application/json)
@@ -1124,20 +1122,20 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-            first_name: "Mike",
-            last_name: "Johnson",
-            email: "dreams@operationcode.org",
-            zip: "80020",
-            password: "hunter2",
-            mentor: "true",
-            education_level: "College Graduate",
-            scholarship_info: "true",
-            employment_status: "Employed",
-            company_name: "Comcast",
-            company_role: "Developer",
-            volunteer: "false",
-            branch_of_service: "Air Force",
-            interests: "Python, Python, Python, Python"
+                first_name: "Mike",
+                last_name: "Johnson",
+                email: "dreams@operationcode.org",
+                zip: "80020",
+                password: "hunter2",
+                mentor: "true",
+                education_level: "College Graduate",
+                scholarship_info: "true",
+                employment_status: "Employed",
+                company_name: "Comcast",
+                company_role: "Developer",
+                volunteer: "false",
+                branch_of_service: "Air Force",
+                interests: "Python, Python, Python, Python"
             }
 
 + Response 422 (application/json)
@@ -1145,14 +1143,14 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-            errors: "Some error message"
+                errors: "Some error message"
             }
 
 ## User | Verify [/api/v1/users/profile/verify{?verified}]
 
 + Parameters
 
-  + verified (boolean, required) - Users verified veteran status in the form of a boolean
+  + verified (boolean, required) - User has verified military affiliation status through ID.me
 
 ### Modify User record verified status [POST]
 
@@ -1160,13 +1158,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
     + Headers
 
-            Authorization: Bearer Access-Token,
-            verified: true
+            Authorization: Bearer Access-Token
 
     + Body
 
             {
-            verified: true
+                verified: true
             }
 
 + Response 200 (application/json)
@@ -1174,8 +1171,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-            status: "ok",
-            verified: "verified"
+                status: "ok",
+                verified: "verified"
             }
 
 + Response 422 (application/json)
@@ -1183,7 +1180,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-            errors: "Some error message"
+                errors: "Some error message"
             }
 
 
