@@ -5,8 +5,6 @@ HOST: https://operationcode.org/
 
 API endpoints that Operation Code's Rails backend makes available to its React frontend.
 
-
-
 ## CodeSchool | Collection [/api/v1/code_schools]
 
 ### List All CodeSchool Members [GET]
@@ -1008,7 +1006,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
   + email (string, required) - Email of the User in the form of a string
   + zip (string, required) - Zipcode of the User in the form of a string
   + password (string, required) - Password of the User in the form on a string
-  + mentor (boolean, required) - Is User requesting mentor in the form of a boolean
+  + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
 
 ### Create new user record [POST]
 
