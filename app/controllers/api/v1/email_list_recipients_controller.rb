@@ -4,7 +4,7 @@ module Api
       def create
         raise "Invalid email address: #{permitted_params[:email]}" unless valid_email?
 
-        AddUserToSendGridJob.perform_later(nil, permitted_params[:email])
+        AddGuestToSendGridJob.perform_later(permitted_params[:email])
 
         render json: { email: permitted_params[:email], guest: true }, status: :created
       rescue StandardError => e

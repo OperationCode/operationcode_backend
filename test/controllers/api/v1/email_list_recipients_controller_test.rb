@@ -17,27 +17,27 @@ class Api::V1::EmailListRecipientsControllerTest < ActionDispatch::IntegrationTe
     assert response.status == 201
   end
 
-  test ":create with a valid email address, and a nil user, it calls the AddUserToSendGridJob" do
-    AddUserToSendGridJob.expects(:perform_later).with(nil, valid_email)
+  test ":create with a valid email address calls the AddGuestToSendGridJob" do
+    AddGuestToSendGridJob.expects(:perform_later).with(valid_email)
 
     post api_v1_email_list_recipients_path, params: { email: valid_email }, as: :json
   end
 
-  test ":create with a invalid email address, renders an error message" do
+  test ":create with a invalid email address renders an error message" do
     post api_v1_email_list_recipients_path, params: { email: invalid_email }, as: :json
 
     assert JSON.parse(response.body) == { "errors" => "Invalid email address: #{invalid_email}" }
   end
 
-  test ":create with an invalid email address, it does not call the AddUserToSendGridJob" do
-    0.times { AddUserToSendGridJob.expects(:perform_later) }
+  test ":create with an invalid email address does not call the AddGuestToSendGridJob" do
+    0.times { AddGuestToSendGridJob.expects(:perform_later) }
 
     post api_v1_email_list_recipients_path, params: { email: invalid_email }, as: :json
   end
 end
 
 def stub_send_grid_job
-  AddUserToSendGridJob.stubs(:perform_later).returns(true)
+  AddGuestToSendGridJob.stubs(:perform_later).returns(true)
 end
 
 def valid_email
