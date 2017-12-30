@@ -107,7 +107,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     school = create(:code_school)
     location = create(:location, code_school: school)
 
-    delete api_v1_code_school_location_path(school, 1), headers: @headers
+    delete api_v1_code_school_location_path(school, location.id + 1000), headers: @headers
 
     assert_response :unprocessable_entity
   end
