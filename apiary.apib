@@ -42,14 +42,14 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
 + Parameters
 
-  + name (string, required) - The CodeSchool's name
-  + url (string, required) - The CodeSchool's url for homepage
-  + logo (string, required) - The CodeSchool's logo url
-  + full_time (boolean, required) - Are the CodeSchool's courses full time
-  + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
-  + has_online (boolean, required) - Does the CodeSchool have an online component
-  + online_only (boolean, required) - Is the CodeSchool online only?
-  + notes (text, optional) - Any additional information about the CodeSchool
+    + name (string, required) - The CodeSchool's name
+    + url (string, required) - The CodeSchool's url for homepage
+    + logo (string, required) - The CodeSchool's logo url
+    + full_time (boolean, required) - Are the CodeSchool's courses full time
+    + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
+    + has_online (boolean, required) - Does the CodeSchool have an online component
+    + online_only (boolean, required) - Is the CodeSchool online only?
+    + notes (text, optional) - Any additional information about the CodeSchool
 
 ### Create a CodeSchool Member [POST]
 
@@ -193,7 +193,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## Email List Recipients | Create [/api/v1/email_list_recipients{?email}]
 + Parameters
 
-  + email (string, required) - The email address of the OC guest to be added to the OC's email list
+    + email (string, required) - The email address of the OC guest to be added to the OC's email list
 
 ### Add a guest (non-user) to the OC's email list [POST]
 
@@ -461,6 +461,39 @@ API endpoints that Operation Code's Rails backend makes available to its React f
           {
               errors: "Some error message"
           }
+
+## Location | Delete [/api/v1/code_schools/:code_school_id/locations/:id]
+
+### Delete an Existing Location [DELETE]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+      + Body
+
+              {
+                  "id": 1
+              }
+
+  + Response 200 (application/json)
+
+      + Body
+
+              {
+                  status: "ok"
+              }
+
+  + Response 422 (application/json)
+
+      + Body
+
+              {
+                  errors: "Some error message"
+              }
+
 ## Location | Update [/api/v1/code_schools/:code_school_id/locations/:id?{?code_school_id,va_accepted,address1,address2,city,state,zip}]
 
 + Parameters
@@ -509,37 +542,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Location | Delete [/api/v1/code_schools/:code_school_id/locations/:id]
 
-### Delete an Existing Location [DELETE]
-
-  + Request (application/json)
-
-      + Headers
-
-              Authorization: Bearer Access-Token
-
-      + Body
-
-              {
-                  "id": 1
-              }
-
-  + Response 200 (application/json)
-
-      + Body
-
-              {
-                  status: "ok"
-              }
-
-  + Response 422 (application/json)
-
-      + Body
-
-              {
-                  errors: "Some error message"
-              }
 
 ## Resource [/api/v1/resources/{resource_id}]
 
@@ -992,6 +995,43 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+## User | Create [/api/v1/users{?first_name,last_name,email,zip,password,mentor}]
+
++ Parameters
+
+    + first_name (string, required) - First Name of the user in the form of an string
+    + last_name (string, required) - Last Name of the user in the form of an string
+    + email (string, required) - Email of the User in the form of a string
+    + zip (string, required) - Zipcode of the User in the form of a string
+    + password (string, required) - Password of the User in the form on a string
+    + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
+
+### Create new user record [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                first_name: "Mike",
+                last_name: "Johnson",
+                email: "dreams@operationcode.org",
+                zip: "80020",            
+                mentor: "true"
+            }
+
+
++ Response 201 (application/json)
+
+        {
+            token: Bearer Access-Token
+        }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
 
 ## User | Reset Password [/api/v1/users/passwords/reset{?email}]
 
@@ -1040,6 +1080,104 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+## User | Update [/api/v1/users{?education_level,mentor,scholarship_info,employment_status,company_name,company_role,volunteer,branch_of_service,interests}]
+
++ Parameters
+
+    + education_level (string, optional) - Users highest level of education in the form of a string
+    + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
+    + scholarship_info (boolean, optional) - Is User interested in scholarship info in the form of a boolean
+    + employment_status (string, optional) - Users employment status in the form of a string
+    + company_name (string, optional) - Users name of employer in the form on a string
+    + company_role (string, optional) - Users role at company in the form of a string
+    + volunteer (boolean, optional) - Is User wanting to volunteer in the form of a boolean
+    + branch_of_service (string, optional) - Users branch of service in the form of a string
+    + interests (string, optional) - User interests in the form of a string.
+
+### Update user record [PATCH]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+    + Body
+
+            {
+                education_level: "College Graduate" ,
+                mentor: "true",
+                scholarship_info: "true",
+                employment_status: "Employed",
+                company_name: "Comcast",
+                company_role: "Developer",
+                volunteer: "false",
+                branch_of_service: "Air Force",
+                interests: "Python, Python, Python, Python"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                first_name: "Mike",
+                last_name: "Johnson",
+                email: "dreams@operationcode.org",
+                zip: "80020",
+                password: "hunter2",
+                mentor: "true",
+                education_level: "College Graduate",
+                scholarship_info: "true",
+                employment_status: "Employed",
+                company_name: "Comcast",
+                company_role: "Developer",
+                volunteer: "false",
+                branch_of_service: "Air Force",
+                interests: "Python, Python, Python, Python"
+            }
+
++ Response 422 (application/json)
+
+    + Body
+
+            {
+                errors: "Some error message"
+            }
+
+## User | Verify [/api/v1/users/profile/verify{?access_token}]
+
++ Parameters
+
+    + access_token (string, required) - User verified access token through Id.me in the form of a string
+
+### Verifies a user's military affiliation status through ID.me [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                access_token: "access token"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: "ok",
+                verified: "verified"
+            }
+
++ Response 422 (application/json)
+
+    + Body
+
+            {
+                errors: "Some error message"
+            }
+
 
 ## Vote | Create [/api/v1/resources/{resource_id}/votes{?user_id}]
 
