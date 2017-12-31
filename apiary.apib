@@ -42,14 +42,14 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
 + Parameters
 
-  + name (string, required) - The CodeSchool's name
-  + url (string, required) - The CodeSchool's url for homepage
-  + logo (string, required) - The CodeSchool's logo url
-  + full_time (boolean, required) - Are the CodeSchool's courses full time
-  + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
-  + has_online (boolean, required) - Does the CodeSchool have an online component
-  + online_only (boolean, required) - Is the CodeSchool online only?
-  + notes (text, optional) - Any additional information about the CodeSchool
+    + name (string, required) - The CodeSchool's name
+    + url (string, required) - The CodeSchool's url for homepage
+    + logo (string, required) - The CodeSchool's logo url
+    + full_time (boolean, required) - Are the CodeSchool's courses full time
+    + hardware_included (boolean, required) - Is Hardware included with the CodeSchool
+    + has_online (boolean, required) - Does the CodeSchool have an online component
+    + online_only (boolean, required) - Is the CodeSchool online only?
+    + notes (text, optional) - Any additional information about the CodeSchool
 
 ### Create a CodeSchool Member [POST]
 
@@ -193,7 +193,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## Email List Recipients | Create [/api/v1/email_list_recipients{?email}]
 + Parameters
 
-  + email (string, required) - The email address of the OC guest to be added to the OC's email list
+    + email (string, required) - The email address of the OC guest to be added to the OC's email list
 
 ### Add a guest (non-user) to the OC's email list [POST]
 
@@ -999,12 +999,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Parameters
 
-  + first_name (string, required) - First Name of the user in the form of an string
-  + last_name (string, required) - Last Name of the user in the form of an string
-  + email (string, required) - Email of the User in the form of a string
-  + zip (string, required) - Zipcode of the User in the form of a string
-  + password (string, required) - Password of the User in the form on a string
-  + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
+    + first_name (string, required) - First Name of the user in the form of an string
+    + last_name (string, required) - Last Name of the user in the form of an string
+    + email (string, required) - Email of the User in the form of a string
+    + zip (string, required) - Zipcode of the User in the form of a string
+    + password (string, required) - Password of the User in the form on a string
+    + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
 
 ### Create new user record [POST]
 
@@ -1013,11 +1013,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-            first_name: "Mike",
-            last_name: "Johnson",
-            email: "dreams@operationcode.org",
-            zip: "80020",            
-            mentor: "true",
+                first_name: "Mike",
+                last_name: "Johnson",
+                email: "dreams@operationcode.org",
+                zip: "80020",            
+                mentor: "true"
             }
 
 
@@ -1084,15 +1084,15 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Parameters
 
-  + education_level (string, optional) - Users highest level of education in the form of a string
-  + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
-  + scholarship_info (boolean, optional) - Is User interested in scholarship info in the form of a boolean
-  + employment_status (string, optional) - Users employment status in the form of a string
-  + company_name (string, optional) - Users name of employer in the form on a string
-  + company_role (string, optional) - Users role at company in the form of a string
-  + volunteer (boolean, optional) - Is User wanting to volunteer in the form of a boolean
-  + branch_of_service (string, optional) - Users branch of service in the form of a string
-  + interests (string, optional) - User interests in the form of a string.
+    + education_level (string, optional) - Users highest level of education in the form of a string
+    + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
+    + scholarship_info (boolean, optional) - Is User interested in scholarship info in the form of a boolean
+    + employment_status (string, optional) - Users employment status in the form of a string
+    + company_name (string, optional) - Users name of employer in the form on a string
+    + company_role (string, optional) - Users role at company in the form of a string
+    + volunteer (boolean, optional) - Is User wanting to volunteer in the form of a boolean
+    + branch_of_service (string, optional) - Users branch of service in the form of a string
+    + interests (string, optional) - User interests in the form of a string.
 
 ### Update user record [PATCH]
 
@@ -1145,24 +1145,20 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 errors: "Some error message"
             }
 
-## User | Verify [/api/v1/users/profile/verify{?verified}]
+## User | Verify [/api/v1/users/profile/verify{?access_token}]
 
 + Parameters
 
-  + verified (boolean, required) - User has verified military affiliation status through ID.me
+    + access_token (string, required) - User verified access token through Id.me in the form of a string
 
-### Modify User record verified status [POST]
+### Verifies a user's military affiliation status through ID.me [POST]
 
 + Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
 
     + Body
 
             {
-                verified: true
+                access_token: "access token"
             }
 
 + Response 200 (application/json)
