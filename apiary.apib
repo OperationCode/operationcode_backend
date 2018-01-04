@@ -788,14 +788,14 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 + Response 200 (application/json)
 
         {
-            id: 7,
-            name: "Full Stack Dev-Ops",
-            location: "29 Palms",
-            terms: "Recent Veterans",
-            open_time: "2017-05-30T15:05:39.242Z",
-            close_time: "2017-10-30T15:05:39.242Z",
-            created_at: "2017-06-30T15:05:39.242Z",
-            updated_at: "2017-06-30T15:05:39.242Z"
+            "id": 7,
+            "name": "Full Stack Dev-Ops",
+            "location": "29 Palms",
+            "terms": "Recent Veterans",
+            "open_time": "2017-05-30T15:05:39.242Z",
+            "close_time": "2017-10-30T15:05:39.242Z",
+            "created_at": "2017-06-30T15:05:39.242Z",
+            "updated_at": "2017-06-30T15:05:39.242Z"
         }
 
 + Response 404 (application/json)
@@ -819,10 +819,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                scholarship_application: "Scholarship for kids who want to learn how to program", 
-                reason: "I want to go to college",
-                terms_accepted: true,
-                scholarship_id:  4
+                "scholarship_application": "Scholarship for kids who want to learn how to program", 
+                "reason": "I want to go to college",
+                "terms_accepted": true,
+                "scholarship_id":  4
             }
 
 + Response 201 (application/json)
@@ -840,7 +840,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             {
                 errors: "Some error message"
             }
-
+########
 ## Slack User | Invite [/api/v1/slack_users]
 
 ### Invite a User to Slack [POST]
