@@ -542,7 +542,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Mentor Request | Create [/api/v1/requests{?user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
+## Mentor Request | Create a New Mentor Request [/api/v1/requests{?user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
     + user_id (integer, required) - Identification of the User requesting a mentor in the form of an integer
@@ -577,7 +577,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
     + Body
 
-            {
+            {   
+                "id": 2130,
                 "user_id": 4600,
                 "details": "I want to type well",
                 "language": "English",
@@ -594,11 +595,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             {
                 errors: "Some error message"
             }
-
-## Mentor Request | Show [/api/v1/requests{?user_id}]
+  
+## Mentor Request | Show [/api/v1/requests/{request_id}]
 + Parameters
     
-    + user_id (integer, required) - Identification of the User requesting a mentor in the form of an integer
+    + request_id (integer, required) - Indentification of mentor request in the form of an integer
 
     
 ### Show an Exiting Request From User ID [POST]
@@ -612,7 +613,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "user_id": 5200
+                "request_id": 1234
 
             }
 
@@ -621,6 +622,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "request_id": 1234,
                 "user_id": 5200,
                 "details": "I want to program",
                 "language": "English",
@@ -630,8 +632,50 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "assigned_mentor_id": 260
             }
 
+## Mentor Requests | Unclaimed Collection [/api/v1/requests]
 
-## Mentor Request | Update [/api/v1/requests{?user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
+### Get All Unclaimed Mentor Requests [GET]
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+        
++ Response 200 (application/json)
+
+        [
+            {   
+                "id": 251",
+                "service_id": 223,
+                "language": "English",
+                "details": "I want to stop eating crayons",
+                "user_id": 1113,
+                "assigned_mentor_id": null,
+                "requested_mentor_id": 3333,
+                "created_at": "2017-09-26T06:54:58.607Z",
+                "updated_at": "2017-09-26T06:54:58.607Z",
+                "status": "open"            
+            },
+            {   "id":"264"
+                "service_id": 243,
+                "language": "American Sign Language",
+                "details": "I need help interviewing",
+                "user_id": 2500,
+                "assigned_mentor_id": null,
+                "requested_mentor_id": 1250,
+                "created_at": "2017-09-26T06:54:58.607Z",
+                "updated_at": "2017-09-26T06:54:58.607Z",
+                "status": "open"            
+            }
+        ]
+        
++ Response 401 (application/json)
+
+        {
+            error: 'Unauthorized'
+        }
+
+## Mentor Request | Update [/api/v1/requests{user_id}{?details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
     + user_id (integer, required) - Identification of the User requesting a mentor in the form of an integer
@@ -641,7 +685,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + requested_mentor_id (integer, optional) - Requested mentor's id in the form of an integer
     + status (string, optional) - Current fullfillment status in the form on a string
     + assigned_mentor_id (integer, optional) - Assigned mentor'd id in the form of an integer
-
+    
 ### Update an Existing Mentor Request [PUT]
 
 + Request (application/json)
@@ -667,6 +711,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "id":4521,
                 "user_id": 5200,
                 "details": "I want to program",
                 "language": "English",
@@ -677,48 +722,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
 
 + Response 400 (application/json)
-
-## Mentor Requests Unclaimed | Show [/api/v1/requests]
-
-### Get All Unclaimed Mentor Requests [GET]
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
-        
-+ Response 200 (application/json)
-
-        [
-            {
-                "service_id": 223,
-                "language": "English",
-                "details": "I want to stop eating crayons",
-                "user_id": 1113,
-                "assigned_mentor_id": null,
-                "requested_mentor_id": 3333,
-                "created_at": "2017-09-26T06:54:58.607Z",
-                "updated_at": "2017-09-26T06:54:58.607Z",
-                "status": "open"            
-            },
-            {
-                "service_id": 243,
-                "language": "American Sign Language",
-                "details": "I need help interviewing",
-                "user_id": 2500,
-                "assigned_mentor_id": null,
-                "requested_mentor_id": 1250,
-                "created_at": "2017-09-26T06:54:58.607Z",
-                "updated_at": "2017-09-26T06:54:58.607Z",
-                "status": "open"            
-            }
-        ]
-        
-+ Response 401 (application/json)
-
-        {
-            error: 'Unauthorized'
-        }
 
 ## Resource [/api/v1/resources/{resource_id}]
 
@@ -924,98 +927,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
-
-## Scholarships | Collection [/api/v1/scholarships]
-
-### List All Scholarships Available [GET]
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": 5,
-                "name": "Full Stack Dev-Ops",
-                "location": "29 Palms",
-                "terms": "Recent Veterans",
-                "open_time": "2017-05-30T15:05:39.242Z",
-                "close_time": "2017-10-30T15:05:39.242Z",
-                "created_at": "2017-06-30T15:05:39.242Z",
-                "updated_at": "2017-06-30T15:05:39.242Z"
-            },
-            {
-                "id": 6,
-                "name": "UX to UI for U University",
-                "location": "Florida",
-                "terms": "Must be Conrad H.",
-                "open_time": "2018-01-30T15:05:39.242Z",
-                "close_time": "2018-10-30T15:05:39.242Z",
-                "created_at": "2017-06-30T15:05:39.242Z",
-                "updated_at": "2017-06-30T15:05:39.242Z"
-            }
-        ]
-
-## Scholarships | Show [/api/v1/code_schools/{scholarship_id}]
-+ Parameters
-
-    + scholarship_id (number) - ID of the Scholarship in the form of an integer
-
-### Get an Existing CodeSchool [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "id": 7,
-            "name": "Full Stack Dev-Ops",
-            "location": "29 Palms",
-            "terms": "Recent Veterans",
-            "open_time": "2017-05-30T15:05:39.242Z",
-            "close_time": "2017-10-30T15:05:39.242Z",
-            "created_at": "2017-06-30T15:05:39.242Z",
-            "updated_at": "2017-06-30T15:05:39.242Z"
-        }
-
-+ Response 404 (application/json)
-
-        {
-            error: 'No such record'
-        }
-
-## Scholarship Applications | Create [/api/v1/code_schools/{?scholarship_application,reason,terms_accepted,scholarship_id}]
-+ Parameters
-
-    + scholarship_application (string, required) - Name of the Scholarship in the form of a string
-    + reason (string, optional) - User specified reason for Scholarship Application in the form of a string
-    + terms_accepted (boolean, optional) - User specified acknowledgement of Scholarship terms in the form of string
-    + scholarship_id (integer, optional) - Unique Id for this scholarship application
-
-### Create a New Scholarship Application [POST]
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "scholarship_application": "Scholarship for kids who want to learn how to program", 
-                "reason": "I want to go to college",
-                "terms_accepted": true,
-                "scholarship_id":  4
-            }
-
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                redirect_to: '/success'                  
-            }
-
-+ Response 400 (application/json)
-
-    + Body
-
-            {
-                errors: "Some error message"
-            }
 
 ## Slack User | Invite [/api/v1/slack_users]
 
