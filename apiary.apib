@@ -542,8 +542,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-
-
 ## Resource [/api/v1/resources/{resource_id}]
 
 + Parameters
@@ -748,7 +746,102 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+        
+## Scholarships | Collection [/api/v1/scholarships]
 
+### List All Scholarships Available [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 5,
+                "name": "Full Stack Dev-Ops",
+                "location": "29 Palms",
+                "terms": "Recent Veterans",
+                "open_time": "2017-05-30T15:05:39.242Z",
+                "close_time": "2017-10-30T15:05:39.242Z",
+                "created_at": "2017-06-30T15:05:39.242Z",
+                "updated_at": "2017-06-30T15:05:39.242Z"
+            },
+            {
+                "id": 6,
+                "name": "UX to UI for U University",
+                "location": "Florida",
+                "terms": "Must be Conrad H.",
+                "open_time": "2018-01-30T15:05:39.242Z",
+                "close_time": "2018-10-30T15:05:39.242Z",
+                "created_at": "2017-06-30T15:05:39.242Z",
+                "updated_at": "2017-06-30T15:05:39.242Z"
+            }
+        ]
+
+## Scholarships | Show [/api/v1/scholarships/{scholarship_id}]
++ Parameters
+
+    + scholarship_id (number, required) - ID of the Scholarship in the form of an integer
+
+### Get an Existing Scholarship [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 7,
+            "name": "Full Stack Dev-Ops",
+            "location": "29 Palms",
+            "terms": "Recent Veterans",
+            "open_time": "2017-05-30T15:05:39.242Z",
+            "close_time": "2017-10-30T15:05:39.242Z",
+            "created_at": "2017-06-30T15:05:39.242Z",
+            "updated_at": "2017-06-30T15:05:39.242Z"
+        }
+
++ Response 404 (application/json)
+
+        {
+            error: 'No such record'
+        }
+
+## Scholarship Applications | Create [/api/v1/scholarship_applications/{?user_id,scholarship_application,reason,terms_accepted,scholarship_id}]
++ Parameters
+
+    + user_id (integer, required) - ID of the user that is applying for a scholarship in the form of an integer
+    + scholarship_application (string, required) - Name of the Scholarship in the form of a string
+    + reason (string, optional) - User specified reason for Scholarship Application in the form of a string
+    + terms_accepted (boolean, optional) - User specified acknowledgement of Scholarship terms in the form of string
+    + scholarship_id (integer, optional) - Unique Id for this scholarship application
+
+### Create a New Scholarship Application [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "user_id": 1234,
+                "scholarship_application": "Scholarship for kids who want to learn how to program", 
+                "reason": "I want to go to college",
+                "terms_accepted": true,
+                "scholarship_id":  4
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                redirect_to: '/success'                  
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                errors: "Some error message"
+            }
+
+        
 ## Slack User | Invite [/api/v1/slack_users]
 
 ### Invite a User to Slack [POST]
