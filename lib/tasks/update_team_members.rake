@@ -68,8 +68,8 @@ namespace :update_team_members do
       TeamMember.update(:updated_member[:id], name: updated_member[:name], role: updated_member[:role])
     end
     / "destroy" not sure if this or "delete" /  
-    deleted_members.each do |member|
-      TeamMember.destroy(:deleted_members[:id]
+    deleted_members.each do |deleted_member|
+      TeamMember.destroy(:deleted_member[:id]
     end
     
   end
