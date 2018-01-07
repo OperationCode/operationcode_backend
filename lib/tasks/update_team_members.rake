@@ -58,6 +58,7 @@ namespace :update_team_members do
         role: "CTO"
       }
     ]
+    
     / "find_or_create_by" calls  create!, raises an exception if created record is invalid/
     new_members.each do |new_member|
       TeamMember.find_or_create_by!(name: new_member[:name], role: new_member[:role])
@@ -67,6 +68,7 @@ namespace :update_team_members do
     updated_members.each do |updated_member|
       TeamMember.update(:updated_member[:id], name: updated_member[:name], role: updated_member[:role])
     end
+    
     / "destroy" not sure if this or "delete" /  
     deleted_members.each do |deleted_member|
       TeamMember.destroy(:deleted_member[:id]
