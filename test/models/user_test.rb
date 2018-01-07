@@ -212,4 +212,21 @@ class UserTest < ActiveSupport::TestCase
     assert_equal '/profile', redirect
 >>>>>>> added unit tests for social login
   end
+
+  test 'VALID_EMAIL regex ensures valid formatting' do
+    # valid email formats
+    assert "john@gmail.com" =~ User::VALID_EMAIL
+    assert "j@example.com" =~ User::VALID_EMAIL
+    assert "jack@anything.io" =~ User::VALID_EMAIL
+    assert "jack@anything.org" =~ User::VALID_EMAIL
+    assert "jack@anything.net" =~ User::VALID_EMAIL
+    assert "jack@anything.whatever" =~ User::VALID_EMAIL
+
+    # invalid email formats
+    refute "johngmail.com" =~ User::VALID_EMAIL
+    refute "john#gmail.com" =~ User::VALID_EMAIL
+    refute "john@gmail" =~ User::VALID_EMAIL
+    refute "@example.com" =~ User::VALID_EMAIL
+  end
+
 end
