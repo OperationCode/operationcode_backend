@@ -776,12 +776,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
         ]
 
-## Scholarships | Show [/api/v1/code_schools/{scholarship_id}]
+## Scholarships | Show [/api/v1/scholarships/{scholarship_id}]
 + Parameters
 
-    + scholarship_id (number) - ID of the Scholarship in the form of an integer
+    + scholarship_id (number, required) - ID of the Scholarship in the form of an integer
 
-### Get an Existing CodeSchool [GET]
+### Get an Existing Scholarship [GET]
 
 + Response 200 (application/json)
 
@@ -802,9 +802,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             error: 'No such record'
         }
 
-## Scholarship Applications | Create [/api/v1/code_schools/{?scholarship_application,reason,terms_accepted,scholarship_id}]
+## Scholarship Applications | Create [/api/v1/scholarship_applications/{?user_id,scholarship_application,reason,terms_accepted,scholarship_id}]
 + Parameters
 
+    + user_id (integer, required) - ID of the user that is applying for a scholarship in the form of an integer
     + scholarship_application (string, required) - Name of the Scholarship in the form of a string
     + reason (string, optional) - User specified reason for Scholarship Application in the form of a string
     + terms_accepted (boolean, optional) - User specified acknowledgement of Scholarship terms in the form of string
@@ -817,6 +818,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "user_id": 1234,
                 "scholarship_application": "Scholarship for kids who want to learn how to program", 
                 "reason": "I want to go to college",
                 "terms_accepted": true,
