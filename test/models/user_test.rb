@@ -228,5 +228,4 @@ class UserTest < ActiveSupport::TestCase
     refute "john@gmail" =~ User::VALID_EMAIL
     refute "@example.com" =~ User::VALID_EMAIL
   end
-
 end
