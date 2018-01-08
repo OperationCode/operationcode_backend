@@ -542,9 +542,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Request | Request a Mentor [/api/v1/requests{?user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
+## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
+    + id (integer, required) - ID of mentor request in the form of an integer
     + user_id (integer, required) - ID of the user requesting a mentor, the passed in user must be a verified military veteran( i.e. user.verified == true)
     + details (string, optional) - Details of the mentor request in the form of a string
     + language (string, optional) - Primary language of the requesting mentee in the form of a string
@@ -563,7 +564,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
     + Body
 
-            {
+            {   
+                "id": 2130,
                 "user_id": 4600,
                 "details": "I want to type well",
                 "language": "English",
@@ -593,7 +595,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## Request | Show a Mentor Request [/api/v1/requests/{id}]
 + Parameters
     
-    + id (integer, required) - Indentification of mentor request in the form of an integer
+    + id (integer, required) - Identification of mentor request in the form of an integer
 
     
 ### Show an Exiting Request From User ID [GET]
