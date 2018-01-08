@@ -170,9 +170,10 @@ class UserTest < ActiveSupport::TestCase
     refute "@example.com" =~ User::VALID_EMAIL
   end
   test '.from_social returns the user and redirect path in an array' do
+    data = { first_name: 'Sterling', last_name: 'Archer', email: 'cyril@kickme.org', zip: '12345', password: 'VoiceMail' }
     results = User.from_social(data)
     assert_equal 2, results.size
-    assert_equal data, results[0]
+    assert_equal data[:email], results[0][:email]
     refute_nil results[1]
   end
   test '.from_social creates the user if there is none and returns the user and /signup-info in an array' do
