@@ -13,7 +13,8 @@ namespace :update_team_members do
       }
     ]
     
-        updated_members = [         
+    ## placeholder until final values 
+    updated_members = [         
       {  
         name: "David Reis",
         role: "Gulf Coast Chapter Leader"      
@@ -21,17 +22,8 @@ namespace :update_team_members do
       {  
         name: "Aimee Knight",
         role: "Board Director"
-      },
-      {  
-        name: "Alexander Laquitara",
-        role: "NYC Chapter Co-Leader"
-      },
-      {  
-        name: "Andy LaMora",
-        role: "Legislative Affairs"
       }
     ]
-    
     
     deleted_members = [         
       {
@@ -63,7 +55,7 @@ namespace :update_team_members do
       } 
     ]
     
-    / "find_or_create_by" calls  create!, raises an exception if created record is invalid/
+    ## "find_or_create_by" calls  create!, raises an exception if created record is invalid
     new_members.each do |new_member|
       begin
         TeamMember.find_or_create_by!(name: new_member[:name], role: new_member[:role])
@@ -72,7 +64,7 @@ namespace :update_team_members do
       end 
     end
     
-    / "update" takes in the active record id and updates the given parameters / 
+    ## "update" takes in the active record id and updates the given parameters 
     updated_members.each do |updated_member|
       ## .find_by will either find the record, or return nil
       team_member = TeamMember.find_by(name: updated_member[:name])
@@ -88,7 +80,7 @@ namespace :update_team_members do
       end
     end
     
-    / "destroy" not sure if this or "delete" /  
+    ## "destroy" not sure if this or "delete"   
     deleted_members.each do |deleted_member|
       team_member = TeamMember.find_by(name: deleted_member[:name])
 
