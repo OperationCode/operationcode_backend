@@ -662,9 +662,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             error: 'Unauthorized'
         }
 
-## Request | Update [/api/v1/requests{user_id}{?details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
+## Request | Update [/api/v1/requests/{?user_id,id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
+    + id (integer, required) - Identification of the Mentor Request in the form on an integer
     + user_id (integer, required) - Identification of the User requesting a mentor in the form of an integer
     + details (string, optional) - Details of the mentor request in the form of a string
     + language (string, optional) - Primary language of the requesting mentee in the form of a string
@@ -685,6 +686,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             {
                 "user_id": 5200,
+                "id": 4521,
                 "details": "I want to program",
                 "language": "English",
                 "service_id": 210,
@@ -698,8 +700,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "id":4521,
                 "user_id": 5200,
+                "id":4521,
                 "details": "I want to program",
                 "language": "English",
                 "service_id": 210,
