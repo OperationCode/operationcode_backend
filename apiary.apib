@@ -590,13 +590,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 401 (application/json)
   
-## Request | Show a Mentor Request [/api/v1/requests/{request_id}]
+## Request | Show a Mentor Request [/api/v1/requests/{id}]
 + Parameters
     
     + request_id (integer, required) - Indentification of mentor request in the form of an integer
 
     
-### Show an Exiting Request From User ID [POST]
+### Show an Exiting Request From User ID [GET]
 
 + Request (application/json)
 
@@ -604,19 +604,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             Authorization: Bearer Access-Token
 
-    + Body
-
-            {
-                "request_id": 1234
-
-            }
-
 + Response 200 (application/json)
 
     + Body
 
             {
-                "request_id": 1234,
+                "id": 1234,
                 "user_id": 5200,
                 "details": "I want to program",
                 "language": "English",
