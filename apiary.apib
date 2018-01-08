@@ -545,7 +545,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
-    + id (integer, required) - ID of mentor request in the form of an integer
+    + id (integer, required) - Identification of mentor request in the form of an integer
     + user_id (integer, required) - ID of the user requesting a mentor, the passed in user must be a verified military veteran( i.e. user.verified == true)
     + details (string, optional) - Details of the mentor request in the form of a string
     + language (string, optional) - Primary language of the requesting mentee in the form of a string
@@ -667,8 +667,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## Request | Update [/api/v1/requests/{?user_id,id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
-    + id (integer, required) - Identification of the Mentor Request in the form on an integer
     + user_id (integer, required) - Identification of the User requesting a mentor in the form of an integer
+    + id (integer, required) - Identification of the Mentor Request in the form on an integer
     + details (string, optional) - Details of the mentor request in the form of a string
     + language (string, optional) - Primary language of the requesting mentee in the form of a string
     + service_id (integer, optional) - Indentification of the mentorship request in the form of an integer
@@ -676,7 +676,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + status (string, optional) - Current fullfillment status in the form on a string
     + assigned_mentor_id (integer, optional) - Assigned mentor'd id in the form of an integer
     
-### Update an Existing Mentor Request [PUT]
+### Update an Existing Mentor Request [PATCH]
 
 + Request (application/json)
 
