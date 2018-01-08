@@ -154,7 +154,6 @@ class UserTest < ActiveSupport::TestCase
     results = User.count_by_state ''
     assert_equal 0, results
   end
-
   test 'VALID_EMAIL regex ensures valid formatting' do
     # valid email formats
     assert "john@gmail.com" =~ User::VALID_EMAIL
