@@ -4,22 +4,18 @@ namespace :update_team_members do
 
     new_members = [         
       {
-        name: "Mike Nolson",
-        role: "Rails Enthusiast"
+        name: "David Reis",
+        role: "Interim Ops/Fundraising"
       },
       {
-        name: "King Tut",
-        role: "Legacy Monuments"
-      },
-      {
-        name: "Generic Senator",
-        role: "On the pay-roll"
+        name: "Jeremy Hall",
+        role: "GRowth/Relationships"
       }
     ]
     
         updated_members = [         
       {  
-        name: "Aaron Suarez",
+        name: "David Reis",
         role: "Gulf Coast Chapter Leader"      
       },
       {  
@@ -39,17 +35,32 @@ namespace :update_team_members do
     
     deleted_members = [         
       {
-        name: "Reid Olmstead",
-        role: "Finance & Accounting"
+        name: "Aimee Knight"
       },
       {
-        name: "Rhonda Til",
-        role: "Funding & Admin Support"
+        name: "Elmer Thomas"
       },
       {
-        name: "Rick Rein",
-        role: "CTO"
-      }
+        name: "James Davis"
+      },
+      {
+        name: "Jay Bloom"
+      },
+      {
+        name: "John Garcia"
+      },
+      {
+        name: "Mark Kerr"
+      },
+      {
+        name: "Mike Slagh"
+      },
+      {
+        name: "Thomas Cizek"
+      },
+      {
+        name: "Tyrone Grandison"
+      } 
     ]
     
     / "find_or_create_by" calls  create!, raises an exception if created record is invalid/
@@ -73,23 +84,20 @@ namespace :update_team_members do
       begin
         team_member.update!(role: updated_member[:role])
       rescue => e
-        Rails.logger.error "Update Error occured after user found.\nFound user: #{name:}\nRecord id #{team_member[:id]}\nExperienced this error: #{e}"
+        Rails.logger.error "Update Error occured after user found.\nFound user: #{updated_member[:name]}\nRecord id #{team_member[:id]}\nExperienced this error: #{e}"
       end
     end
     
     / "destroy" not sure if this or "delete" /  
     deleted_members.each do |deleted_member|
-      ## .find_by will either find the record, or return nil
       team_member = TeamMember.find_by(name: deleted_member[:name])
 
-      ## skip to the next item in the array if team_member cannot be found in the db
       next unless team_member 
     
-      ## make any updates to the found team_member record
       begin
         team_member.destroy!
       rescue => e
-        Rails.logger.error "Destroy Error occured after user found.\nFound user: #{name:}\nRecord id #{team_member[:id]}\nExperienced this error: #{e}"
+        Rails.logger.error "Destroy Error occured after user found.\nFound user: #{deleted_member[:name]}\nRecord id #{team_member[:id]}\nExperienced this error: #{e}"
       end
     end
     
