@@ -31,7 +31,7 @@ services:
 
   sidekiq:
     build: .
-    command: sidekiq -C config/sidekiq.yml.erb
+    command: sidekiq -C config/sidekiq.yml
     volumes:
       - .:/app
     volumes_from:
