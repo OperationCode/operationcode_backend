@@ -17,9 +17,12 @@ Rails.application.routes.draw do
       get '/users/by_location', to: 'users#by_location'
       post '/users/profile/verify', to: 'users#verify'
 
+      get 'code_schools/get_moocs', to: 'code_schools#get_moocs'
+
       resources :code_schools do
         resources :locations
       end
+
       resources :email_list_recipients, only: :create
       resources :events, only: :index
       resources :mentors, only: [:index, :create, :show]

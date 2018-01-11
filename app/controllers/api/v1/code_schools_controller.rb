@@ -42,10 +42,19 @@ module Api
         end
       end
 
+      def get_moocs
+        mooc_school = CodeSchool.where(is_mooc: "true")
+        if mooc_school
+          render json: mooc_school
+        else
+          render json: { error: 'No such record' }, status: :not_found
+        end
+      end
+
       private
 
       def code_school_params
-        params.require(:code_school).permit(:name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only)
+        params.require(:code_school).permit(:name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only, :is_mooc)
       end
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022215418) do
+ActiveRecord::Schema.define(version: 20180111022931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20171022215418) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.text     "notes"
+    t.boolean  "is_mooc"
   end
 
   create_table "events", force: :cascade do |t|
@@ -43,11 +44,11 @@ ActiveRecord::Schema.define(version: 20171022215418) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "source_id"
-    t.string   "source_type"
+    t.string   "source"
     t.datetime "source_updated"
     t.string   "group"
+    t.index ["source"], name: "index_events_on_source", using: :btree
     t.index ["source_id"], name: "index_events_on_source_id", using: :btree
-    t.index ["source_type"], name: "index_events_on_source_type", using: :btree
   end
 
   create_table "git_hub_statistics", force: :cascade do |t|

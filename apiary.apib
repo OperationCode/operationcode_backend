@@ -19,6 +19,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "full_time": true,
                 "hardware_included": false,
                 "has_online": false,
+                "is_mooc": false,
                 "online_only": false,
                 "locations":  [
                       {
@@ -39,7 +40,42 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             },
         ]
 
-## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## MOOC CodeSchool | Collection [/api/v1/code_schools/get_moocs]
+
+### List all MOOCS [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Galvanize",
+                "url": "https://new.galvanize.com", "logo": "https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/galvanize.jpg",
+                "logo": "https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/DPL_logo.png",
+                "full_time": true,
+                "hardware_included": false,
+                "has_online": false,
+                "is_mooc": true,
+                "online_only": false,
+                "locations":  [
+                      {
+                          "va_accepted": false,
+                          "address1": "44 Tehama Street",
+                          "city": "San Francisco",
+                          "state": "CA",
+                          "zip": 94015
+                      },
+                      {
+                          "va_accepted": true,
+                          "address1": "1062 Delaware Street",
+                          "city": "Denver",
+                          "state": "CO",
+                          "zip": 80204
+                      },
+                  ]
+            },
+        ]
+
+## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_mooc}]
 + Parameters
 
     + name (string, required) - The CodeSchool's name
@@ -50,6 +86,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + is_mooc (boolean, optional) - Is this a MOOC?
 
 ### Create a CodeSchool Member [POST]
 
@@ -69,7 +106,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                       "full_time": "false",
                       "hardware_included": "false",
                       "has_online": "true",
-                      "online_only": "false"
+                      "online_only": "false",
+                      "is_mooc": "false"
                       }
                   }
 
@@ -108,6 +146,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             "created_at": "2017-09-26T06:54:58.607Z",
             "updated_at": "2017-09-26T06:54:58.607Z",
             "notes": null
+            "is_mooc": "false"
         }
 
 + Response 404 (application/json)
@@ -146,7 +185,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   errors: "Some error message"
               }
 
-## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_mooc}]
 
 + Parameters
 
@@ -158,6 +197,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + is_mooc (boolean, optional) - Is the school a MOOC?
 
 ### Update an Existing CodeSchool [PUT]
 
@@ -746,7 +786,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
-        
+
 ## Scholarships | Collection [/api/v1/scholarships]
 
 ### List All Scholarships Available [GET]
@@ -819,7 +859,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             {
                 "user_id": 1234,
-                "scholarship_application": "Scholarship for kids who want to learn how to program", 
+                "scholarship_application": "Scholarship for kids who want to learn how to program",
                 "reason": "I want to go to college",
                 "terms_accepted": true,
                 "scholarship_id":  4
@@ -830,7 +870,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                redirect_to: '/success'                  
+                redirect_to: '/success'
             }
 
 + Response 400 (application/json)
@@ -841,7 +881,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 errors: "Some error message"
             }
 
-        
+
 ## Slack User | Invite [/api/v1/slack_users]
 
 ### Invite a User to Slack [POST]
@@ -1109,7 +1149,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 first_name: "Mike",
                 last_name: "Johnson",
                 email: "dreams@operationcode.org",
-                zip: "80020",            
+                zip: "80020",
                 mentor: "true"
             }
 
