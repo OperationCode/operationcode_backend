@@ -38,7 +38,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
   end
 
-  test ":show works for a valid record"do
+  test ":show works for a valid record" do
     get api_v1_code_school_path(@school), as: :json
     assert_response :ok
   end
@@ -62,14 +62,14 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   test ":get_moocs returns schools with is_Mooc set to true" do
     @school.is_mooc = "true"
     @school.save
-    get  api_v1_code_schools_get_moocs, as: :json
-    assert_equal JSON.parse(response.body)["name"], "CoderSchool"
+    get  api_v1_code_schools_get_moocs_path, as: :json
+    assert_equal JSON.parse(response.body)[0]["name"], "CoderSchool"
   end
 
   test ":get_moocs does not return school when is_Mooc is false" do
     @school.is_mooc = "false"
     @school.save
-    get  api_v1_code_schools_get_moocs, as: :json
-    assert_response :missing
+    get  api_v1_code_schools_get_moocs_path, as: :json
+    assert_equal JSON.parse(response.body), []
   end
 end
