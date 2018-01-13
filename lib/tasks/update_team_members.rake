@@ -1,6 +1,6 @@
-namespace :update_team_members do
+namespace :team_members do
   desc "Batch predetermined modification of team members"
-  task update_team_member_table: :environment do
+  task update_table: :environment do
 
     new_members = [         
       {
@@ -26,7 +26,7 @@ namespace :update_team_members do
     ]
     
     ### Currently no actual updates need to be done 
-    #updated_members = [         
+    updated_members = []
     #  {  
     #    name: "David Reis",
     #    role: "Gulf Coast Chapter Leader"      
