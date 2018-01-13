@@ -25,17 +25,17 @@ namespace :update_team_members do
       }
     ]
     
-    ## placeholder until final values 
-    updated_members = [         
-      {  
-        name: "David Reis",
-        role: "Gulf Coast Chapter Leader"      
-      },
-      {  
-        name: "Aimee Knight",
-        role: "Board Director"
-      }
-    ]
+    ### Currently no actual updates need to be done 
+    #updated_members = [         
+    #  {  
+    #    name: "David Reis",
+    #    role: "Gulf Coast Chapter Leader"      
+    #  },
+    #  {  
+    #    name: "Aimee Knight",
+    #    role: "Board Director"
+    #  }
+    #]
     
     # members who are now board memembers and transitioning to static content
     deleted_members = [         
