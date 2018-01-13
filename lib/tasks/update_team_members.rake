@@ -5,11 +5,23 @@ namespace :update_team_members do
     new_members = [         
       {
         name: "David Reis",
-        role: "Interim Ops/Fundraising"
+        role: "Chief Operations / Chief Data Officer"
       },
       {
         name: "Jeremy Hall",
-        role: "GRowth/Relationships"
+        role: "Growth/Relationships"
+      },
+      {
+        name: "Jennifer Weiderman",
+        role: "Chief Communications Officer"
+      },
+      {
+        name: "Amy Tan",
+        role: "Chief Finance Officer"
+      },
+      {
+        name: "Kate Horner",
+        role: "Director of Programs"
       }
     ]
     
@@ -25,6 +37,7 @@ namespace :update_team_members do
       }
     ]
     
+    # members who are now board memembers and transitioning to static content
     deleted_members = [         
       {
         name: "Aimee Knight"
