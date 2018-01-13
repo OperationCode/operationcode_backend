@@ -41,3 +41,4 @@ EOF
 
 # Update the deployment
 KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend app=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER}
+KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend operationcode-sidekiq=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER}
