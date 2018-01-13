@@ -61,7 +61,7 @@ namespace :update_team_members do
         name: "Mike Slagh"
       },
       {
-        name: "Thomas Cizek"
+        name: "Thomas Ciszek"
       },
       {
         name: "Tyrone Grandison"
@@ -77,21 +77,21 @@ namespace :update_team_members do
       end 
     end
     
-    ## "update" takes in the active record id and updates the given parameters 
-    updated_members.each do |updated_member|
-      ## .find_by will either find the record, or return nil
-      team_member = TeamMember.find_by(name: updated_member[:name])
-
-      ## skip to the next item in the array if team_member cannot be found in the db
-      next unless team_member
-  
-      ## make any updates to the found team_member record
-      begin
-        team_member.update!(role: updated_member[:role])
-      rescue => e
-        Rails.logger.error "Update Error occured after user found.\nFound user: #{updated_member[:name]}\nRecord id #{team_member[:id]}\nExperienced this error: #{e}"
-      end
-    end
+    ### "update" takes in the active record id and updates the given parameters 
+    #updated_members.each do |updated_member|
+    #  ## .find_by will either find the record, or return nil
+    #  team_member = TeamMember.find_by(name: updated_member[:name])
+    #
+    #  ## skip to the next item in the array if team_member cannot be found in the db
+    #  next unless team_member
+    #
+    #  ## make any updates to the found team_member record
+    #  begin
+    #    team_member.update!(role: updated_member[:role])
+    #  rescue => e
+    #    Rails.logger.error "Update Error occured after user found.\nFound user: #{updated_member[:name]}\nRecord id #{team_member[:id]}\nExperienced this error: #{e}"
+    #  end
+    #end
     
     ## "destroy" not sure if this or "delete"   
     deleted_members.each do |deleted_member|
