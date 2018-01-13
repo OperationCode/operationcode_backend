@@ -324,7 +324,7 @@ namespace :team_member do
     ]
     
     ### Currently no actual updates need to be done 
-    #updated_members = [         
+    updated_members = []
     #  {  
     #    name: "David Reis",
     #    role: "Gulf Coast Chapter Leader"      
