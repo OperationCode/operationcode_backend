@@ -296,6 +296,4 @@ namespace :team_member do
       TeamMember.find_or_create_by!(name: member[:name], role: member[:role])
     end
   end
-  
-  
 end
