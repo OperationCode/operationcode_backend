@@ -44,6 +44,9 @@ Rails.application.routes.draw do
       namespace :users do
         post '/passwords/reset', to: 'passwords#reset'
       end
+      namespace :slack do
+        get '/slack/user_info', to: 'user_info#index'
+      end
     end
   end
 end
