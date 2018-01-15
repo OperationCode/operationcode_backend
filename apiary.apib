@@ -542,9 +542,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Request | Request a Mentor [/api/v1/requests{?user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
+## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
+    + id (integer, required) - Identification of mentor request in the form of an integer
     + user_id (integer, required) - ID of the user requesting a mentor, the passed in user must be a verified military veteran( i.e. user.verified == true)
     + details (string, optional) - Details of the mentor request in the form of a string
     + language (string, optional) - Primary language of the requesting mentee in the form of a string
@@ -563,7 +564,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
     + Body
 
-            {
+            {   
+                "id": 2130,
                 "user_id": 4600,
                 "details": "I want to type well",
                 "language": "English",
@@ -590,13 +592,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 401 (application/json)
   
-## Request | Show a Mentor Request [/api/v1/requests/{request_id}]
+## Request | Show a Mentor Request [/api/v1/requests/{id}]
 + Parameters
     
-    + request_id (integer, required) - Indentification of mentor request in the form of an integer
+    + id (integer, required) - Identification of mentor request in the form of an integer
 
     
-### Show an Exiting Request From User ID [POST]
+### Show an Exiting Request From User ID [GET]
 
 + Request (application/json)
 
@@ -604,19 +606,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             Authorization: Bearer Access-Token
 
-    + Body
-
-            {
-                "request_id": 1234
-
-            }
-
 + Response 200 (application/json)
 
     + Body
 
             {
-                "request_id": 1234,
+                "id": 1234,
                 "user_id": 5200,
                 "details": "I want to program",
                 "language": "English",
@@ -669,10 +664,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             error: 'Unauthorized'
         }
 
-## Request | Update [/api/v1/requests{user_id}{?details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
+## Request | Update [/api/v1/requests/{?user_id,id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
     
     + user_id (integer, required) - Identification of the User requesting a mentor in the form of an integer
+    + id (integer, required) - Identification of the Mentor Request in the form on an integer
     + details (string, optional) - Details of the mentor request in the form of a string
     + language (string, optional) - Primary language of the requesting mentee in the form of a string
     + service_id (integer, optional) - Indentification of the mentorship request in the form of an integer
@@ -680,7 +676,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + status (string, optional) - Current fullfillment status in the form on a string
     + assigned_mentor_id (integer, optional) - Assigned mentor'd id in the form of an integer
     
-### Update an Existing Mentor Request [PUT]
+### Update an Existing Mentor Request [PATCH]
 
 + Request (application/json)
 
@@ -692,6 +688,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             {
                 "user_id": 5200,
+                "id": 4521,
                 "details": "I want to program",
                 "language": "English",
                 "service_id": 210,
@@ -705,8 +702,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "id":4521,
                 "user_id": 5200,
+                "id":4521,
                 "details": "I want to program",
                 "language": "English",
                 "service_id": 210,
@@ -921,7 +918,102 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+        
+## Scholarships | Collection [/api/v1/scholarships]
 
+### List All Scholarships Available [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 5,
+                "name": "Full Stack Dev-Ops",
+                "location": "29 Palms",
+                "terms": "Recent Veterans",
+                "open_time": "2017-05-30T15:05:39.242Z",
+                "close_time": "2017-10-30T15:05:39.242Z",
+                "created_at": "2017-06-30T15:05:39.242Z",
+                "updated_at": "2017-06-30T15:05:39.242Z"
+            },
+            {
+                "id": 6,
+                "name": "UX to UI for U University",
+                "location": "Florida",
+                "terms": "Must be Conrad H.",
+                "open_time": "2018-01-30T15:05:39.242Z",
+                "close_time": "2018-10-30T15:05:39.242Z",
+                "created_at": "2017-06-30T15:05:39.242Z",
+                "updated_at": "2017-06-30T15:05:39.242Z"
+            }
+        ]
+
+## Scholarships | Show [/api/v1/scholarships/{scholarship_id}]
++ Parameters
+
+    + scholarship_id (number, required) - ID of the Scholarship in the form of an integer
+
+### Get an Existing Scholarship [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 7,
+            "name": "Full Stack Dev-Ops",
+            "location": "29 Palms",
+            "terms": "Recent Veterans",
+            "open_time": "2017-05-30T15:05:39.242Z",
+            "close_time": "2017-10-30T15:05:39.242Z",
+            "created_at": "2017-06-30T15:05:39.242Z",
+            "updated_at": "2017-06-30T15:05:39.242Z"
+        }
+
++ Response 404 (application/json)
+
+        {
+            error: 'No such record'
+        }
+
+## Scholarship Applications | Create [/api/v1/scholarship_applications/{?user_id,scholarship_application,reason,terms_accepted,scholarship_id}]
++ Parameters
+
+    + user_id (integer, required) - ID of the user that is applying for a scholarship in the form of an integer
+    + scholarship_application (string, required) - Name of the Scholarship in the form of a string
+    + reason (string, optional) - User specified reason for Scholarship Application in the form of a string
+    + terms_accepted (boolean, optional) - User specified acknowledgement of Scholarship terms in the form of string
+    + scholarship_id (integer, optional) - Unique Id for this scholarship application
+
+### Create a New Scholarship Application [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "user_id": 1234,
+                "scholarship_application": "Scholarship for kids who want to learn how to program", 
+                "reason": "I want to go to college",
+                "terms_accepted": true,
+                "scholarship_id":  4
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                redirect_to: '/success'                  
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                errors: "Some error message"
+            }
+
+        
 ## Slack User | Invite [/api/v1/slack_users]
 
 ### Invite a User to Slack [POST]
@@ -1008,7 +1100,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Headers
 
             Authorization: Bearer Access-Token
-
 
     + Body
 

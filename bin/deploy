@@ -39,5 +39,10 @@ users:
     client-key-data: $KUBE_CLIENT_KEY
 EOF
 
-# Update the deployment
+# Updates the deployment
+#
+# Container names come from:
+# https://github.com/OperationCode/operationcode_infra/blob/master/kubernetes/operationcode_backend/deployment.yml
+#
 KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend app=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER}
+KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend operationcode-sidekiq=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER}
