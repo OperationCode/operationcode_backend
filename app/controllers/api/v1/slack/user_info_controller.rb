@@ -28,8 +28,8 @@ module Api
             render json: { errors: user.errors.full_messages }
           end
         end
-      end
-
+      end 
+      
       class VerifyRequest
           def self.before(controller)
             unless controller(:auth_key == ENV['pybot_token'] )
