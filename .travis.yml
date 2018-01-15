@@ -17,3 +17,4 @@ script:
 
 env:
   secure: "AmnH0r1tF9HIVsUfhoJHzCEqTZz3TU4FUd2D+T0XzSDbz6kUSubmP4agYRsJI1xPTwegqSonwL0QGAlaIKEssz6rqAqBSvzHC95XvghP1HVVp2/j8vvFaJbpWsnTQ25FbMgDD89wHRKRs0qk2Ui0zi+CtNFylj83D13yoVys6C0="
+  pybot_token: "testing"
