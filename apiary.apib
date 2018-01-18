@@ -40,9 +40,9 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             },
         ]
 
-## MOOC CodeSchool | Collection [/api/v1/code_schools/get_moocs]
+## CodeSchool | Collection of MOOCs [/api/v1/code_schools/get_moocs]
 
-### List all MOOCS [GET]
+### Collection of Code Schools offering Massive Open Online Courses
 
 + Response 200 (application/json)
 
@@ -86,7 +86,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
-    + is_mooc (boolean, optional) - Is this a MOOC?
+    + is_mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
 
 ### Create a CodeSchool Member [POST]
 
@@ -197,7 +197,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
-    + is_mooc (boolean, optional) - Is the school a MOOC?
+    + is_mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
 
 ### Update an Existing CodeSchool [PUT]
 

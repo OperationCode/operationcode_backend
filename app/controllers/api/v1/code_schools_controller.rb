@@ -42,13 +42,9 @@ module Api
         end
       end
 
-      def get_moocs
-        mooc_school = CodeSchool.where(is_mooc: "true")
-        if mooc_school
-          render json: mooc_school
-        else
-          render json: { error: 'No such record' }, status: :not_found
-        end
+      def moocs
+        mooc_schools = CodeSchool.where(is_mooc: true)
+        render json: mooc_schools
       end
 
       private
