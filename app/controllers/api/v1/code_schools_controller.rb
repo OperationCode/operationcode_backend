@@ -42,10 +42,15 @@ module Api
         end
       end
 
+      def moocs
+        mooc_schools = CodeSchool.where(is_mooc: true)
+        render json: mooc_schools
+      end
+
       private
 
       def code_school_params
-        params.require(:code_school).permit(:name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only)
+        params.require(:code_school).permit(:name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only, :is_mooc)
       end
     end
   end

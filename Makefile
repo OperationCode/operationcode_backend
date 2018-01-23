@@ -56,6 +56,10 @@ test: bg
 bundle:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bundle'
 
+.PHONY: db_drop_and_create_and_migrate
+db_drop_and_create_and_migrate:
+	docker-compose run ${RAILS_CONTAINER} rake db:drop db:create db:migrate
+
 setup: build db_create db_migrate
 
 publish: build
