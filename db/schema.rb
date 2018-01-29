@@ -178,9 +178,9 @@ ActiveRecord::Schema.define(version: 20180129231309) do
     t.string   "role"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.text     "group",       default: "team"
     t.text     "description"
-    t.text     "image_src",   default: "images/img_unk.png"
+    t.string   "group",       default: "team"
+    t.string   "image_src",   default: "images/img_unk.png"
   end
 
   create_table "users", force: :cascade do |t|
