@@ -21,7 +21,7 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     params = {
       name: "Alex Johnson",
       role: "Board Member",
-      group: "team"
+      group: "board"
     }
 
     post api_v1_team_members_url, headers: @headers, params: params, as: :json
