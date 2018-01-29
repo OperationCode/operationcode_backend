@@ -20,7 +20,10 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
         name: "CoderSchool"
       }
     }
-    post api_v1_code_schools_url, params: params, headers: @headers, as: :json
+    post api_v1_code_schools_url,
+      params: params,
+      headers: @headers,
+      as: :json
 
     errors = JSON.parse(response.body)["errors"]
     assert errors.include? "Url can't be blank"
