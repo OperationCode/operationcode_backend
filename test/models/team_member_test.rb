@@ -8,8 +8,8 @@ class TeamMemberTest < ActiveSupport::TestCase
 
   test "member group must be 'team' or 'board'" do
     intern = build(:team_member, group: 'intern')
-    team = build(:team_member, group: 'team')
-    board = build(:team_member, group: 'board')
+    team = build(:team_member, :team)
+    board = build(:team_member, :board)
 
     assert intern.invalid?
     assert team.valid?
