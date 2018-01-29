@@ -7,7 +7,11 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     @school = create(:code_school)
     @school.name = "CoderSchool"
     @school.save
-    @location = create(:location, code_school: @school, address1: "2405 Nugget Lane")
+    @location = create(
+      :location,
+      code_school: @school,
+      address1: "2405 Nugget Lane"
+    )
   end
 
   test ":validates CodeSchool's required fields" do
