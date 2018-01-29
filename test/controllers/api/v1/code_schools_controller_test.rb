@@ -20,7 +20,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
         name: "CoderSchool"
       }
     }
-    post api_v1_code_schools_url, params: params, as: :json
+    post api_v1_code_schools_url, params: params, headers: @headers, as: :json
 
     errors = JSON.parse(response.body)["errors"]
     assert errors.include? "Url can't be blank"
@@ -29,9 +29,9 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   test ":index endpoint returns a JSON list of all CodeSchools" do
     get api_v1_code_schools_path, as: :json
 
-    response = JSON.parse(response.body)[0]
-    location = response["locations"]
-    assert_equal response["name"], "CoderSchool"
+    body = JSON.parse(response.body)[0]
+    locations = body["locations"]
+    assert_equal body["name"], "CoderSchool"
     assert_not_nil locations
     assert_not_nil locations.first["address1"]
     assert_equal locations.first["address1"], "2405 Nugget Lane"
@@ -74,7 +74,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test ":update endpoint responds unauthorized for unauthenticated user" do
-    put api_v1_code_schools_path(@school),
+    put api_v1_code_school_path(@school),
       params: {name: "CoddderrrrSchool"},
       as: :json
     assert_response :unauthorized
@@ -91,7 +91,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test ":destroy endpoint responds unauthorized for unauthenticated user" do
-    delete api_v1_code_schools_path(@school), as: :json
+    delete api_v1_code_school_path(@school), as: :json
     assert_response :unauthorized
   end
 end
