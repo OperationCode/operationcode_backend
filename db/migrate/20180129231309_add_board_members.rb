@@ -1,0 +1,131 @@
+class AddBoardMembers < ActiveRecord::Migration[5.0]
+  def up
+    TeamMember.create!(
+      [
+        {
+          description: 'Dr. James Davis is a professor at Louisiana' \
+          'State University, and director of the Stephenson Entrepreneurship' \
+          ' Institute. He is also co-founder and chief technology officer of' \
+          ' Health Engagements, a startup software development firm' \
+          ' specializing in healthcare applications. Dr. Davis is a' \
+          'former captain in the U.S. Army, lieutenant colonel in the' \
+          ' U.S. Army Reserve and recipient of the Bronze Star Medal.',
+          group: 'board',
+          image_src: 'images/james_davis.jpg',
+          name: 'Dr. James Davis',
+          role: 'Chairman'
+        },
+        {
+          description: 'Dr. Tyrone Grandison is the Chief Information' \
+          ' Officer (CIO) of the Institute of Health Metrics and' \
+          ' Evaluation, a global health research center at the' \
+          ' University of Washington. Dr. Grandison has over 20' \
+          ' years experience in software engineering, security' \
+          ' and privacy. He has led research and product initiatives' \
+          ' in RFID data management, privacy-preserving mobile data' \
+          ' management, private social network analysis, text analytics' \
+          ' and healthcare management systems.',
+          group: 'board',
+          image_src: 'images/tyrone_grandison.png',
+          name: 'Dr. Tyrone Grandison',
+          role: 'Vice Chairman'
+        },
+        {
+          description: 'Elmer Thomas is a developer experience engineer' \
+          ' at Sendgrid, and his life goal is to create a positive impact' \
+          ' for the greatest number of people over the longest period of' \
+          ' time. Elmer is a former United States Marine, a founding' \
+          ' board member of Operation Code, treasure and head of our' \
+          ' finance committee.',
+          group: 'board',
+          image_src: 'images/elmer_thomas.png',
+          name: 'Elmer Thomas',
+          role: 'Treasurer'
+        },
+        {
+          description: 'Thomas Ciszek is a data scientist at Twitter,' \
+          ' leading media and entertainment research. Previously,' \
+          ' he co-founded Cojoin, an analytics and data visualization' \
+          ' startup, led business analytics at GOOD Magazine, and' \
+          ' managed search marketing at The Search Agency. He began' \
+          ' his research career at The RAND Corporation, and is a big' \
+          ' fan of the #bowtie and #sunset.',
+          group: 'board',
+          image_src: 'images/thomas_ciszec.jpg',
+          name: 'Thomas Ciszec',
+          role: 'Secretary'
+        },
+        {
+          description: 'A former U.S. Army infantry officer and' \
+          ' Afghanistan veteran, Conrad Hollomon is a program' \
+          ' director at Techstars, one of the most founder-friendly' \
+          ' startup accelerators and early stage investors in the world.' \
+          ' Conrad is completing his MBA at Boston University with a' \
+          ' focus on social impact. In his spare time, he enjoys' \
+          ' reading about organizational behavior and trying out' \
+          ' new delicious restaurants.',
+          group: 'board',
+          image_src: 'images/conrad_hollomon.jpg',
+          name: 'Conrad Hollomon',
+          role: 'Board Director'
+        },
+        {
+          description: 'Member Ex Officio',
+          group: 'board',
+          image_src: 'images/david_molina.jpg',
+          name: 'David Molina',
+          role: 'Executive Director'
+        },
+        {
+          description: 'Liza Rodewald is an entrepreneur, full stack' \
+          ' .NET web developer, and co-founder and CTO of MadSkills,' \
+          ' a startup helping military spouses find employment. Her' \
+          ' first business, LMS Software, has contracted multi-million' \
+          ' dollar projects with the government and private sector.' \
+          ' Liza, a military spouse, has a passion to see others' \
+          ' succeed, and actively advocates for and mentors women' \
+          ' in technology.',
+          group: 'board',
+          image_src: 'images/liza_rodewald.png',
+          name: 'Liza Rodewald',
+          role: 'Director of Military Families Committee'
+        },
+        {
+          description: 'Dr. Stacy Chin is the CEO and co-founder' \
+          ' of Hydroglyde Coatings, and has a Ph.D in Chemistry' \
+          ' from Boston University. Dr. Chin is an entrepreneur,' \
+          ' mentor, and active tutor in the graduate sciences.' \
+          ' She champions the interests of women in science, technology,' \
+          ' engineering and mathematics. Stacy currently serves as head' \
+          ' of our fundraising committee.',
+          group: 'board',
+          image_src: 'images/stacy_chin.png',
+          name: 'Dr. Stacy Chin',
+          role: 'Director of Fundraising Committee'
+        },
+        {
+          description: 'Member Ex Officio',
+          group: 'board',
+          name: 'Mark Kerr',
+          role: 'Chairman Emeritus'
+        }
+      ]
+    )
+  end
+
+  def down
+    TeamMember.where(
+      name: [
+        'Conrad Hollomon',
+        'David Molina',
+        'Dr. James Davis',
+        'Dr. Stacy Chin',
+        'Dr. Tyrone Grandison',
+        'Elmer Thomas',
+        'Liza Rodewald',
+        'Mark Kerr',
+        'Thomas Ciszec',
+      ]
+    ).delete_all
+  end
+end

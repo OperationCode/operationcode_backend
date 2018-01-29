@@ -20,7 +20,8 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
   test ":create endpoint creates a new TeamMember" do
     params = {
       name: "Alex Johnson",
-      role: "Board Member"
+      role: "Board Member",
+      group: "team"
     }
 
     post api_v1_team_members_url, headers: @headers, params: params, as: :json
