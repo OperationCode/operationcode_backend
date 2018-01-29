@@ -11,7 +11,6 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test ":validates CodeSchool's required fields" do
-    authenticate_user
     params = {
       code_school: {
         name: "CoderSchool"
