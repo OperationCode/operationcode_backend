@@ -30,6 +30,26 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     assert_equal({ 'team_member' => alex.id }, response.parsed_body)
   end
 
+  test ":create endpoint returns error for wrong group name" do
+    params = {
+      name: "Alex Johnson",
+      role: "Board Member",
+      group: "intern"
+    }
+
+    post api_v1_team_members_url, headers: @headers, params: params, as: :json
+    assert_response :unprocessable_entity
+  end
+
+  test ":create endpoint returns error for missing group field" do
+    params = {
+      name: "Alex Johnson",
+      role: "Board Member"
+    }
+
+    post api_v1_team_members_url, headers: @headers, params: params, as: :json
+    assert_response :unprocessable_entity
+  end
 
   test ":update endpoint updates an existing TeamMember" do
     alex = create(:team_member, name: "Alex Johnson")

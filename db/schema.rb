@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 20180129231309) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.text     "description"
-    t.string   "group",       default: "team"
+    t.string   "group"
     t.string   "image_src",   default: "images/img_unk.png"
   end
 
