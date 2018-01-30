@@ -1,7 +1,7 @@
-namespace :team_member do
+namespace :seed do
   desc "Initially seeds the database with OC's team members"
-  task initial_seeding: :environment do
-    members = [
+  task team: :environment do
+    team = [
       {
         name: "Aaron Suarez",
         role: "Gulf Coast Chapter Leader"
@@ -292,8 +292,12 @@ namespace :team_member do
       }
     ]
 
-    members.each do |member|
-      TeamMember.find_or_create_by!(name: member[:name], role: member[:role])
+    team.each do |team_member|
+      TeamMember.find_or_create_by!(
+        name: team_member[:name],
+        role: team_member[:role],
+        group: TeamMember::TEAM_GROUP_NAME
+      )
     end
   end
 end
