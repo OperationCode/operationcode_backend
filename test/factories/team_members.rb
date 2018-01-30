@@ -11,6 +11,10 @@ FactoryGirl.define do
     group "board"
   end
 
+  trait :executive do
+    group "executive"
+  end
+
   trait :team do
     group "team"
   end

@@ -10,9 +10,11 @@ class TeamMemberTest < ActiveSupport::TestCase
     intern = build(:team_member, group: 'intern')
     team = build(:team_member, :team)
     board = build(:team_member, :board)
+    executive = build(:team_member, :executive)
 
     assert intern.invalid?
     assert team.valid?
     assert board.valid?
+    assert executive.valid?
   end
 end
