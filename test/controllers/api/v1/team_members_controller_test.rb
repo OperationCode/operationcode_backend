@@ -53,17 +53,26 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
 
   test ":update endpoint updates an existing TeamMember" do
     alex = create(:team_member, name: "Alex Johnson")
+    new_description = "Has worked for a lot of good companies"
+    new_image_src = "images/new_image.jpg"
     new_role = "Legislative Affairs"
+    new_group = "board"
     params = {
+      description: new_description,
+      group: new_group,
       id: alex.id,
+      image_src: new_image_src,
       name: alex.name,
-      role: new_role
+      role: new_role,
     }
 
     put api_v1_team_member_url(alex.id), headers: @headers, params: params, as: :json
 
     alex = TeamMember.first
     assert_equal response.status, 200
+    assert_equal alex.description, new_description
+    assert_equal alex.group, new_group
+    assert_equal alex.image_src, new_image_src
     assert_equal alex.role, new_role
   end
 
