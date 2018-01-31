@@ -21,7 +21,7 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     params = {
       name: "Alex Johnson",
       role: "Board Member",
-      group: "board"
+      group: TeamMember::BOARD_GROUP_NAME
     }
 
     post api_v1_team_members_url, headers: @headers, params: params, as: :json
@@ -56,7 +56,7 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     new_description = "Has worked for a lot of good companies"
     new_image_src = "images/new_image.jpg"
     new_role = "Legislative Affairs"
-    new_group = "board"
+    new_group = TeamMember::BOARD_GROUP_NAME
     params = {
       description: new_description,
       group: new_group,
