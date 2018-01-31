@@ -42,7 +42,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
 
   test ":create endpoint creates a CodeSchool successfully" do
     post api_v1_code_schools_path(@school),
-      params: {code_school: @school},
+      params: { code_school: @school },
       headers: @headers,
       as: :json
     assert_response :ok
@@ -50,7 +50,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
 
   test ":create endpoint responds unauthorized for unauthenticated user" do
     post api_v1_code_schools_path(@school),
-      params: {code_school: @school},
+      params: { code_school: @school },
       as: :json
     assert_response :unauthorized
   end
@@ -67,7 +67,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
 
   test ":update endpoint updates an existing CodeSchool" do
     put api_v1_code_school_path(@school),
-      params: {name: "CoddderrrrSchool"},
+      params: { name: "CoddderrrrSchool" },
       headers: @headers,
       as: :json
 
@@ -78,7 +78,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
 
   test ":update endpoint responds unauthorized for unauthenticated user" do
     put api_v1_code_school_path(@school),
-      params: {name: "CoddderrrrSchool"},
+      params: { name: "CoddderrrrSchool" },
       as: :json
     assert_response :unauthorized
   end
