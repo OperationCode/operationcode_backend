@@ -1,6 +1,8 @@
 module Api
   module V1
     class CodeSchoolsController < ApplicationController
+      before_action :authenticate_user!, only: [:create, :update, :destroy]
+
       def index
         render json: CodeSchool.all
       end
