@@ -1,4 +1,7 @@
 class SeedTeamMembers
+  BOARD_DATA_PATH = 'board_members.yml'.freeze
+  TEAM_DATA_PATH = 'team_members.yml'.freeze
+
   def self.from_yaml(file_name, group)
     members_seed_file = Rails.root.join('config', file_name)
     members = YAML::load_file(members_seed_file)
@@ -16,14 +19,14 @@ class SeedTeamMembers
 
   def self.seed_board
     from_yaml(
-      'board_members.yml',
+      BOARD_DATA_PATH,
       TeamMember::BOARD_GROUP_NAME
     )
   end
 
   def self.seed_team
     from_yaml(
-      'team_members.yml',
+      TEAM_DATA_PATH,
       TeamMember::TEAM_GROUP_NAME
     )
   end
