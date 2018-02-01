@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TeamMembersController < ApplicationController
+    class TeamMembersController < ApiController
       before_action :authenticate_user!, except: :index
 
       def index

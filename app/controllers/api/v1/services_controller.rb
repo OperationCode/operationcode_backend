@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ServicesController < ApplicationController
+    class ServicesController < ApiController
       before_action :authenticate_user!
 
       def index

@@ -27,4 +27,8 @@ FactoryGirl.create(:request, assigned_mentor: nell)
   Service.create!(:name => service)
 end
 
+# Create team members
 SeedTeamMembers.seed_all
+
+# Create Admin (development only)
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class EmailListRecipientsController < ApplicationController
+    class EmailListRecipientsController < ApiController
       def create
         raise "Invalid email address: #{permitted_params[:email]}" unless valid_email?
 

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ScholarshipApplicationsController < ApplicationController
+    class ScholarshipApplicationsController < ApiController
       def create
         current_user.scholarship_applications.create! scholarship_application_params
 
