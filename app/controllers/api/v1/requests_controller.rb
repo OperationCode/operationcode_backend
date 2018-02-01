@@ -1,6 +1,6 @@
 module Api
   module V1
-    class RequestsController < ApiController
+    class RequestsController < ApplicationController
       before_action :authenticate_user!
 
       def index

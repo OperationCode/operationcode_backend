@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UsersController < ApiController
+    class UsersController < ApplicationController
       before_action :authenticate_user!, only: %i[update]
 
       def index

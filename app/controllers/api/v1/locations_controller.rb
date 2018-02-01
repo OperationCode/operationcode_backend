@@ -1,6 +1,6 @@
 module Api
   module V1
-    class LocationsController < ApiController
+    class LocationsController < ApplicationController
       before_action :set_location, except: :create
       before_action :authenticate_user!
 

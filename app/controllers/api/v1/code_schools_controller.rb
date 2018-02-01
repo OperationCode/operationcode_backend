@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CodeSchoolsController < ApiController
+    class CodeSchoolsController < ApplicationController
       before_action :authenticate_user!, only: [:create, :update, :destroy]
 
       def index

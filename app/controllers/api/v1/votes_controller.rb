@@ -1,6 +1,6 @@
 module Api
   module V1
-    class VotesController < ApiController
+    class VotesController < ApplicationController
       before_action :authenticate_user!
 
       def create
