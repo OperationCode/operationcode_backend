@@ -1,6 +1,6 @@
 module Api
   module V1
-    class EventsController < ApiController
+    class EventsController < ApplicationController
       def index
         render json: Event.all, status: :ok
       rescue StandardError => e
@@ -9,3 +9,5 @@ module Api
     end
   end
 end
+
+

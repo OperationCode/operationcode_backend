@@ -1,6 +1,6 @@
 module Api
   module V1
-    class GitHubStatisticsController < ApiController
+    class GitHubStatisticsController < ApplicationController
       def oc_totals
         render json: GitHub::Presenter.new(params).oc_totals, status: :ok
       rescue StandardError => e
