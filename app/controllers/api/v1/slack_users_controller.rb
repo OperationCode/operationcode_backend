@@ -1,6 +1,6 @@
 module Api
   module V1
-    class SlackUsersController < ApplicationController
+    class SlackUsersController < ApiController
       before_action :authenticate_user!
 
       def create

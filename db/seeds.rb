@@ -31,3 +31,6 @@ end
 team_members_seed_file = Rails.root.join('config', 'team_members.yml')
 config = YAML::load_file(team_members_seed_file)
 TeamMember.create!(config)
+
+# Create Admin (development only)
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

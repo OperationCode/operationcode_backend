@@ -1,7 +1,7 @@
 module Api
   module V1
     module Users
-      class PasswordsController < ApplicationController
+      class PasswordsController < ApiController
 
         # Resets password token and sends reset password instructions by email.
         #
