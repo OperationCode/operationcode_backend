@@ -27,6 +27,7 @@ class User < ApplicationRecord
   before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
+  before_save :validate_zipcode
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
@@ -102,6 +103,12 @@ class User < ApplicationRecord
 
   def token
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
+  end
+
+  def validate_zipcode
+    return true if longitude && latitude
+    errors['zip code'] << 'not found'
+    raise_validation_error
   end
 
   private
