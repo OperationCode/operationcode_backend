@@ -46,6 +46,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal -74.0059731, u.longitude
   end
 
+  test 'accepts non-us zipcodes (UK)' do
+    u = build(:user, latitude: nil, longitude: nil)
+
+    u.update_attributes(zip: 'HP2 4HG')
+    assert_equal 40.7143528, u.latitude
+    assert_equal -74.0059731, u.longitude
+  end
+
   test 'updates geocode after update' do
     u = build(:user, latitude: 40.7143528, longitude: -74.0059731)
 
