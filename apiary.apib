@@ -20,6 +20,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "hardware_included": false,
                 "has_online": false,
                 "online_only": false,
+                "mooc": false
                 "locations":  [
                       {
                           "va_accepted": false,
@@ -39,7 +40,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             },
         ]
 
-## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc}]
 + Parameters
 
     + name (string, required) - The CodeSchool's name
@@ -50,6 +51,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
 
 ### Create a CodeSchool Member [POST]
 
@@ -70,6 +72,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                       "hardware_included": "false",
                       "has_online": "true",
                       "online_only": "false"
+                      "mooc": "false"
                       }
                   }
 
@@ -107,7 +110,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             "online_only": false,
             "created_at": "2017-09-26T06:54:58.607Z",
             "updated_at": "2017-09-26T06:54:58.607Z",
-            "notes": null
+            "notes": null,
+            "mooc": false
         }
 
 + Response 404 (application/json)
@@ -146,7 +150,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   errors: "Some error message"
               }
 
-## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc}]
 
 + Parameters
 
@@ -158,6 +162,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
 
 ### Update an Existing CodeSchool [PUT]
 
