@@ -89,6 +89,4 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal({ 'user_count' => 1 }, response.parsed_body)
     assert_equal 200, response.status
   end
-
-  VCR.eject_cassette
 end

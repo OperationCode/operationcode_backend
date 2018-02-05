@@ -68,46 +68,20 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'only geocodes if zip is updated' do
-    u = create(:user)
+    u = build(:user, latitude: 1, longitude: 1, zip: '97201')
+    u.stubs(:zip_changed?).returns(false)
+    u.save
 
-    stub_geocoder do
-      Geocoder::Lookup::Test.any_instance.expects(:search).once.returns([])
-      u.update_attributes(email: 'updated_email@example.com')
-      refute_equal '80203', u.zip
-      u.update_attributes(zip: '80203')
-    end
-  end
-
-  def stub_geocoder(&block)
-    Geocoder.configure(:lookup => :test)
-    Geocoder::Lookup::Test.add_stub(
-      '80203', [
-        {
-          'latitude'     => 20.7143528,
-          'longitude'    => -174.0059731,
-          'address'      => 'Denver, CO, USA',
-          'state'        => 'Colorado',
-          'state_code'   => 'CO',
-          'country'      => 'United States',
-          'country_code' => 'US'
-        }
-      ]
-    )
-    Geocoder::Lookup::Test.set_default_stub(
-      [
-        {
-          'latitude'     => 40.7143528,
-          'longitude'    => -74.0059731,
-          'address'      => 'Patchogue, NY, USA',
-          'state'        => 'New York',
-          'state_code'   => 'NY',
-          'country'      => 'United States',
-          'country_code' => 'US'
-        }
-      ]
-    )
-    block.call
-    Geocoder::Lookup::Test.reset
+    u.update_attributes(email: 'updated_email@example.com')
+    assert_equal 1, u.latitude
+    assert_equal 1, u.longitude
+    assert_equal u.zip, '97201'
+    
+    u.stubs(:zip_changed?).returns(true)
+    u.update_attributes(zip: '80203')
+    assert_equal 39.7312095, u.latitude
+    assert_equal -104.9826965, u.longitude
+    assert_equal 'CO', u.state
   end
 
   def user_opts
