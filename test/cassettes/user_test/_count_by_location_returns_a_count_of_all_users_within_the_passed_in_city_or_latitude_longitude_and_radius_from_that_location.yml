@@ -1,0 +1,324 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=78705&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Feb 2018 23:06:49 GMT
+      Expires:
+      - Tue, 06 Feb 2018 23:06:49 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '470'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '18'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "78705",
+                       "short_name" : "78705",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Austin",
+                       "short_name" : "Austin",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Travis County",
+                       "short_name" : "Travis County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Texas",
+                       "short_name" : "TX",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Austin, TX 78705, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 30.3151289,
+                          "lng" : -97.71956589999999
+                       },
+                       "southwest" : {
+                          "lat" : 30.2799671,
+                          "lng" : -97.7544899
+                       }
+                    },
+                    "location" : {
+                       "lat" : 30.2961708,
+                       "lng" : -97.73895429999999
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 30.3151289,
+                          "lng" : -97.71956589999999
+                       },
+                       "southwest" : {
+                          "lat" : 30.2799671,
+                          "lng" : -97.7544899
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJbXqLfIG1RIYR-Kx8g4zAkEo",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 05 Feb 2018 23:07:10 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=78756&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Feb 2018 23:06:49 GMT
+      Expires:
+      - Tue, 06 Feb 2018 23:06:49 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '471'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '18'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "78756",
+                       "short_name" : "78756",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Austin",
+                       "short_name" : "Austin",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Travis County",
+                       "short_name" : "Travis County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Texas",
+                       "short_name" : "TX",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Austin, TX 78756, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 30.3362531,
+                          "lng" : -97.7263358
+                       },
+                       "southwest" : {
+                          "lat" : 30.30519689999999,
+                          "lng" : -97.7497489
+                       }
+                    },
+                    "location" : {
+                       "lat" : 30.3248256,
+                       "lng" : -97.73895429999999
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 30.3362531,
+                          "lng" : -97.7263358
+                       },
+                       "southwest" : {
+                          "lat" : 30.30519689999999,
+                          "lng" : -97.7497489
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJkc1TSlzKRIYRetxjV8sAShM",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 05 Feb 2018 23:07:10 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=83704&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Feb 2018 23:06:50 GMT
+      Expires:
+      - Tue, 06 Feb 2018 23:06:50 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '462'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '17'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "83704",
+                       "short_name" : "83704",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Boise",
+                       "short_name" : "Boise",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Ada County",
+                       "short_name" : "Ada County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Idaho",
+                       "short_name" : "ID",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Boise, ID 83704, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 43.660011,
+                          "lng" : -116.2531519
+                       },
+                       "southwest" : {
+                          "lat" : 43.603623,
+                          "lng" : -116.314399
+                       }
+                    },
+                    "location" : {
+                       "lat" : 43.63208969999999,
+                       "lng" : -116.2863998
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 43.660011,
+                          "lng" : -116.2531519
+                       },
+                       "southwest" : {
+                          "lat" : 43.603623,
+                          "lng" : -116.314399
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJAdhLd-RVrlQR69FJzdRBT24",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 05 Feb 2018 23:07:10 GMT
+recorded_with: VCR 3.0.3

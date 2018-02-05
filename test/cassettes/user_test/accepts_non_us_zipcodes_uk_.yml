@@ -1,0 +1,240 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HP2%204HG&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Feb 2018 21:29:26 GMT
+      Expires:
+      - Tue, 06 Feb 2018 21:29:26 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '983'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '5863'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HP2 4HG",
+                       "short_name" : "HP2 4HG",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Leverstock Green Road",
+                       "short_name" : "Leverstock Green Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Hemel Hempstead",
+                       "short_name" : "Hemel Hempstead",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Hertfordshire",
+                       "short_name" : "Hertfordshire",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Leverstock Green Rd, Hemel Hempstead HP2 4HG, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.7565538,
+                          "lng" : -0.4437797
+                       },
+                       "southwest" : {
+                          "lat" : 51.7553765,
+                          "lng" : -0.445686
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.75592890000001,
+                       "lng" : -0.4447103
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.7573141302915,
+                          "lng" : -0.443383869708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.7546161697085,
+                          "lng" : -0.4460818302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJIQpnDjpBdkgRf5abcoIGgjE",
+                 "types" : [ "postal_code" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HP2",
+                       "short_name" : "HP2",
+                       "types" : [ "postal_code", "postal_code_prefix" ]
+                    },
+                    {
+                       "long_name" : "Hemel Hempstead",
+                       "short_name" : "Hemel Hempstead",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Hertfordshire",
+                       "short_name" : "Hertfordshire",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Hemel Hempstead HP2, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.8251389,
+                          "lng" : -0.3985764
+                       },
+                       "southwest" : {
+                          "lat" : 51.74234680000001,
+                          "lng" : -0.5155808
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.798452,
+                       "lng" : -0.4882842000000001
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.8251389,
+                          "lng" : -0.3985764
+                       },
+                       "southwest" : {
+                          "lat" : 51.74234680000001,
+                          "lng" : -0.5155808
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJwRrXXNBAdkgRLWyMmesLgKE",
+                 "types" : [ "postal_code", "postal_code_prefix" ]
+              },
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Indian Creek Drive",
+                       "short_name" : "Indian Creek Dr",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Trophy Club",
+                       "short_name" : "Trophy Club",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Denton County",
+                       "short_name" : "Denton County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Texas",
+                       "short_name" : "TX",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "76262",
+                       "short_name" : "76262",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "Indian Creek Dr, Trophy Club, TX 76262, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 33.0002801,
+                          "lng" : -97.1781251
+                       },
+                       "southwest" : {
+                          "lat" : 33.0000292,
+                          "lng" : -97.17832489999999
+                       }
+                    },
+                    "location" : {
+                       "lat" : 33.0001724,
+                       "lng" : -97.17822629999999
+                    },
+                    "location_type" : "GEOMETRIC_CENTER",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 33.0015036302915,
+                          "lng" : -97.17687601970849
+                       },
+                       "southwest" : {
+                          "lat" : 32.9988056697085,
+                          "lng" : -97.17957398029149
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJn-FxO9bTTYYRf-Hn0YxY-nQ",
+                 "types" : [ "establishment", "point_of_interest", "premise" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 05 Feb 2018 23:07:12 GMT
+recorded_with: VCR 3.0.3

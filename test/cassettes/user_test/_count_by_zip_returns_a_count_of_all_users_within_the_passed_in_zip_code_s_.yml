@@ -1,0 +1,322 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=80112&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Feb 2018 23:06:45 GMT
+      Expires:
+      - Tue, 06 Feb 2018 23:06:45 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '499'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '23'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80112",
+                       "short_name" : "80112",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Englewood",
+                       "short_name" : "Englewood",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Englewood, CO 80112, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.62408689999999,
+                          "lng" : -104.791368
+                       },
+                       "southwest" : {
+                          "lat" : 39.53471589999999,
+                          "lng" : -104.923045
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.5835785,
+                       "lng" : -104.8571368
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.62408689999999,
+                          "lng" : -104.791368
+                       },
+                       "southwest" : {
+                          "lat" : 39.53471589999999,
+                          "lng" : -104.923045
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJV6Vm65GFbIcR6nFrHQASDWk",
+                 "postcode_localities" : [ "Centennial", "Englewood", "Greenwood Village" ],
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 05 Feb 2018 23:07:11 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=80126&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Feb 2018 23:06:45 GMT
+      Expires:
+      - Tue, 06 Feb 2018 23:06:45 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '504'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '23'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80126",
+                       "short_name" : "80126",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Littleton",
+                       "short_name" : "Littleton",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Douglas County",
+                       "short_name" : "Douglas County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Littleton, CO 80126, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.5661549,
+                          "lng" : -104.904746
+                       },
+                       "southwest" : {
+                          "lat" : 39.5033379,
+                          "lng" : -105.010349
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.5511448,
+                       "lng" : -104.9505671
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.5661549,
+                          "lng" : -104.904746
+                       },
+                       "southwest" : {
+                          "lat" : 39.5033379,
+                          "lng" : -105.010349
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ5UQdQXqDbIcRAortoLYMhQA",
+                 "postcode_localities" : [ "Highlands Ranch", "Littleton" ],
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 05 Feb 2018 23:07:12 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=80126&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Feb 2018 23:06:45 GMT
+      Expires:
+      - Tue, 06 Feb 2018 23:06:45 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '504'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '24'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "80126",
+                       "short_name" : "80126",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Littleton",
+                       "short_name" : "Littleton",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Douglas County",
+                       "short_name" : "Douglas County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Colorado",
+                       "short_name" : "CO",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Littleton, CO 80126, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 39.5661549,
+                          "lng" : -104.904746
+                       },
+                       "southwest" : {
+                          "lat" : 39.5033379,
+                          "lng" : -105.010349
+                       }
+                    },
+                    "location" : {
+                       "lat" : 39.5511448,
+                       "lng" : -104.9505671
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.5661549,
+                          "lng" : -104.904746
+                       },
+                       "southwest" : {
+                          "lat" : 39.5033379,
+                          "lng" : -105.010349
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJ5UQdQXqDbIcRAortoLYMhQA",
+                 "postcode_localities" : [ "Highlands Ranch", "Littleton" ],
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Mon, 05 Feb 2018 23:07:12 GMT
+recorded_with: VCR 3.0.3
