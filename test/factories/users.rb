@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :user do
     email { Faker::Internet.email }
-    zip { Faker::Address.postcode }
+    zip 97201
     first_name { Faker::Name.first_name }
     last_name  { Faker::Name.last_name }
     slack_name { Faker::StarWars.character }
@@ -17,6 +17,10 @@ FactoryGirl.define do
 
     factory :mentor do
       mentor true
+    end
+
+    trait :dynamic_zip do
+      zip { Faker::Address.postcode }
     end
   end
 

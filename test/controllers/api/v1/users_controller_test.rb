@@ -21,12 +21,48 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test '#create returns error with invalid zip code' do
+    post api_v1_users_url,
+      params: {
+        user: {
+          email: 'test@example.com',
+          first_name: 'new first name',
+          password: 'Password',
+          zip: 'bad_zip_code'
+        }
+      },
+      as: :json
+
+    body = JSON.parse(response.body)
+    assert_equal ["not found"], body["zip code"]
+  end
+
+  test '#create is successful with valid zip code' do
+    user_params = {
+      email: 'test@example.com',
+      first_name: 'new first name',
+      password: 'Password',
+      zip: '97201'
+    }
+
+    post api_v1_users_url,
+      params: { user: user_params },
+      as: :json
+
+    user = User.first
+    assert_response :success
+    assert user_params[:email], user.email
+    assert user_params[:first_name], user.first_name
+    assert user_params[:password], user.password
+    assert user_params[:zip], user.zip
+  end
+
   test ":by_location returns User.count of users located in the passed in location" do
     tom = create :user
     sam = create :user
 
-    tom.update_columns latitude: 30.285648, longitude: -97.742052, zip: '78705', state: 'TX'
-    sam.update_columns latitude: 30.312601, longitude: -97.738591, zip: '78756', state: 'TX'
+    tom.update_columns latitude: 30.285648, longitude: -97.742052, zip: 78705, state: 'TX'
+    sam.update_columns latitude: 30.312601, longitude: -97.738591, zip: 78756, state: 'TX'
 
     params = { state: 'TX' }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
@@ -53,4 +89,6 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal({ 'user_count' => 1 }, response.parsed_body)
     assert_equal 200, response.status
   end
+
+  VCR.eject_cassette
 end

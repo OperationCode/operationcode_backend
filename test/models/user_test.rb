@@ -54,6 +54,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal -74.0059731, u.longitude
   end
 
+  test 'longitude and longitude are nil for unkown zipcodes' do
+    u = build(:user, latitude: nil, longitude: nil)
+
+    u.update_attributes(zip: 'bad zip code')
+    assert_equal nil, u.latitude
+    assert_equal nil, u.longitude
+  end
+
   test 'updates geocode after update' do
     u = build(:user, latitude: 40.7143528, longitude: -74.0059731)
 
@@ -101,6 +109,19 @@ class UserTest < ActiveSupport::TestCase
           'state_code'   => 'NY',
           'country'      => 'United States',
           'country_code' => 'US'
+        }
+      ]
+    )
+    Geocoder::Lookup::Test.add_stub(
+      'bad zip code', [
+        {
+          'latitude'     => nil,
+          'longitude'    => nil,
+          'address'      => nil,
+          'state'        => nil,
+          'state_code'   => nil,
+          'country'      => nil,
+          'country_code' => nil
         }
       ]
     )
