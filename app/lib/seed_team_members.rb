@@ -6,8 +6,8 @@ class SeedTeamMembers
     def from_yaml(file_name, group)
       members_seed_file = Rails.root.join('config', file_name)
       members = YAML.load_file(members_seed_file)
-      members.map do |member|
-        create_or_update(member, group)
+      members.each do |member|
+        create_or_update(member.merge(group: group))
       end
     end
 
@@ -32,22 +32,10 @@ class SeedTeamMembers
 
     private
 
-    def create_or_update(member, group)
+    def create_or_update(member)
       TeamMember.find_or_create_by!(name: member['name']) do |c|
-        attributes = build_attrs(
-          ['description', 'role', 'image_src'],
-          member
-        )
-        attributes['group'] = group
-        c.update!(attributes)
+        c.update!(member)
       end
-    end
-
-    def build_attrs(attributes, member, aggregate = {})
-      attributes.each do |attribute|
-        aggregate[attribute] = member[attribute] if member[attribute]
-      end
-      aggregate
     end
   end
 end
