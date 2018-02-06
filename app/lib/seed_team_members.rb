@@ -34,12 +34,20 @@ class SeedTeamMembers
 
     def create_or_update(member, group)
       TeamMember.find_or_create_by!(name: member['name']) do |c|
-        c.description = member['description'] if member['description']
-        c.image_src = member['image_src'] if member['image_src']
-        c.name = member['name'] if member['name']
-        c.role = member['role'] if member['role']
-        c.group = group
+        attributes = build_attrs(
+          ['description', 'role', 'image_src'],
+          member
+        )
+        attributes['group'] = group
+        c.update!(attributes)
       end
+    end
+
+    def build_attrs(attributes, member, aggregate = {})
+      attributes.each do |attribute|
+        aggregate[attribute] = member[attribute] if member[attribute]
+      end
+      aggregate
     end
   end
 end
