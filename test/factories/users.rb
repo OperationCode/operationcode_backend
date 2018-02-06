@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :user do
     email { Faker::Internet.email }
-    zip 97201
+    zip '97201'
     first_name { Faker::Name.first_name }
     last_name  { Faker::Name.last_name }
     slack_name { Faker::StarWars.character }

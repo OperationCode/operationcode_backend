@@ -61,8 +61,8 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     tom = create :user
     sam = create :user
 
-    tom.update_columns latitude: 30.285648, longitude: -97.742052, zip: 78705, state: 'TX'
-    sam.update_columns latitude: 30.312601, longitude: -97.738591, zip: 78756, state: 'TX'
+    tom.update_columns latitude: 30.285648, longitude: -97.742052, zip: '78705', state: 'TX'
+    sam.update_columns latitude: 30.312601, longitude: -97.738591, zip: '78756', state: 'TX'
 
     params = { state: 'TX' }
     get api_v1_users_by_location_url(params), headers: @headers, as: :json
