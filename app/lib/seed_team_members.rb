@@ -4,11 +4,15 @@ class SeedTeamMembers
 
   def self.from_yaml(file_name, group)
     members_seed_file = Rails.root.join('config', file_name)
-    members = YAML::load_file(members_seed_file)
+    members = YAML.load_file(members_seed_file)
     members.map do |member|
-      TeamMember.find_or_create_by!(
-        member.merge!("group" => group)
-      )
+      TeamMember.find_or_create_by!(name: member['name']) do |c|
+        c.description = member['description'] if member['description']
+        c.image_src = member['image_src'] if member['image_src']
+        c.name = member['name'] if member['name']
+        c.role = member['role'] if member['role']
+        c.group = group
+      end
     end
   end
 
