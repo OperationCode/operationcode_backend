@@ -40,6 +40,30 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_equal locations.first["address1"], "2405 Nugget Lane"
   end
 
+  test ":index endpoint sorts first by CodeSchool#name, second by Location#state, third by Location#city" do
+    Location.delete_all
+    CodeSchool.delete_all
+
+    wynode_academy = create :code_school, name: "Wynode Academy"
+    coding_dojo = create :code_school, name: "Coding Dojo"
+    wynode_dallas = create :location, code_school: wynode_academy, city: "Dallas", state: "TX"
+    wynode_denver = create :location, code_school: wynode_academy, city: "Denver", state: "CO"
+    dojo_san_fran = create :location, code_school: coding_dojo, city: "San Francisco", state: "CA"
+    dojo_la = create :location, code_school: coding_dojo, city: "Los Angeles", state: "CA"
+
+    get api_v1_code_schools_path, as: :json
+
+    code_schools = JSON.parse response.body
+    dojo = code_schools[0]
+    wynode = code_schools[1]
+
+    assert dojo["name"] == coding_dojo.name
+    assert wynode["name"] == wynode_academy.name
+
+    assert cities_for(dojo) == [dojo_la.city, dojo_san_fran.city]
+    assert cities_for(wynode) == [wynode_denver.city, wynode_dallas.city]
+  end
+
   test ":create endpoint creates a CodeSchool successfully" do
     post api_v1_code_schools_path(@school),
       params: { code_school: @school },
@@ -97,4 +121,8 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     delete api_v1_code_school_path(@school), as: :json
     assert_response :unauthorized
   end
+end
+
+def cities_for(code_school)
+  code_school["locations"].map { |location| location["city"] }
 end
