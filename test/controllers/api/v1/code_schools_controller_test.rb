@@ -41,8 +41,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test ":index endpoint sorts first by CodeSchool#name, second by Location#state, third by Location#city" do
-    Location.delete_all
-    CodeSchool.delete_all
+    CodeSchool.destroy_all
 
     wynode_academy = create :code_school, name: "Wynode Academy"
     coding_dojo = create :code_school, name: "Coding Dojo"
