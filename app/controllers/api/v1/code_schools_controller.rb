@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_user!, only: [:create, :update, :destroy]
 
       def index
-        render json: CodeSchool.all
+        render json: CodeSchool.order(:name)
       end
 
       def create
