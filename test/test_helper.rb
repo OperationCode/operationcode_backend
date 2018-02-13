@@ -12,15 +12,21 @@ class ActiveSupport::TestCase
   def authorization_headers(user)
     { 'Authorization': "bearer #{user.token}" }
   end
-end
 
-VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
-  config.cassette_library_dir = 'test/cassettes'
-  config.hook_into :webmock
-end
-
-class ActiveSupport::TestCase
+  # @see https://gist.github.com/mattbrictson/72910465f36be8319cde
+  #
+  # Monkey patch the `test` DSL to enable VCR and configure a cassette named
+  # based on the test method. This means that a test written like this:
+  #
+  # class OrderTest < ActiveSupport::TestCase
+  #   test "user can place order" do
+  #     ...
+  #   end
+  # end
+  #
+  # will automatically use VCR to intercept and record/play back any external
+  # HTTP requests using `cassettes/order_test/_user_can_place_order.yml`.
+  #
   def self.test(test_name, &block)
     return super if block.nil?
 
@@ -34,4 +40,10 @@ class ActiveSupport::TestCase
       end
     end
   end
+end
+
+VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
+  config.cassette_library_dir = 'test/cassettes'
+  config.hook_into :webmock
 end
