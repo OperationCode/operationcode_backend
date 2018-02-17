@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20180204235116) do
     t.boolean  "hardware_included"
     t.boolean  "has_online"
     t.boolean  "online_only"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.text     "notes"
-    t.boolean  "mooc"
+    t.boolean  "mooc",              default: false, null: false
   end
 
   create_table "events", force: :cascade do |t|
