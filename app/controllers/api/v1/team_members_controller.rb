@@ -36,7 +36,7 @@ module Api
     private
 
       def team_member_params
-        params.permit(:name, :role)
+        params.permit(:name, :role, :group, :description, :image_src)
       end
     end
   end

@@ -1071,14 +1071,20 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
         [
             {
+                "description": "Worked for lots of successful companies.",
+                "group": "board",
                 "id": 65,
+                "image_src": "images/rick_rein.jpg",
                 "name": "Rick Rein",
                 "role": "CTO",
                 "created_at": "2017-06-30T15:05:39.242Z",
                 "updated_at": "2017-06-30T15:05:39.242Z"
             },
             {
+                "description": "Worked for lots of other successful companies.",
+                "group": "team",
                 "id": 66,
+                "image_src": "images/rob_kriner.jpg",
                 "name": "Rob Kriner",
                 "role": "Director of Marketing",
                 "created_at": "2017-06-30T15:05:39.255Z",
@@ -1086,10 +1092,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
         ]
 
-## Team Member | Create [/api/v1/team_members{?name,role}]
+## Team Member | Create [/api/v1/team_members{?description,group,image_src,name,role}]
 
 + Parameters
 
+    + description (string) - The team member's paragraph bio
+    + group (string, required) - The team member's group, either 'board', 'team' or 'executive'
+    + image_src (string) - The team member's image path
     + name (string, required) - The team member's name
     + role (string, required) - The team member's role title
 
@@ -1104,6 +1113,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "description": "He worked at a good and successful company.",
+                "group": "board",
+                "id": 1,
+                "image_src": "images/alex_johnson.jpg",
                 "name": "Alex Johnson",
                 "role": "Board Member"
             }
@@ -1157,13 +1170,16 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Team Member | Update [/api/v1/team_members/{team_member_id}{?name,role}]
+## Team Member | Update [/api/v1/team_members/{team_member_id}{?description,group,image_src,name,role}]
 
 + Parameters
 
-    + team_member_id (number) - ID of the Team Member in the form of an integer
+    + description (string) - The team member's paragraph bio
+    + group (string, required) - The team member's group, either 'board', 'team' or 'executive'
+    + image_src (string) - The team member's image path
     + name (string, required) - The team member's name
     + role (string, required) - The team member's role title
+    + team_member_id (number) - ID of the Team Member in the form of an integer
 
 ### Update an Existing Team Member [PUT]
 
@@ -1177,7 +1193,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "description": "He worked at a good and successful company.",
+                "group": "board",
                 "id": 1,
+                "image_src": "images/alex_johnson.jpg",
                 "name": "Alex Johnson",
                 "role": "Board Member"
             }
