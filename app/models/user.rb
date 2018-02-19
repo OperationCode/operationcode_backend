@@ -104,6 +104,10 @@ class User < ApplicationRecord
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
   end
 
+  def list_all
+    puts 'Not Implemented'
+  end
+
   private
 
   def upcase_state

@@ -1,7 +1,7 @@
 module Api
   module V1
     class SlackUsersController < ApplicationController
-      self.request.env.select {|k,v| k =~ /^HTTP_/}
+      puts 'no changes'
       before_action :authenticate_user!, only: [:create]
       before_action :verify_py_bot, only: [:index, :show, :update]
 
@@ -18,7 +18,7 @@ module Api
       ## pybot interaction methods ##
       # get all users 
       def index
-        render json: UserSerializer(Users)
+        render json: UserSerializer.new(Users.list_all)
       end
 
       # get a single slack user (specifically want :verified and :slack_name)
@@ -35,7 +35,7 @@ module Api
       def update
         user = User.find(params[:email])
         if user.update(slack_name params[:slack_name])
-          render json: { users: UserSerializer(user) }, status: 200
+          render json: { users: UserSerializer.new(user) }, status: 200
         else
           render json: { errors: user.errors.full_messages}, status: 400
         end
@@ -44,8 +44,8 @@ module Api
       private
 
       def verify_py_bot
-          puts ' verifying'
           
+          puts request.headers['auth_key']
           unless request.headers['auth_key'] == ENV['pybot_token']
             render json: {error: 'Invalid token request '}, status: 500         
           end
