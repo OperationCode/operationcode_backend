@@ -35,6 +35,10 @@ Rails.application.routes.draw do
       resources :team_members, only: [:index, :create, :update, :destroy]
       resources :users, only: [:index, :create]
       patch '/users', to: 'users#update'
+      # slack pybot methods
+      get '/slack/users_info', to: 'slack_users#index'
+      post '/slack/users_info', to: 'slack_users#show'
+      patch '/slack/users_info' to: 'slack_users#update'
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
@@ -45,10 +49,6 @@ Rails.application.routes.draw do
         post '/passwords/reset', to: 'passwords#reset'
       end
 
-      namespace :slack do
-        get '/slack/user_info', to: 'user_info#index'
-      end
-      
     end
   end
 end
