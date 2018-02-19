@@ -34,9 +34,11 @@ module Api
       def update
         user = User.find(params[:email])
         if user.update(slack_name params[:slack_name])
-          render json: user 
+          render json: { user.attributes,
+                          status: 200}
         else
-          render json: { errors: user.errors.full_messages }
+          render json: { errors: user.errors.full_messages,
+                         status:  400}
         end
       end
     
