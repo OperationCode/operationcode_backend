@@ -17,11 +17,13 @@ module Api
       ## pybot interaction methods ##
       # get all users 
       def index
-        puts 'here'
-        all_users = User.list_all
-        puts all_users
-        puts 'next'
-        render json: UserSerializer.new(User.list_all)
+        
+        all_users = User.all
+        all_users.each do |user|
+          user = UserSerializer.new(user).attributes
+        end
+        # render json: UserSerializer.new(all_users)
+        render json: {users: all_users }, status: 200
       end
 
       # get a single slack user (specifically want :verified and :slack_name)
