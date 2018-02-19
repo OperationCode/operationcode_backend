@@ -78,6 +78,10 @@ class User < ApplicationRecord
     near(location, radius.to_i)&.size
   end
 
+  def self.list_all
+    puts 'Not Implemented'
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
@@ -102,10 +106,6 @@ class User < ApplicationRecord
 
   def token
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
-  end
-
-  def list_all
-    puts 'Not Implemented'
   end
 
   private
