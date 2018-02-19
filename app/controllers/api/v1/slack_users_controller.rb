@@ -17,14 +17,14 @@ module Api
       ## pybot interaction methods ##
       # get all users 
       def index
-        render json: Users.all
+        render json: Users.attributes
       end
 
       # get a single slack user (specifically want :verified and :slack_name)
       def show
         user = Users.find_by(email: params[:email])
         if user 
-          render json: user 
+          render json: user.attributes
         else
           render json: { error: 'No such email record' }, status: :not_found
         end
