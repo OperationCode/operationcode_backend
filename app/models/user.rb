@@ -38,6 +38,7 @@ class User < ApplicationRecord
   scope :mentors, -> { where(mentor: true) }
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
+  scope :by_email, ->(email) { where(email: email)}
   
   # Returns a count of all users with the passed in zip code(s)
   #
