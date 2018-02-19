@@ -38,6 +38,7 @@ class User < ApplicationRecord
   scope :mentors, -> { where(mentor: true) }
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
+  scope :list_all, -> {where(mentor: true) }
 
   # Returns a count of all users with the passed in zip code(s)
   #
@@ -76,10 +77,6 @@ class User < ApplicationRecord
   #
   def self.count_by_location(location, radius=20)
     near(location, radius.to_i)&.size
-  end
-
-  def self.list_all
-    puts 'Not Implemented'
   end
 
   def name
