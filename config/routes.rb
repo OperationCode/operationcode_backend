@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       # slack pybot methods
       get '/slack/users_info', to: 'slack_users#index'
       post '/slack/users_info', to: 'slack_users#show'
-      patch '/slack/users_info' to: 'slack_users#update'
+      patch '/slack/users_info', to: 'slack_users#update'
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
