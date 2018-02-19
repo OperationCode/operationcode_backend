@@ -1,8 +1,9 @@
 module Api
   module V1
     class SlackUsersController < ApplicationController
+      self.request.env.select {|k,v| k =~ /^HTTP_/}
       before_action :authenticate_user!, only: [:create]
-      before_action :verify_py_bot!, only: [:index, :show, :update]
+      before_action :verify_py_bot, only: [:index, :show, :update]
 
       def create
         raise "User id #{current_user.id} does not have a saved email address." unless current_user.email.present?
@@ -34,7 +35,7 @@ module Api
       def update
         user = User.find(params[:email])
         if user.update(slack_name params[:slack_name])
-          render json: { UserSerializer(user) }, status: 200
+          render json: { users: UserSerializer(user) }, status: 200
         else
           render json: { errors: user.errors.full_messages}, status: 400
         end
@@ -43,7 +44,9 @@ module Api
       private
 
       def verify_py_bot
-          unless controller(:auth_key == ENV['pybot_token'] )
+          puts ' verifying'
+          
+          unless request.headers['auth_key'] == ENV['pybot_token']
             render json: {error: 'Invalid token request '}, status: 500         
           end
       end
