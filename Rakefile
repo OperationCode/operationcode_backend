@@ -5,3 +5,8 @@ require_relative 'config/application'
 require_relative 'app/lib/operation_code'
 
 Rails.application.load_tasks
+
+
+for each height:
+    
+    String.join("", Collections.nCopies(n, s));

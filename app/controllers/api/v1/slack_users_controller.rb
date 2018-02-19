@@ -33,7 +33,7 @@ module Api
       # update a single slack name by email
       def update
         user = User.find(params[:email])
-        if user.update(:slack_name params[:slack_name])
+        if user.update(slack_name params[:slack_name])
           render json: user 
         else
           render json: { errors: user.errors.full_messages }
