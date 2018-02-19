@@ -48,7 +48,6 @@ Rails.application.routes.draw do
       namespace :users do
         post '/passwords/reset', to: 'passwords#reset'
       end
-
     end
   end
 end
