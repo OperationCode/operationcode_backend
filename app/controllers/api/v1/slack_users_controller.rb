@@ -23,7 +23,8 @@ module Api
 
       # get a single slack user (specifically want :verified and :slack_name)
       def show
-        user = User.by_email.find(params[:email])
+        user = User.find_by(email: params[:email])
+
         if user 
           render json: UserSerializer.new(user).attributes        
         else
@@ -33,9 +34,10 @@ module Api
 
       # update a single slack name by email
       def update
-        user = User.find(params[:email])
-        if user.update(slack_name params[:slack_name])
-          render json: { users: UserSerializer.new(user) }, status: 200
+        user = User.find_by(email: params[:email])
+        
+        if user.update(slack_user_params)
+          render json: { user: UserSerializer.new(user).attributes }, status: 200
         else
           render json: { errors: user.errors.full_messages}, status: 400
         end
@@ -44,12 +46,20 @@ module Api
       private
 
       def verify_py_bot
-
-          unless request.headers['auth_key'] == ENV['pybot_token']
+          unless params[:auth_key] == ENV['PYBOT_TOKEN']            
             render json: {error: 'Invalid token request '}, status: 500         
           end
       end
 
-    end
+      def slack_user_params
+        params.permit(
+          :slack_name,
+          :email,                                      
+          :interests, 
+          :mentor, 
+          :verified)
+      end
+
+    end 
   end
 end
