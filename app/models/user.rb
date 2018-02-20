@@ -38,7 +38,8 @@ class User < ApplicationRecord
   scope :mentors, -> { where(mentor: true) }
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
-
+  scope :by_email, ->(email) { where(email: email)}
+  
   # Returns a count of all users with the passed in zip code(s)
   #
   # @param zip_codes [String] String of comma-separated zip code(s), i.e. '80126', or '80126, 80203'

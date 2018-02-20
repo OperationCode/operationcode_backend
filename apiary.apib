@@ -865,7 +865,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         }
 
 ## Resource | Update [/api/v1/resources/{resource_id}{?name,url,category,language,paid,notes,tags}]
-
+    
 + Parameters
 
     + resource_id (number, required) - ID of the Resource in the form of an integer
@@ -918,34 +918,34 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
+## Scholarships | Collection [/api/v1/scholarships]        
+    
+### List All Scholarships Available [GET]        
         
-## Scholarships | Collection [/api/v1/scholarships]
-
-### List All Scholarships Available [GET]
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": 5,
-                "name": "Full Stack Dev-Ops",
-                "location": "29 Palms",
-                "terms": "Recent Veterans",
-                "open_time": "2017-05-30T15:05:39.242Z",
-                "close_time": "2017-10-30T15:05:39.242Z",
-                "created_at": "2017-06-30T15:05:39.242Z",
-                "updated_at": "2017-06-30T15:05:39.242Z"
-            },
-            {
-                "id": 6,
-                "name": "UX to UI for U University",
-                "location": "Florida",
-                "terms": "Must be Conrad H.",
-                "open_time": "2018-01-30T15:05:39.242Z",
-                "close_time": "2018-10-30T15:05:39.242Z",
-                "created_at": "2017-06-30T15:05:39.242Z",
-                "updated_at": "2017-06-30T15:05:39.242Z"
-            }
++ Response 200 (application/json)        
+        
+        [        
+            {        
+                "id": 5,        
+                "name": "Full Stack Dev-Ops",        
+                "location": "29 Palms",        
+                "terms": "Recent Veterans",        
+                "open_time": "2017-05-30T15:05:39.242Z",        
+                "close_time": "2017-10-30T15:05:39.242Z",        
+                "created_at": "2017-06-30T15:05:39.242Z",        
+                "updated_at": "2017-06-30T15:05:39.242Z"        
+            },        
+            {        
+                "id": 6,        
+                "name": "UX to UI for U University",        
+                "location": "Florida",        
+                "terms": "Must be Conrad H.",        
+                "open_time": "2018-01-30T15:05:39.242Z",        
+                "close_time": "2018-10-30T15:05:39.242Z",        
+                "created_at": "2017-06-30T15:05:39.242Z",        
+                "updated_at": "2017-06-30T15:05:39.242Z"        
+            }        
         ]
 
 ## Scholarships | Show [/api/v1/scholarships/{scholarship_id}]
@@ -1014,6 +1014,96 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
 
         
+## Slack Users | Collection [/api/v1/slack/users_info/{?auth_key}]
++ Parameters
+
+    + auth_key (string, required) - Authorization token for application in the form of a string
+
+### Show all Users [GET]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "auth_key": "sajfl9390980999343,
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "users": [
+                    {
+                        "id": 2,
+                        "email": "someone@gmail.com",
+                        "zip": "41117-4835",
+                        "first_name": "Cdog",
+                        "last_name": "Garry",
+                        "slack_name": "fake name",
+                        "mentor": false,
+                        "verified": false,
+                        "interests": null
+                    },
+                    {
+                        "id": 3,
+                        "email": "some_wine_persont@chi.info",
+                        "zip": "13114",
+                        "first_name": "Ronald",
+                        "last_name": "McDonald",
+                        "slack_name": "HiThere",
+                        "mentor": true,
+                        "verified": false,
+                        "interests": null
+                    }
+                ]               
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                error: "Some error message"
+            }
+
+        
+## Slack User | Show [/api/v1/slack/users_info/{?auth_key,email}]
++ Parameters
+
+    + auth_key (string, required) - Authorization token for application in the form of a string
+    + email (string, required) - Email of the slack user to look for in the form of a string
+
+
+### Show A Single Users Information [POST]
+
++ Response 200 (application/json)
+
+        {
+            "user": [
+                {
+                    "id": 2,
+                    "email": "someone@gmail.com",
+                    "zip": "41117-4835",
+                    "first_name": "Cdog",
+                    "last_name": "Garry",
+                    "slack_name": "fake name",
+                    "mentor": false,
+                    "verified": false,
+                    "interests": null
+                }
+            ]  
+        }  
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                error: "No such email record"
+            }
+
 ## Slack User | Invite [/api/v1/slack_users]
 
 ### Invite a User to Slack [POST]
@@ -1062,6 +1152,45 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
+## Slack User | Update [/api/v1/slack/users_info/{?auth_key,email,slack_name,interests,mentor,verified} ]
++ Parameters
+
+    + auth_key (string, required) - Authorization token for application in the form of a string
+    + email (string, required) - Email of the slack user to look for in the form of a string
+    + slack_name (string, optional) - Slack name of user in the form of a string
+    + interests (string, optional) - Interests of the user in the form of a string
+    + mentor (string, optional) - Mentor for the user in the form of a string
+    + verified (boolean, optional) - Veteran verification status of the user in the form of a string
+
+
+### Update a Single Users Information [PATCH]
+
++ Response 200 (application/json)
+
+        {
+            "user": [
+                {
+                    "id": 2,
+                    "email": "someone@gmail.com",
+                    "zip": "41117-4835",
+                    "first_name": "Cdog",
+                    "last_name": "Garry",
+                    "slack_name": "fake name",
+                    "mentor": false,
+                    "verified": false,
+                    "interests": null
+                }
+            ]  
+        }  
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                error: "Some error message"
+            }
 
 ## Team Member | Collection [/api/v1/team_members]
 
