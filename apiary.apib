@@ -919,135 +919,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## SlackBot Users | Collection [/api/v1/slack/users_info/{?auth_key}]
-+ Parameters
-
-    + auth_key (string, required) - Authorization token for application in the form of a string
-
-### Show all Users [GET]
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "auth_key": "sajfl9390980999343,
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "users": [
-                    {
-                        "id": 2,
-                        "email": "someone@gmail.com",
-                        "zip": "41117-4835",
-                        "first_name": "Cdog",
-                        "last_name": "Garry",
-                        "slack_name": "fake name",
-                        "mentor": false,
-                        "verified": false,
-                        "interests": null
-                    },
-                    {
-                        "id": 3,
-                        "email": "some_wine_persont@chi.info",
-                        "zip": "13114",
-                        "first_name": "Ronald",
-                        "last_name": "McDonald",
-                        "slack_name": "HiThere",
-                        "mentor": true,
-                        "verified": false,
-                        "interests": null
-                    }
-                ]               
-            }
-
-+ Response 400 (application/json)
-
-    + Body
-
-            {
-                error: "Some error message"
-            }
-
-        
-## SlackBot User | Show [/api/v1/slack/users_info/{?auth_key,email}]
-+ Parameters
-
-    + auth_key (string, required) - Authorization token for application in the form of a string
-    + email (string, required) - Email of the slack user to look for in the form of a string
-
-
-### Show A Single Users Information [POST]
-
-+ Response 200 (application/json)
-
-        {
-            "user": [
-                {
-                    "id": 2,
-                    "email": "someone@gmail.com",
-                    "zip": "41117-4835",
-                    "first_name": "Cdog",
-                    "last_name": "Garry",
-                    "slack_name": "fake name",
-                    "mentor": false,
-                    "verified": false,
-                    "interests": null
-                }
-            ]  
-        }  
-
-+ Response 400 (application/json)
-
-    + Body
-
-            {
-                error: "No such email record"
-            }
-
-## SlackBot User | Update [/api/v1/slack/users_info/{?auth_key,email,slack_name,interests,mentor,verified} ]
-+ Parameters
-
-    + auth_key (string, required) - Authorization token for application in the form of a string
-    + email (string, required) - Email of the slack user to look for in the form of a string
-    + slack_name (string, optional) - Slack name of user in the form of a string
-    + interests (string, optional) - Interests of the user in the form of a string
-    + mentor (string, optional) - Mentor for the user in the form of a string
-    + verified (boolean, optional) - Veteran verification status of the user in the form of a string
-
-
-### Update a Single Users Information [PATCH]
-
-+ Response 200 (application/json)
-
-        {
-            "user": [
-                {
-                    "id": 2,
-                    "email": "someone@gmail.com",
-                    "zip": "41117-4835",
-                    "first_name": "Cdog",
-                    "last_name": "Garry",
-                    "slack_name": "fake name",
-                    "mentor": false,
-                    "verified": false,
-                    "interests": null
-                }
-            ]  
-        }  
-
-+ Response 400 (application/json)
-
-    + Body
-
-            {
-                error: "Some error message"
-            }
-
 ## Scholarships | Show [/api/v1/scholarships/{scholarship_id}]
 + Parameters
 
@@ -1114,6 +985,96 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
 
         
+## Slack Users | Collection [/api/v1/slack/users_info/{?auth_key}]
++ Parameters
+
+    + auth_key (string, required) - Authorization token for application in the form of a string
+
+### Show all Users [GET]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "auth_key": "sajfl9390980999343,
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "users": [
+                    {
+                        "id": 2,
+                        "email": "someone@gmail.com",
+                        "zip": "41117-4835",
+                        "first_name": "Cdog",
+                        "last_name": "Garry",
+                        "slack_name": "fake name",
+                        "mentor": false,
+                        "verified": false,
+                        "interests": null
+                    },
+                    {
+                        "id": 3,
+                        "email": "some_wine_persont@chi.info",
+                        "zip": "13114",
+                        "first_name": "Ronald",
+                        "last_name": "McDonald",
+                        "slack_name": "HiThere",
+                        "mentor": true,
+                        "verified": false,
+                        "interests": null
+                    }
+                ]               
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                error: "Some error message"
+            }
+
+        
+## Slack User | Show [/api/v1/slack/users_info/{?auth_key,email}]
++ Parameters
+
+    + auth_key (string, required) - Authorization token for application in the form of a string
+    + email (string, required) - Email of the slack user to look for in the form of a string
+
+
+### Show A Single Users Information [POST]
+
++ Response 200 (application/json)
+
+        {
+            "user": [
+                {
+                    "id": 2,
+                    "email": "someone@gmail.com",
+                    "zip": "41117-4835",
+                    "first_name": "Cdog",
+                    "last_name": "Garry",
+                    "slack_name": "fake name",
+                    "mentor": false,
+                    "verified": false,
+                    "interests": null
+                }
+            ]  
+        }  
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                error: "No such email record"
+            }
+
 ## Slack User | Invite [/api/v1/slack_users]
 
 ### Invite a User to Slack [POST]
@@ -1162,6 +1123,45 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
+## Slack User | Update [/api/v1/slack/users_info/{?auth_key,email,slack_name,interests,mentor,verified} ]
++ Parameters
+
+    + auth_key (string, required) - Authorization token for application in the form of a string
+    + email (string, required) - Email of the slack user to look for in the form of a string
+    + slack_name (string, optional) - Slack name of user in the form of a string
+    + interests (string, optional) - Interests of the user in the form of a string
+    + mentor (string, optional) - Mentor for the user in the form of a string
+    + verified (boolean, optional) - Veteran verification status of the user in the form of a string
+
+
+### Update a Single Users Information [PATCH]
+
++ Response 200 (application/json)
+
+        {
+            "user": [
+                {
+                    "id": 2,
+                    "email": "someone@gmail.com",
+                    "zip": "41117-4835",
+                    "first_name": "Cdog",
+                    "last_name": "Garry",
+                    "slack_name": "fake name",
+                    "mentor": false,
+                    "verified": false,
+                    "interests": null
+                }
+            ]  
+        }  
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                error: "Some error message"
+            }
 
 ## Team Member | Collection [/api/v1/team_members]
 
