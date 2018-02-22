@@ -15,3 +15,4 @@ Check out [how Operation Code Open Source projects are maintained](https://githu
 # Maintainers
 
 * [Nell Shamrell-Harrington](http://www.github.com/nellshamrell)
+* [Will Montgomery](http://www.github.com/wimo7083)
