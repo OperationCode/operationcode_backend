@@ -747,10 +747,9 @@
   hardware_included: false
   has_online: true
   online_only: false
-  notes: Completely free for accepted applicants. This is a non-profit code school.
   email: info@codeplatoon.org
   locations:
-    - va_accepted: false
+    - va_accepted: true
       address1: 73 W Monroe Street
       address2: Suite 303
       city: Chicago
