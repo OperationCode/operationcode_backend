@@ -21,9 +21,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Mon, 05 Feb 2018 23:06:49 GMT
+      - Fri, 02 Mar 2018 20:20:31 GMT
       Expires:
-      - Tue, 06 Feb 2018 23:06:49 GMT
+      - Sat, 03 Mar 2018 20:20:31 GMT
+      Cache-Control:
+      - public, max-age=86400
       Access-Control-Allow-Origin:
       - "*"
       Server:
@@ -34,10 +36,6 @@ http_interactions:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '18'
     body:
       encoding: ASCII-8BIT
       string: |
@@ -106,7 +104,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Mon, 05 Feb 2018 23:07:10 GMT
+  recorded_at: Fri, 02 Mar 2018 20:20:32 GMT
 - request:
     method: get
     uri: http://maps.googleapis.com/maps/api/geocode/json?address=78756&language=en&sensor=false
@@ -128,9 +126,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Mon, 05 Feb 2018 23:06:49 GMT
+      - Fri, 02 Mar 2018 20:20:32 GMT
       Expires:
-      - Tue, 06 Feb 2018 23:06:49 GMT
+      - Sat, 03 Mar 2018 20:20:32 GMT
+      Cache-Control:
+      - public, max-age=86400
       Access-Control-Allow-Origin:
       - "*"
       Server:
@@ -141,10 +141,6 @@ http_interactions:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '18'
     body:
       encoding: ASCII-8BIT
       string: |
@@ -213,7 +209,7 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Mon, 05 Feb 2018 23:07:10 GMT
+  recorded_at: Fri, 02 Mar 2018 20:20:32 GMT
 - request:
     method: get
     uri: http://maps.googleapis.com/maps/api/geocode/json?address=83704&language=en&sensor=false
@@ -235,9 +231,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Mon, 05 Feb 2018 23:06:50 GMT
+      - Fri, 02 Mar 2018 20:20:32 GMT
       Expires:
-      - Tue, 06 Feb 2018 23:06:50 GMT
+      - Sat, 03 Mar 2018 20:20:32 GMT
+      Cache-Control:
+      - public, max-age=86400
       Access-Control-Allow-Origin:
       - "*"
       Server:
@@ -248,10 +246,6 @@ http_interactions:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
-      Cache-Control:
-      - public, max-age=86400
-      Age:
-      - '17'
     body:
       encoding: ASCII-8BIT
       string: |
@@ -320,5 +314,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Mon, 05 Feb 2018 23:07:10 GMT
+  recorded_at: Fri, 02 Mar 2018 20:20:33 GMT
 recorded_with: VCR 3.0.3

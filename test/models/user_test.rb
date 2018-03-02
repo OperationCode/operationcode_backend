@@ -12,8 +12,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'must have a valid email' do
-    refute User.new(email: 'bogusemail', password: 'password').valid?
-    assert User.new(email: 'goodemail@example.com', password: 'password').valid?
+    refute User.new(email: 'bogusemail', password: 'password', zip: '97201').valid?
+    assert User.new(email: 'goodemail@example.com', password: 'password', zip: '97201').valid?
   end
 
   test 'email must be unique' do
@@ -50,7 +50,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal -0.4447103, u.longitude
   end
 
-  test 'longitude and longitude are nil for unkown zipcodes' do
+  test 'longitude and longitude are nil for unknown zipcodes' do
     u = build(:user, latitude: nil, longitude: nil, zip: nil)
 
     u.update_attributes(zip: 'bad zip code')
@@ -76,7 +76,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, u.latitude
     assert_equal 1, u.longitude
     assert_equal u.zip, '97201'
-    
+
     u.stubs(:zip_changed?).returns(true)
     u.update_attributes(zip: '80203')
     assert_equal 39.7312095, u.latitude

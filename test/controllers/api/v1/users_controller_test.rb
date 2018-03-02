@@ -34,7 +34,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
       as: :json
 
     body = JSON.parse(response.body)
-    assert_equal ["not found"], body["zip code"]
+    assert_equal ["not found"], body["zip_code"]
   end
 
   test '#create is successful with valid zip code' do

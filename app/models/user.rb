@@ -24,13 +24,13 @@ class User < ApplicationRecord
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   after_create :welcome_user
-  before_save :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
+  before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
-  before_save :validate_zipcode
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
+  validate :zip_code_exists
 
   has_many :requests
   has_many :votes
@@ -105,13 +105,12 @@ class User < ApplicationRecord
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
   end
 
-  def validate_zipcode
-    return true if longitude && latitude
-    errors['zip code'] << 'not found'
-    raise_validation_error
-  end
-
   private
+
+  def zip_code_exists
+    return if longitude && latitude
+    errors.add(:zip_code, 'not found')
+  end
 
   def upcase_state
    state.upcase! if state
