@@ -118,17 +118,17 @@ class User < ApplicationRecord
   # @return [user, path] The user and the redirect path, in an array
   # @see https://github.com/zquestz/omniauth-google-oauth2#devise
   #
-  def self.from_social(data)
-    user = User.find_by(email: data[:email])
+  def self.fetch_social_user_and_redirect_path(data)
+    user = User.find_by(email: data.dig(:email))
 
     path = '/profile'
-    unless user
+    if user.nil?
       user = User.new(
-        first_name: data[:first_name],
-        last_name: data[:last_name],
-        email: data[:email],
-        zip: data[:zip],
-        password: data[:password]
+        first_name: data.dig(:first_name),
+        last_name: data.dig(:last_name),
+        email: data.dig(:email),
+        zip: data.dig(:zip),
+        password: data.dig(:password)
       )
       path = '/signup-info'
       UserMailer.welcome(user).deliver unless user.invalid?

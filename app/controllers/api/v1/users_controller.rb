@@ -38,13 +38,13 @@ module Api
       # @see https://github.com/zquestz/omniauth-google-oauth2#devise
       #
       def exist
-        user = User.find_by(email: params[:user][:email])
+        user = User.find_by(email: params.dig(:user, :email))
+        redirect_path = '/profile'
 
-        @redirect_path = '/profile'
-        unless user
-          @redirect_path = '/social_login'
+        if user.nil?
+          redirect_path = '/social_login'
         end
-        render json: { redirect_to: @redirect_path }
+        render json: { redirect_to: redirect_path }
       end
 
       # For social media logins, creates the user in the database if necessary,
@@ -57,14 +57,14 @@ module Api
       # @see https://github.com/OperationCode/operationcode_backend/blob/master/app/controllers/api/v1/sessions_controller.rb#L8-L20
       #
       def social
-          set_social_user_and_redirect
+          @user, redirect_path = User.fetch_social_user_and_redirect_path(params.dig(:user))
 
           if @user.save
             sign_in @user, event: :authenticate_user
             render json: {
               token: @user.token,
               user: UserSerializer.new(current_user),
-              redirect_to: @redirect_path
+              redirect_to: redirect_path
             }
           else
             redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
@@ -91,12 +91,6 @@ module Api
       end
 
       private
-
-      def set_social_user_and_redirect
-        user_and_redirect = User.from_social(params[:user])
-        @user = user_and_redirect[0]
-        @redirect_path = user_and_redirect[1]
-      end
 
       def user_params
         params.require(:user).permit(

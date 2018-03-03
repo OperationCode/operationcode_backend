@@ -18,12 +18,15 @@ Rails.application.routes.draw do
       post '/users/profile/verify', to: 'users#verify'
       post '/users/social', to: 'users#social'
       post '/users/exist', to: 'users#exist'
+      #post '/social_users/create', to: 'social_users#create'
+      #post '/social_users/show', to: 'social_users#show'
 
       resources :code_schools do
         resources :locations
       end
       resources :email_list_recipients, only: :create
       resources :events, only: :index
+      resources :social_users, only: [:create, :show]
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
       resources :resources, only: [:index, :create, :show, :update, :destroy] do
