@@ -30,6 +30,7 @@ gem 'sentry-raven'
 gem 'sidekiq'
 gem 'skylight'
 gem 'pry-rails'
+gem 'whenever', '~> 0.10.0'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'
