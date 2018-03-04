@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=HP2%204HG&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 02 Mar 2018 20:20:30 GMT
+      Expires:
+      - Sat, 03 Mar 2018 20:20:30 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '543'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "HP2 4HG",
+                       "short_name" : "HP2 4HG",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Leverstock Green Road",
+                       "short_name" : "Leverstock Green Rd",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Hemel Hempstead",
+                       "short_name" : "Hemel Hempstead",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Hertfordshire",
+                       "short_name" : "Hertfordshire",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Leverstock Green Rd, Hemel Hempstead HP2 4HG, UK",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 51.7565538,
+                          "lng" : -0.4437797
+                       },
+                       "southwest" : {
+                          "lat" : 51.7553765,
+                          "lng" : -0.445686
+                       }
+                    },
+                    "location" : {
+                       "lat" : 51.75592890000001,
+                       "lng" : -0.4447103
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.7573141302915,
+                          "lng" : -0.443383869708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.7546161697085,
+                          "lng" : -0.4460818302915021
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJIQpnDjpBdkgRf5abcoIGgjE",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Fri, 02 Mar 2018 20:20:30 GMT
+recorded_with: VCR 3.0.3
