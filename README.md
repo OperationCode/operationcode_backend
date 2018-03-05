@@ -1,5 +1,7 @@
 # OperationCode Backend
 
+[![View performance data on Skylight](https://badges.skylight.io/status/0iQU6bEW8ha1.svg)](https://oss.skylight.io/app/applications/0iQU6bEW8ha1)
+
 ## Contributing to Operation Code
 
 So, you want to learn how to program? Contributing to Operation Code is a great place to get started. This document will help you march from zero to deploying code in no time!
