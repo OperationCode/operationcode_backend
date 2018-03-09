@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  def setup
-    stub_geocoder
-  end
-
   test 'actions are performed on user create' do
     user = build(:user, user_opts)
 
@@ -16,8 +12,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'must have a valid email' do
-    refute User.new(email: 'bogusemail', password: 'password').valid?
-    assert User.new(email: 'goodemail@example.com', password: 'password').valid?
+    refute User.new(email: 'bogusemail', password: 'password', zip: '97201').valid?
+    assert User.new(email: 'goodemail@example.com', password: 'password', zip: '97201').valid?
   end
 
   test 'email must be unique' do
@@ -42,60 +38,54 @@ class UserTest < ActiveSupport::TestCase
     assert u.valid?
 
     u.save
-    assert_equal 40.7143528, u.latitude
-    assert_equal -74.0059731, u.longitude
+    assert_equal 45.505603, u.latitude
+    assert_equal -122.6882145, u.longitude
+  end
+
+  test 'accepts non-us zipcodes (UK)' do
+    u = build(:user, latitude: nil, longitude: nil, zip: nil)
+
+    u.update_attributes(zip: 'HP2 4HG')
+    assert_equal 51.75592890000001, u.latitude
+    assert_equal -0.4447103, u.longitude
+  end
+
+  test 'longitude and longitude are nil for unknown zipcodes' do
+    u = build(:user, latitude: nil, longitude: nil, zip: nil)
+
+    u.update_attributes(zip: 'bad zip code')
+    assert_equal nil, u.latitude
+    assert_equal nil, u.longitude
   end
 
   test 'updates geocode after update' do
     u = build(:user, latitude: 40.7143528, longitude: -74.0059731)
 
     u.update_attributes(zip: '80203')
-    assert_equal 20.7143528, u.latitude
-    assert_equal -174.0059731, u.longitude
+    assert_equal 39.7312095, u.latitude
+    assert_equal -104.9826965, u.longitude
     assert_equal 'CO', u.state
   end
 
   test 'only geocodes if zip is updated' do
-    u = create(:user, user_opts)
+    u = build(:user, latitude: 1, longitude: 1, zip: '97201')
+    u.stubs(:zip_changed?).returns(false)
+    u.save
 
-    Geocoder::Lookup::Test.any_instance.expects(:search).once.returns([])
     u.update_attributes(email: 'updated_email@example.com')
-    refute_equal '80203', u.zip
+    assert_equal 1, u.latitude
+    assert_equal 1, u.longitude
+    assert_equal u.zip, '97201'
+
+    u.stubs(:zip_changed?).returns(true)
     u.update_attributes(zip: '80203')
+    assert_equal 39.7312095, u.latitude
+    assert_equal -104.9826965, u.longitude
+    assert_equal 'CO', u.state
   end
 
   def user_opts
     { email: 'create_test@example.com', zip: '11772', password: 'password', password_confirmation: 'password' }
-  end
-
-  def stub_geocoder
-    Geocoder.configure(:lookup => :test)
-    Geocoder::Lookup::Test.add_stub(
-      '80203', [
-        {
-          'latitude'     => 20.7143528,
-          'longitude'    => -174.0059731,
-          'address'      => 'Denver, CO, USA',
-          'state'        => 'Colorado',
-          'state_code'   => 'CO',
-          'country'      => 'United States',
-          'country_code' => 'US'
-        }
-      ]
-    )
-    Geocoder::Lookup::Test.set_default_stub(
-      [
-        {
-          'latitude'     => 40.7143528,
-          'longitude'    => -74.0059731,
-          'address'      => 'Patchogue, NY, USA',
-          'state'        => 'New York',
-          'state_code'   => 'NY',
-          'country'      => 'United States',
-          'country_code' => 'US'
-        }
-      ]
-    )
   end
 
   test '.count_by_zip returns a count of all users within the passed in zip code(s)' do

@@ -28,6 +28,7 @@ gem 'redis', '~> 3.0'
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
+gem 'skylight'
 gem 'pry-rails'
 
 group :development, :test do

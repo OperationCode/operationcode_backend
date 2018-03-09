@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022215418) do
+ActiveRecord::Schema.define(version: 20180204235116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 20171022215418) do
     t.boolean  "hardware_included"
     t.boolean  "has_online"
     t.boolean  "online_only"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.text     "notes"
+    t.boolean  "mooc",              default: false, null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -176,8 +177,11 @@ ActiveRecord::Schema.define(version: 20171022215418) do
   create_table "team_members", force: :cascade do |t|
     t.string   "name"
     t.string   "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+    t.string   "group"
+    t.string   "image_src"
   end
 
   create_table "users", force: :cascade do |t|

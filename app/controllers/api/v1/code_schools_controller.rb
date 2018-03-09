@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_user!, only: [:create, :update, :destroy]
 
       def index
-        render json: CodeSchool.all
+        render json: CodeSchool.order(:name)
       end
 
       def create
@@ -47,7 +47,7 @@ module Api
       private
 
       def code_school_params
-        params.require(:code_school).permit(:name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only)
+        params.require(:code_school).permit(:name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only, :mooc)
       end
     end
   end

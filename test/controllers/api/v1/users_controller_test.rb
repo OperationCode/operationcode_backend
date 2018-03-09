@@ -21,6 +21,42 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test '#create returns error with invalid zip code' do
+    post api_v1_users_url,
+      params: {
+        user: {
+          email: 'test@example.com',
+          first_name: 'new first name',
+          password: 'Password',
+          zip: 'bad_zip_code'
+        }
+      },
+      as: :json
+
+    body = JSON.parse(response.body)
+    assert_equal ["not found"], body["zip_code"]
+  end
+
+  test '#create is successful with valid zip code' do
+    user_params = {
+      email: 'test@example.com',
+      first_name: 'new first name',
+      password: 'Password',
+      zip: '97201'
+    }
+
+    post api_v1_users_url,
+      params: { user: user_params },
+      as: :json
+
+    user = User.first
+    assert_response :success
+    assert user_params[:email], user.email
+    assert user_params[:first_name], user.first_name
+    assert user_params[:password], user.password
+    assert user_params[:zip], user.zip
+  end
+
   test ":by_location returns User.count of users located in the passed in location" do
     tom = create :user
     sam = create :user

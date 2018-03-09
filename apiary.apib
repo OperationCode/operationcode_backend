@@ -20,6 +20,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "hardware_included": false,
                 "has_online": false,
                 "online_only": false,
+                "mooc": false
                 "locations":  [
                       {
                           "va_accepted": false,
@@ -39,7 +40,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             },
         ]
 
-## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc}]
 + Parameters
 
     + name (string, required) - The CodeSchool's name
@@ -50,6 +51,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
 
 ### Create a CodeSchool Member [POST]
 
@@ -70,6 +72,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                       "hardware_included": "false",
                       "has_online": "true",
                       "online_only": "false"
+                      "mooc": "false"
                       }
                   }
 
@@ -107,7 +110,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             "online_only": false,
             "created_at": "2017-09-26T06:54:58.607Z",
             "updated_at": "2017-09-26T06:54:58.607Z",
-            "notes": null
+            "notes": null,
+            "mooc": false
         }
 
 + Response 404 (application/json)
@@ -146,7 +150,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   errors: "Some error message"
               }
 
-## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes}]
+## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc}]
 
 + Parameters
 
@@ -158,6 +162,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
 
 ### Update an Existing CodeSchool [PUT]
 
@@ -544,7 +549,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 ## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
-    
+
     + id (integer, required) - Identification of mentor request in the form of an integer
     + user_id (integer, required) - ID of the user requesting a mentor, the passed in user must be a verified military veteran( i.e. user.verified == true)
     + details (string, optional) - Details of the mentor request in the form of a string
@@ -553,18 +558,18 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + requested_mentor_id (integer, optional) - Requested mentor's id in the form of an integer
     + status (string, optional) - Current fullfillment status in the form on a string
     + assigned_mentor_id (integer, optional) - Assigned mentor'd id in the form of an integer
-    
-    
+
+
 ### Create a New Mentor Request [POST]
 + Request (application/json)
 
     + Headers
-    
+
             Authorization: Bearer Access-Token
 
     + Body
 
-            {   
+            {
                 "id": 2130,
                 "user_id": 4600,
                 "details": "I want to type well",
@@ -579,7 +584,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
     + Body
 
-            {   
+            {
                 "id": 2130,
                 "user_id": 4600,
                 "details": "I want to type well",
@@ -591,13 +596,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
 
 + Response 401 (application/json)
-  
+
 ## Request | Show a Mentor Request [/api/v1/requests/{id}]
 + Parameters
-    
+
     + id (integer, required) - Identification of mentor request in the form of an integer
 
-    
+
 ### Show an Exiting Request From User ID [GET]
 
 + Request (application/json)
@@ -629,11 +634,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Headers
 
             Authorization: Bearer Access-Token
-        
+
 + Response 200 (application/json)
 
         [
-            {   
+            {
                 "id": 251,
                 "service_id": 223,
                 "language": "English",
@@ -643,7 +648,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "requested_mentor_id": 3333,
                 "created_at": "2017-09-26T06:54:58.607Z",
                 "updated_at": "2017-09-26T06:54:58.607Z",
-                "status": "open"            
+                "status": "open"
             },
             {   "id":"264"
                 "service_id": 243,
@@ -654,10 +659,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "requested_mentor_id": 1250,
                 "created_at": "2017-09-26T06:54:58.607Z",
                 "updated_at": "2017-09-26T06:54:58.607Z",
-                "status": "open"            
+                "status": "open"
             }
         ]
-        
+
 + Response 401 (application/json)
 
         {
@@ -666,7 +671,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 ## Request | Update [/api/v1/requests/{?user_id,id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
-    
+
     + user_id (integer, required) - Identification of the User requesting a mentor in the form of an integer
     + id (integer, required) - Identification of the Mentor Request in the form on an integer
     + details (string, optional) - Details of the mentor request in the form of a string
@@ -675,7 +680,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + requested_mentor_id (integer, optional) - Requested mentor's id in the form of an integer
     + status (string, optional) - Current fullfillment status in the form on a string
     + assigned_mentor_id (integer, optional) - Assigned mentor'd id in the form of an integer
-    
+
 ### Update an Existing Mentor Request [PATCH]
 
 + Request (application/json)
@@ -918,7 +923,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
-        
+
 ## Scholarships | Collection [/api/v1/scholarships]
 
 ### List All Scholarships Available [GET]
@@ -991,7 +996,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             {
                 "user_id": 1234,
-                "scholarship_application": "Scholarship for kids who want to learn how to program", 
+                "scholarship_application": "Scholarship for kids who want to learn how to program",
                 "reason": "I want to go to college",
                 "terms_accepted": true,
                 "scholarship_id":  4
@@ -1002,7 +1007,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                redirect_to: '/success'                  
+                redirect_to: '/success'
             }
 
 + Response 400 (application/json)
@@ -1013,7 +1018,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 errors: "Some error message"
             }
 
-        
+
 ## Slack User | Invite [/api/v1/slack_users]
 
 ### Invite a User to Slack [POST]
@@ -1071,14 +1076,20 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
         [
             {
+                "description": "Worked for lots of successful companies.",
+                "group": "board",
                 "id": 65,
+                "image_src": "images/rick_rein.jpg",
                 "name": "Rick Rein",
                 "role": "CTO",
                 "created_at": "2017-06-30T15:05:39.242Z",
                 "updated_at": "2017-06-30T15:05:39.242Z"
             },
             {
+                "description": "Worked for lots of other successful companies.",
+                "group": "team",
                 "id": 66,
+                "image_src": "images/rob_kriner.jpg",
                 "name": "Rob Kriner",
                 "role": "Director of Marketing",
                 "created_at": "2017-06-30T15:05:39.255Z",
@@ -1086,10 +1097,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
         ]
 
-## Team Member | Create [/api/v1/team_members{?name,role}]
+## Team Member | Create [/api/v1/team_members{?description,group,image_src,name,role}]
 
 + Parameters
 
+    + description (string) - The team member's paragraph bio
+    + group (string, required) - The team member's group, either 'board', 'team' or 'executive'
+    + image_src (string) - The team member's image path
     + name (string, required) - The team member's name
     + role (string, required) - The team member's role title
 
@@ -1104,6 +1118,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "description": "He worked at a good and successful company.",
+                "group": "board",
+                "id": 1,
+                "image_src": "images/alex_johnson.jpg",
                 "name": "Alex Johnson",
                 "role": "Board Member"
             }
@@ -1157,13 +1175,16 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Team Member | Update [/api/v1/team_members/{team_member_id}{?name,role}]
+## Team Member | Update [/api/v1/team_members/{team_member_id}{?description,group,image_src,name,role}]
 
 + Parameters
 
-    + team_member_id (number) - ID of the Team Member in the form of an integer
+    + description (string) - The team member's paragraph bio
+    + group (string, required) - The team member's group, either 'board', 'team' or 'executive'
+    + image_src (string) - The team member's image path
     + name (string, required) - The team member's name
     + role (string, required) - The team member's role title
+    + team_member_id (number) - ID of the Team Member in the form of an integer
 
 ### Update an Existing Team Member [PUT]
 
@@ -1177,7 +1198,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "description": "He worked at a good and successful company.",
+                "group": "board",
                 "id": 1,
+                "image_src": "images/alex_johnson.jpg",
                 "name": "Alex Johnson",
                 "role": "Board Member"
             }
@@ -1280,7 +1304,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 first_name: "Mike",
                 last_name: "Johnson",
                 email: "dreams@operationcode.org",
-                zip: "80020",            
+                zip: "80020",
                 mentor: "true"
             }
 

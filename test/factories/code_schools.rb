@@ -8,5 +8,6 @@ FactoryGirl.define do
     has_online Faker::Boolean.boolean
     online_only Faker::Boolean.boolean
     notes Faker::Lorem.paragraph
+    mooc Faker::Boolean.boolean
   end
 end

@@ -27,7 +27,4 @@ FactoryGirl.create(:request, assigned_mentor: nell)
   Service.create!(:name => service)
 end
 
-# Create team members
-team_members_seed_file = Rails.root.join('config', 'team_members.yml')
-config = YAML::load_file(team_members_seed_file)
-TeamMember.create!(config)
+SeedTeamMembers.seed_all
