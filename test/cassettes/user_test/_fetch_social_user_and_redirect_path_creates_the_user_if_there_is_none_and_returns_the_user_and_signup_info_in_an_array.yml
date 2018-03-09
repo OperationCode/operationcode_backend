@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=66666&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 09 Mar 2018 08:13:30 GMT
+      Expires:
+      - Sat, 10 Mar 2018 08:13:30 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '418'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '54801'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "66666",
+                       "short_name" : "66666",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Najran",
+                       "short_name" : "Najran",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "Saudi Arabia",
+                       "short_name" : "SA",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "66666, Saudi Arabia",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 18.6329267,
+                          "lng" : 45.3836328
+                       },
+                       "southwest" : {
+                          "lat" : 18.5397849,
+                          "lng" : 45.2868491
+                       }
+                    },
+                    "location" : {
+                       "lat" : 18.6009506,
+                       "lng" : 45.3463405
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 18.6329267,
+                          "lng" : 45.3836328
+                       },
+                       "southwest" : {
+                          "lat" : 18.5397849,
+                          "lng" : 45.2868491
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJRbFeGzXAAj4RaKQ9O2bbK8g",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Fri, 09 Mar 2018 23:26:51 GMT
+recorded_with: VCR 3.0.3

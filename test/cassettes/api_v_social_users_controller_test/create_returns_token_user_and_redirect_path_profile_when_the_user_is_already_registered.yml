@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=13124&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 09 Mar 2018 01:23:32 GMT
+      Expires:
+      - Sat, 10 Mar 2018 01:23:32 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '470'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '79394'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "13124",
+                       "short_name" : "13124",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "North Pitcher",
+                       "short_name" : "North Pitcher",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Chenango County",
+                       "short_name" : "Chenango County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "NY",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "North Pitcher, NY 13124, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 42.6921139,
+                          "lng" : -75.7961529
+                       },
+                       "southwest" : {
+                          "lat" : 42.6179929,
+                          "lng" : -75.851573
+                       }
+                    },
+                    "location" : {
+                       "lat" : 42.6472215,
+                       "lng" : -75.8185314
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 42.6921139,
+                          "lng" : -75.7961529
+                       },
+                       "southwest" : {
+                          "lat" : 42.6179929,
+                          "lng" : -75.851573
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJATbiY5A22okRfSivrVa8GjU",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Fri, 09 Mar 2018 23:26:46 GMT
+recorded_with: VCR 3.0.3

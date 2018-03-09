@@ -241,6 +241,7 @@ DEPENDENCIES
   sendgrid-ruby
   sentry-raven
   sidekiq
+  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
   vcr (~> 3.0, >= 3.0.3)
