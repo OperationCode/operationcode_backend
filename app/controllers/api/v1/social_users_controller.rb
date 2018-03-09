@@ -12,7 +12,9 @@ module Api
       # @see https://github.com/zquestz/omniauth-google-oauth2#devise
       #
       def show
-        user = User.find_by(email: params.dig(:id))
+        logger.info(email: params.dig(:email));
+        #logger.info("this is only a test");
+        user = User.find_by(email: params.dig(:email));
         redirect_path = '/profile'
 
         if user.nil?

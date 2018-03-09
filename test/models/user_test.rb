@@ -169,17 +169,17 @@ class UserTest < ActiveSupport::TestCase
     refute "john@gmail" =~ User::VALID_EMAIL
     refute "@example.com" =~ User::VALID_EMAIL
   end
-  test '.from_social returns the user and redirect path in an array' do
+  test '.fetch_social_user_and_redirect_path returns the user and redirect path in an array' do
     data = { first_name: 'Sterling', last_name: 'Archer', email: 'cyril@kickme.org', zip: '12345', password: 'VoiceMail' }
-    results = User.from_social(data)
+    results = User.fetch_social_user_and_redirect_path(data)
     assert_equal 2, results.size
     assert_equal data[:email], results[0][:email]
     refute_nil results[1]
   end
-  test '.from_social creates the user if there is none and returns the user and /signup-info in an array' do
+  test '.fetch_social_user_and_redirect_path creates the user if there is none and returns the user and /signup-info in an array' do
     data = { first_name: 'Leia', last_name: 'Organa', email: 'organa@resistance.net', zip: '66666', password: 'RestInPeace' }
 
-    results = User.from_social(data)
+    results = User.fetch_social_user_and_redirect_path(data)
     userInfo = results[0]
     redirect = results[1]
 
@@ -191,11 +191,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal '/signup-info', redirect
   end
 
-  test '.from_social returns the user and /profile in an array' do
+  test '.fetch_social_user_and_redirect_path returns the user and /profile in an array' do
     mary = create(:user, first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' )
     data = { first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' }
 
-    results = User.from_social(data)
+    results = User.fetch_social_user_and_redirect_path(data)
     userInfo = results[0]
     redirect = results[1]
 
