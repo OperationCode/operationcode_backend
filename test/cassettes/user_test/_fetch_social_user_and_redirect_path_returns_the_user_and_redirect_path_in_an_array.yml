@@ -21,31 +21,17 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-<<<<<<< HEAD
-      - Fri, 09 Mar 2018 23:26:52 GMT
-      Pragma:
-      - no-cache
+      - Sat, 10 Mar 2018 00:52:15 GMT
       Expires:
-      - Fri, 01 Jan 1990 00:00:00 GMT
-      Cache-Control:
-      - no-cache, must-revalidate
-=======
-      - Fri, 09 Mar 2018 01:23:19 GMT
-      Expires:
-      - Sat, 10 Mar 2018 01:23:19 GMT
+      - Sun, 11 Mar 2018 00:52:15 GMT
       Cache-Control:
       - public, max-age=86400
->>>>>>> 1c2be9cf1ae48b8c6100614cb115b263fafda6cf
       Access-Control-Allow-Origin:
       - "*"
       Server:
       - mafe
       Content-Length:
-<<<<<<< HEAD
-      - '224'
-=======
       - '488'
->>>>>>> 1c2be9cf1ae48b8c6100614cb115b263fafda6cf
       X-Xss-Protection:
       - 1; mode=block
       X-Frame-Options:
@@ -54,14 +40,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-<<<<<<< HEAD
-           "error_message" : "You have exceeded your daily request quota for this API. We recommend registering for a key at the Google Developers Console: https://console.developers.google.com/apis/credentials?project=_",
-           "results" : [],
-           "status" : "OVER_QUERY_LIMIT"
-        }
-    http_version: 
-  recorded_at: Fri, 09 Mar 2018 23:26:52 GMT
-=======
            "results" : [
               {
                  "address_components" : [
@@ -121,6 +99,5 @@ http_interactions:
            "status" : "OK"
         }
     http_version: 
-  recorded_at: Fri, 09 Mar 2018 01:23:19 GMT
->>>>>>> 1c2be9cf1ae48b8c6100614cb115b263fafda6cf
+  recorded_at: Sat, 10 Mar 2018 00:52:16 GMT
 recorded_with: VCR 3.0.3

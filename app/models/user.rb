@@ -109,7 +109,7 @@ class User < ApplicationRecord
   # sets the redirect path for the frontend to go to after the user is logged in
   # for the first time.
   #
-  # Requires that data contains :first_name, :last_name, :email, :zip, and :password keys.
+  # Requires that all data contains :first_name, :last_name, :email, :zip, and :password keys.
   # For example: { user: {first_name: "Jane"},{last_name: "Doe"},{ email: "jane@example.com" },{ zip: "12345"},{ password: "Th!sIs@Pa22w0rd"} }
   #
   # @param data The data passed in from the frontend, from which the user's info is extracted.
@@ -123,16 +123,31 @@ class User < ApplicationRecord
     user = User.find_by(email: data.dig(:email))
 
     path = '/profile'
-    if user.nil?
-      user = User.new(
-        first_name: data.dig(:first_name),
-        last_name: data.dig(:last_name),
-        email: data.dig(:email),
-        zip: data.dig(:zip),
-        password: data.dig(:password)
-      )
-      path = '/signup-info'
-      UserMailer.welcome(user).deliver unless user.invalid?
-    end
+      if user.nil?
+        user = User.new(
+          first_name: data.dig(:first_name),
+          last_name: data.dig(:last_name),
+          email: data.dig(:email),
+          zip: data.dig(:zip),
+          password: data.dig(:password)
+        )
+        path = '/signup-info'
+        UserMailer.welcome(user).deliver unless user.invalid?
+      end
     [user, path]
+end
+
+  private
+
+ def zip_code_exists
+   return if longitude && latitude
+   errors.add(:zip_code, 'not found')
+ end
+
+ def upcase_state
+  state.upcase! if state
   end
+  def downcase_email
+   email.downcase! if email
+ end
+end
