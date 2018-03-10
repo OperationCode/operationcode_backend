@@ -107,7 +107,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.3.0)
     minitest (5.10.1)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
@@ -115,8 +115,8 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nio4r (2.0.0)
-    nokogiri (1.7.1)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     operationcode-airtable (0.3.0)
       activesupport
       airtable
@@ -136,7 +136,7 @@ GEM
       activesupport (>= 3.0.0)
     rack (2.0.1)
     rack-cors (0.4.1)
-    rack-protection (1.5.3)
+    rack-protection (1.5.4)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -241,10 +241,11 @@ DEPENDENCIES
   sendgrid-ruby
   sentry-raven
   sidekiq
+  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
   vcr (~> 3.0, >= 3.0.3)
   webmock (~> 3.0, >= 3.0.1)
 
 BUNDLED WITH
-   1.15.4
+   1.16.1
