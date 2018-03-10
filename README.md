@@ -1,6 +1,6 @@
 # OperationCode Backend
 
-[![View performance data on Skylight](https://badges.skylight.io/status/0iQU6bEW8ha1.svg)](https://oss.skylight.io/app/applications/0iQU6bEW8ha1)
+[![Build Status](https://travis-ci.org/OperationCode/operationcode_backend.svg?branch=master)](https://travis-ci.org/OperationCode/operationcode_backend) [![View performance data on Skylight](https://badges.skylight.io/status/0iQU6bEW8ha1.svg)](https://oss.skylight.io/app/applications/0iQU6bEW8ha1)
 
 ## Contributing to Operation Code
 
