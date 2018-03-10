@@ -136,7 +136,7 @@ GEM
       activesupport (>= 3.0.0)
     rack (2.0.1)
     rack-cors (0.4.1)
-    rack-protection (1.5.4)
+    rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
