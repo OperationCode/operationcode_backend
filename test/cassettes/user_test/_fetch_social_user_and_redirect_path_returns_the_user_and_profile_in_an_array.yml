@@ -24,6 +24,11 @@ http_interactions:
       - Fri, 09 Mar 2018 01:23:18 GMT
       Expires:
       - Sat, 10 Mar 2018 01:23:18 GMT
+<<<<<<< HEAD
+=======
+      Cache-Control:
+      - public, max-age=86400
+>>>>>>> 1c2be9cf1ae48b8c6100614cb115b263fafda6cf
       Access-Control-Allow-Origin:
       - "*"
       Server:
@@ -34,10 +39,13 @@ http_interactions:
       - 1; mode=block
       X-Frame-Options:
       - SAMEORIGIN
+<<<<<<< HEAD
       Cache-Control:
       - public, max-age=86400
       Age:
       - '79414'
+=======
+>>>>>>> 1c2be9cf1ae48b8c6100614cb115b263fafda6cf
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -172,5 +180,9 @@ http_interactions:
         X2NvZGUiLCAicG9zdGFsX2NvZGVfcHJlZml4IiBdCiAgICAgIH0KICAgXSwK
         ICAgInN0YXR1cyIgOiAiT0siCn0K
     http_version: 
+<<<<<<< HEAD
   recorded_at: Fri, 09 Mar 2018 23:26:52 GMT
+=======
+  recorded_at: Fri, 09 Mar 2018 01:23:18 GMT
+>>>>>>> 1c2be9cf1ae48b8c6100614cb115b263fafda6cf
 recorded_with: VCR 3.0.3
