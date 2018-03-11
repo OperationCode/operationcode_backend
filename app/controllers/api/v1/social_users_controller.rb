@@ -12,8 +12,6 @@ module Api
       # @see https://github.com/zquestz/omniauth-google-oauth2#devise
       #
       def show
-        logger.info(email: params.dig(:email));
-        #logger.info("this is only a test");
         user = User.find_by(email: params.dig(:email));
         redirect_path = '/profile'
 
