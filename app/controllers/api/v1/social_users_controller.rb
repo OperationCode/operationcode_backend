@@ -44,6 +44,8 @@ module Api
           end
       end
 
+      private
+
       def social_user_params
         params.require(:user).permit(
           :email
