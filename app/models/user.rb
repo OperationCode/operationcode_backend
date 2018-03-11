@@ -110,7 +110,7 @@ class User < ApplicationRecord
   # for the first time.
   #
   # Requires that all data contains :first_name, :last_name, :email, :zip, and :password keys.
-  # For example: { user: {first_name: "Jane"},{last_name: "Doe"},{ email: "jane@example.com" },{ zip: "12345"},{ password: "Th!sIs@Pa22w0rd"} }
+  # For example: { user: {first_name: "Jane"} {last_name: "Doe"} { email: "jane@example.com" } { zip: "12345"} { password: "Th!sIs@Pa22w0rd"} }
   #
   # @param data The data passed in from the frontend, from which the user's info is extracted.
   # @return [String] A string of the user's redirect_to path

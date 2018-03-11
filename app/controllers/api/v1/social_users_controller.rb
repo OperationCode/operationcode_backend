@@ -5,8 +5,8 @@ module Api
 
       # For social media logins, renders the appropriate `redirect_to` path depending on whether the user is registered.
       #
-      # Requires that the ActionController::Parameters contain a :user key, with a nested :email key.
-      # For example: { user: { email: "john@example.com" } }
+      # Requires that the ActionController::Parameters contain an :email key.
+      # For example: { email: "john@example.com" }
       #
       # @return [String] A string of the user's redirect_to path
       # @see https://github.com/zquestz/omniauth-google-oauth2#devise
