@@ -1,7 +1,6 @@
 module Api
   module V1
     class SocialUsersController < ApplicationController
-      before_action :authenticate_user!, only: %i[update]
 
       # For social media logins, renders the appropriate `redirect_to` path depending on whether the user is registered.
       #
@@ -13,7 +12,7 @@ module Api
       #
       def show
         user = User.find_by(email: params.dig(:email));
-        redirect_path = '/profile'
+        redirect_path = '/login'
 
         if user.nil?
           redirect_path = '/social_login'
