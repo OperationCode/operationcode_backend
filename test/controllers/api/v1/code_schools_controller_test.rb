@@ -45,7 +45,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
 
     body = JSON.parse(response.body)[0]
 
-    assert body["mooc"] == false
+    assert body.keys.include? "mooc"
   end
 
   test ":index endpoint sorts first by CodeSchool#name, second by Location#state, third by Location#city" do
