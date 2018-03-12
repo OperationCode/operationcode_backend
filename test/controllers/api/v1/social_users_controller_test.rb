@@ -8,7 +8,7 @@ class Api::V1::SocialUsersControllerTest < ActionDispatch::IntegrationTest
     get api_v1_social_users_url(params), as: :json
     json = response.parsed_body
 
-    assert_equal '/profile', json['redirect_to']
+    assert_equal '/login', json['redirect_to']
   end
 
   test "show returns /social_login if the user is not registered" do

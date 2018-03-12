@@ -1043,6 +1043,97 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Social User | Create [/api/v1/social_users{email,first_name,last_name,zip,password}]
+
++ Parameters
+
+    + email (string) - The user's email, i.e. "name@domain.com"
+    + first_name (string) - The user's first name
+    + last_name (string) - The user's last name
+    + zip (string) - The user's zip code
+    + password (string) - The user's password
+
+### Register a user if they're not registered and logs them in [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+    + Body
+
+            {
+                "user":
+                    {
+                        "email": "jon@doe.com",
+                        "first_name": "Jon",
+                        "last_name": "Doe",
+                        "zip": "12345",
+                        "password": "Password
+                    }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "/profile"
+            }
+
+            /* or*/
+
+            {
+                "/login"
+            }
+
++ Response 500 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Social User | Show [/api/v1/social_users{email}]
+
++ Parameters
+
+    + email (string) - The user's email, i.e. "name@domain.com"
+
+### Check if a given user's email has been registered [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+    + Body
+
+            {
+                "email": "test@testing.net"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "/social_login"
+            }
+
+            /* or*/
+
+            {
+                "/login"
+            }
+
++ Response 500 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
 ## Tag | Collection [/api/v1/tags]
 
 ### List All Tags [GET]
