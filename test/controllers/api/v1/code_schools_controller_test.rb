@@ -40,6 +40,14 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert_equal locations.first["address1"], "2405 Nugget Lane"
   end
 
+  test ":index endpoint returns the mooc attriubte" do
+    get api_v1_code_schools_path, as: :json
+
+    body = JSON.parse(response.body)[0]
+
+    assert body["mooc"] == false
+  end
+
   test ":index endpoint sorts first by CodeSchool#name, second by Location#state, third by Location#city" do
     CodeSchool.destroy_all
 
