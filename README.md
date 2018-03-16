@@ -73,6 +73,72 @@ Docker is a container system. Click the appropriate link below to install Docker
 
 Note that a full installation of the Docker Toolbox includes Git as well, which is also needed to work on the backend and is mentioned below.
 
+### Virtual Machine (AWS)
+A virtual machine is a software computer that, like a physical computer, runs an operating system and applications.
+
+## Create AWS VM
+(Using Ubuntu 16.04 on AWS)
+Make sure to open these ports in your security group
+- Port 22
+- Port 3000
+When the VM spins up, SSH into it.
+
+##
+(from your VM)
+Fork https://github.com/operationcode/operationcode_backend
+
+```bash
+git clone https://github.com/[YOUR-GITHUB-NAME]/operationcode_backend.git
+
+cd operationcode_backend
+
+git remote add upstream https://github.com/OperationCode/operationcode_backend.git
+
+sudo apt-get install make
+```
+
+## Install Docker
+```bash
+sudo apt-get update
+
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+
+sudo apt-get install docker-ce
+```
+
+## Install Docker Compose
+
+```bash
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+## Setting up the Dev Environment
+```bash
+sudo make setup
+```
+
+(if you want to try running the tests, run this command)
+
+```bash
+sudo make test
+```
+
+Now navigate to http://<vm_public_ip>:3000 and you should see the "You're running on Rails" page!
+
 ### Git
 Git is a distributed version control system. This is how our code is stored and managed. Git can be frustrating, but it is an essential tool. If you want to learn more about Git, a great resource is [Think Like a Git](http://think-like-a-git.net/). If you find yourself in a real git pickle, see ["Oh, shit, git!"](http://ohshitgit.com/). If you have already installed Git as a part of the Docker Toolbox, you don't need to install it again using the following link.
 
