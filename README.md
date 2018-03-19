@@ -67,7 +67,7 @@ There are three options for local setup:
 
 - [Docker](/docs/setup/docker_setup.md) (recommended)
 - Native (coming soon)
-- AWS Virtual Machine (coming soon)
+- [AWS Virtual Machine](/docs/setup/aws_vm_setup.md)
 
 ## Finding An Issue
 * Now you have everything setup, you will need to find issues to work on. **Operation Code** uses Github's built in issue tracker. A listing of all our issues can be found [here](https://github.com/OperationCode/operationcode_backend/issues).
