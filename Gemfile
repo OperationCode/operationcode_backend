@@ -11,6 +11,7 @@ end
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 5.0'
 gem 'devise'
+gem 'forest_liana'
 gem 'geocoder'
 gem 'gibbon'
 gem 'httparty'
@@ -53,5 +54,3 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-
