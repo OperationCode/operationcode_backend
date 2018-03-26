@@ -719,12 +719,29 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 400 (application/json)
 
+### List All Mentors [GET]
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "mentor": name
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
 ## Resource [/api/v1/resources/{resource_id}]
 
 + Parameters
 
     + resource_id (number) - ID of the Resource in the form of an integer
+    
 
+    
 ### View a Resource's Detail [GET]
 
 + Response 200 (application/json)
@@ -1018,6 +1035,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 errors: "Some error message"
             }
 
+
 ## Services | Collection [/api/v1/services]
 
 ### List All Services [GET]
@@ -1059,6 +1077,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
 
 ## Status | Collection [/api/v1/status]
 
