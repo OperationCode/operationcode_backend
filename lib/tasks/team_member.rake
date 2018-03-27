@@ -411,6 +411,10 @@ namespace :team_member do
                                 role: "Okinawa Chapter Leader"
                         },
                         {
+                                name: "Harry Levine",
+                                role: "Back-end Lead"
+                        },
+                        {
                                 name: "Amanda Dolan",
                                 role: "Robbins AFB Chapter Leader"
                         },
@@ -535,10 +539,6 @@ namespace :team_member do
                         {
                                 name: "Maggie Molina",
                                 role: "Code Schools"
-                        },
-                        {
-                                name: "Harry Levine",
-                                role: "Back-end Lead"
                         },
                         {
                                 name: "Kyle Holmberg",
