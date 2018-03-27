@@ -597,7 +597,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 401 (application/json)
 
-## Request | Show a Mentor Request [/api/v1/requests/{id}]
+## Mentor| Show [/api/v1/requests/{id}]
 + Parameters
 
     + id (integer, required) - Identification of mentor request in the form of an integer
@@ -719,6 +719,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 400 (application/json)
 
+## Mentors | Collection [/api/v1/mentors]
+
 ### List All Mentors [GET]
 
 + Response 200 (application/json)
@@ -735,7 +737,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
         
-## Mentor | Show [/api/v1/code_schools/{mentor_user_id}]
+### Mentor | Show [/api/v1/code_schools/{mentor_user_id}]
 + Parameters
 
     + mentor_user_id (number) - ID of the Mentor in the form of an integer
