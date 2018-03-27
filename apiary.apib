@@ -1057,10 +1057,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Request (application/json)
 
-    + Headers
-
-            Authorization: Bearer Access-Token
-
     + Body
 
             {
@@ -1079,13 +1075,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "/profile"
+                "redirect_to": "/profile"
             }
 
             /* or*/
 
             {
-                "/login"
+                "redirect_to": "/login"
             }
 
 + Response 500 (application/json)
@@ -1094,7 +1090,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Social User | Show [/api/v1/social_users{email}]
+## Social User | Show [/api/v1/social_users{?email}]
 
 + Parameters
 
@@ -1103,10 +1099,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ### Check if a given user's email has been registered [GET]
 
 + Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
 
     + Body
 
@@ -1119,13 +1111,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                "/social_login"
+                "redirect_to": "/social_login"
             }
 
             /* or*/
 
             {
-                "/login"
+                "redirect_to": "/login"
             }
 
 + Response 500 (application/json)
