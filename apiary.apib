@@ -597,6 +597,25 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 401 (application/json)
 
+## Mentor | Collection [/api/v1/mentors]
+
+### List All Mentors [GET]
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "mentor": name
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+ 
+
 ## Mentor| Show [/api/v1/requests/{id}]
 + Parameters
 
@@ -719,84 +738,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 400 (application/json)
 
-## Mentors | Collection [/api/v1/mentors]
 
-### List All Mentors [GET]
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "mentor": name
-            }
-
-+ Response 422 (application/json)
-
-        {
-            errors: "Some error message"
-        }
-        
-### Mentor | Show [/api/v1/code_schools/{mentor_user_id}]
-+ Parameters
-
-    + mentor_user_id (number) - ID of the Mentor in the form of an integer
-
-## Resource [/api/v1/resources/{resource_id}]
-
-+ Parameters
-
-    + resource_id (number) - ID of the Resource in the form of an integer
-    
-
-    
-### View a Resource's Detail [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "id": 53,
-            "name": "The Code Player",
-            "url": "http://thecodeplayer.com/",
-            "category": "Tutorials",
-            "language": "multiple",
-            "paid": false,
-            "notes": null,
-            "votes_count": 5,
-            "created_at": "2017-07-01T22:01:50.324Z",
-            "updated_at": "2017-07-01T22:01:50.324Z"
-        }
-
-### Delete an Existing Resource [DELETE]
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer Access-Token
-
-
-    + Body
-
-            {
-                "resource": {
-                    "id": 1
-                }
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                status: "ok"
-            }
-
-+ Response 422 (application/json)
-
-        {
-            errors: "Some error message"
-        }
 
 ## Resource | Collection [/api/v1/resources{?tags}]
 
@@ -886,6 +828,62 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                     "books",
                     "videos"
                 ]
+            }
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Resource | Show [/api/v1/resources/{resource_id}]
+
++ Parameters
+
+    + resource_id (number) - ID of the Resource in the form of an integer
+    
+
+    
+### View a Resource's Detail [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 53,
+            "name": "The Code Player",
+            "url": "http://thecodeplayer.com/",
+            "category": "Tutorials",
+            "language": "multiple",
+            "paid": false,
+            "notes": null,
+            "votes_count": 5,
+            "created_at": "2017-07-01T22:01:50.324Z",
+            "updated_at": "2017-07-01T22:01:50.324Z"
+        }
+
+### Delete an Existing Resource [DELETE]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
+    + Body
+
+            {
+                "resource": {
+                    "id": 1
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: "ok"
             }
 
 + Response 422 (application/json)
