@@ -1075,18 +1075,43 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                "token": "very long string of characters",
+                "user":
+                    {
+                        "id": 66,
+                        "email": "jon@doe.com",
+                        "zip": "12345",
+                        "first_name": "Jon",
+                        "last_name": "Doe",
+                        "slack_name": nil,
+                        "mentor": false,
+                        "verified": false
+                    },
                 "redirect_to": "/profile"
             }
 
             /* or*/
 
             {
+                "token": "very long string of characters",
+                "user":
+                  {
+                      "id": 66,
+                      "email": "jon@doe.com",
+                      "zip": "12345",
+                      "first_name": "Jon",
+                      "last_name": "Doe",
+                      "slack_name": nil,
+                      "mentor": false,
+                      "verified": false
+                  },
                 "redirect_to": "/login"
             }
 
 + Response 500 (application/json)
 
         {
+            "redirect_to": "/login",
             errors: "Some error message"
         }
 

@@ -40,7 +40,7 @@ class Api::V1::SocialUsersControllerTest < ActionDispatch::IntegrationTest
 
     post api_v1_social_users_url, params: params, as: :json
     json = response.parsed_body
-
+    
     assert_equal '/signup-info', json['redirect_to']
     assert_equal params[:user][:first_name], json['user']['first_name']
     assert_equal params[:user][:last_name], json['user']['last_name']
