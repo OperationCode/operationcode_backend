@@ -47,21 +47,10 @@ db_rollback:
 db_seed:
 	docker-compose run ${RAILS_CONTAINER} rake db:seed
 
-.PHONY: schools_populate
-schools_populate:
-	docker-compose run ${RAILS_CONTAINER} rake schools:populate
-
-.PHONY: update_school_logos
-update_schools_logos:
-	docker-compose run ${RAILS_CONTAINER} rake update:school_logos
-
 .PHONY: test
 test: bg
 	docker-compose run operationcode-psql bash -c "while ! psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do sleep 5; done;"
 	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake test'
-
-test_logos:
-	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && rake db:test:prepare && rake test TEST=test/lib/update_school_logos_test.rb'
 
 .PHONY: bundle
 bundle:
