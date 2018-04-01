@@ -33,6 +33,24 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'update_email@example.com', u.email
   end
 
+  test "role gets the Role with an id of user#role_id, if there is one" do
+    user = User.create(
+      first_name: 'Jack',
+      last_name: 'Smith',
+      email: 'jack@example.com',
+      zip: '80112',
+      password: 'password',
+      password_confirmation: 'password'
+    )
+
+    assert user.valid?
+    assert user.role.nil?
+
+    some_role = create :role
+    user.update! role_id: some_role.id
+    assert user.role == some_role
+  end
+
   test 'doesnt geocode until we save' do
     u = build(:user, latitude: nil, longitude: nil)
     assert u.valid?
