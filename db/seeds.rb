@@ -32,3 +32,14 @@ SeedTeamMembers.seed_all
 
 # Create Admin (development only)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+users = User.count
+requests = Request.count
+services = Service.count
+team_members = TeamMember.count
+
+puts 'Seeding complete.  Created:'
+p "#{users} users"
+p "#{requests} requests"
+p "#{services} services"
+p "#{team_members} team members"
