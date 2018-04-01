@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204235116) do
+ActiveRecord::Schema.define(version: 20180401034441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,12 @@ ActiveRecord::Schema.define(version: 20180204235116) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "scholarship_applications", force: :cascade do |t|
     t.text     "reason"
     t.boolean  "terms_accepted"
@@ -258,8 +264,10 @@ ActiveRecord::Schema.define(version: 20180204235116) do
     t.string   "education_level"
     t.string   "interests"
     t.boolean  "scholarship_info",                default: false
+    t.integer  "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["role_id"], name: "index_users_on_role_id", using: :btree
   end
 
   create_table "votes", force: :cascade do |t|
