@@ -195,6 +195,8 @@ class User < ApplicationRecord
   end
 
   def role
+    return if role_id.blank?
+
     Role.find_by id: role_id
   end
 
