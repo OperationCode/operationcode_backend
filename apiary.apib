@@ -547,7 +547,17 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
-## Mentor | Collection [/api/v1/mentors]
+## Mentor | Collection [/api/v1/mentors/{?id,email,zip,first_name,last_name,slack_name,mentor,verified}]
++ Parameters
+
+    + id (integer, required) - Identification of mentor in the form of an integer
+    + email (string, required) - Email of the Mentor in the form of a string
+    + zip (string, optional) - String of comma-separated zip code(s), i.e. '80126', or '80126, 80203'
+    + first_name (string, required) - First Name of the mentor in the form of a string
+    + last_name (string, required) - Last Name of the mentor in the form of a string
+    + slack_name (string, required) - Slack Name of the mentor in the form of a string
+    + mentor (boolean, required) - Has the mentor been verified in the form of a boolean
+    + verified (boolean, required) - Has the mentor not been verified in the form of a boolean
 
 ### List All Mentors [GET]
 
@@ -573,8 +583,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
  
-
-## Mentor | Show [/api/v1/requests/{?id,email,zip,first_name,last_name,slack_name,mentor,verified}]
+## Mentor | Show [/api/v1/requests/{?id,email,zip,first_name,last_name,slack_name,mentor,verified,bio}]
 + Parameters
 
     + id (integer, required) - Identification of mentor in the form of an integer
@@ -584,7 +593,33 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + last_name (string, required) - Last Name of the mentor in the form of a string
     + slack_name (string, required) - Slack Name of the mentor in the form of a string
     + mentor (boolean, required) - Has the mentor been verified in the form of a boolean
-    + verified (boolean, required) - Has the mentor not been verified in the form of a boolean 
+    + verified (boolean, required) - Has the mentor not been verified in the form of a boolean
+    + bio (string, required) - What is the mentors background 
+
+### Get an Existing Mentor [GET]
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id":63,
+                "email":"erin@larson.biz",
+                "zip":"97201",
+                "first_name":"Nathanael",
+                "last_name":"Green",
+                "slack_name":"Panaka",
+                "mentor":true,
+                "verified":false,
+                "bio": "engineer web-enabled functionalities"
+            },
+
+
++ Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
 
 ## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
