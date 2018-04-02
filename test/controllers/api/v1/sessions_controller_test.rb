@@ -14,7 +14,6 @@ class Api::V1::ServicesControllerTest < ActionDispatch::IntegrationTest
   test 'returns JWT token for succesfull login' do
     post api_v1_sessions_url, params: @user_params, as: :json
     json = response.parsed_body
-    byebug
     refute_nil json['token']
   end
 
