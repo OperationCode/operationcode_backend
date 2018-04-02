@@ -1017,10 +1017,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             {
                 errors: "Some error message"
             }
-## Sessions | Create [/api/v1/sessions/user{?email,password}]
+## Sessions | Create [/api/v1/sessions/{?user,email,password}]
 + Parameters
 
-      + user (object, required) - The user name
+      + user (object, required) - Object that wraps the user's attributes
       + email (string, required) - The users email
       + password (string, required) - The users password
 
@@ -1031,7 +1031,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
             {
                 user: {
-                  email: "kenny@example.com",
+                  email: "kennynagano@example.com",
                   password: "pass123"
                 }
             }
@@ -1046,7 +1046,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "token" => some_long_string_of_characters,
                 "user" => {
                     "id" => 96,
-                    "email" => "kenny@example.com",
+                    "email" => "kennynagano@example.com",
                     "zip" => "97201",
                     "first_name" => "Keara",
                     "last_name" => "Runolfsson",
