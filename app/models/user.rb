@@ -105,18 +105,48 @@ class User < ApplicationRecord
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
   end
 
+  # For social media logins, When given a user's info creates their database entry if they do not already have one, and
+  # sets the redirect path for the frontend to go to after the user is logged in
+  # for the first time.
+  #
+  # Requires that all data contains :first_name, :last_name, :email, :zip, and :password keys.
+  # For example: data = {first_name: "Jane", last_name: "Doe", email: "jane@example.com", zip: "12345", password: "Th!sIs@Pa22w0rd"}
+  #
+  # @param data The data passed in from the frontend, from which the user's info is extracted.
+  # @return [String] A string of the user's redirect_to path
+  # @return [Json] A serialied JSON object derived from current_user
+  # @return [Token] A token that the frontend stores to know the user is logged in
+  # @return [user, path] The user and the redirect path, in an array
+  # @see https://github.com/zquestz/omniauth-google-oauth2#devise
+  #
+  def self.fetch_social_user_and_redirect_path(data)
+    user = User.find_by(email: data.dig(:email))
+    path = '/profile'
+      if user.nil?
+        user = User.new(
+          first_name: data.dig(:first_name),
+          last_name: data.dig(:last_name),
+          email: data.dig(:email),
+          zip: data.dig(:zip),
+          password: data.dig(:password)
+        )
+        path = '/signup-info'
+        UserMailer.welcome(user).deliver unless user.invalid?
+      end
+    [user, path]
+end
+
   private
 
-  def zip_code_exists
-    return if longitude && latitude
-    errors.add(:zip_code, 'not found')
-  end
+ def zip_code_exists
+   return if longitude && latitude
+   errors.add(:zip_code, 'not found')
+ end
 
-  def upcase_state
-   state.upcase! if state
+ def upcase_state
+  state.upcase! if state
   end
-
   def downcase_email
-    email.downcase! if email
-  end
+   email.downcase! if email
+ end
 end
