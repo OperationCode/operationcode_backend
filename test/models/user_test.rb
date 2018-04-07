@@ -34,15 +34,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "role gets the Role with an id of user#role_id, if there is one" do
-    user = User.create(
-      first_name: 'Jack',
-      last_name: 'Smith',
-      email: 'jack@example.com',
-      zip: '80112',
-      password: 'password',
-      password_confirmation: 'password'
-    )
-
+    user = create :user
     assert user.valid?
     assert user.role.nil?
 
