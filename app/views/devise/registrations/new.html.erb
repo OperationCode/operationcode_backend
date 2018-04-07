@@ -21,6 +21,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+      <%= f.label :tag_list, "Tags (seperated by commas)" %>
+      <%= f.text.field :tag_list %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

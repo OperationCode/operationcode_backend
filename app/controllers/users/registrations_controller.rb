@@ -12,6 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def index
+    if params[:tag]
+      @users = User.tagged_with(params[:tag])
+      # email the @users
+    end
+  end
+
   # GET /resource/edit
   # def edit
   #   super
