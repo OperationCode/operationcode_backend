@@ -29,7 +29,8 @@ class User < ApplicationRecord
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
-
+  after_commit :notify_leaders_on_geocode, on [:create, :update]
+  
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
   validate :zip_code_exists
@@ -42,7 +43,6 @@ class User < ApplicationRecord
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
 
-  after_commt :notify_leaders_on_geocode, on [:create, :update]
 
   # Returns a count of all users with the passed in zip code(s)
   #
@@ -128,5 +128,5 @@ class User < ApplicationRecord
     return unless previous_changes[:latitude] || previous_changes[:longitude]
     SendEmailToLeadersJob.perform_later(id)
   end
-  
+
 end
