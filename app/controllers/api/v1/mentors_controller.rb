@@ -1,6 +1,6 @@
 module Api
   module V1
-    class MentorsController < ApplicationController
+    class MentorsController < ApiController
       before_action :authenticate_user!
 
       def index

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class StatusController < ApplicationController
+    class StatusController < ApiController
       before_action :authenticate_user!, only: :protected
 
       def all
