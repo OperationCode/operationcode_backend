@@ -84,6 +84,24 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'CO', u.state
   end
 
+  test 'enqueues the job to notify community leaders if a new user is geocoded' do
+    user = build(:user, latitude: 1, longitude: 1, zip: '97201')
+    SendEmailToLeadersJob.expects(:perform_later).with(user.id)
+    user.save
+  end
+
+  test 'enqueues the job to notify community leaders if a user has updated geo-coordinates' do
+    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
+    SendEmailToLeadersJob.expects(:perform_later).with(user.id)
+    user.update_attributes!(latitude: 2, longitude: 2, zip: '11101')
+  end
+
+  test 'does not enqueue a job to notify community leaders if geo-coordinates are not updated' do
+    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
+    # SendEmailToLeadersJob expects to not receive (:perform_later) <-- I can't figure out how to do this in ActiveSupport::TestCase
+    user.update_attributes!(email: 'NewEmail@example.com')
+  end
+
   def user_opts
     { email: 'create_test@example.com', zip: '11772', password: 'password', password_confirmation: 'password' }
   end

@@ -29,8 +29,8 @@ class User < ApplicationRecord
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
-  after_commit :notify_leaders_on_geocode, on [:create, :update]
-  
+  after_commit :notify_leaders_on_geocode, [:create, :update]
+
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
   validate :zip_code_exists
