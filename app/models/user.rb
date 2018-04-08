@@ -42,6 +42,8 @@ class User < ApplicationRecord
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
 
+  after_commt :notify_leaders_on_geocode, on [:create, :update]
+
   # Returns a count of all users with the passed in zip code(s)
   #
   # @param zip_codes [String] String of comma-separated zip code(s), i.e. '80126', or '80126, 80203'
@@ -121,4 +123,10 @@ class User < ApplicationRecord
   def downcase_email
     email.downcase! if email
   end
+
+  def notify_leaders_on_geocode_update
+    return unless previous_changes[:latitude] || previous_changes[:longitude]
+    SendEmailToLeadersJob.perform_later(id)
+  end
+  
 end
