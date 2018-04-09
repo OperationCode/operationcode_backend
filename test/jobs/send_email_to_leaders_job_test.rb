@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SendEmailToLeadersTest < ActiveJob::TestCase
+class SendEmailToLeadersJobTest < ActiveJob::TestCase
   test 'send email to leaders if someone signs up within X miles' do
 
     user = build(:user, email: 'static@email.com', latitude: 40.7, longitude: -73.8)
@@ -8,7 +8,6 @@ class SendEmailToLeadersTest < ActiveJob::TestCase
     leader_user.tag_list.add('community-leader')
     leader_user.save
     UserMailer.expects(:new_user_in_leader_area).with(leader_user, user)
-    SendEmailToLeaders.perform_now(user)
-
+    SendEmailToLeadersJob.perform_now(user)
   end
 end

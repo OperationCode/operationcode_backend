@@ -1,4 +1,4 @@
-class SendEmailToLeaders < ActiveJob::Base
+class SendEmailToLeadersJob < ActiveJob::Base
   queue_as :default
 
   def perform(user)

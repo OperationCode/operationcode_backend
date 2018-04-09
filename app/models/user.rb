@@ -29,7 +29,7 @@ class User < ApplicationRecord
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
-  after_commit :notify_leaders_on_geocode, [:create, :update]
+  after_commit :notify_leaders_on_geocode_update, on: [:create, :update]
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
@@ -128,5 +128,4 @@ class User < ApplicationRecord
     return unless previous_changes[:latitude] || previous_changes[:longitude]
     SendEmailToLeadersJob.perform_later(id)
   end
-
 end
