@@ -10,6 +10,7 @@ Request.destroy_all
 User.destroy_all
 Service.destroy_all
 TeamMember.destroy_all
+AdminUser.destroy_all
 
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
@@ -32,3 +33,16 @@ SeedTeamMembers.seed_all
 
 # Create Admin (development only)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+users = User.count
+requests = Request.count
+services = Service.count
+team_members = TeamMember.count
+admin_users = AdminUser.count
+
+puts 'Seeding complete.  Created:'
+p "#{users} users"
+p "#{requests} requests"
+p "#{services} services"
+p "#{team_members} team members"
+p "#{admin_users} admin users"

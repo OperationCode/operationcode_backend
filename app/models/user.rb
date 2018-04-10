@@ -194,12 +194,18 @@ class User < ApplicationRecord
     tag_list.include? tag
   end
 
+  def role
+    return if role_id.blank?
+
+    Role.find_by id: role_id
+  end
+
   private
 
   def zip_code_exists
-   return if longitude && latitude
+    return if longitude && latitude
 
-   errors.add(:zip_code, 'not found')
+    errors.add(:zip_code, 'not found')
   end
 
   def upcase_state
