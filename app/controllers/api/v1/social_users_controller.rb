@@ -1,6 +1,6 @@
 module Api
   module V1
-    class SocialUsersController < ApplicationController
+    class SocialUsersController < ApiController
 
       # For social media logins, renders the appropriate `redirect_to` path depending on whether the user is registered.
       #
