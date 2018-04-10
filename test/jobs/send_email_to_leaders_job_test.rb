@@ -8,6 +8,6 @@ class SendEmailToLeadersJobTest < ActiveJob::TestCase
     leader_user.tag_list.add('community-leader')
     leader_user.save
     UserMailer.expects(:new_user_in_leader_area).with(leader_user, user)
-    SendEmailToLeadersJob.perform_now(user)
+    SendEmailToLeadersJob.perform_now(user_id)
   end
 end
