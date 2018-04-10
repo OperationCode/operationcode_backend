@@ -83,10 +83,9 @@ class User < ApplicationRecord
     near(location, radius.to_i)&.size
   end
 
-  def self.community_leaders_within(latitude, longitude, radius)
-    self
-      .near([latitude, longitude], radius)
-      .tagged_with('community-leader')
+  def self.community_leaders_nearby(latitude, longitude, radius)
+    self.near([latitude, longitude], radius)
+        .tagged_with('community-leader')
   end
 
   def name
