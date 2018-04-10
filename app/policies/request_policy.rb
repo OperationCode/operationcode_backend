@@ -13,5 +13,4 @@ class RequestPolicy < ApplicationPolicy
   def show?
     user.mentor?
   end
-
 end

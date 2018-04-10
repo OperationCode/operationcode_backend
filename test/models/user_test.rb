@@ -33,6 +33,16 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'update_email@example.com', u.email
   end
 
+  test "role gets the Role with an id of user#role_id, if there is one" do
+    user = create :user
+    assert user.valid?
+    assert user.role.nil?
+
+    some_role = create :role
+    user.update! role_id: some_role.id
+    assert user.role == some_role
+  end
+
   test 'doesnt geocode until we save' do
     u = build(:user, latitude: nil, longitude: nil)
     assert u.valid?
@@ -196,5 +206,44 @@ class UserTest < ActiveSupport::TestCase
     assert_includes results, tom
     assert_not_includes results, far_away_leader
     assert_not_includes results, not_a_leader
+  end
+
+  test '.fetch_social_user_and_redirect_path returns the user and redirect path in an array' do
+    data = { first_name: 'Sterling', last_name: 'Archer', email: 'cyril@kickme.org', zip: '12345', password: 'VoiceMail' }
+    results = User.fetch_social_user_and_redirect_path(data)
+    assert_equal 2, results.size
+    assert_equal data[:email], results[0][:email]
+    refute_nil results[1]
+  end
+
+  test '.fetch_social_user_and_redirect_path creates the user if there is none and returns the user and /signup-info in an array' do
+    data = { first_name: 'Leia', last_name: 'Organa', email: 'organa@resistance.net', zip: '66666', password: 'RestInPeace' }
+
+    results = User.fetch_social_user_and_redirect_path(data)
+    userInfo = results[0]
+    redirect = results[1]
+
+    assert_equal 2, results.length
+    assert_equal data[:first_name], userInfo[:first_name]
+    assert_equal data[:last_name], userInfo[:last_name]
+    assert_equal data[:email], userInfo[:email]
+    assert_equal data[:zip], userInfo[:zip]
+    assert_equal '/signup-info', redirect
+  end
+
+  test '.fetch_social_user_and_redirect_path returns the user and /profile in an array' do
+    mary = create(:user, first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' )
+    data = { first_name: 'Henry', last_name: 'Jones', email: 'indiana@ark.net', zip: '03710', password: 'Marion' }
+
+    results = User.fetch_social_user_and_redirect_path(data)
+    userInfo = results[0]
+    redirect = results[1]
+
+    assert_equal 2, results.length
+    assert_equal data[:first_name], userInfo[:first_name]
+    assert_equal data[:last_name], userInfo[:last_name]
+    assert_equal data[:email], userInfo[:email]
+    assert_equal data[:zip], userInfo[:zip]
+    assert_equal '/profile', redirect
   end
 end

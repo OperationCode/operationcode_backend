@@ -8,9 +8,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activeadmin', '~> 1.1'
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 5.0'
 gem 'devise'
+gem 'forest_liana'
 gem 'geocoder'
 gem 'gibbon'
 gem 'httparty'
@@ -53,5 +55,3 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-

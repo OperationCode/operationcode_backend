@@ -285,3 +285,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/ruby,macos,linux,rails,windows,rubymine,jetbrains,sublimetext,visualstudiocode
+
+# redis local dump file
+dump.rdb

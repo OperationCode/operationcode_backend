@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  mount ForestLiana::Engine => '/forest'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -22,6 +26,7 @@ Rails.application.routes.draw do
       end
       resources :email_list_recipients, only: :create
       resources :events, only: :index
+      resource :social_users, only: [:create, :show]
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
       resources :resources, only: [:index, :create, :show, :update, :destroy] do
