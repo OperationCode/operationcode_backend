@@ -3,40 +3,40 @@
 #- name: <Team Member Name>
 #  role: <Team Member Role>
 #
-# Each entry must start on a new line with "- name:"
+# Each entry must start on a new line with - name:
 
-- name: "Amy Tan"
-  role: "CFO"
+- name: Amy Tan
+  role: CFO
 
-- name: "Ashley Templet"
-  role: "CCO"
+- name: Ashley Templet
+  role: CCO
 
-- name: "David Reis"
-  role: "COO acting"
+- name: David Reis
+  role: COO acting
 
-- name: "Jameel Matin"
-  role: "Public Policy Director"
+- name: Jameel Matin
+  role: Public Policy Director
 
-- name: "Jennifer Weidman"
-  role: "CCMO CDO"
+- name: Jennifer Weidman
+  role: CCMO CDO
 
-- name: "Kelly MacLeod"
-  role: "People Operations"
+- name: Kelly MacLeod
+  role: People Operations
 
-- name: "Matthew Walter"
-  role: "Infrastructure Lead"
+- name: Matthew Walter
+  role: Infrastructure Lead
      
-- name: "Harry Levine"
-  role: "Front-end Lead"
+- name: Harry Levine
+  role: Front-end Lead
     
-- name: "Kyle Holmberg"
-  role: "Front-end Lead"
+- name: Kyle Holmberg
+  role: Front-end Lead
    
-- name: "Maggie Molina"
-  role: "Code Schools"
+- name: Maggie Molina
+  role: Code Schools
    
-- name: "Nell Shamrell"
-  role: "CTO"
+- name: Nell Shamrell
+  role: CTO
   
-- name: "Stephano D'Aniello"
-  role: "General Counsel"
+- name: Stephano D'Aniello
+  role: General Counsel
