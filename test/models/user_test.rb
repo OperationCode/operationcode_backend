@@ -195,10 +195,10 @@ class UserTest < ActiveSupport::TestCase
   test '.community_leaders_nearby returns leaders within a radius from a lat/long' do
     User.any_instance.stubs(:geocode)
     tom = create :user, latitude: 1, longitude: 1
-    tom.tag_list.add('community-leader')
+    tom.tag_list.add(User::LEADER)
     tom.save!
     far_away_leader = create :user, latitude: 20, longitude: 20
-    far_away_leader.tag_list.add('community-leader')
+    far_away_leader.tag_list.add(User::LEADER)
     far_away_leader.save!
     not_a_leader = create :user, latitude: 1, longitude: 1
     results = User.community_leaders_nearby(1, 1, 10)

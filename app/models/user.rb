@@ -89,7 +89,7 @@ class User < ApplicationRecord
   def self.community_leaders_nearby(latitude, longitude, radius)
     self
       .near([latitude, longitude], radius)
-      .tagged_with('community-leader')
+      .tagged_with(LEADER)
   end
 
   # Returns a count of users that were created since the passed in date,
