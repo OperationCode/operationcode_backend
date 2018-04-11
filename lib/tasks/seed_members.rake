@@ -12,7 +12,7 @@ namespace :seed_team_members do
     SeedTeamMembers.seed_team
   end
 
-  task team: :environment do
+  task reseed_all: :environment do
     SeedTeamMembers.clean_seed
   end
 end
