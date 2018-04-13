@@ -25,18 +25,18 @@
 
 - name: Matthew Walter
   role: Infrastructure Lead
-     
+
 - name: Harry Levine
-  role: Back-end Lead
-    
+  role: Backend Lead
+
 - name: Kyle Holmberg
-  role: Front-end Lead
-   
+  role: Frontend Lead
+
 - name: Maggie Molina
   role: Code Schools
-   
+
 - name: Nell Shamrell
   role: CTO
-  
+
 - name: Stephano D'Aniello
   role: General Counsel
