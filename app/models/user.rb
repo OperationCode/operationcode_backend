@@ -31,6 +31,7 @@ class User < ApplicationRecord
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
+  after_save :notify_leaders_on_geocode_update, if: ->(v) { v.zip_changed? }
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
@@ -44,6 +45,7 @@ class User < ApplicationRecord
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
   scope :verified, -> { where(verified: true) }
+
 
   # Returns a count of all users with the passed in zip code(s)
   #
@@ -82,6 +84,12 @@ class User < ApplicationRecord
   #
   def self.count_by_location(location, radius=20)
     near(location, radius.to_i)&.size
+  end
+
+  def self.community_leaders_nearby(latitude, longitude, radius)
+    self
+      .near([latitude, longitude], radius)
+      .tagged_with(LEADER)
   end
 
   # Returns a count of users that were created since the passed in date,
@@ -214,5 +222,9 @@ class User < ApplicationRecord
 
   def downcase_email
     email.downcase! if email
+  end
+
+  def notify_leaders_on_geocode_update
+    SendEmailToLeadersJob.perform_later(id)
   end
 end

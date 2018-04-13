@@ -94,6 +94,27 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'CO', u.state
   end
 
+  test 'enqueues the job to notify community leaders if a new user is geocoded' do
+    user = build(:user, latitude: 1, longitude: 1, zip: '97201')
+    user.stubs(:geocode)
+    SendEmailToLeadersJob.expects(:perform_later).once
+    user.save!
+  end
+
+  test 'enqueues the job to notify community leaders if a user has updated geo-coordinates' do
+    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
+    user.stubs(:geocode)
+    SendEmailToLeadersJob.expects(:perform_later).with(user.id).once
+    user.update_attributes!(latitude: 2, longitude: 2, zip: '11101')
+  end
+
+  test 'does not enqueue a job to notify community leaders if geo-coordinates are not updated' do
+    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
+    user.stubs(:geocode)
+    SendEmailToLeadersJob.expects(:perform_later).never
+    user.update_attributes!(email: 'NewEmail@example.com')
+  end
+
   def user_opts
     { email: 'create_test@example.com', zip: '11772', password: 'password', password_confirmation: 'password' }
   end
@@ -154,6 +175,7 @@ class UserTest < ActiveSupport::TestCase
     results = User.count_by_state ''
     assert_equal 0, results
   end
+
   test 'VALID_EMAIL regex ensures valid formatting' do
     # valid email formats
     assert "john@gmail.com" =~ User::VALID_EMAIL
@@ -169,6 +191,22 @@ class UserTest < ActiveSupport::TestCase
     refute "john@gmail" =~ User::VALID_EMAIL
     refute "@example.com" =~ User::VALID_EMAIL
   end
+
+  test '.community_leaders_nearby returns leaders within a radius from a lat/long' do
+    User.any_instance.stubs(:geocode)
+    tom = create :user, latitude: 1, longitude: 1
+    tom.tag_list.add(User::LEADER)
+    tom.save!
+    far_away_leader = create :user, latitude: 20, longitude: 20
+    far_away_leader.tag_list.add(User::LEADER)
+    far_away_leader.save!
+    not_a_leader = create :user, latitude: 1, longitude: 1
+    results = User.community_leaders_nearby(1, 1, 10)
+    assert_includes results, tom
+    assert_not_includes results, far_away_leader
+    assert_not_includes results, not_a_leader
+  end
+
   test '.fetch_social_user_and_redirect_path returns the user and redirect path in an array' do
     data = { first_name: 'Sterling', last_name: 'Archer', email: 'cyril@kickme.org', zip: '12345', password: 'VoiceMail' }
     results = User.fetch_social_user_and_redirect_path(data)
@@ -176,6 +214,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal data[:email], results[0][:email]
     refute_nil results[1]
   end
+
   test '.fetch_social_user_and_redirect_path creates the user if there is none and returns the user and /signup-info in an array' do
     data = { first_name: 'Leia', last_name: 'Organa', email: 'organa@resistance.net', zip: '66666', password: 'RestInPeace' }
 
