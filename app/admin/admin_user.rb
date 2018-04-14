@@ -5,9 +5,11 @@ ActiveAdmin.register AdminUser do
     selectable_column
     id_column
     column :email
+
     column "Role" do |admin_user|
       admin_user.role.title
     end
+
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -22,10 +24,15 @@ ActiveAdmin.register AdminUser do
   form do |f|
     f.inputs do
       f.input :email
-      f.input :role_id, label: 'Role', as: :select, collection: Role.all.order(:title).map { |role| [role.title, role.id]}, include_blank: false
+
+      if current_admin_user.role.super_admin?
+        f.input :role_id, label: 'Role', as: :select, collection: Role.all.order(:title).map { |role| [role.title, role.id]}, include_blank: false
+      end
+
       f.input :password
       f.input :password_confirmation
     end
+
     f.actions
   end
 end
