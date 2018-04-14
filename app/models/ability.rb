@@ -2,38 +2,22 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
+    # Follows CanCanCan best practices for granting permissions.
     #
-    # user ||= User.new # guest user (not logged in)
+    # @see https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities%3A-Best-Practices#give-permissions-dont-take-them-away
+    #
     if user.persisted? && user.class == AdminUser
-      if user.role&.super_admin?
-        can :manage, :all
-      elsif user.role&.admin?
-        can :read, :all
-        can :manage, User
-        can :manage, AdminUser, id: user.id
-      elsif user.role&.board?
-        can :read, :all
-        can :manage, AdminUser, id: user.id
-      end
+      return unless user.role&.board_accessible?
+      can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+      can :read, User
+      can [:read, :update], AdminUser, id: user.id
+
+      return unless user.role&.admin_accessible?
+      can :read, :all
+      can :manage, User
+
+      return unless user.role&.super_admin?
+      can :manage, :all
     end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
 end
