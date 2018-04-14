@@ -4,6 +4,8 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :role
+
   before_save :set_role
 
   def role
