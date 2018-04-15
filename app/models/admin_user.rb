@@ -8,12 +8,6 @@ class AdminUser < ApplicationRecord
 
   before_save :set_role
 
-  def role
-    return if role_id.blank?
-
-    Role.find_by id: role_id
-  end
-
   private
 
   def set_role
