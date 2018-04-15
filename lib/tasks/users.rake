@@ -36,10 +36,11 @@ namespace :users do
 
   desc "Tags select users as Community Leaders"
   task seed_leader: :environment do
-    users = [ {id: 4, first_name: 'Nell', last_name: 'Shamrell-Harrington' }]
-    users_id = User.where(id: [4])
+    users = [ {id: 4, first_name: 'Nell', last_name: 'Shamrell-Harrington' }, {id: 3, first_name: 'Rick', last_name: 'Rein'}]
+    users_id = User.where(id: [3,4])
     users_id.each do |user|
       user.tag_list.add(User::LEADER)
+      user.save
     end
   end
 end
