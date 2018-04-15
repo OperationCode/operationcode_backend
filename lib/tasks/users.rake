@@ -33,4 +33,13 @@ namespace :users do
     remaining = User.where.not(latitude: nil, longitude: nil).where(state: nil).count
     p "#{remaining} users left to be updated.  Task can be reran in 24 hours."
   end
+
+  desc "Tags select users as Community Leaders"
+  task seed_leader: :environment do
+    users = [ {id: 4, first_name: 'Nell', last_name: 'Shamrell-Harrington' }]
+    users_id = User.where(id: [4])
+    users_id.each do |user|
+      user.tag_list.add(User::LEADER)
+    end
+  end
 end
