@@ -31,8 +31,6 @@ ActiveAdmin.register CodeSchool do
       f.input :hardware_included
       f.input :has_online
       f.input :online_only
-      f.input :created_at
-      f.input :updated_at
       f.input :notes
       f.input :mooc
     end
