@@ -89,4 +89,37 @@ ActiveAdmin.register User do
   remove_filter :taggings
   remove_filter :tag_taggings
   filter :with_tags, label: 'Tagged With', as: :select, collection: ->{ User.all_tag_names }
+
+  form do |f|
+    f.inputs do
+      f.input :email
+      f.input :zip
+      f.input :mentor
+      f.input :slack_name
+      f.input :first_name
+      f.input :last_name
+      f.input :timezone
+      f.input :bio
+      f.input :verified
+      f.input :state
+      f.input :city
+      f.input :username
+      f.input :volunteer
+      f.input :branch_of_service
+      f.input :years_of_service
+      f.input :pay_grade
+      f.input :military_occupational_specialty
+      f.input :github
+      f.input :twitter
+      f.input :linkedin
+      f.input :employment_status
+      f.input :education
+      f.input :company_role
+      f.input :company_name
+      f.input :education_level
+      f.input :interests
+    end
+
+    f.actions
+  end
 end
