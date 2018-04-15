@@ -11,6 +11,7 @@ end
 gem 'activeadmin', '~> 1.1'
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 5.0'
+gem 'cancancan', '~> 2.0'
 gem 'devise'
 gem 'forest_liana'
 gem 'geocoder'
