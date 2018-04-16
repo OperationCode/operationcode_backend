@@ -1,5 +1,5 @@
 ActiveAdmin.register TeamMember do
-  permit_params :name, :role, :description, :group, :image_src
+  permit_params :name, :role, :description, :group, :image_src, :email
 
   index do
     selectable_column
@@ -7,6 +7,7 @@ ActiveAdmin.register TeamMember do
 
     column :name
     column :role
+    column :email
     column :created_at
     column :updated_at
     column :description
@@ -20,6 +21,7 @@ ActiveAdmin.register TeamMember do
     f.inputs do
       f.input :name
       f.input :role
+      f.input :email
       f.input :description
       f.input :group
       f.input :image_src
