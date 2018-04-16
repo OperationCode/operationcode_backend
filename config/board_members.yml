@@ -27,6 +27,7 @@
   image_src: https://s3.amazonaws.com/operationcode-assets/headshots/david_molina.jpg
   name: David Molina
   role: Executive Director
+  email: david@operationcode.org
 
 - description: Liza Rodewald is an entrepreneur, full stack .NET web developer, and co-founder and CTO of MadSkills, a startup helping military spouses find employment. Her first business, LMS Software, has contracted multi-million dollar projects with the government and private sector. Liza, a military spouse, has a passion to see others succeed, and actively advocates for and mentors women in technology,
   image_src: https://s3.amazonaws.com/operationcode-assets/headshots/liza_rodewald.jpg
