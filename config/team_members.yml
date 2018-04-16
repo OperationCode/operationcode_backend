@@ -7,21 +7,26 @@
 
 - name: Amy Tan
   role: CFO
+  email: amy@operationcode.org
 
 - name: Ashley Templet
   role: CCO
+  email: ashley@operationcode.org
 
 - name: David Reis
   role: COO acting
 
 - name: Jameel Matin
   role: Public Policy Director
+  email: jameel@operationcode.org
 
 - name: Jennifer Weidman
   role: CCMO CDO
+  email: jennifer@operationcode.org
 
 - name: Kelly MacLeod
   role: People Operations
+  email: kelly@operationcode.org
 
 - name: Matthew Walter
   role: Infrastructure Lead
@@ -37,6 +42,7 @@
 
 - name: Nell Shamrell
   role: CTO
+  email: nell@operationcode.org
 
 - name: Stephano D'Aniello
   role: General Counsel
