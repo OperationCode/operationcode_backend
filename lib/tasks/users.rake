@@ -36,26 +36,35 @@ namespace :users do
 
   desc "Tags select users as Community Leaders"
   task seed_leader: :environment do
-    users = [ {id: 4, first_name: 'Nell', last_name: 'Shamrell-Harrington' }, {id: 3, first_name: 'Rick', last_name: 'Rein'}]
-    users_id = User.where(id: [3,4])
-    users_id.each do |user|
-      user.tag_list.add(User::LEADER)
-      user.save
-    end
-  end
-end
-
-
-  desc "Tags select users as Community Leaders"
-  task seed_leader: :environment do
-    users = [ {id: 4, first_name: 'Nell', last_name: 'Shamrell-Harrington' }, {id: 3, first_name: 'Rick', last_name: 'Rein'}]
+    user_records = [{id: 290, first_name: "David", last_name: "Molina"},
+                    {id: 337, first_name: "Jesse", last_name: "James"},
+                    {id: 3716, first_name: "Vail", last_name: "Algatt"},
+                    {id: 3655, first_name: "Toanh", last_name: "Tran"},
+                    {id: 1681, first_name: "Billy", last_name: "Le"},
+                    {id: 1019, first_name: "Jameel", last_name: "Matin"},
+                    {id: 3772, first_name: "David", last_name: "Wayne"},
+                    {id: 1054, first_name: "Josh", last_name: "Smith"},
+                    {id: 3659, first_name: "Stuart", last_name: "Ashby"},
+                    {id: 1091, first_name: "Rod", last_name: "Levy"},
+                    {id: 3578, first_name: "Cherie", last_name: "Burgett"},
+                    {id: 4467, first_name: "Blair", last_name: "Coleman"},
+                    {id: 1862, first_name: "Larry", last_name: "Burris"},
+                    {id: 1632, first_name: "Matthew", last_name: "Bach"},
+                    {id: 3677, first_name: "Kerri-Leigh", last_name: "Grady"},
+                    {id: 4675, first_name: "Sara", last_name: "Blaschke"},
+                    {id: 4341, first_name: "Mercedes", last_name: "Welch"},
+                    {id: 1302, first_name: "Conrad", last_name: "Hollomon"},
+                    {id: 3617, first_name: "Krystyna", last_name: "Ewing"}
+                   ]
 
     id_array = users.map { |u| u[:id] }
 
     users_id = User.where(id: id_array)
     users_id.each do |user|
       puts user.inspect
+      next if user.has_tag?(User::LEADER)
       user.tag_list.add(User::LEADER)
       user.save
     end
   end
+end

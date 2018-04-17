@@ -60,7 +60,6 @@ test: bg
 bundle:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bundle'
 
-.PHONY: seed_leader
 seed_leader:
 	docker-compose run ${RAILS_CONTAINER} rake users:seed_leader
 
