@@ -50,11 +50,7 @@ end
   task seed_leader: :environment do
     users = [ {id: 4, first_name: 'Nell', last_name: 'Shamrell-Harrington' }, {id: 3, first_name: 'Rick', last_name: 'Rein'}]
 
-    id_array = []
-
-     users.each do |user|
-      id_array.push(user[:id])
-    end
+    id_array = users.map { |u| u[:id] }
 
     users_id = User.where(id: id_array)
     users_id.each do |user|
