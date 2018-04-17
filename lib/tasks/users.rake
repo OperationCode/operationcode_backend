@@ -36,30 +36,30 @@ namespace :users do
 
   desc "Tags select users as Community Leaders"
   task seed_leader: :environment do
-    user_records = [{id: 290, first_name: "David", last_name: "Molina"},
-                    {id: 337, first_name: "Jesse", last_name: "James"},
-                    {id: 3716, first_name: "Vail", last_name: "Algatt"},
-                    {id: 3655, first_name: "Toanh", last_name: "Tran"},
-                    {id: 1681, first_name: "Billy", last_name: "Le"},
-                    {id: 1019, first_name: "Jameel", last_name: "Matin"},
-                    {id: 3772, first_name: "David", last_name: "Wayne"},
-                    {id: 1054, first_name: "Josh", last_name: "Smith"},
-                    {id: 3659, first_name: "Stuart", last_name: "Ashby"},
-                    {id: 1091, first_name: "Rod", last_name: "Levy"},
-                    {id: 3578, first_name: "Cherie", last_name: "Burgett"},
-                    {id: 4467, first_name: "Blair", last_name: "Coleman"},
-                    {id: 1862, first_name: "Larry", last_name: "Burris"},
-                    {id: 1632, first_name: "Matthew", last_name: "Bach"},
-                    {id: 3677, first_name: "Kerri-Leigh", last_name: "Grady"},
-                    {id: 4675, first_name: "Sara", last_name: "Blaschke"},
-                    {id: 4341, first_name: "Mercedes", last_name: "Welch"},
-                    {id: 1302, first_name: "Conrad", last_name: "Hollomon"},
-                    {id: 3617, first_name: "Krystyna", last_name: "Ewing"}
+    leaders = [
+                    { first_name: "Jesse", last_name: "James", email: "jrjames.pdx@gmail.com" },
+                    { first_name: "Vail", last_name: "Algatt", email: "vail.algatt@gmail.com" },
+                    { first_name: "Toanh", last_name: "Tran", email: "toanh.t.tran@gmail.com" },
+                    { first_name: "Billy", last_name: "Le", email: "lebilly87@gmail.com" },
+                    { first_name: "Jameel", last_name: "Matin", email: "jameel.matin@gmail.com" },
+                    { first_name: "David", last_name: "Wayne", email: "djwayne3@gmail.com" },
+                    { first_name: "Stuart", last_name: "Ashby", email: "stu@codervets.org" },
+                    { first_name: "Rod", last_name: "Levy", email: "rod@codeplatoon.org" },
+                    { first_name: "Cherie", last_name: "Burgett", email: "cburgett@mmisac.org" },
+                    { first_name: "Blair", last_name: "Coleman", email: "blairestellecoleman@gmail.com" },
+                    { first_name: "Larry", last_name: "Burris", email: "larry.n.burris@gmail.com" },
+                    { first_name: "Matthew", last_name: "Bach", email: "mbach04@gmail.com" },
+                    { first_name: "Kerri-Leigh", last_name: "Grady", email: "klgrady@gmail.com" },
+                    { first_name: "Sara", last_name: "Blaschke", email: "sara.blaschke@yahoo.com" },
+                    { first_name: "Mercedes", last_name: "Welch", email: "thefamwelch@gmail.com" },
+                    { first_name: "David", last_name: "Molina", email: "david@molinas.com" },
+                    { first_name: "Conrad", last_name: "Hollomon", email: "conrad@operationcode.org" },
+                    { first_name: "Krystyna", last_name: "Ewing", email: "krystyna@operationcode.org" }
                    ]
 
-    id_array = users.map { |u| u[:id] }
+    email_array = leaders.map { |u| u[:email] }
+    users_id = User.where(email: email_array)
 
-    users_id = User.where(id: id_array)
     users_id.each do |user|
       puts user.inspect
       next if user.has_tag?(User::LEADER)
