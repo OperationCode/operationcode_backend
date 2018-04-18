@@ -20,7 +20,6 @@ class Ability
       can :manage, CodeSchool
       can :manage, Location
       can :manage, TeamMember
-      can :manage, User
 
       return unless user.role&.super_admin?
       can :manage, :all
