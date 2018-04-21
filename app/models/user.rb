@@ -37,7 +37,6 @@ class User < ApplicationRecord
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
   validates :zip, presence: true
-  validate :zip_code_exists
 
   has_many :requests
   has_many :votes
@@ -214,13 +213,6 @@ class User < ApplicationRecord
 
   def strip_zip_code
     zip.strip! if zip
-  end
-
-  def zip_code_exists
-    return if zip =~ /(^\d{5}$)|(^\d{5}-\d{4}$)/
-    return if longitude.present? && latitude.present?
-
-    errors.add(:zip_code, 'not found')
   end
 
   def upcase_state

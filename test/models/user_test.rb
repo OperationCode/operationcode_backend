@@ -60,22 +60,6 @@ class UserTest < ActiveSupport::TestCase
     assert_equal -0.4447103, u.longitude
   end
 
-  test 'accepts zip codes in format of 12345 or 12345-1234' do
-    user = create :user, zip: '12345', latitude: nil, longitude: nil
-
-    assert user.valid?
-  end
-
-  test 'does not accept invalid zip codes when geocoding is working' do
-    user = build :user, zip: 'bad_zip_code', latitude: nil, longitude: nil
-
-    user.stubs(:latitude).returns(nil)
-    user.stubs(:longitude).returns(nil)
-
-    refute user.valid?
-    assert user.errors.full_messages == ["Zip code not found"]
-  end
-
   test 'empty spaces on ends of a zip code are stripped out' do
     user = create :user, zip: ' 97201 '
 
