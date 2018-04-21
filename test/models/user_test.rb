@@ -19,7 +19,7 @@ class UserTest < ActiveSupport::TestCase
   test 'email must be unique' do
     test_email = 'test@example.com'
     assert create(:user, email: test_email)
-    refute User.new(email: test_email).valid?
+    refute User.new(email: test_email, zip: '97201').valid?
   end
 
   test 'email is downcased on create' do
@@ -67,14 +67,26 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'does not accept invalid zip codes when geocoding is working' do
-    user = build :user, zip: 'a', latitude: nil, longitude: nil
+    user = build :user, zip: 'bad_zip_code', latitude: nil, longitude: nil
 
-    user.stubs(:geocoded?).returns(true)
     user.stubs(:latitude).returns(nil)
     user.stubs(:longitude).returns(nil)
 
     refute user.valid?
     assert user.errors.full_messages == ["Zip code not found"]
+  end
+
+  test 'empty spaces on ends of a zip code are stripped out' do
+    user = create :user, zip: ' 97201 '
+
+    assert user.zip == '97201'
+  end
+
+  test 'validates the presence of a zip' do
+    user = build :user, zip: nil
+
+    refute user.valid?
+    assert user.errors.full_messages == ["Zip can't be blank"]
   end
 
   test 'longitude and longitude are nil for unknown zipcodes' do
