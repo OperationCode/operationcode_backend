@@ -68,7 +68,10 @@ class UserTest < ActiveSupport::TestCase
 
   test 'validates the presence of a zip' do
     user = build :user, zip: nil
+    refute user.valid?
+    assert user.errors.full_messages == ["Zip can't be blank"]
 
+    user = build :user, zip: ''
     refute user.valid?
     assert user.errors.full_messages == ["Zip can't be blank"]
   end
