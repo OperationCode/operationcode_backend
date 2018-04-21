@@ -21,20 +21,20 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test '#create returns error with invalid zip code' do
+  test '#create returns error with missing zip code' do
     post api_v1_users_url,
       params: {
         user: {
           email: 'test@example.com',
           first_name: 'new first name',
           password: 'Password',
-          zip: 'bad_zip_code'
+          zip: ''
         }
       },
       as: :json
 
     body = JSON.parse(response.body)
-    assert_equal ["not found"], body["zip_code"]
+    assert body["zip"] == ["can't be blank"]
   end
 
   test '#create is successful with valid zip code' do

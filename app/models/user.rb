@@ -28,6 +28,7 @@ class User < ApplicationRecord
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   after_create :welcome_user
+  before_validation :strip_zip_code
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
@@ -35,7 +36,7 @@ class User < ApplicationRecord
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
-  validate :zip_code_exists
+  validates :zip, presence: true
 
   has_many :requests
   has_many :votes
@@ -210,10 +211,8 @@ class User < ApplicationRecord
 
   private
 
-  def zip_code_exists
-    return if longitude && latitude
-
-    errors.add(:zip_code, 'not found')
+  def strip_zip_code
+    zip.strip! if zip
   end
 
   def upcase_state
