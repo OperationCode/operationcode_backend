@@ -211,9 +211,11 @@ class User < ApplicationRecord
   private
 
   def zip_code_exists
-    return if longitude && latitude
+    return if zip =~ /(^\d{5}$)|(^\d{5}-\d{4}$)/
 
-    errors.add(:zip_code, 'not found')
+    if geocoded? && longitude.blank? && latitude.blank?
+      errors.add(:zip_code, 'not found')
+    end
   end
 
   def upcase_state
