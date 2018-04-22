@@ -18,14 +18,11 @@ module Api
 
         if auth['key'] == Rails.application.secrets.py_bot_auth_key
           true
+        elsif auth.dig(:errors).present?
+          render json: { errors: auth.dig(:errors) }, status: :unauthorized
         else
-          render json: { errors: ["Auth token is incorrect"] }, status: :unauthorized
+          render json: { errors: ["Auth token is invalid"] }, status: :unauthorized
         end
-
-      rescue JWT::ExpiredSignature
-        render json: { errors: ["Auth token has expired"] }, status: :unauthorized
-      rescue JWT::DecodeError
-        render json: { errors: ["Invalid auth token"] }, status: :unauthorized
       end
 
       def auth_token
