@@ -16,11 +16,11 @@ ActiveAdmin.register User do
   ## https://activeadmin.info/8-custom-actions.html#action-items
 
   action_item :community_leader, only: :show do
-    link_to "Community Leader", community_leader_admin_user_path(user), method: :put if !user.has_tag?(User::LEADER)
+    link_to 'Community Leader', community_leader_admin_user_path(user), method: :put if !user.has_tag?(User::LEADER)
   end
 
   action_item :non_community_leader, only: :show do
-    link_to "Remove Community Leader", non_community_leader_admin_user_path(user), method: :put if user.has_tag?(User::LEADER)
+    link_to 'Remove Community Leader', non_community_leader_admin_user_path(user), method: :put if user.has_tag?(User::LEADER)
   end
 
   ## Member Actions
@@ -32,7 +32,7 @@ ActiveAdmin.register User do
     user.tag_list.add User::LEADER
     user.save!
 
-    redirect_to admin_user_path(user), notice: "#{user.first_name} is now a #{User::LEADER}!"
+    redirect_to admin_user_path(user), notice: '#{user.first_name} is now a #{User::LEADER}!'
   end
 
   member_action :non_community_leader, method: :put do
@@ -41,7 +41,7 @@ ActiveAdmin.register User do
     user.tag_list.remove User::LEADER
     user.save!
 
-    redirect_to admin_user_path(user), notice: "#{user.first_name} is no longer a #{User::LEADER}"
+    redirect_to admin_user_path(user), notice: '#{user.first_name} is no longer a #{User::LEADER}'
   end
 
   ## Index as a Table
@@ -87,5 +87,5 @@ ActiveAdmin.register User do
   remove_filter :base_tags
   remove_filter :taggings
   remove_filter :tag_taggings
-  filter :with_tags, label: "Tagged With", as: :select, collection: -> { User.all_tag_names }
+  filter :with_tags, label: 'Tagged With', as: :select, collection: -> { User.all_tag_names }
 end
