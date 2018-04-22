@@ -4,13 +4,7 @@ module Api
       before_action :authenticate_py_bot!
 
       def create
-        raise "User id #{current_user.id} does not have a saved email address." unless current_user.email.present?
-
-        SlackJobs::InviterJob.perform_now current_user.email
-
-        render json: { status: :ok }
-      rescue StandardError => e
-        render json: { errors: e.message }, status: :unprocessable_entity
+        # TODO: Placeholder for PyBot call to create new record
       end
 
       def access
