@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   permit_params :id, :email, :zip, :latitude, :longitude, :created_at, :updated_at,
     :encrypted_password, :reset_password_token, :reset_password_sent_at,
     :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at,
-    :current_sign_in_ip, :last_sign_in_ip, :mentor, :slack_name, :first_name,
+    :current_sign_in_ip, :last_sign_in_ip, :mentor, :first_name,
     :last_name, :timezone, :bio, :verified, :state, :address_1, :address_2, :city,
     :username, :volunteer, :branch_of_service, :years_of_service, :pay_grade,
     :military_occupational_specialty, :github, :twitter, :linkedin, :employment_status,
@@ -16,11 +16,11 @@ ActiveAdmin.register User do
   ## https://activeadmin.info/8-custom-actions.html#action-items
 
   action_item :community_leader, only: :show do
-    link_to 'Community Leader', community_leader_admin_user_path(user), method: :put if !user.has_tag?(User::LEADER)
+    link_to "Community Leader", community_leader_admin_user_path(user), method: :put if !user.has_tag?(User::LEADER)
   end
 
   action_item :non_community_leader, only: :show do
-    link_to 'Remove Community Leader', non_community_leader_admin_user_path(user), method: :put if user.has_tag?(User::LEADER)
+    link_to "Remove Community Leader", non_community_leader_admin_user_path(user), method: :put if user.has_tag?(User::LEADER)
   end
 
   ## Member Actions
@@ -56,7 +56,6 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :last_sign_in_at
     column :mentor
-    column :slack_name
     column :first_name
     column :last_name
     column :timezone
@@ -83,10 +82,10 @@ ActiveAdmin.register User do
   end
 
   preserve_default_filters!
-  filter :state, as: :select, collection: ->{ User.uniq_states }
+  filter :state, as: :select, collection: -> { User.uniq_states }
   remove_filter :tags
   remove_filter :base_tags
   remove_filter :taggings
   remove_filter :tag_taggings
-  filter :with_tags, label: 'Tagged With', as: :select, collection: ->{ User.all_tag_names }
+  filter :with_tags, label: "Tagged With", as: :select, collection: -> { User.all_tag_names }
 end

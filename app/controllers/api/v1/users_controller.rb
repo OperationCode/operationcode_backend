@@ -56,7 +56,6 @@ module Api
           :zip,
           :password,
           :mentor,
-          :slack_name,
           :first_name,
           :last_name,
           :bio,
