@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401034441) do
+ActiveRecord::Schema.define(version: 20180422031009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,6 +186,16 @@ ActiveRecord::Schema.define(version: 20180401034441) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "slack_users", force: :cascade do |t|
+    t.string "slack_id"
+    t.string "slack_name"
+    t.string "slack_real_name"
+    t.string "slack_display_name"
+    t.string "slack_email"
+    t.index ["slack_email"], name: "index_slack_users_on_slack_email", using: :btree
+    t.index ["slack_id"], name: "index_slack_users_on_slack_id", using: :btree
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
@@ -238,7 +248,6 @@ ActiveRecord::Schema.define(version: 20180401034441) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.boolean  "mentor",                          default: false
-    t.string   "slack_name"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "timezone"
