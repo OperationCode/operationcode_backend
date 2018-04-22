@@ -5,8 +5,7 @@ class CodeSchoolTest < ActiveSupport::TestCase
     @code_school = build :code_school
   end
 
-  test "is_partner should be present" do
-    @code_school.is_partner = true
-    assert @code_school.valid?
+  test "is_partner should be present and default to false" do
+    assert @code_school.is_partner == false
   end
 end
