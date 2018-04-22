@@ -5,7 +5,10 @@ class CreateSlackUser < ActiveRecord::Migration[5.0]
       t.string :slack_name
       t.string :slack_real_name
       t.string :slack_display_name
-      t.string :slack_email, index: true, foreign_key: true
+      t.string :slack_email, index: true
+      t.integer :user_id, index: true
+
+      t.timestamps
     end
   end
 end
