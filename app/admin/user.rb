@@ -32,7 +32,7 @@ ActiveAdmin.register User do
     user.tag_list.add User::LEADER
     user.save!
 
-    redirect_to admin_user_path(user), notice: '#{user.first_name} is now a #{User::LEADER}!'
+    redirect_to admin_user_path(user), notice: "#{user.first_name} is now a #{User::LEADER}!"
   end
 
   member_action :non_community_leader, method: :put do
@@ -41,7 +41,7 @@ ActiveAdmin.register User do
     user.tag_list.remove User::LEADER
     user.save!
 
-    redirect_to admin_user_path(user), notice: '#{user.first_name} is no longer a #{User::LEADER}'
+    redirect_to admin_user_path(user), notice: "#{user.first_name} is no longer a #{User::LEADER}"
   end
 
   ## Index as a Table
