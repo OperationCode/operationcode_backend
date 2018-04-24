@@ -67,7 +67,3 @@ publish: build
 
 upgrade: publish
 	bin/deploy
-
-.PHONY: is_partner
-is_partner:
-	docker-compose run ${RAILS_CONTAINER} rake users:is_partner
