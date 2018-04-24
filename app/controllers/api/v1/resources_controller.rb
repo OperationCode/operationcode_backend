@@ -1,6 +1,6 @@
 module Api
   module V1
-    class ResourcesController < ApplicationController
+    class ResourcesController < ApiController
       before_action :authenticate_user!, except: [:index, :show]
       before_filter :set_resource, only: [:show, :update, :destroy]
 

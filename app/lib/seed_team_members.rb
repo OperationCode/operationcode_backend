@@ -1,10 +1,9 @@
 class SeedTeamMembers
-  BOARD_DATA_PATH = 'board_members.yml'.freeze
-  TEAM_DATA_PATH = 'team_members.yml'.freeze
+  BOARD_DATA_PATH = "board_members.yml".freeze
+  TEAM_DATA_PATH = "team_members.yml".freeze
   class << self
-
     def from_yaml(file_name, group)
-      members_seed_file = Rails.root.join('config', file_name)
+      members_seed_file = Rails.root.join("config", file_name)
       members = YAML.load_file(members_seed_file)
       members.each do |member|
         create_or_update(member.merge(group: group))
@@ -30,10 +29,15 @@ class SeedTeamMembers
       )
     end
 
+    def clean_seed
+      TeamMember.delete_all
+      seed_all
+    end
+
     private
 
     def create_or_update(member)
-      TeamMember.find_or_create_by!(name: member['name']) do |c|
+      TeamMember.find_or_create_by!(name: member["name"]) do |c|
         c.update!(member)
       end
     end

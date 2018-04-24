@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < ApiController
       before_action :authenticate_user!, only: %i[update]
 
       def index
@@ -79,6 +79,7 @@ module Api
           :company_name,
           :education_level,
           :scholarship_info,
+          :role_id,
           interests: []
         )
       end

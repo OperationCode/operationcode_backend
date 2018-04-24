@@ -719,7 +719,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 + Response 400 (application/json)
 
-## Resource [/api/v1/resources/{resource_id}]
+## Resource | Show or Delete [/api/v1/resources/{resource_id}]
 
 + Parameters
 
@@ -1017,7 +1017,87 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             {
                 errors: "Some error message"
             }
+## Sessions | Create [/api/v1/sessions{?user,email,password}]
++ Parameters
 
+      + user (object, required) - Object that wraps the user's attributes
+      + email (string, required) - The users email
+      + password (string, required) - The users password
+
+### Create a Session [POST]
++ Request (application/json)
+
+    + Body
+
+            {
+                user: {
+                  email: "kennynagano@example.com",
+                  password: "pass123"
+                }
+            }
+
+
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "token" => some_long_string_of_characters,
+                "user" => {
+                    "id" => 96,
+                    "email" => "kennynagano@example.com",
+                    "zip" => "97201",
+                    "first_name" => "Keara",
+                    "last_name" => "Runolfsson",
+                    "slack_name" => "Jar Jar Binks",
+                    "mentor" => false,
+                    "verified" => false
+                },
+                "redirect_to" => "/profile"
+            }
+
++ Response 422 (application/json)
+
+            {
+                errors: "Some error message"
+            }
+
+## Slack User | Access [/api/v1/slack_users/access]
+
+### Health check to confirm access [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                message: "You have access!"
+            }
+
++ Response 401 (application/json)
+
+        {
+            errors: ["Auth token is incorrect"]
+        }
+
+        /* or*/
+
+        {
+            errors: ["Auth token has expired"]
+        }
+
+        /* or*/
+
+        {
+            errors: ["Invalid auth token"]
+        }
 
 ## Slack User | Invite [/api/v1/slack_users]
 
@@ -1038,6 +1118,114 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             }
 
 + Response 422 (application/json)
+
+        {
+            errors: "Some error message"
+        }
+
+## Social User | Create [/api/v1/social_users{?email,first_name,last_name,zip,password}]
+
++ Parameters
+
+    + email (string) - The user's email, i.e. "name@domain.com"
+    + first_name (string) - The user's first name
+    + last_name (string) - The user's last name
+    + zip (string) - The user's zip code
+    + password (string) - The user's password
+
+### Register a user if they're not registered and logs them in [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "user":
+                    {
+                        "email": "jon@doe.com",
+                        "first_name": "Jon",
+                        "last_name": "Doe",
+                        "zip": "12345",
+                        "password": "Password
+                    }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "token": "very long string of characters",
+                "user":
+                    {
+                        "id": 66,
+                        "email": "jon@doe.com",
+                        "zip": "12345",
+                        "first_name": "Jon",
+                        "last_name": "Doe",
+                        "slack_name": nil,
+                        "mentor": false,
+                        "verified": false
+                    },
+                "redirect_to": "/profile"
+            }
+
+            /* or*/
+
+            {
+                "token": "very long string of characters",
+                "user":
+                  {
+                      "id": 66,
+                      "email": "jon@doe.com",
+                      "zip": "12345",
+                      "first_name": "Jon",
+                      "last_name": "Doe",
+                      "slack_name": nil,
+                      "mentor": false,
+                      "verified": false
+                  },
+                "redirect_to": "/login"
+            }
+
++ Response 500 (application/json)
+
+        {
+            "redirect_to": "/login",
+            errors: "Some error message"
+        }
+
+## Social User | Show [/api/v1/social_users{?email}]
+
++ Parameters
+
+    + email (string) - The user's email, i.e. "name@domain.com"
+
+### Check if a given user's email has been registered [GET]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "email": "test@testing.net"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "redirect_to": "/social_login"
+            }
+
+            /* or*/
+
+            {
+                "redirect_to": "/login"
+            }
+
++ Response 500 (application/json)
 
         {
             errors: "Some error message"
