@@ -1063,6 +1063,41 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 errors: "Some error message"
             }
 
+## Slack User | Access [/api/v1/slack_users/access]
+
+### Health check to confirm access [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                message: "You have access!"
+            }
+
++ Response 401 (application/json)
+
+        {
+            errors: ["Auth token is incorrect"]
+        }
+
+        /* or*/
+
+        {
+            errors: ["Auth token has expired"]
+        }
+
+        /* or*/
+
+        {
+            errors: ["Invalid auth token"]
+        }
 
 ## Slack User | Invite [/api/v1/slack_users]
 
