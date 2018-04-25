@@ -1,8 +1,12 @@
 class User < ApplicationRecord
+  LEADER = 'community leader'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  acts_as_taggable
 
   geocoded_by :zip do |user, results|
     geocoded_object = results.first
@@ -24,13 +28,15 @@ class User < ApplicationRecord
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   after_create :welcome_user
+  before_validation :strip_zip_code
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
+  after_save :notify_leaders_on_geocode_update, if: ->(v) { v.zip_changed? }
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
-  validate :zip_code_exists
+  validates :zip, presence: true
 
   has_many :requests
   has_many :votes
@@ -39,6 +45,8 @@ class User < ApplicationRecord
   scope :mentors, -> { where(mentor: true) }
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
+  scope :verified, -> { where(verified: true) }
+
 
   # Returns a count of all users with the passed in zip code(s)
   #
@@ -79,6 +87,59 @@ class User < ApplicationRecord
     near(location, radius.to_i)&.size
   end
 
+  def self.community_leaders_nearby(latitude, longitude, radius)
+    self
+      .near([latitude, longitude], radius)
+      .tagged_with(LEADER)
+  end
+
+  # Returns a count of users that were created since the passed in date,
+  # up through today.
+  #
+  # @param date [Date] The date the range should begin at (i.e. Date.today, 1.week.ago)
+  # @return [Intenger] A count of users
+  #
+  def self.count_created_since(date)
+    range = date.beginning_of_day..Date.today.end_of_day
+
+    where(created_at: range).count
+  end
+
+  def self.uniq_states
+    self
+      .order(:state)
+      .pluck(:state)
+      .uniq
+      .compact
+  end
+
+  def self.all_tag_names
+    tag_counts.order(:name).map(&:name)
+  end
+
+  # The presence of this method is a necessary dependency in order to
+  # add a custom scope in ActiveAdmin, using Ransack
+  #
+  # @see User.with_tags
+  # @see https://github.com/activerecord-hackery/ransack#using-scopesclass-methods
+  #
+  def self.ransackable_scopes(_auth_object = nil)
+    [:with_tags]
+  end
+
+  # This calls the ActsAsTaggableOn#tagged_with method with the passed in tag(s)
+  #
+  # By setting any: true, it returns results with any of the specified tags.
+  #
+  # @param *args [Array<String>] Array of passed in tag name(s)
+  # @return [User] ActiveRecord collection of User objects
+  # @see User.ransackable_scopes
+  # @see https://github.com/mbleigh/acts-as-taggable-on#finding-tagged-objects
+  #
+  def self.with_tags(*args)
+    tagged_with(args, any: true)
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
@@ -105,18 +166,64 @@ class User < ApplicationRecord
     JsonWebToken.encode(user_id: self.id, roles: [], email: self.email, verified: verified)
   end
 
+  # For social media logins, When given a user's info creates their database entry if they do not already have one, and
+  # sets the redirect path for the frontend to go to after the user is logged in
+  # for the first time.
+  #
+  # Requires that all data contains :first_name, :last_name, :email, :zip, and :password keys.
+  # For example: data = {first_name: "Jane", last_name: "Doe", email: "jane@example.com", zip: "12345", password: "Th!sIs@Pa22w0rd"}
+  #
+  # @param data The data passed in from the frontend, from which the user's info is extracted.
+  # @return [String] A string of the user's redirect_to path
+  # @return [Json] A serialied JSON object derived from current_user
+  # @return [Token] A token that the frontend stores to know the user is logged in
+  # @return [user, path] The user and the redirect path, in an array
+  # @see https://github.com/zquestz/omniauth-google-oauth2#devise
+  #
+  def self.fetch_social_user_and_redirect_path(data)
+    user = User.find_by(email: data.dig(:email))
+    path = '/profile'
+
+    if user.nil?
+      user = User.new(
+        first_name: data.dig(:first_name),
+        last_name: data.dig(:last_name),
+        email: data.dig(:email),
+        zip: data.dig(:zip),
+        password: data.dig(:password)
+      )
+      path = '/signup-info'
+      UserMailer.welcome(user).deliver unless user.invalid?
+    end
+
+    [user, path]
+  end
+
+  def has_tag?(tag)
+    tag_list.include? tag
+  end
+
+  def role
+    return if role_id.blank?
+
+    Role.find_by id: role_id
+  end
+
   private
 
-  def zip_code_exists
-    return if longitude && latitude
-    errors.add(:zip_code, 'not found')
+  def strip_zip_code
+    zip.strip! if zip
   end
 
   def upcase_state
-   state.upcase! if state
+    state.upcase! if state
   end
 
   def downcase_email
     email.downcase! if email
+  end
+
+  def notify_leaders_on_geocode_update
+    SendEmailToLeadersJob.perform_later(id)
   end
 end
