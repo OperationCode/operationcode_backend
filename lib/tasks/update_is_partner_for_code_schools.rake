@@ -1,21 +1,19 @@
 namespace :is_partner do
   desc "Updates column is_partner for code schools"
   task code_schools: :environment do
-
     is_partner_schools = [
-                          {name: "Bloc"},
-                          {name: "Coder Camps"},
-                          {name: "Code Platoon"},
-                          {name: "The Flatiron School"},
-                          {name: "Fullstack Academy"},
-                          {name: "Launch School"},
-                          {name: "Sabio"},
-                          {name: "Startup Institute"},
-                          {name: "Thinkful"},
-                         ]
-
-    is_parnter_school_name_array = is_partner_schools.map { |u| u[:name] }
-    schools = CodeSchool.where(name: is_partner_school_name_array)
+                           "Bloc",
+                           "Coder Camps",
+                           "Code Platoon",
+                           "The Flatiron School",
+                           "Fullstack Academy",
+                           "Launch School",
+                           "Sabio",
+                           "Startup Institute",
+                           "Thinkful"
+                          ]
+                          
+    schools = CodeSchool.where(name: is_partner_schools)
 
     schools.each do |school|
       next if school.is_partner?
