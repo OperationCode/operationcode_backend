@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
 
-  test "mentors_can_see_all_unclaimed_requests" do
+  test "mentors can see all unclaimed requests" do
     user = create(:mentor)
     headers = authorization_headers(user)
     request = create(:request)
@@ -10,6 +10,14 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
 
     get api_v1_requests_url, headers: headers, as: :json
     assert_equal 1, response.parsed_body.count
+  end
+
+  test "users that are not mentors can't see all unclaimed requests" do
+    user = create(:user)
+    headers = authorization_headers(user)
+
+    get api_v1_requests_url, headers: headers, as: :json
+    assert response.status, :forbidden
   end
 
   test "create new requests for current user" do
