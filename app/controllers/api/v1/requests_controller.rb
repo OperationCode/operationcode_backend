@@ -4,7 +4,7 @@ module Api
       before_action :authenticate_user!
 
       def index
-        authorize Request
+        authorize! Request
         render json: Request.unclaimed.order('created_at DESC')
       end
 
@@ -15,7 +15,7 @@ module Api
 
       def show
         @request = Request.find_by(id: params[:id])
-        authorize @request
+        authorize! @request
         render json: @request
       end
 
