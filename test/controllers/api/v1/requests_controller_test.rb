@@ -50,6 +50,16 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
     assert_equal request.id, response.parsed_body['id']
   end
 
+  test "show error message when unauthorized user tries to view individual request" do
+    user = create(:user)
+    headers = authorization_headers(user)
+    request = create(:request)
+
+    get api_v1_request_url(id: request.id), headers: headers, as: :json
+
+    assert response.status, :forbidden
+  end
+
   test "update individual request" do
     user = create(:user)
     mentor = create(:mentor)
