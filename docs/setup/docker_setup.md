@@ -82,5 +82,3 @@ $ docker exec -it [CONTAINER-ID] bash
 root@[CONTAINER-ID]:/app# rails console
 ```
 * And you should be in the Rails console!
-
-
