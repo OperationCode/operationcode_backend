@@ -35,8 +35,8 @@ class GitHub::AuthenticationTest < ActiveSupport::TestCase
     assert @instance.set_options == {
       :query =>
         {
-          :client_id => "fake_git_hub_client_id",
-          :client_secret => "fake_git_hub_client_secret",
+          :client_id => "some random id",
+          :client_secret => "some random key",
           :per_page => 100
         },
       :headers =>
