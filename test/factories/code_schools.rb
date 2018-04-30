@@ -9,5 +9,8 @@ FactoryGirl.define do
     online_only Faker::Boolean.boolean
     notes Faker::Lorem.paragraph
     mooc false
+    is_partner false
+    rep_name Faker::Name.name
+    rep_email Faker::Internet.email
   end
 end
