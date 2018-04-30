@@ -32,7 +32,7 @@ class GitHub::AuthenticationTest < ActiveSupport::TestCase
   test "#set_options merges the authenticated options hash when Rails.env.prod? is true" do
     Rails.env.stubs(:prod?).returns(true)
 
-    assert @instance.set_options == {
+    assert_equal @instance.set_options == {
       :query =>
         {
           :client_id => "some random id",
