@@ -630,6 +630,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "assigned_mentor_id": 260
             }
 
++ Response 403 (application/json)
+
+        {
+            error: 'You are not authorized to access this resource.'
+        }
+
 ## Request | Collection [/api/v1/requests]
 
 ### Get All Unclaimed Mentor Requests [GET]

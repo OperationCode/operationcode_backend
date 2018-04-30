@@ -25,7 +25,8 @@ class Ability
 
       return unless user.role&.super_admin?
       can :manage, :all
-    elsif user.mentor?
+    else
+      return unless user.mentor?
       can :read, Request
     end
   end
