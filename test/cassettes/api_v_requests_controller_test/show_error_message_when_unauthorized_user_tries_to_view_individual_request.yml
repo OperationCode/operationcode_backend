@@ -1,0 +1,337 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=97201&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 29 Apr 2018 16:06:26 GMT
+      Expires:
+      - Mon, 30 Apr 2018 16:06:26 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '495'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "97201",
+                       "short_name" : "97201",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Southwest Portland",
+                       "short_name" : "Southwest Portland",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Portland",
+                       "short_name" : "Portland",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Multnomah County",
+                       "short_name" : "Multnomah County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Oregon",
+                       "short_name" : "OR",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Portland, OR 97201, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 45.519965,
+                          "lng" : -122.665103
+                       },
+                       "southwest" : {
+                          "lat" : 45.497957,
+                          "lng" : -122.7193571
+                       }
+                    },
+                    "location" : {
+                       "lat" : 45.505603,
+                       "lng" : -122.6882145
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 45.519965,
+                          "lng" : -122.665103
+                       },
+                       "southwest" : {
+                          "lat" : 45.497957,
+                          "lng" : -122.7193571
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJi8MjqD8KlVQRsyr5ZtaBLMI",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 29 Apr 2018 16:06:27 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=97201&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 29 Apr 2018 16:06:26 GMT
+      Expires:
+      - Mon, 30 Apr 2018 16:06:26 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '495'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '1'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "97201",
+                       "short_name" : "97201",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Southwest Portland",
+                       "short_name" : "Southwest Portland",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Portland",
+                       "short_name" : "Portland",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Multnomah County",
+                       "short_name" : "Multnomah County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Oregon",
+                       "short_name" : "OR",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Portland, OR 97201, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 45.519965,
+                          "lng" : -122.665103
+                       },
+                       "southwest" : {
+                          "lat" : 45.497957,
+                          "lng" : -122.7193571
+                       }
+                    },
+                    "location" : {
+                       "lat" : 45.505603,
+                       "lng" : -122.6882145
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 45.519965,
+                          "lng" : -122.665103
+                       },
+                       "southwest" : {
+                          "lat" : 45.497957,
+                          "lng" : -122.7193571
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJi8MjqD8KlVQRsyr5ZtaBLMI",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 29 Apr 2018 16:06:28 GMT
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=97201&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 29 Apr 2018 16:06:26 GMT
+      Expires:
+      - Mon, 30 Apr 2018 16:06:26 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '495'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '1'
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "97201",
+                       "short_name" : "97201",
+                       "types" : [ "postal_code" ]
+                    },
+                    {
+                       "long_name" : "Southwest Portland",
+                       "short_name" : "Southwest Portland",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Portland",
+                       "short_name" : "Portland",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Multnomah County",
+                       "short_name" : "Multnomah County",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Oregon",
+                       "short_name" : "OR",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    }
+                 ],
+                 "formatted_address" : "Portland, OR 97201, USA",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 45.519965,
+                          "lng" : -122.665103
+                       },
+                       "southwest" : {
+                          "lat" : 45.497957,
+                          "lng" : -122.7193571
+                       }
+                    },
+                    "location" : {
+                       "lat" : 45.505603,
+                       "lng" : -122.6882145
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 45.519965,
+                          "lng" : -122.665103
+                       },
+                       "southwest" : {
+                          "lat" : 45.497957,
+                          "lng" : -122.7193571
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJi8MjqD8KlVQRsyr5ZtaBLMI",
+                 "types" : [ "postal_code" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 29 Apr 2018 16:06:28 GMT
+recorded_with: VCR 3.0.3
