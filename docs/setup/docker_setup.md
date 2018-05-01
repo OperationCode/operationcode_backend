@@ -55,3 +55,30 @@ make
 You can now visit http://localhost:3000 (or run `make open`) and you should see a Rails welcome message!
 
 In case you used the Docker Toolbox, you might have also installed VirtualBox, which creates its own virtual network adapters. In that case, the server might be running on that IP address and may not be reachable via localhost, 127.0.0.1 or even 0.0.0.0. So, you will need to use `netstat` on the command line to figure out the IP address on which the server is bound.
+
+#### Entering Rails Console
+
+To enter Rails console after you are running the OperationCode Backend:
+* Get a list of all running docker containers
+```
+$ docker ps
+```
+* You'll see output like this:
+```
+$ docker ps
+CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                    NAMES
+0d7632d2da32        operationcodebackend_sidekiq   "sidekiq -C config/s…"   4 minutes ago       Up 4 minutes                                 operationcodebackend_sidekiq_1
+ad85db4a0bf5        operationcodebackend_web       "bundle exec puma -C…"   4 minutes ago       Up 4 minutes        0.0.0.0:3000->3000/tcp   operationcodebackend_web_1
+39fecccee668        postgres                       "docker-entrypoint.s…"   6 minutes ago       Up 6 minutes        5432/tcp                 operationcodebackend_operationcode-psql_1
+9825975b1d44        redis:latest                   "docker-entrypoint.s…"   6 minutes ago       Up 6 minutes        6379/tcp                 operationcodebackend_redis_1
+```
+* Grab the CONTAINER ID for opreationcodebackend_web_1 (in this case, it is ad85db4a0bf5)
+* Enter the Docker container with (substitute in the appropriate container id):
+```
+$ docker exec -it [CONTAINER-ID] bash
+```
+* Once you are in the container, run:
+```
+root@[CONTAINER-ID]:/app# rails console
+```
+* And you should be in the Rails console!
