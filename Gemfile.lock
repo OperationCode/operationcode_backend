@@ -64,8 +64,6 @@ GEM
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
-    arel-helpers (2.6.1)
-      activerecord (>= 3.1.0, < 6)
     awesome_print (1.8.0)
     bcrypt (3.1.11)
     builder (3.2.3)
@@ -104,15 +102,6 @@ GEM
     faraday (0.12.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
-    forest_liana (2.4.3)
-      arel-helpers
-      bcrypt
-      groupdate
-      jsonapi-serializers (>= 0.14.0)
-      jwt
-      rack-cors
-      rails (>= 4.0)
-      useragent
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
@@ -122,8 +111,6 @@ GEM
       multi_json (>= 1.11.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    groupdate (4.0.0)
-      activesupport (>= 4.2)
     has_scope (0.7.1)
       actionpack (>= 4.1, < 5.2)
       activesupport (>= 4.1, < 5.2)
@@ -141,8 +128,6 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jsonapi-renderer (0.1.2)
-    jsonapi-serializers (1.0.0)
-      activesupport
     jwt (1.5.6)
     kaminari (1.1.0)
       activesupport (>= 4.1.0)
@@ -277,7 +262,6 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    useragent (0.16.10)
     vcr (3.0.3)
     warden (1.2.7)
       rack (>= 1.0)
@@ -302,7 +286,6 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
-  forest_liana
   geocoder
   gibbon
   httparty
