@@ -20,6 +20,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "hardware_included": false,
                 "has_online": false,
                 "online_only": false,
+                "is_partner": false,
                 "mooc": false
                 "locations":  [
                       {
@@ -41,6 +42,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         ]
 
 ## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_partner,mooc,rep_name,rep_email}]
+
 + Parameters
 
     + name (string, required) - The CodeSchool's name
@@ -51,6 +53,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + is_partner(boolean, required) - Is the CodeSchool a partner
     + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
     + rep_name(string, optional) - The CodeSchool's representatives name
     + rep_email(string, optional) - The CodeSchool's representatives email
@@ -159,7 +162,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   errors: "Some error message"
               }
 
-## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc}]
+## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_partner,mooc}]
 
 + Parameters
 
@@ -635,6 +638,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "assigned_mentor_id": 260
             }
 
++ Response 403 (application/json)
+
+        {
+            error: 'You are not authorized to access this resource.'
+        }
+
 ## Request | Collection [/api/v1/requests]
 
 ### Get All Unclaimed Mentor Requests [GET]
@@ -676,6 +685,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
         {
             error: 'Unauthorized'
+        }
+
++ Response 403 (application/json)
+
+        {
+            error: 'You are not authorized to access this resource.'
         }
 
 ## Request | Update [/api/v1/requests/{?user_id,id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
