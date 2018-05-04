@@ -20,8 +20,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "hardware_included": false,
                 "has_online": false,
                 "online_only": false,
+                "mooc": false,
+                "rep_name": "Kenny",
+                "rep_email": "Kenny@test.com",
                 "is_partner": false,
-                "mooc": false
+                "mooc": false,
                 "locations":  [
                       {
                           "va_accepted": false,
@@ -41,7 +44,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             },
         ]
 
-## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_partner,mooc}]
+## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_partner,mooc,rep_name,rep_email}]
+
 + Parameters
 
     + name (string, required) - The CodeSchool's name
@@ -54,6 +58,9 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + notes (text, optional) - Any additional information about the CodeSchool
     + is_partner(boolean, required) - Is the CodeSchool a partner
     + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
+    + rep_name(string, optional) - The CodeSchool's representatives name
+    + rep_email(string, optional) - The CodeSchool's representatives email
+
 
 ### Create a CodeSchool Member [POST]
 
@@ -75,7 +82,9 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                       "has_online": true,
                       "online_only": false,
                       "is_partner": false,
-                      "mooc": false
+                      "mooc": false,
+                      "rep_name": "kenny",
+                      "rep_email": "kenny@test.com"
                       }
                   }
 
@@ -115,7 +124,9 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             "updated_at": "2017-09-26T06:54:58.607Z",
             "notes": null,
             "is_partner": false,
-            "mooc": false
+            "mooc": false,
+            "rep_name": "kenny",
+            "rep_email": "kenny@test.com"
         }
 
 + Response 404 (application/json)
@@ -154,7 +165,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   errors: "Some error message"
               }
 
-## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_partner,mooc}]
+## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc,rep_name,rep_email}]
 
 + Parameters
 
@@ -167,6 +178,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
     + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
+    + rep_name(string, optional) - The CodeSchool's representatives name
+    + rep_email(string, optional) - The CodeSchool's representatives email
 
 ### Update an Existing CodeSchool [PUT]
 

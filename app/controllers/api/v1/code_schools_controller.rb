@@ -47,7 +47,10 @@ module Api
       private
 
       def code_school_params
-        params.require(:code_school).permit(:name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only, :mooc, :is_partner)
+        params.require(:code_school).permit(:name, :url, :logo, :full_time,
+                                            :hardware_included, :has_online,
+                                            :online_only, :mooc, :is_partner,
+                                            :rep_name, :rep_email)
       end
     end
   end

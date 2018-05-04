@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420192231) do
-
+ActiveRecord::Schema.define(version: 20180430161218) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +60,8 @@ ActiveRecord::Schema.define(version: 20180420192231) do
     t.text     "notes"
     t.boolean  "mooc",              default: false, null: false
     t.boolean  "is_partner",        default: false, null: false
+    t.string   "rep_name"
+    t.string   "rep_email"
   end
 
   create_table "events", force: :cascade do |t|
