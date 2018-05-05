@@ -25,10 +25,18 @@ class MentorshipTest < Minitest::Test
     assert service[:name].present?
   end
 
-def test_mentor_request_data_returns_correct_skillset_data
+  def test_mentor_request_data_returns_correct_skillset_data
     skillset = @successful_response[:skillsets].first
 
     assert skillset[:id].present?
     assert skillset[:name].present?
+  end
+
+  def test_429_raises_airtable_error
+    VCR.use_cassette('airtable/mentorship/exceeded_rate_limit') do
+      assert_raises Airtable::Error do
+        Airtable::Mentorship.new.mentor_request_data
+      end
+    end
   end
 end
