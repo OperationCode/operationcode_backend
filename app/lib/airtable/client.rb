@@ -29,13 +29,10 @@ module Airtable
       when 200
         response.parsed_response['records']
       when 429
-        raise AirtableError, 'Exceeded rate limit. Wait 30 seconds for subsequent requests.'
+        raise Airtable::Error, 'Exceeded Airtable rate limit. Wait 30 seconds for subsequent requests.'
       else
-        raise AirtableError, response.parsed_response
+        raise Airtable::Error, response.parsed_response
       end
     end
-  end
-
-  class AirtableError < StandardError
   end
 end
