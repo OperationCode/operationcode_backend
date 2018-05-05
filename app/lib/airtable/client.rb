@@ -8,8 +8,8 @@ module Airtable
     attr_reader :base_id, :headers
 
     def initialize
-      api_key  = "the api key"
-      @base_id = "the base id"
+      api_key  = Rails.application.secrets.airtable_api_key
+      @base_id = Rails.application.secrets.airtable_base_id
       @headers = { :Authorization => "Bearer #{api_key}"}
     end
 
