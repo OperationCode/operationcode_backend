@@ -53,7 +53,7 @@ Rails.application.routes.draw do
       end
 
       namespace :airtable do
-        resources :mentorships, only: :index
+        resources :mentorships, only: [:index, :create]
       end
     end
   end

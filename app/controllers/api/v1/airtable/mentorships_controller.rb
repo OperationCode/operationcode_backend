@@ -11,6 +11,34 @@ module Api
         rescue ::Airtable::Error => e
           render json: { error: e.message }, status: :unprocessable_entity
         end
+
+        def create
+          verify_user!
+
+          mentor_request = ::Airtable::Mentorship.new.create_mentor_request(mentorship_params)
+
+          render json: mentor_request, status: :ok
+        rescue ::Airtable::Error => e
+          render json: { error: e.message }, status: :unprocessable_entity
+        end
+
+        private
+
+        def mentorship_params
+          params.permit(
+            :slack_user,
+            :services,
+            :skillsets,
+            :additional_details,
+            :mentor_requested
+          )
+        end
+
+        def verify_user!
+          unless current_user.verified?
+            raise ::Airtable::Error, 'User must be verified to request mentor services'
+          end
+        end
       end
     end
   end
