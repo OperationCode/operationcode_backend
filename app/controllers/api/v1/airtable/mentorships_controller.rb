@@ -17,7 +17,7 @@ module Api
 
           mentor_request = ::Airtable::Mentorship.new.create_mentor_request(mentorship_params)
 
-          render json: mentor_request, status: :ok
+          render json: mentor_request, status: :created
         rescue ::Airtable::Error => e
           render json: { error: e.message }, status: :unprocessable_entity
         end

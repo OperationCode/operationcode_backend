@@ -41,7 +41,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
         as: :json
       )
 
-      assert response.status == 200
+      assert response.status == 201
       assert response.parsed_body['id'].present?
       assert response.parsed_body['createdTime'].present?
     end
@@ -64,7 +64,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
         as: :json
       )
 
-      assert response.status == 200
+      assert response.status == 201
       assert response.parsed_body['id'].present?
       assert response.parsed_body['createdTime'].present?
     end
