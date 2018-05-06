@@ -22,6 +22,19 @@ module Airtable
       return_value_for(response)
     end
 
+    # Creates a new record in the passed Airtable
+    #
+    # @param table [String] Name of the table in Airtable
+    # @param body [JSON] JSON string of request body attributes
+    # @return [Hash] The parsed_response from Airtable
+    #
+    def post_record(table, body)
+      response = HTTParty.post(
+        url_for(table),
+        headers: update_headers,
+        body: body
+      )
+
       return_value_for(response)
     end
 
@@ -54,6 +67,12 @@ module Airtable
       else
         raise Airtable::Error, response.parsed_response
       end
+    end
+
+    def update_headers
+      headers.merge(
+        'Content-Type' => 'application/json'
+      )
     end
   end
 end
