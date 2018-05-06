@@ -39,4 +39,38 @@ class MentorshipTest < Minitest::Test
       end
     end
   end
+
+  def test_create_mentor_request_creates_the_passed_mentor_request
+    VCR.use_cassette('airtable/mentorship/post_successful') do
+      request_body = {
+        slack_user: "test_case_1",
+        services: "rec3ZQMCQsKPKlE2C",
+        skillsets: "Java",
+        additional_details: "Some test description.",
+        mentor_requested: "rec0SDZDK2DiW4PY9"
+      }
+
+      response = Airtable::Mentorship.new.create_mentor_request(request_body)
+
+      assert response['id'].present?
+      assert response.dig('fields', 'Slack User') == request_body[:slack_user]
+      assert response.dig('fields', 'Service') == [request_body[:services]]
+      assert response.dig('fields', 'Skillsets') == [request_body[:skillsets]]
+      assert response.dig('fields', 'Additional Details') == request_body[:additional_details]
+      assert response.dig('fields', 'Mentor Requested') == [request_body[:mentor_requested]]
+    end
+  end
+
+  def test_format_for_posting_converts_comma_separated_string_into_array_of_strings
+    instance = Airtable::Mentorship.new
+
+    converted = instance.send(:format_for_posting, 'this , and long ')
+    assert converted == ['this', 'and long']
+
+    converted = instance.send(:format_for_posting, 'this,that')
+    assert converted == ['this', 'that']
+
+    converted = instance.send(:format_for_posting, 'this')
+    assert converted == ['this']
+  end
 end

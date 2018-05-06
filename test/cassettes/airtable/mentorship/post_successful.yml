@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.airtable.com/v0/some_random_id/Mentor%20Request
+    body:
+      encoding: UTF-8
+      string: '{"fields":{"Slack User":"test_case_1","Service":["rec3ZQMCQsKPKlE2C"],"Skillsets":["Java"],"Additional
+        Details":"Some test description.","Mentor Requested":["rec0SDZDK2DiW4PY9"]}}'
+    headers:
+      Authorization:
+      - Bearer some_random_key
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - content-type, authorization, content-length, x-requested-with, x-api-version,
+        x-airtable-application-id, user-agent, x-airtable-user-agent
+      Access-Control-Allow-Methods:
+      - GET,PUT,POST,PATCH,DELETE,OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 06 May 2018 02:10:37 GMT
+      Etag:
+      - W/"11d-aFN6bt/wzubKc+KtOD2gB/yAJEk"
+      Server:
+      - Tengine
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '285'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"recPr5qFiMDGc9624","fields":{"Slack User":"test_case_1","Service":["rec3ZQMCQsKPKlE2C"],"Skillsets":["Java"],"Additional
+        Details":"Some test description.","Mentor Requested":["rec0SDZDK2DiW4PY9"],"Created
+        At":"2018-05-06T02:10:37.000Z"},"createdTime":"2018-05-06T02:10:37.565Z"}'
+    http_version:
+  recorded_at: Sun, 06 May 2018 02:10:37 GMT
+recorded_with: VCR 3.0.3
