@@ -15,7 +15,7 @@ class MentorshipTest < Minitest::Test
     mentor = @successful_response[:mentors].first
 
     assert mentor[:id].present?
-    assert mentor[:full_name].present?
+    assert mentor[:name].present?
   end
 
   def test_mentor_request_data_returns_correct_service_data

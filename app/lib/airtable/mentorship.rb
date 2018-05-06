@@ -6,11 +6,16 @@ module Airtable
       @client = Airtable::Client.new
     end
 
+    # Fetches all the records from the mentors, services, and skillsets Airtables,
+    # and re-formats the data into a custom hash
+    #
+    # @return [Hash] Hash of mentor, services, and skillsets data
+    #
     def mentor_request_data
       {
-        mentors: mentors,
-        services: services,
-        skillsets: skillsets
+        mentors: data_for('Mentors', name_key: 'Full Name'),
+        services: data_for('Services'),
+        skillsets: data_for('Skillsets')
       }
     end
 
@@ -27,26 +32,19 @@ module Airtable
       end
     end
 
-    def services
-      services = client.get_records_for('Services')
+    private
 
-      services.map do |serive|
+    def data_for(table, name_key: 'Name')
+      records = client.get_records_for(table)
+
+      records['records'].map do |record|
         {
-          id: serive['id'],
-          name: serive.dig('fields', 'Name')
+          id: record['id'],
+          name: record.dig('fields', name_key)
         }
       end
     end
 
-    def skillsets
-      skillsets = client.get_records_for('Skillsets')
-
-      skillsets.map do |skillset|
-        {
-          id: skillset['id'],
-          name: skillset.dig('fields', 'Name')
-        }
-      end
     end
   end
 end
