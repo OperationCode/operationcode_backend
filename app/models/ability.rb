@@ -14,12 +14,14 @@ class Ability
       can :read, TeamMember
       can :read, User
       can [:read, :update], AdminUser, id: user.id
+      can :read, Service
 
       return unless user.role&.admin_accessible?
       can :read, :all
       can :manage, CodeSchool
       can :manage, Location
       can :manage, TeamMember
+      can :manage, Serivce
 
       return unless user.role&.super_admin?
       can :manage, :all
