@@ -61,7 +61,7 @@ class GitHub::AuthenticationTest < ActiveSupport::TestCase
         {
           "Accepts" => "application/vnd.github.v3+json",
           "User-Agent" => "operationcode",
-          "Authorization" => "Bearer #{Rails.application.secrets.git_hub_oauth_token}"
+          "Authorization" => "Bearer #{GitHub::Settings.o_auth_2_token}"
         }
       }
   end
