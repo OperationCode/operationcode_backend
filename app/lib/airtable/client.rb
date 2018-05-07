@@ -6,7 +6,7 @@ module Airtable
 
     def initialize
       api_key   = Rails.application.secrets.airtable_api_key
-      @base_id  = Rails.application.secrets.airtable_base_id
+      base_id   = Rails.application.secrets.airtable_base_id
       @headers  = { :Authorization => "Bearer #{api_key}"}
       @base_url = "https://api.airtable.com/v0/#{base_id}/"
     end
