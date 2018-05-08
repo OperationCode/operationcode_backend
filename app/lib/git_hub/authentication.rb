@@ -24,10 +24,18 @@ module GitHub
       when BASIC
         # tbd
       when O_AUTH_2_TOKEN
-        # tbd
+        o_auth_2_token_options
       when O_AUTH_2_KEY_SECRET
         key_secret_options
       end
+    end
+
+    def o_auth_2_token_options
+      {
+        headers: {
+          'Authorization' => "Bearer #{GitHub::Settings.o_auth_2_token}"
+        }
+      }
     end
 
     def key_secret_options
