@@ -4,7 +4,7 @@ class Ability
   # Follows CanCanCan best practices for granting permissions.
   #
   # @see https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities%3A-Best-Practices#give-permissions-dont-take-them-away
-  #
+  # 
   def initialize(user)
     if user.persisted? && user.class == AdminUser
       return unless user.role&.board_accessible?
