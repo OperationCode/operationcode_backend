@@ -59,6 +59,16 @@ module GitHub
       return_value_for response
     end
 
+    # Returns our current rate limit
+    #
+    # @see https://developer.github.com/v3/rate_limit/
+    #
+    def rate_limit
+      response = self.class.get("https://api.github.com/rate_limit", options)
+
+      return_value_for response
+    end
+
     private
 
     def base_options
