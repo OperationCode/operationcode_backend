@@ -11,6 +11,7 @@ User.destroy_all
 Service.destroy_all
 TeamMember.destroy_all
 AdminUser.destroy_all
+Role.destroy_all
 
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
