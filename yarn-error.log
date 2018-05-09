@@ -1,0 +1,32 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run backend
+
+PATH: 
+  /Users/Julie713/.rvm/gems/ruby-2.3.3@operationcode_backend/bin:/Users/Julie713/.rvm/gems/ruby-2.3.3@global/bin:/Users/Julie713/.rvm/rubies/ruby-2.3.3/bin:/Users/Julie713/.rvm/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  6.9.4
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "/Users/Julie713/bloc/open/operationcode_backend"
+      at MessageError.Error (native)
+      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:40048:15
+      at next (native)
+      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:109:13

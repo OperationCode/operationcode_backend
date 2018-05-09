@@ -32,13 +32,13 @@ end
 SeedTeamMembers.seed_all
 
 # Create Admin (development only)
-super_admin = Role.create(title: 'super_admin')
-admin = Role.create(title: 'admin')
-board = Role.create(title: 'board_member')
+super_admin = Role.create!(title: 'super_admin')
+admin = Role.create!(title: 'admin')
+board = Role.create!(title: 'board_member')
 
-AdminUser.create!(email: 'super_admin@example.com', password: 'password', password_confirmation: 'password', role_id: 1) if Rails.env.development?
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role_id: 2) if Rails.env.development?
-AdminUser.create!(email: 'board@example.com', password: 'password', password_confirmation: 'password', role_id: 3) if Rails.env.development?
+AdminUser.create!(email: 'super_admin@example.com', password: 'password', password_confirmation: 'password', role_id: super_admin.id) if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role_id: admin.id) if Rails.env.development?
+AdminUser.create!(email: 'board@example.com', password: 'password', password_confirmation: 'password', role_id: board.id) if Rails.env.development?
 
 users = User.count
 requests = Request.count
