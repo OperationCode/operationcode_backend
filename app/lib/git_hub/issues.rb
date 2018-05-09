@@ -12,8 +12,12 @@ module GitHub
     def fetch_and_save!
       get_issues.each do |issue|
         git_hub_user = GitHub::Committer.find_or_create_user! issue[:git_hub_user]
+        p 'git_hub_user:'
+        p git_hub_user
 
-        GitHub::Committer.find_or_create_statistic! issue, issue[:source_type], git_hub_user.id
+        git_hub_issue_stat = GitHub::Committer.find_or_create_statistic! issue, issue[:source_type], git_hub_user.id
+        p 'git_hub_issue_stat:'
+        p git_hub_issue_stat
       end
     end
 

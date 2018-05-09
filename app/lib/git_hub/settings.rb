@@ -50,7 +50,7 @@ module GitHub
     # @see https://developer.github.com/v3/#authentication
     #
     def self.authentication_level
-      GitHub::Authentication::O_AUTH_2_TOKEN
+      GitHub::Authentication::O_AUTH_2_KEY_SECRET
     end
   end
 end
