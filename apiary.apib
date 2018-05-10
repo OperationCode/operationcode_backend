@@ -564,6 +564,75 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Mentors | Collection [/api/v1/mentors]
+
+### List All Mentors Available [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 42,
+                "email": "aunta@howe.net",
+                "zip": "97201",
+                "first_name": "Boris",
+                "last_name": "Hackett",
+                "slack_name": "Han Solo",
+                "mentor": true,
+                "verified": false,
+                "role": nil
+            },
+            {
+                "id": 43,
+                "email": "claude_predovic@block.net",
+                "zip": "97201",
+                "first_name": "David",
+                "last_name": "Powlowski",
+                "slack_name": "Poe Dameron",
+                "mentor": true,
+                "verified": false,
+                "role": nil
+            }
+        ]
+
+## Mentor | Show [/api/v1/mentors/{id}]
+
++ Parameters
+
+    + id (integer, required) - Identification of mentor request in the form of an integer
+
+### Show a single mentor [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+    + Body
+
+            {
+                "id": 149
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": 149,
+                "email": "letha@oberbrunner.com",
+                "zip": "97201",
+                "first_name": "Jeramy",
+                "last_name": "Haley",
+                "slack_name": "Mace Windu",
+                "mentor": true,
+                "verified": false,
+                "role": nil,
+                "bio": "incentivize vertical e-services"
+            }
+
+
 ## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
 
@@ -1046,6 +1115,28 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             {
                 errors: "Some error message"
             }
+
+## Services | Collection [/api/v1/services]
+
+### List All Services Available [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 8,
+                "name": "Schuppe Group",
+                "created_at": "2018-05-09T15:15:40.194Z",
+                "updated_at": "2018-05-09T15:15:40.194Z"
+            },
+            {
+                "id": 9,
+                "name":"Bashirian, Haag and Konopelski",
+                "created_at": "2018-05-09T15:15:40.200Z",
+                "updated_at":"2018-05-09T15:15:40.200Z"
+            }
+        ]
+
 ## Sessions | Create [/api/v1/sessions{?user,email,password}]
 + Parameters
 
@@ -1259,6 +1350,19 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
+## Status | Collection [/api/v1/status]
+
+### Check status [GET]
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: "ok"
+            }
+
 
 ## Tag | Collection [/api/v1/tags]
 
