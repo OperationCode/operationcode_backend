@@ -1,5 +1,5 @@
 ActiveAdmin.register CodeSchool do
-  permit_params :name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only, :created_at, :updated_at, :notes, :mooc
+  permit_params :name, :url, :logo, :full_time, :hardware_included, :has_online, :online_only, :created_at, :updated_at, :notes, :mooc, :is_partner
 
   index do
     selectable_column
@@ -16,6 +16,7 @@ ActiveAdmin.register CodeSchool do
     column :updated_at
     column :notes
     column :mooc
+    column :is_partner
     column :created_at
     column :updated_at
 
@@ -33,6 +34,7 @@ ActiveAdmin.register CodeSchool do
       f.input :online_only
       f.input :notes
       f.input :mooc
+      f.input :is_partner
     end
 
     f.actions
