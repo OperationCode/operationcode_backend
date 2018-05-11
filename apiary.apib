@@ -568,6 +568,13 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 ### List All Mentors Available [GET]
 
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
 + Response 200 (application/json)
 
         [
@@ -608,12 +615,6 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Headers
 
             Authorization: Bearer Access-Token
-
-    + Body
-
-            {
-                "id": 149
-            }
 
 + Response 200 (application/json)
 
@@ -1120,6 +1121,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
 ### List All Services Available [GET]
 
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
 + Response 200 (application/json)
 
         [
@@ -1354,6 +1361,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 ## Status | Collection [/api/v1/status]
 
 ### Check status [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
 
 + Response 200 (application/json)
 
