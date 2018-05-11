@@ -11,6 +11,7 @@ User.destroy_all
 Service.destroy_all
 TeamMember.destroy_all
 AdminUser.destroy_all
+Role.destroy_all
 
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
@@ -29,10 +30,16 @@ FactoryGirl.create(:request, assigned_mentor: nell)
 end
 
 # Create team members
-SeedTeamMembers.seed_all
+SeedTeamMembers.seed_all 
 
 # Create Admin (development only)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+super_admin = Role.create!(title: 'super_admin')
+admin = Role.create!(title: 'admin')
+board = Role.create!(title: 'board_member')
+
+AdminUser.create!(email: 'super_admin@example.com', password: 'password', password_confirmation: 'password', role_id: super_admin.id) if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role_id: admin.id) if Rails.env.development?
+AdminUser.create!(email: 'board@example.com', password: 'password', password_confirmation: 'password', role_id: board.id) if Rails.env.development?
 
 users = User.count
 requests = Request.count

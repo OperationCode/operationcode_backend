@@ -1,3 +1,4 @@
+
 class Ability
   include CanCan::Ability
 
@@ -13,6 +14,7 @@ class Ability
       can :read, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :read, CodeSchool
       can :read, Location
+      can :read, Service
       can :read, TeamMember
       can :read, User
       can [:read, :update], AdminUser, id: user.id
@@ -21,6 +23,7 @@ class Ability
       can :read, :all
       can :manage, CodeSchool
       can :manage, Location
+      can :manage, Service
       can :manage, TeamMember
 
       return unless user.role&.super_admin?
