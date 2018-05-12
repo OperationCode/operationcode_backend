@@ -11,17 +11,17 @@ class ClientTest < Minitest::Test
 
   def test_post_record_creates_a_new_record_in_the_passed_table
     request_body = {
-      "fields" => {
-        "Slack User" => "test_case_1",
-        "Service" => [
-          "rec3ZQMCQsKPKlE2C"
+      'fields' => {
+        'Slack User' => 'test_case_1',
+        'Service' => [
+          'rec3ZQMCQsKPKlE2C'
         ],
-        "Skillsets" => [
-          "Java"
+        'Skillsets' => [
+          'Java'
         ],
-        "Additional Details" => "Some test description.",
-        "Mentor Requested" => [
-          "rec0SDZDK2DiW4PY9"
+        'Additional Details' => 'Some test description.',
+        'Mentor Requested' => [
+          'rec0SDZDK2DiW4PY9'
         ]
       }
     }.to_json

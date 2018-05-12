@@ -35,9 +35,7 @@ module Api
         end
 
         def verify_user!
-          unless current_user.verified?
-            raise ::Airtable::Error, 'User must be verified to request mentor services'
-          end
+          raise ::Airtable::Error, 'User must be verified to request mentor services' unless current_user.verified?
         end
       end
     end

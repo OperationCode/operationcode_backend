@@ -26,12 +26,12 @@ module Airtable
     #
     def create_mentor_request(body)
       request_body = {
-        "fields" => {
-          "Slack User" => body[:slack_user],
-          "Service" => format_for_posting(body[:services]),
-          "Skillsets" => format_for_posting(body[:skillsets]),
-          "Additional Details" => body[:additional_details],
-          "Mentor Requested" => format_for_posting(body[:mentor_requested])
+        'fields' => {
+          'Slack User' => body[:slack_user],
+          'Service' => format_for_posting(body[:services]),
+          'Skillsets' => format_for_posting(body[:skillsets]),
+          'Additional Details' => body[:additional_details],
+          'Mentor Requested' => format_for_posting(body[:mentor_requested])
         }
       }.to_json
 
@@ -57,7 +57,7 @@ module Airtable
     # @return [Array] An array of stripped strings
     #
     def format_for_posting(data_string)
-      data_string.split(",").map(&:strip)
+      data_string.split(',').map(&:strip)
     end
   end
 end

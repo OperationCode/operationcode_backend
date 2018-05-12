@@ -7,7 +7,7 @@ module Airtable
     def initialize
       api_key   = Rails.application.secrets.airtable_api_key
       base_id   = Rails.application.secrets.airtable_base_id
-      @headers  = { :Authorization => "Bearer #{api_key}"}
+      @headers  = { 'Authorization' => "Bearer #{api_key}" }
       @base_url = "https://api.airtable.com/v0/#{base_id}/"
     end
 
@@ -51,9 +51,11 @@ module Airtable
     # @example escaped('Mentor Request') => 'Mentor%20Request'
     # @see http://ruby-doc.org/stdlib-2.3.3/libdoc/uri/rdoc/URI/Escape.html
     #
+    # rubocop:disable Lint/UriEscapeUnescape
     def escaped(url_string)
       URI.escape url_string
     end
+    # rubocop:enable Lint/UriEscapeUnescape
 
     # If the Airtable rate limit is reached, a 429 status code is returned
     # @see https://airtable.com/appSqQz7spgg0I1jQ/api/docs#curl/ratelimits

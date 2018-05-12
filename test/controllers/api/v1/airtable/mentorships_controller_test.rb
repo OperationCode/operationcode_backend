@@ -27,11 +27,11 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
   test ':create creates a new mentor request record in Airtable' do
     VCR.use_cassette('airtable/mentorship/post_successful') do
       params = {
-        slack_user: "test_case_1",
-        services: "rec3ZQMCQsKPKlE2C",
-        skillsets: "Java",
-        additional_details: "Some test description.",
-        mentor_requested: "rec0SDZDK2DiW4PY9"
+        slack_user: 'test_case_1',
+        services: 'rec3ZQMCQsKPKlE2C',
+        skillsets: 'Java',
+        additional_details: 'Some test description.',
+        mentor_requested: 'rec0SDZDK2DiW4PY9'
       }
 
       post(
@@ -50,11 +50,11 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
   test ':create with multiple skillets creates a new mentor request record in Airtable' do
     VCR.use_cassette('airtable/mentorship/post_multiple_successful') do
       params = {
-        slack_user: "test_case_1",
-        services: "rec3ZQMCQsKPKlE2C",
-        skillsets: "Java, Study Help, Web (Frontend Development)",
-        additional_details: "Some test description.",
-        mentor_requested: "rec0SDZDK2DiW4PY9"
+        slack_user: 'test_case_1',
+        services: 'rec3ZQMCQsKPKlE2C',
+        skillsets: 'Java, Study Help, Web (Frontend Development)',
+        additional_details: 'Some test description.',
+        mentor_requested: 'rec0SDZDK2DiW4PY9'
       }
 
       post(
