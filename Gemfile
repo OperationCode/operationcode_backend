@@ -26,6 +26,7 @@ gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'rails', '~> 5.0.2'
 gem 'redis', '~> 3.0'
+gem 'rubocop', '~> 0.55.0', require: false
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
