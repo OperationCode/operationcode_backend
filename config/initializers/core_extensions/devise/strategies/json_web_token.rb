@@ -20,7 +20,7 @@ module Devise
         return nil unless valid_strategy?(strategy)
 
         claim = ::JsonWebToken.decode(token)
-        Rails.logger.debug "Claim decoded"
+        Rails.logger.debug 'Claim decoded'
         claim
       rescue => e
         Rails.logger.debug "Failed to decode token #{token}"

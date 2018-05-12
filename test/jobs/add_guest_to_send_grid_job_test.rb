@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class AddGuestToSendGridJobTest < ActiveJob::TestCase
-  test "it adds the guest to send grid" do
+  test 'it adds the guest to send grid' do
     guest = SendGridClient::Guest.user(valid_email)
 
     SendGridClient.any_instance.expects(:add_user).with(guest)
@@ -11,5 +11,5 @@ class AddGuestToSendGridJobTest < ActiveJob::TestCase
 end
 
 def valid_email
-  "john@gmail.com"
+  'john@gmail.com'
 end

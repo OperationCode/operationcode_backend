@@ -20,34 +20,34 @@ class GitHub::AuthenticationTest < ActiveSupport::TestCase
     @instance = GitHub::Authentication.new(@options)
   end
 
-  test "initialize constructs the expected variable" do
+  test 'initialize constructs the expected variable' do
     assert @instance.options == @options
     assert @instance.auth_level == GitHub::Authentication::O_AUTH_2_KEY_SECRET
   end
 
-  test "#set_options returns the passed in options when Rails.env.prod? is false" do
+  test '#set_options returns the passed in options when Rails.env.prod? is false' do
     assert @instance.set_options == @options
   end
 
-  test "#set_options merges the authenticated OAUTH_KEY options hash when Rails.env.prod? is true" do
+  test '#set_options merges the authenticated OAUTH_KEY options hash when Rails.env.prod? is true' do
     Rails.env.stubs(:prod?).returns(true)
 
     assert @instance.set_options == {
       :query =>
         {
-          :client_id => "some random id",
-          :client_secret => "some random key",
+          :client_id => 'some random id',
+          :client_secret => 'some random key',
           :per_page => 100
         },
       :headers =>
         {
-          "Accepts" => "application/vnd.github.v3+json",
-          "User-Agent" => "operationcode"
+          'Accepts' => 'application/vnd.github.v3+json',
+          'User-Agent' => 'operationcode'
         }
       }
   end
 
-  test "#set_options merges the authenticated OAUTH_TOKEN options hash when Rails.env.prod? is true" do
+  test '#set_options merges the authenticated OAUTH_TOKEN options hash when Rails.env.prod? is true' do
     GitHub::Settings.stubs(:authentication_level).returns(GitHub::Authentication::O_AUTH_2_TOKEN)
     Rails.env.stubs(:prod?).returns(true)
 
@@ -59,9 +59,9 @@ class GitHub::AuthenticationTest < ActiveSupport::TestCase
         },
       :headers =>
         {
-          "Accepts" => "application/vnd.github.v3+json",
-          "User-Agent" => "operationcode",
-          "Authorization" => "Bearer #{GitHub::Settings.o_auth_2_token}"
+          'Accepts' => 'application/vnd.github.v3+json',
+          'User-Agent' => 'operationcode',
+          'Authorization' => "Bearer #{GitHub::Settings.o_auth_2_token}"
         }
       }
   end

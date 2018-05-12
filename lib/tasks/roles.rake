@@ -1,5 +1,5 @@
 namespace :roles do
-  desc "Creates the initial set of roles"
+  desc 'Creates the initial set of roles'
   task initial_set: :environment do
     ['super_admin', 'admin', 'board_member'].each do |role|
       begin

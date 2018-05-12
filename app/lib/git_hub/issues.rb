@@ -50,7 +50,7 @@ module GitHub
       }
       response = client.search_for(query)
 
-      if response.headers["link"].present?
+      if response.headers['link'].present?
         GitHub::PageCompiler.new(query, response, client).compile_prs
       else
         response['items']

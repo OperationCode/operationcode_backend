@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::V1::MentorsControllerTest < ActionDispatch::IntegrationTest
 
-  test "users can get list of mentors" do
+  test 'users can get list of mentors' do
     skip
     user = create(:user)
     headers = authorization_headers(user)
@@ -11,7 +11,7 @@ class Api::V1::MentorsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, response.parsed_body.count
   end
 
-  test "users can show a mentor" do
+  test 'users can show a mentor' do
     user = create(:user)
     headers = authorization_headers(user)
     mentor = create(:mentor)

@@ -6,7 +6,7 @@ ActiveAdmin.register AdminUser do
     id_column
     column :email
 
-    column "Role" do |admin_user|
+    column 'Role' do |admin_user|
       admin_user.role.title
     end
 

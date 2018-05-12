@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TeamMemberTest < ActiveSupport::TestCase
-  test "member must have name, role and group" do
+  test 'member must have name, role and group' do
     team_member = build(:team_member)
     assert team_member.valid?
   end

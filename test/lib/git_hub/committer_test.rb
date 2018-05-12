@@ -27,7 +27,7 @@ class GitHub::CommitterTest < ActiveSupport::TestCase
     }
   end
 
-  test ".find_or_create_user! creates and returns non-existing GitHubUser" do
+  test '.find_or_create_user! creates and returns non-existing GitHubUser' do
     assert GitHubUser.count == 0
 
     user = GitHub::Committer.find_or_create_user! @user_attrs
@@ -35,14 +35,14 @@ class GitHub::CommitterTest < ActiveSupport::TestCase
     assert GitHubUser.first == user
   end
 
-  test ".find_or_create_user! returns the existing matched user" do
+  test '.find_or_create_user! returns the existing matched user' do
     user    = create :git_hub_user, git_hub_login: @user_attrs[:login]
     results = GitHub::Committer.find_or_create_user! @user_attrs.merge(id: user.git_hub_id)
 
     assert results == user
   end
 
-  test ".find_or_create_statistic! creates and returns non-existing GitHubStatistic" do
+  test '.find_or_create_statistic! creates and returns non-existing GitHubStatistic' do
     assert GitHubStatistic.count == 0
 
     stat = GitHub::Committer.find_or_create_statistic!(
@@ -54,7 +54,7 @@ class GitHub::CommitterTest < ActiveSupport::TestCase
     assert GitHubStatistic.first == stat
   end
 
-  test ".find_or_create_statistic! returns the existing matched user" do
+  test '.find_or_create_statistic! returns the existing matched user' do
     user = create :git_hub_user
     stat = create(
       :git_hub_statistic,

@@ -50,7 +50,7 @@ module GitHub
       }
       response = client.search_for(query)
 
-      if response.headers["link"].present?
+      if response.headers['link'].present?
         GitHub::PageCompiler.new(query, response, client).compile_prs
       else
         response['items']
@@ -77,7 +77,7 @@ module GitHub
       response = client.commits_for(repo, pull_request_number)
       query    = { repo: repo, pr_number: pull_request_number }
 
-      if response.headers["link"].present?
+      if response.headers['link'].present?
         GitHub::PageCompiler.new(query, response, client).compile_commits
       else
         response.parsed_response

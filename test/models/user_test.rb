@@ -33,7 +33,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'update_email@example.com', u.email
   end
 
-  test "role gets the Role with an id of user#role_id, if there is one" do
+  test 'role gets the Role with an id of user#role_id, if there is one' do
     user = create :user
     assert user.valid?
     assert user.role.nil?
@@ -194,18 +194,18 @@ class UserTest < ActiveSupport::TestCase
 
   test 'VALID_EMAIL regex ensures valid formatting' do
     # valid email formats
-    assert "john@gmail.com" =~ User::VALID_EMAIL
-    assert "j@example.com" =~ User::VALID_EMAIL
-    assert "jack@anything.io" =~ User::VALID_EMAIL
-    assert "jack@anything.org" =~ User::VALID_EMAIL
-    assert "jack@anything.net" =~ User::VALID_EMAIL
-    assert "jack@anything.whatever" =~ User::VALID_EMAIL
+    assert 'john@gmail.com' =~ User::VALID_EMAIL
+    assert 'j@example.com' =~ User::VALID_EMAIL
+    assert 'jack@anything.io' =~ User::VALID_EMAIL
+    assert 'jack@anything.org' =~ User::VALID_EMAIL
+    assert 'jack@anything.net' =~ User::VALID_EMAIL
+    assert 'jack@anything.whatever' =~ User::VALID_EMAIL
 
     # invalid email formats
-    refute "johngmail.com" =~ User::VALID_EMAIL
-    refute "john#gmail.com" =~ User::VALID_EMAIL
-    refute "john@gmail" =~ User::VALID_EMAIL
-    refute "@example.com" =~ User::VALID_EMAIL
+    refute 'johngmail.com' =~ User::VALID_EMAIL
+    refute 'john#gmail.com' =~ User::VALID_EMAIL
+    refute 'john@gmail' =~ User::VALID_EMAIL
+    refute '@example.com' =~ User::VALID_EMAIL
   end
 
   test '.community_leaders_nearby returns leaders within a radius from a lat/long' do

@@ -27,10 +27,10 @@ class GitHub::PageCompilerTest < Minitest::Test
     assert compiled_prs.size == 249
     assert compiled_prs.class == Array
     assert pr.class.to_s == 'Hash'
-    assert pr['html_url'] == "https://github.com/OperationCode/operationcode/pull/2"
+    assert pr['html_url'] == 'https://github.com/OperationCode/operationcode/pull/2'
     assert pr['id'] == 66372782
     assert pr['number'] == 2
-    assert pr['title'] == "Ignore OSX system files"
-    assert pr['state'] == "closed"
+    assert pr['title'] == 'Ignore OSX system files'
+    assert pr['state'] == 'closed'
   end
 end

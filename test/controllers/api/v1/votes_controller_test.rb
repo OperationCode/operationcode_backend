@@ -7,7 +7,7 @@ class Api::V1::VotesControllerTest < ActionDispatch::IntegrationTest
     @resource = create :resource
   end
 
-  test ":create endpoint creates a new Vote" do
+  test ':create endpoint creates a new Vote' do
     params = {
       user_id: @user.id,
       resource_id: @resource.id
@@ -19,7 +19,7 @@ class Api::V1::VotesControllerTest < ActionDispatch::IntegrationTest
     assert_equal({ 'vote' => vote.id }, response.parsed_body)
   end
 
-  test "User cannot create more than one Vote for a given Resource" do
+  test 'User cannot create more than one Vote for a given Resource' do
     new_resource = create :resource
     create :vote, user: @user, resource: new_resource
     vote = create :vote, user: @user, resource: @resource
@@ -37,7 +37,7 @@ class Api::V1::VotesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2, @user.votes.count
   end
 
-  test ":destroy endpoint destroys an existing Vote" do
+  test ':destroy endpoint destroys an existing Vote' do
     vote = create :vote, user: @user, resource: @resource
 
     params = {

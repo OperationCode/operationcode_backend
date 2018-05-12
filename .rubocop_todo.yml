@@ -732,13 +732,6 @@ Style/StabbyLambdaParentheses:
   Exclude:
     - 'app/models/git_hub_statistic.rb'
 
-# Offense count: 991
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Enabled: false
-
 # Offense count: 27
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, MinSize.

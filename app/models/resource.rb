@@ -9,7 +9,7 @@ class Resource < ApplicationRecord
   #
   # @see https://github.com/mbleigh/acts-as-taggable-on#usage
   #
-  def self.with_tags(tags="")
+  def self.with_tags(tags='')
     if tags.present?
       tagged_with(tags, any: true, parse: true)
     else
