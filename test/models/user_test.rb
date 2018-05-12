@@ -5,7 +5,6 @@ class UserTest < ActiveSupport::TestCase
     user = build(:user, user_opts)
 
     SlackJobs::InviterJob.expects(:perform_later).with(user_opts[:email])
-    AddUserToAirtablesJob.expects(:perform_later).with(user)
     AddUserToSendGridJob.expects(:perform_later).with(user)
 
     assert_difference('User.count') { user.save }
