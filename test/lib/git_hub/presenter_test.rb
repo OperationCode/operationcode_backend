@@ -125,7 +125,7 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     with_both  = GitHub::Presenter.new({ start_date: week_after, end_date: week_after }).oc_totals
 
     assert with_start == {
-      :total_repositories=>2,
+      :total_repositories => 2,
       total_closed_pull_requests: 10,
       total_closed_issues: 10,
       total_commits: 6,

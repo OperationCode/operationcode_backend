@@ -34,9 +34,9 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test 'website validation should accept valid websites' do
-  	valid_websites=%w[http://www.somewebsite.com https://www.1234.com http://www.foobar.net]
+  	valid_websites = %w[http://www.somewebsite.com https://www.1234.com http://www.foobar.net]
     valid_websites.each do |valid_website|
-      @event.url=valid_website
+      @event.url = valid_website
       assert @event.valid?, "#{valid_website.inspect} should be valid"
     end
   end
