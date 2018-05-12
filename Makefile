@@ -60,6 +60,10 @@ test: bg
 rubocop:
 	docker-compose run ${RAILS_CONTAINER} rubocop
 
+.PHONY: rubocop_auto_correct
+rubocop_auto_correct:
+	docker-compose run ${RAILS_CONTAINER} rubocop -a --auto-correct
+
 .PHONY: bundle
 bundle:
 	docker-compose run ${RAILS_CONTAINER} bash -c 'cd /app && bundle'
