@@ -5,7 +5,7 @@ class GitHub::AuthenticationTest < ActiveSupport::TestCase
     GitHubStatistic.delete_all
     GitHubUser.delete_all
 
-    @options =  {
+    @options = {
       query: {
         per_page: 100,
       },
