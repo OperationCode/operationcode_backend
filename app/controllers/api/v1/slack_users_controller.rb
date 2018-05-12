@@ -21,7 +21,7 @@ module Api
         elsif auth.dig(:errors).present?
           render json: { errors: auth.dig(:errors) }, status: :unauthorized
         else
-          render json: { errors: ["Auth token is invalid"] }, status: :unauthorized
+          render json: { errors: ['Auth token is invalid'] }, status: :unauthorized
         end
       end
 

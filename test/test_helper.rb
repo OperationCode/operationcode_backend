@@ -31,8 +31,8 @@ class ActiveSupport::TestCase
     return super if block.nil?
 
     cassette = [name, test_name].map do |str|
-      str.underscore.gsub(/[^A-Z]+/i, "_")
-    end.join("/")
+      str.underscore.gsub(/[^A-Z]+/i, '_')
+    end.join('/')
 
     super(test_name) do
       VCR.use_cassette(cassette) do

@@ -7,7 +7,7 @@ class UserMailerTest < ActiveSupport::TestCase
     new_user = create(:user)
     leader = create(:user)
     mail = UserMailer.new_user_in_leader_area(leader, new_user).deliver_now
-    assert_equal mail.subject, "A new user has joined within 50 miles of you"
+    assert_equal mail.subject, 'A new user has joined within 50 miles of you'
   end
 
   test 'renders the body' do

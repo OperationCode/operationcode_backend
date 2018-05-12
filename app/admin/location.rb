@@ -5,7 +5,7 @@ ActiveAdmin.register Location do
     selectable_column
     id_column
 
-    column "Code School" do |location|
+    column 'Code School' do |location|
       location.code_school.name
     end
 

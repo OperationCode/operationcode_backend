@@ -15,6 +15,6 @@ class RoleTest < ActiveSupport::TestCase
     duplicate_role.save
 
     refute duplicate_role.valid?
-    assert duplicate_role.errors.full_messages.include? "Title has already been taken"
+    assert duplicate_role.errors.full_messages.include? 'Title has already been taken'
   end
 end

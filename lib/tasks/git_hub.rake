@@ -1,5 +1,5 @@
 namespace :git_hub do
-  desc "Saves pull request, commit, issue and user details for all repositories to date, to GitHubStatistic and GitHubUser"
+  desc 'Saves pull request, commit, issue and user details for all repositories to date, to GitHubStatistic and GitHubUser'
   task collect_statistics: :environment do
     begin
       limit = GitHub::Client.new.rate_limit

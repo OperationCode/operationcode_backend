@@ -2,8 +2,8 @@ require 'test_helper'
 require_relative '../support/meetups/sample_api_responses'
 
 class MeetupTest < ActiveSupport::TestCase
-  test "some test" do
-    Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(group_endpoint_response)
+  test 'some test' do
+    Meetup.stubs(:get).with('/pro/operationcode/groups', options).returns(group_endpoint_response)
 
     parsed_response = Meetup.new.operationcode_data
 
@@ -11,28 +11,28 @@ class MeetupTest < ActiveSupport::TestCase
     assert_equal 21767819, parsed_response.first['id']
   end
 
-  test "group response code of 200 returns response" do
-    Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(group_endpoint_response)
+  test 'group response code of 200 returns response' do
+    Meetup.stubs(:get).with('/pro/operationcode/groups', options).returns(group_endpoint_response)
 
     assert_nothing_raised { Meetup.new.operationcode_data }
   end
 
-  test "group response code not equal to 200 raises error" do
-    Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(build_response(400))
+  test 'group response code not equal to 200 raises error' do
+    Meetup.stubs(:get).with('/pro/operationcode/groups', options).returns(build_response(400))
 
     assert_raises(Exception) { Meetup.new.operationcode_data }
   end
 
-  test "event response code of 200 returns response" do
-    url = "Operation-Code-Hampton-Roads"
+  test 'event response code of 200 returns response' do
+    url = 'Operation-Code-Hampton-Roads'
 
     Meetup.stubs(:get).with("/#{url}/events", options).returns(event_endpoint_response)
 
     assert_nothing_raised { Meetup.new.get_events_for url }
   end
 
-  test "event response code not equal to 200 raises error" do
-    url = "Operation-Code-Hampton-Roads"
+  test 'event response code not equal to 200 raises error' do
+    url = 'Operation-Code-Hampton-Roads'
 
     Meetup.stubs(:get).with("/#{url}/events", options).returns(build_response(400))
 
@@ -40,10 +40,10 @@ class MeetupTest < ActiveSupport::TestCase
   end
 
   #There are 4 events in the stub data, 1 with no venue
-  test "Meetup events with no venue are not included" do
-    url = "Operation-Code-Hampton-Roads"
+  test 'Meetup events with no venue are not included' do
+    url = 'Operation-Code-Hampton-Roads'
 
-    Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(group_endpoint_response)
+    Meetup.stubs(:get).with('/pro/operationcode/groups', options).returns(group_endpoint_response)
     Meetup.stubs(:get).with("/#{url}/events", options).returns(event_endpoint_response)
 
     events = Meetup.new.event_details_by_group
@@ -52,10 +52,10 @@ class MeetupTest < ActiveSupport::TestCase
   end
 
   #Event endpoint stubbed reponse has 3 good event records.
-  test "good data saves as new database record" do
-    url = "Operation-Code-Hampton-Roads"
+  test 'good data saves as new database record' do
+    url = 'Operation-Code-Hampton-Roads'
 
-    Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(group_endpoint_response)
+    Meetup.stubs(:get).with('/pro/operationcode/groups', options).returns(group_endpoint_response)
     Meetup.stubs(:get).with("/#{url}/events", options).returns(event_endpoint_response)
 
     assert_difference 'Event.count', 3 do
@@ -63,10 +63,10 @@ class MeetupTest < ActiveSupport::TestCase
     end
   end
 
-  test "duplicate data does not create new record" do
-    url = "Operation-Code-Hampton-Roads"
+  test 'duplicate data does not create new record' do
+    url = 'Operation-Code-Hampton-Roads'
 
-    Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(group_endpoint_response)
+    Meetup.stubs(:get).with('/pro/operationcode/groups', options).returns(group_endpoint_response)
     Meetup.stubs(:get).with("/#{url}/events", options).returns(event_endpoint_response)
 
     # create a Event record from first item in `event_endpoint_parsed_response`
@@ -80,10 +80,10 @@ class MeetupTest < ActiveSupport::TestCase
     assert_equal 3, Event.count
   end
 
-  test "updated data is updated in database" do
-    url = "Operation-Code-Hampton-Roads"
+  test 'updated data is updated in database' do
+    url = 'Operation-Code-Hampton-Roads'
 
-    Meetup.stubs(:get).with("/pro/operationcode/groups", options).returns(group_endpoint_response)
+    Meetup.stubs(:get).with('/pro/operationcode/groups', options).returns(group_endpoint_response)
     Meetup.stubs(:get).with("/#{url}/events", options).returns(event_endpoint_response)
 
     attributes = create_and_save_old_event

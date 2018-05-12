@@ -9,7 +9,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     @videos = create(:resource, name: 'Free videos')
   end
 
-  test ":index endpoint returns JSON list of Resources" do
+  test ':index endpoint returns JSON list of Resources' do
     get api_v1_resources_url, as: :json
 
     assert_equal response.status, 200
@@ -18,7 +18,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test ":index endpoint returns correct tagged Resources when :tags param is passed" do
+  test ':index endpoint returns correct tagged Resources when :tags param is passed' do
     params = { tags: 'screencast, articles' }
     blog = create(:resource, name: 'Blog posts')
     blog.tag_list.add 'articles', parse: true
@@ -34,17 +34,17 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test ":show endpoint returns JSON representation of the requested Resource" do
+  test ':show endpoint returns JSON representation of the requested Resource' do
     get api_v1_resource_url(@books.id), as: :json
 
     assert_equal response.status, 200
-    assert_equal @books.id, response.parsed_body["id"]
-    assert_equal @books.name, response.parsed_body["name"]
-    assert_equal @books.url, response.parsed_body["url"]
-    assert_equal @books.category, response.parsed_body["category"]
+    assert_equal @books.id, response.parsed_body['id']
+    assert_equal @books.name, response.parsed_body['name']
+    assert_equal @books.url, response.parsed_body['url']
+    assert_equal @books.category, response.parsed_body['category']
   end
 
-  test ":create endpoint creates a new Resource" do
+  test ':create endpoint creates a new Resource' do
     params = {
       name: 'Free videos site',
       url: 'free@videos.com',
@@ -59,7 +59,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     assert_equal({ 'resource' => videos.id, 'tags' => [] }, response.parsed_body)
   end
 
-  test ":create endpoint creates a new Resource with Tags" do
+  test ':create endpoint creates a new Resource with Tags' do
     params = {
       name: 'Free videos site',
       url: 'free@videos.com',
@@ -82,8 +82,8 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test ":update endpoint updates an existing Resource" do
-    new_url = "more_free_videos@videos.com"
+  test ':update endpoint updates an existing Resource' do
+    new_url = 'more_free_videos@videos.com'
     params = {
       id: @videos.id,
       name: @videos.name,
@@ -111,7 +111,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     guides.tag_list.add old_tags, parse: true
     guides.save
 
-    assert_equal guides.tags.map(&:name).sort.join(", "), old_tags
+    assert_equal guides.tags.map(&:name).sort.join(', '), old_tags
 
     params = {
       id: guides.id,
@@ -134,7 +134,7 @@ class Api::V1::ResourcesControllerTest < ActionDispatch::IntegrationTest
     assert_equal guides.tags.map(&:name).join, new_tags
   end
 
-  test ":destroy endpoint destroys an existing Resource" do
+  test ':destroy endpoint destroys an existing Resource' do
     params = {
       id: @videos.id,
       name: @videos.name,

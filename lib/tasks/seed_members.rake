@@ -1,5 +1,5 @@
 namespace :seed_team_members do
-  desc "Seed team members"
+  desc 'Seed team members'
   task all: :environment do
     SeedTeamMembers.seed_all
   end

@@ -26,11 +26,11 @@ class ClientTest < Minitest::Test
     assert response.headers['link'].present?
     assert response['items'].present?
     assert response.code.to_i == 200
-    assert pr['html_url'] == "https://github.com/OperationCode/operationcode/pull/753"
+    assert pr['html_url'] == 'https://github.com/OperationCode/operationcode/pull/753'
     assert pr['id'] == 240032714
     assert pr['number'] == @pr_number
-    assert pr['title'] == "Revert \"waffle.io Badge\""
-    assert pr['state'] == "closed"
+    assert pr['title'] == 'Revert "waffle.io Badge"'
+    assert pr['state'] == 'closed'
   end
 
   def test_successful_search_for_prs_for_single_page
@@ -52,11 +52,11 @@ class ClientTest < Minitest::Test
     assert response.headers['link'].present? == false
     assert response['items'].present?
     assert response.code.to_i == 200
-    assert pr['html_url'] == "https://github.com/OperationCode/operationcode_slashbot/pull/7"
+    assert pr['html_url'] == 'https://github.com/OperationCode/operationcode_slashbot/pull/7'
     assert pr['id'] == 221728378
     assert pr['number'] == 7
-    assert pr['title'] == "Add /android case"
-    assert pr['state'] == "closed"
+    assert pr['title'] == 'Add /android case'
+    assert pr['state'] == 'closed'
   end
 
   def test_successful_search_for_issues
@@ -83,7 +83,7 @@ class ClientTest < Minitest::Test
     assert issue['id'] == 250032036
     assert issue['number'] == 140
     assert issue['title'] == "Correct the spelling for 'distributions' in the contribution guide"
-    assert issue['state'] == "closed"
+    assert issue['state'] == 'closed'
   end
 
   def test_successful_single_pull_request
@@ -98,7 +98,7 @@ class ClientTest < Minitest::Test
     assert pr['additions'] == 0
     assert pr['deletions'] == 3
     assert pr['html_url'] == 'https://github.com/OperationCode/operationcode/pull/753'
-    assert pr['title'] == "Revert \"waffle.io Badge\""
+    assert pr['title'] == 'Revert "waffle.io Badge"'
     assert pr['merged_at'] == '2017-07-02T20:32:11Z'
 
     assert pr['user']['login'] == 'hollomancer'

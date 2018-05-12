@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
 
-  test "mentors can see all unclaimed requests" do
+  test 'mentors can see all unclaimed requests' do
     user = create(:mentor)
     headers = authorization_headers(user)
     request = create(:request)
@@ -20,7 +20,7 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
     assert response.status, :forbidden
   end
 
-  test "create new requests for current user" do
+  test 'create new requests for current user' do
     user = create(:user)
     headers = authorization_headers(user)
     service = create(:service)
@@ -40,7 +40,7 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
     assert_equal params[:request][:language], response.parsed_body['language']
   end
 
-  test "show individual request" do
+  test 'show individual request' do
     user = create(:mentor)
     headers = authorization_headers(user)
     request = create(:request)
@@ -50,7 +50,7 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
     assert_equal request.id, response.parsed_body['id']
   end
 
-  test "show error message when unauthorized user tries to view individual request" do
+  test 'show error message when unauthorized user tries to view individual request' do
     user = create(:user)
     headers = authorization_headers(user)
     request = create(:request)
@@ -60,7 +60,7 @@ class Api::V1::RequestsControllerTest < ActionDispatch::IntegrationTest
     assert response.status, :forbidden
   end
 
-  test "update individual request" do
+  test 'update individual request' do
     user = create(:user)
     mentor = create(:mentor)
     headers = authorization_headers(mentor)

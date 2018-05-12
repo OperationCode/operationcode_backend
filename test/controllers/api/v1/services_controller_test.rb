@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Api::V1::ServicesControllerTest < ActionDispatch::IntegrationTest
 
-  test "should get list of all services" do
+  test 'should get list of all services' do
     skip
     user = create(:user)
     headers = authorization_headers(user)

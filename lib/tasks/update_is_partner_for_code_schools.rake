@@ -1,16 +1,16 @@
 namespace :is_partner do
-  desc "Updates column is_partner for code schools"
+  desc 'Updates column is_partner for code schools'
   task code_schools: :environment do
     is_partner_schools = [
-                           "Bloc",
-                           "Coder Camps",
-                           "Code Platoon",
-                           "The Flatiron School",
-                           "Fullstack Academy",
-                           "Launch School",
-                           "Sabio",
-                           "Startup Institute",
-                           "Thinkful"
+                           'Bloc',
+                           'Coder Camps',
+                           'Code Platoon',
+                           'The Flatiron School',
+                           'Fullstack Academy',
+                           'Launch School',
+                           'Sabio',
+                           'Startup Institute',
+                           'Thinkful'
                           ]
                           
     schools = CodeSchool.where(name: is_partner_schools)

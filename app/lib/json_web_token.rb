@@ -15,9 +15,9 @@ class JsonWebToken
 
     decoded_token.first
   rescue JWT::ExpiredSignature
-    { errors: ["Auth token has expired"], status: 401 }
+    { errors: ['Auth token has expired'], status: 401 }
   rescue JWT::DecodeError
-    { errors: ["Invalid auth token"], status: 401 }
+    { errors: ['Invalid auth token'], status: 401 }
   rescue => e
     Rails.logger.debug "Failed to decode token: '#{token}'"
     Rails.logger.debug e
