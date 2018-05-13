@@ -633,6 +633,100 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "bio": "incentivize vertical e-services"
             }
 
+## Mentorship | Collection [/api/v1/airtable/mentorships]
+
+### Fetches all the mentor, services, and skillsets Airtables data [GET]
+
++ Response 200 (application/json)
+
+        {
+            "mentors"   => [
+                {
+                    "id"   => "rec0SDZDK2DiW4PY9",
+                    "name" => "Jack Smith"
+                },
+                ...
+            ],
+            "services"  => [
+                {
+                    "id"   => "rec3ZQMCQsKPKlE2C",
+                    "name" => "Mock Interview"
+                },
+                ...
+          ],
+            "skillsets" => [
+                {
+                  "id"   => "rec5FYXU6jTnXKPHg",
+                  "name" => "Javascript"
+                },
+                ...
+            ]
+        }
+
++ Response 422 (application/json)
+
+        {
+            error: "Some error message"
+        }
+
+## Mentorship | Create [/api/v1/airtable/mentorships{?slack_user,services,skillsets,additional_details,mentor_requested}]
+
++ Parameters
+
+    + slack_user (string, required) - The requestee's Slack user handle
+    + services (string, required) - A comma-separated list of Service ids
+    + skillsets (string, required) - A comma-separated list of Skillset names
+    + additional_details (text, optional) - Any additional details the requestee wants to share around their request
+    + mentor_requested (string, optional) - The id of the mentor being requested
+
+### Create a Mentor Request in Airtable (verified users only)[POST]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+      + Body
+
+            {
+                slack_user: "hpjaj",
+                services: "rec3ZQMCQsKPKlE2C",
+                skillsets: "Javascript",
+                additional_details: "Some additional description.",
+                mentor_requested: "rec0SDZDK2DiW4PY9"
+            }
+
+  + Response 201 (application/json)
+
+      + Body
+
+              {
+                "id"          => "recTvgUmwkGMG2HNc",
+                "fields"      => {
+                  "Slack User"         => "johnsmith",
+                  "Service"            => [
+                    "rec3ZQMCQsKPKlE2C"
+                  ],
+                  "Skillsets"          => [
+                    "Web (Frontend Development)",
+                    "Java",
+                    "Study Help"
+                  ],
+                  "Additional Details" => "Some test description.",
+                  "Mentor Requested"   => [
+                    "rec0SDZDK2DiW4PY9"
+                  ],
+                  "Created At"         => "2018-05-06T19:28:15.000Z"
+                },
+                "createdTime" => "2018-05-06T19:28:15.645Z"
+              }
+
+  + Response 422 (application/json)
+
+          {
+              error: "User must be verified to request mentor services"
+          }
 
 ## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters

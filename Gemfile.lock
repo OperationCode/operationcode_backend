@@ -59,8 +59,6 @@ GEM
       activerecord (>= 4.2.8)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    airtable (0.0.9)
-      httparty
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
@@ -170,9 +168,6 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
-    operationcode-airtable (0.3.0)
-      activesupport
-      airtable
     operationcode-slack (0.6.0)
       activesupport
       httparty
@@ -309,7 +304,6 @@ DEPENDENCIES
   lograge
   logstash-event
   mocha
-  operationcode-airtable
   operationcode-slack
   pg (~> 0.18)
   pry-rails

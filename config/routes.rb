@@ -51,6 +51,10 @@ Rails.application.routes.draw do
       namespace :users do
         post '/passwords/reset', to: 'passwords#reset'
       end
+
+      namespace :airtable do
+        resources :mentorships, only: [:index, :create]
+      end
     end
   end
 end
