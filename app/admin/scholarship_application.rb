@@ -23,6 +23,7 @@ ActiveAdmin.register ScholarshipApplication do
   form do |f|
     f.inputs do
       f.input :scholarship_id, label: 'Scholarship', as: :select, collection: Scholarship.all.order(:name).map { |scholarship| [scholarship.name, scholarship.id]}, include_blank: false
+      f.input :user_id, label: 'User', as: :select, collection: User.all.order(:name).map { |user| [user.name, user.id]}, include_blank: false
       f.input :reason
       f.input :terms_accepted
     end
