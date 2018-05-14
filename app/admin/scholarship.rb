@@ -1,5 +1,5 @@
 ActiveAdmin.register Scholarship do
-  permit_params :name, :description, :location, :terms, :open_time, :close_time
+  permit_params :name, :description, :location, :terms, :open_time, :close_time, :created_at, :updated_at
   index do
     selectable_column
     id_column
@@ -10,6 +10,8 @@ ActiveAdmin.register Scholarship do
     column :terms
     column :open_time
     column :close_time
+    column :created_at
+    column :updated_at
 
     actions
   end
