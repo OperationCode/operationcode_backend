@@ -8,8 +8,8 @@ ActiveAdmin.register ScholarshipApplication do
       scholarship_app.scholarship.name
     end
 
-    column 'User' do |user|
-      user.scholarship.name
+    column 'User' do |user_id|
+      user_id.scholarship.name
     end
 
     column :reason
