@@ -9,13 +9,15 @@ ActiveAdmin.register ScholarshipApplication do
     end
 
     column 'User' do |user_id|
-      user_id.scholarship.name
+      user_id.user.email
     end
 
     column :reason
     column :terms_accepted
     column :scholarship_id
     column :user_id
+    column :created_at
+    column :updated_at
 
     actions
   end
@@ -23,7 +25,7 @@ ActiveAdmin.register ScholarshipApplication do
   form do |f|
     f.inputs do
       f.input :scholarship_id, label: 'Scholarship', as: :select, collection: Scholarship.all.order(:name).map { |scholarship| [scholarship.name, scholarship.id] }, include_blank: false
-      f.input :user_id, label: 'User', as: :select, collection: User.all.order(:name).map { |user| [user.name, user.id] }, include_blank: false
+      f.input :user_id, label: 'User', as: :select, collection: User.all.order(:email).map { |user| [user.email, user.id] }, include_blank: false
       f.input :reason
       f.input :terms_accepted
     end
