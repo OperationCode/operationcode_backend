@@ -11,4 +11,8 @@ namespace :seed_team_members do
   task team: :environment do
     SeedTeamMembers.seed_team
   end
+
+  task reseed_all: :environment do
+    SeedTeamMembers.clean_seed
+  end
 end

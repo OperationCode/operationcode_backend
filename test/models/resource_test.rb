@@ -9,11 +9,11 @@ class ResourceTest < ActiveSupport::TestCase
     @books.save
   end
 
-  test ".with_tags returns all resources when no arguments are passed" do
+  test '.with_tags returns all resources when no arguments are passed' do
     assert_equal Resource.with_tags, [@books, @videos]
   end
 
-  test ".with_tags returns only relevant tagged resources when tagged arguments are passed" do
+  test '.with_tags returns only relevant tagged resources when tagged arguments are passed' do
     assert_equal Resource.with_tags('books'), [@books]
   end
 end

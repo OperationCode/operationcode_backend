@@ -5,7 +5,6 @@ class UserTest < ActiveSupport::TestCase
     user = build(:user, user_opts)
 
     SlackJobs::InviterJob.expects(:perform_later).with(user_opts[:email])
-    AddUserToAirtablesJob.expects(:perform_later).with(user)
     AddUserToSendGridJob.expects(:perform_later).with(user)
 
     assert_difference('User.count') { user.save }
@@ -19,7 +18,7 @@ class UserTest < ActiveSupport::TestCase
   test 'email must be unique' do
     test_email = 'test@example.com'
     assert create(:user, email: test_email)
-    refute User.new(email: test_email).valid?
+    refute User.new(email: test_email, zip: '97201').valid?
   end
 
   test 'email is downcased on create' do
@@ -33,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'update_email@example.com', u.email
   end
 
-  test "role gets the Role with an id of user#role_id, if there is one" do
+  test 'role gets the Role with an id of user#role_id, if there is one' do
     user = create :user
     assert user.valid?
     assert user.role.nil?
@@ -58,6 +57,22 @@ class UserTest < ActiveSupport::TestCase
     u.update_attributes(zip: 'HP2 4HG')
     assert_equal 51.75592890000001, u.latitude
     assert_equal -0.4447103, u.longitude
+  end
+
+  test 'empty spaces on ends of a zip code are stripped out' do
+    user = create :user, zip: ' 97201 '
+
+    assert user.zip == '97201'
+  end
+
+  test 'validates the presence of a zip' do
+    user = build :user, zip: nil
+    refute user.valid?
+    assert user.errors.full_messages == ["Zip can't be blank"]
+
+    user = build :user, zip: ''
+    refute user.valid?
+    assert user.errors.full_messages == ["Zip can't be blank"]
   end
 
   test 'longitude and longitude are nil for unknown zipcodes' do
@@ -92,6 +107,27 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 39.7312095, u.latitude
     assert_equal -104.9826965, u.longitude
     assert_equal 'CO', u.state
+  end
+
+  test 'enqueues the job to notify community leaders if a new user is geocoded' do
+    user = build(:user, latitude: 1, longitude: 1, zip: '97201')
+    user.stubs(:geocode)
+    SendEmailToLeadersJob.expects(:perform_later).once
+    user.save!
+  end
+
+  test 'enqueues the job to notify community leaders if a user has updated geo-coordinates' do
+    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
+    user.stubs(:geocode)
+    SendEmailToLeadersJob.expects(:perform_later).with(user.id).once
+    user.update_attributes!(latitude: 2, longitude: 2, zip: '11101')
+  end
+
+  test 'does not enqueue a job to notify community leaders if geo-coordinates are not updated' do
+    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
+    user.stubs(:geocode)
+    SendEmailToLeadersJob.expects(:perform_later).never
+    user.update_attributes!(email: 'NewEmail@example.com')
   end
 
   def user_opts
@@ -154,21 +190,38 @@ class UserTest < ActiveSupport::TestCase
     results = User.count_by_state ''
     assert_equal 0, results
   end
+
   test 'VALID_EMAIL regex ensures valid formatting' do
     # valid email formats
-    assert "john@gmail.com" =~ User::VALID_EMAIL
-    assert "j@example.com" =~ User::VALID_EMAIL
-    assert "jack@anything.io" =~ User::VALID_EMAIL
-    assert "jack@anything.org" =~ User::VALID_EMAIL
-    assert "jack@anything.net" =~ User::VALID_EMAIL
-    assert "jack@anything.whatever" =~ User::VALID_EMAIL
+    assert 'john@gmail.com' =~ User::VALID_EMAIL
+    assert 'j@example.com' =~ User::VALID_EMAIL
+    assert 'jack@anything.io' =~ User::VALID_EMAIL
+    assert 'jack@anything.org' =~ User::VALID_EMAIL
+    assert 'jack@anything.net' =~ User::VALID_EMAIL
+    assert 'jack@anything.whatever' =~ User::VALID_EMAIL
 
     # invalid email formats
-    refute "johngmail.com" =~ User::VALID_EMAIL
-    refute "john#gmail.com" =~ User::VALID_EMAIL
-    refute "john@gmail" =~ User::VALID_EMAIL
-    refute "@example.com" =~ User::VALID_EMAIL
+    refute 'johngmail.com' =~ User::VALID_EMAIL
+    refute 'john#gmail.com' =~ User::VALID_EMAIL
+    refute 'john@gmail' =~ User::VALID_EMAIL
+    refute '@example.com' =~ User::VALID_EMAIL
   end
+
+  test '.community_leaders_nearby returns leaders within a radius from a lat/long' do
+    User.any_instance.stubs(:geocode)
+    tom = create :user, latitude: 1, longitude: 1
+    tom.tag_list.add(User::LEADER)
+    tom.save!
+    far_away_leader = create :user, latitude: 20, longitude: 20
+    far_away_leader.tag_list.add(User::LEADER)
+    far_away_leader.save!
+    not_a_leader = create :user, latitude: 1, longitude: 1
+    results = User.community_leaders_nearby(1, 1, 10)
+    assert_includes results, tom
+    assert_not_includes results, far_away_leader
+    assert_not_includes results, not_a_leader
+  end
+
   test '.fetch_social_user_and_redirect_path returns the user and redirect path in an array' do
     data = { first_name: 'Sterling', last_name: 'Archer', email: 'cyril@kickme.org', zip: '12345', password: 'VoiceMail' }
     results = User.fetch_social_user_and_redirect_path(data)
@@ -176,6 +229,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal data[:email], results[0][:email]
     refute_nil results[1]
   end
+
   test '.fetch_social_user_and_redirect_path creates the user if there is none and returns the user and /signup-info in an array' do
     data = { first_name: 'Leia', last_name: 'Organa', email: 'organa@resistance.net', zip: '66666', password: 'RestInPeace' }
 

@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :scholarship_application do
-    reason "MyText"
+    reason 'MyText'
     terms_accpeted false
-    references ""
-    references ""
+    references ''
+    references ''
   end
 end

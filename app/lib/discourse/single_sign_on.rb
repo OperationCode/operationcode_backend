@@ -17,11 +17,11 @@ module Discourse
     attr_accessor :sso_secret, :sso_url
 
     def self.sso_secret
-      raise RuntimeError, "sso_secret not implemented on class, be sure to set it on instance"
+      raise RuntimeError, 'sso_secret not implemented on class, be sure to set it on instance'
     end
 
     def self.sso_url
-      raise RuntimeError, "sso_url not implemented on class, be sure to set it on instance"
+      raise RuntimeError, 'sso_url not implemented on class, be sure to set it on instance'
     end
 
     def self.parse(payload, sso_secret = nil)
@@ -44,7 +44,7 @@ module Discourse
         val = decoded_hash[k.to_s]
         val = val.to_i if FIXNUMS.include? k
         if BOOLS.include? k
-          val = ["true", "false"].include?(val) ? val == "true" : nil
+          val = ['true', 'false'].include?(val) ? val == 'true' : nil
         end
         sso.send("#{k}=", val)
       end
@@ -75,7 +75,7 @@ module Discourse
     end
 
     def sign(payload)
-      OpenSSL::HMAC.hexdigest("sha256", sso_secret, payload)
+      OpenSSL::HMAC.hexdigest('sha256', sso_secret, payload)
     end
 
     def to_url(base_url=nil)

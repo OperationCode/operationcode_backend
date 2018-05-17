@@ -43,7 +43,7 @@ module GitHub
     private
 
     def pages_in(response)
-      pages = response.headers["link"].split(",").last.match(/&page=(\d+).*$/)[1]
+      pages = response.headers['link'].split(',').last.match(/&page=(\d+).*$/)[1]
 
       pages.to_i
     end

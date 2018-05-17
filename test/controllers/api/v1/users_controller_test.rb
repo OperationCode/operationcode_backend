@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
-  test ":index returns User.count" do
+  test ':index returns User.count' do
     2.times { create :user }
 
     get api_v1_users_url, as: :json
@@ -21,20 +21,20 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test '#create returns error with invalid zip code' do
+  test '#create returns error with missing zip code' do
     post api_v1_users_url,
       params: {
         user: {
           email: 'test@example.com',
           first_name: 'new first name',
           password: 'Password',
-          zip: 'bad_zip_code'
+          zip: ''
         }
       },
       as: :json
 
     body = JSON.parse(response.body)
-    assert_equal ["not found"], body["zip_code"]
+    assert body['zip'] == ["can't be blank"]
   end
 
   test '#create is successful with valid zip code' do
@@ -57,7 +57,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert user_params[:zip], user.zip
   end
 
-  test ":by_location returns User.count of users located in the passed in location" do
+  test ':by_location returns User.count of users located in the passed in location' do
     tom = create :user
     sam = create :user
 

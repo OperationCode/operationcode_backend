@@ -35,32 +35,32 @@ class SendGridClient
     Rails.logger.info("Sending email to #{options[:to]} at #{Time.current} re: #{options[:subject]}")
 
     mail = {
-      "personalizations" => [
+      'personalizations' => [
         {
-          "to" => [
+          'to' => [
             {
-              "email" => options[:to]
+              'email' => options[:to]
             }
           ],
-          "subject" => options[:subject],
-          "substitutions" => {
-            "-user_count-" => options[:user_count].to_s
+          'subject' => options[:subject],
+          'substitutions' => {
+            '-user_count-' => options[:user_count].to_s
           },
-          "template_id" => options[:transactional_template_id]
+          'template_id' => options[:transactional_template_id]
         }
       ],
-      "from" => {
-        "email" => options[:from]
+      'from' => {
+        'email' => options[:from]
       },
-      "content" => [
+      'content' => [
         {
-          "type" => "text/plain",
-          "value" => options[:body]
+          'type' => 'text/plain',
+          'value' => options[:body]
         }
       ]
     }
 
-    @sendgrid.client.mail._("send").post(request_body: mail)
+    @sendgrid.client.mail._('send').post(request_body: mail)
   rescue => e
     Rails.logger.error "Failed to send email to #{options[:to]} re: #{options[:subject]} due to: #{e}"
     Rails.logger.error e.backtrace.join("\n")

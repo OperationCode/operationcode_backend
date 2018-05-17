@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :event do
-    name "MyEvent"
+    name 'MyEvent'
     description { Faker::Hacker.say_something_smart }
     url { Faker::Internet.url }
     start_date { Faker::Time.forward(30, :morning) }
@@ -9,7 +9,7 @@ FactoryGirl.define do
     address1 { Faker::Address.street_address }
     address2 { Faker::Address.street_address }
     city { Faker::Address.city }
-    source_type "Meetup"
+    source_type 'Meetup'
     source_id { Faker::Lorem.characters(7) }
     group { Faker::Lorem.characters(10) }
 

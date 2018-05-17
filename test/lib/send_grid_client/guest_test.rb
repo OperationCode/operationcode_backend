@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class SendGridClient::GuestTest < ActiveSupport::TestCase
-  test "#user creates a user-like Struct, to represent an OC guest" do
+  test '#user creates a user-like Struct, to represent an OC guest' do
     guest = SendGridClient::Guest.user(valid_email)
 
-    assert guest.to_s.include?("struct")
+    assert guest.to_s.include?('struct')
   end
 
   test "#user creates an :id method that defaults to 'guest-id'" do
@@ -13,7 +13,7 @@ class SendGridClient::GuestTest < ActiveSupport::TestCase
     assert guest.id == 'guest-id'
   end
 
-  test "#user creates an :email method that is set to the passed email address" do
+  test '#user creates an :email method that is set to the passed email address' do
     guest = SendGridClient::Guest.user(valid_email)
 
     assert guest.email == valid_email
@@ -23,14 +23,14 @@ class SendGridClient::GuestTest < ActiveSupport::TestCase
     guest = SendGridClient::Guest.user(valid_email)
 
     assert guest.attributes == {
-      "id" => "guest-id",
-      "email" => valid_email,
-      "first_name" => "",
-      "last_name" => ""
+      'id' => 'guest-id',
+      'email' => valid_email,
+      'first_name' => '',
+      'last_name' => ''
     }
   end
 end
 
 def valid_email
-  "john@gmail.com"
+  'john@gmail.com'
 end

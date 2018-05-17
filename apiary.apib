@@ -20,7 +20,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "hardware_included": false,
                 "has_online": false,
                 "online_only": false,
-                "mooc": false
+                "mooc": false,
+                "rep_name": "Kenny",
+                "rep_email": "Kenny@test.com",
+                "is_partner": false,
+                "mooc": false,
                 "locations":  [
                       {
                           "va_accepted": false,
@@ -40,7 +44,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             },
         ]
 
-## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc}]
+## CodeSchool | Create [/api/v1/code_schools{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,is_partner,mooc,rep_name,rep_email}]
+
 + Parameters
 
     + name (string, required) - The CodeSchool's name
@@ -51,7 +56,11 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + has_online (boolean, required) - Does the CodeSchool have an online component
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
+    + is_partner(boolean, required) - Is the CodeSchool a partner
     + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
+    + rep_name(string, optional) - The CodeSchool's representatives name
+    + rep_email(string, optional) - The CodeSchool's representatives email
+
 
 ### Create a CodeSchool Member [POST]
 
@@ -68,11 +77,14 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                       "name": "CoderSchool",
                       "url": "http://www.CoderSchool.vn",
                       "logo": "https://d388w23p6r1vqc.cloudfront.net/img/startups/11852/logo-1457327647.png",
-                      "full_time": "false",
-                      "hardware_included": "false",
-                      "has_online": "true",
-                      "online_only": "false"
-                      "mooc": "false"
+                      "full_time": false,
+                      "hardware_included": false,
+                      "has_online": true,
+                      "online_only": false,
+                      "is_partner": false,
+                      "mooc": false,
+                      "rep_name": "kenny",
+                      "rep_email": "kenny@test.com"
                       }
                   }
 
@@ -111,7 +123,10 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             "created_at": "2017-09-26T06:54:58.607Z",
             "updated_at": "2017-09-26T06:54:58.607Z",
             "notes": null,
-            "mooc": false
+            "is_partner": false,
+            "mooc": false,
+            "rep_name": "kenny",
+            "rep_email": "kenny@test.com"
         }
 
 + Response 404 (application/json)
@@ -150,7 +165,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   errors: "Some error message"
               }
 
-## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc}]
+## CodeSchool | Update [/api/v1/code_schools/{code_school_id}{?name,url,logo,full_time,hardware_included,has_online,online_only,notes,mooc,rep_name,rep_email}]
 
 + Parameters
 
@@ -163,6 +178,8 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + online_only (boolean, required) - Is the CodeSchool online only?
     + notes (text, optional) - Any additional information about the CodeSchool
     + mooc (boolean, optional) - Does the CodeSchool offer Massive Open Online Courses?
+    + rep_name(string, optional) - The CodeSchool's representatives name
+    + rep_email(string, optional) - The CodeSchool's representatives email
 
 ### Update an Existing CodeSchool [PUT]
 
@@ -547,6 +564,176 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Mentors | Collection [/api/v1/mentors]
+
+### List All Mentors Available [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 42,
+                "email": "aunta@howe.net",
+                "zip": "97201",
+                "first_name": "Boris",
+                "last_name": "Hackett",
+                "slack_name": "Han Solo",
+                "mentor": true,
+                "verified": false,
+                "role": nil
+            },
+            {
+                "id": 43,
+                "email": "claude_predovic@block.net",
+                "zip": "97201",
+                "first_name": "David",
+                "last_name": "Powlowski",
+                "slack_name": "Poe Dameron",
+                "mentor": true,
+                "verified": false,
+                "role": nil
+            }
+        ]
+
+## Mentor | Show [/api/v1/mentors/{id}]
+
++ Parameters
+
+    + id (integer, required) - Identification of mentor request in the form of an integer
+
+### Show a single mentor [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": 149,
+                "email": "letha@oberbrunner.com",
+                "zip": "97201",
+                "first_name": "Jeramy",
+                "last_name": "Haley",
+                "slack_name": "Mace Windu",
+                "mentor": true,
+                "verified": false,
+                "role": nil,
+                "bio": "incentivize vertical e-services"
+            }
+
+## Mentorship | Collection [/api/v1/airtable/mentorships]
+
+### Fetches all the mentor, services, and skillsets Airtables data [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+        {
+            "mentors"   => [
+                {
+                    "id"   => "rec0SDZDK2DiW4PY9",
+                    "name" => "Jack Smith"
+                },
+                ...
+            ],
+            "services"  => [
+                {
+                    "id"   => "rec3ZQMCQsKPKlE2C",
+                    "name" => "Mock Interview"
+                },
+                ...
+          ],
+            "skillsets" => [
+                {
+                  "id"   => "rec5FYXU6jTnXKPHg",
+                  "name" => "Javascript"
+                },
+                ...
+            ]
+        }
+
++ Response 422 (application/json)
+
+        {
+            error: "Some error message"
+        }
+
+## Mentorship | Create [/api/v1/airtable/mentorships{?slack_user,services,skillsets,additional_details,mentor_requested}]
+
++ Parameters
+
+    + slack_user (string, required) - The requestee's Slack user handle
+    + services (string, required) - A comma-separated list of Service ids
+    + skillsets (string, required) - A comma-separated list of Skillset names
+    + additional_details (text, optional) - Any additional details the requestee wants to share around their request
+    + mentor_requested (string, optional) - The id of the mentor being requested
+
+### Create a Mentor Request in Airtable (verified users only)[POST]
+
+  + Request (application/json)
+
+      + Headers
+
+              Authorization: Bearer Access-Token
+
+      + Body
+
+            {
+                slack_user: "hpjaj",
+                services: "rec3ZQMCQsKPKlE2C",
+                skillsets: "Javascript",
+                additional_details: "Some additional description.",
+                mentor_requested: "rec0SDZDK2DiW4PY9"
+            }
+
+  + Response 201 (application/json)
+
+      + Body
+
+              {
+                "id"          => "recTvgUmwkGMG2HNc",
+                "fields"      => {
+                  "Slack User"         => "johnsmith",
+                  "Service"            => [
+                    "rec3ZQMCQsKPKlE2C"
+                  ],
+                  "Skillsets"          => [
+                    "Web (Frontend Development)",
+                    "Java",
+                    "Study Help"
+                  ],
+                  "Additional Details" => "Some test description.",
+                  "Mentor Requested"   => [
+                    "rec0SDZDK2DiW4PY9"
+                  ],
+                  "Created At"         => "2018-05-06T19:28:15.000Z"
+                },
+                "createdTime" => "2018-05-06T19:28:15.645Z"
+              }
+
+  + Response 422 (application/json)
+
+          {
+              error: "User must be verified to request mentor services"
+          }
+
 ## Request | Request a Mentor [/api/v1/requests{?id,user_id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
 + Parameters
 
@@ -626,6 +813,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 "assigned_mentor_id": 260
             }
 
++ Response 403 (application/json)
+
+        {
+            error: 'You are not authorized to access this resource.'
+        }
+
 ## Request | Collection [/api/v1/requests]
 
 ### Get All Unclaimed Mentor Requests [GET]
@@ -667,6 +860,12 @@ API endpoints that Operation Code's Rails backend makes available to its React f
 
         {
             error: 'Unauthorized'
+        }
+
++ Response 403 (application/json)
+
+        {
+            error: 'You are not authorized to access this resource.'
         }
 
 ## Request | Update [/api/v1/requests/{?user_id,id,details,language,service_id,requested_mentor_id,status,assigned_mentor_id}]
@@ -1017,6 +1216,34 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             {
                 errors: "Some error message"
             }
+
+## Services | Collection [/api/v1/services]
+
+### List All Services Available [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 8,
+                "name": "Schuppe Group",
+                "created_at": "2018-05-09T15:15:40.194Z",
+                "updated_at": "2018-05-09T15:15:40.194Z"
+            },
+            {
+                "id": 9,
+                "name":"Bashirian, Haag and Konopelski",
+                "created_at": "2018-05-09T15:15:40.200Z",
+                "updated_at":"2018-05-09T15:15:40.200Z"
+            }
+        ]
+
 ## Sessions | Create [/api/v1/sessions{?user,email,password}]
 + Parameters
 
@@ -1062,6 +1289,41 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 errors: "Some error message"
             }
 
+## Slack User | Access [/api/v1/slack_users/access]
+
+### Health check to confirm access [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                message: "You have access!"
+            }
+
++ Response 401 (application/json)
+
+        {
+            errors: ["Auth token is incorrect"]
+        }
+
+        /* or*/
+
+        {
+            errors: ["Auth token has expired"]
+        }
+
+        /* or*/
+
+        {
+            errors: ["Invalid auth token"]
+        }
 
 ## Slack User | Invite [/api/v1/slack_users]
 
@@ -1192,6 +1454,25 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
+## Status | Collection [/api/v1/status]
+
+### Check status [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                status: "ok"
+            }
+
 
 ## Tag | Collection [/api/v1/tags]
 

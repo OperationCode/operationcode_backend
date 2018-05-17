@@ -1,0 +1,8 @@
+inherit_from: .rubocop_todo.yml
+
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
+# SupportedStyles: single_quotes, double_quotes
+Style/StringLiterals:
+  Exclude:
+    - 'db/**/*'

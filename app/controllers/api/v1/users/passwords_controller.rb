@@ -10,7 +10,7 @@ module Api
         def reset
           user = User.find_by email: params[:email]
 
-          raise "Could not find a user with that email address" unless user.present?
+          raise 'Could not find a user with that email address' unless user.present?
           user.send_reset_password_instructions
 
           render json: { status: :ok }

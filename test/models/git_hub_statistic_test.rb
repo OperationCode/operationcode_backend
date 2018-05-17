@@ -22,7 +22,7 @@ class GitHubStatisticTest < ActiveSupport::TestCase
     assert_equal statistic.completed_on.to_s, GitHubStatistic.last_issue_completed_on
   end
 
-  test ".users_made_a_commit returns the unique count of users that have made a commit" do
+  test '.users_made_a_commit returns the unique count of users that have made a commit' do
     GitHubStatistic.delete_all
 
     stan, david, beth = create_users 3
@@ -35,7 +35,7 @@ class GitHubStatisticTest < ActiveSupport::TestCase
     assert_equal GitHubStatistic.users_made_a_commit, 2
   end
 
-  test ".users_closed_a_pr returns the unique count of users that have closed a pull request" do
+  test '.users_closed_a_pr returns the unique count of users that have closed a pull request' do
     GitHubStatistic.delete_all
 
     stan, david, beth = create_users 3
@@ -48,7 +48,7 @@ class GitHubStatisticTest < ActiveSupport::TestCase
     assert_equal GitHubStatistic.users_closed_a_pr, 2
   end
 
-  test ".repository_count returns the unique count of repositories we have statistics on" do
+  test '.repository_count returns the unique count of repositories we have statistics on' do
     GitHubStatistic.delete_all
 
     create :git_hub_statistic, repository: 'uno'
@@ -58,7 +58,7 @@ class GitHubStatisticTest < ActiveSupport::TestCase
     assert_equal GitHubStatistic.repository_count, 2
   end
 
-  test ".date_range returns records that have a :completed_on Date bewtween the passed in start and end dates" do
+  test '.date_range returns records that have a :completed_on Date bewtween the passed in start and end dates' do
     GitHubStatistic.delete_all
 
     twenty_10 = create :git_hub_statistic, completed_on: '2010-01-15'
@@ -73,7 +73,7 @@ class GitHubStatisticTest < ActiveSupport::TestCase
     assert_equal GitHubStatistic.date_range(start_date: '2014-01-10', end_date: '2014-01-19'), [twenty_14]
   end
 
-  test ".average_closed_prs_per_user returns a float value of the average number of pull requests closed, across all repositories, per user" do
+  test '.average_closed_prs_per_user returns a float value of the average number of pull requests closed, across all repositories, per user' do
     john = create :git_hub_user
     jack = create :git_hub_user
 
@@ -83,7 +83,7 @@ class GitHubStatisticTest < ActiveSupport::TestCase
     assert GitHubStatistic.average_closed_prs_per_user == 4.0
   end
 
-  test ".average_commits_prs_per_user returns a float value of the average number of commits, across all repositories, per user" do
+  test '.average_commits_prs_per_user returns a float value of the average number of commits, across all repositories, per user' do
     john = create :git_hub_user
     jack = create :git_hub_user
 

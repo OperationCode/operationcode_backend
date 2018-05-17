@@ -14,7 +14,7 @@ class UpdateSchoolLogosTest < ActiveSupport::TestCase
     assert_kind_of CodeSchool::ActiveRecord_Relation, schools
     schools.each do |school|
       logo = school.logo
-      assert_match "https://s3.amazonaws.com/operationcode-assets", logo
+      assert_match 'https://s3.amazonaws.com/operationcode-assets', logo
     end
   end
 end

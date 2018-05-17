@@ -77,10 +77,10 @@ class PullRequestsTest < Minitest::Test
     assert @pr_instance.compiled_pull_requests.first[:repository] == 'operationcode_slashbot'
 
     assert @pr_instance.compiled_pull_requests.second[:source_type] == 'Commit'
-    assert @pr_instance.compiled_pull_requests.second[:title] == "Add /android case"
+    assert @pr_instance.compiled_pull_requests.second[:title] == 'Add /android case'
 
     assert @pr_instance.compiled_pull_requests.third[:source_type] == 'Commit'
-    assert @pr_instance.compiled_pull_requests.third[:title] == "Change environment variable for node"
+    assert @pr_instance.compiled_pull_requests.third[:title] == 'Change environment variable for node'
 
     assert @pr_instance.compiled_pull_requests.last[:source_type] == 'PullRequest'
     assert @pr_instance.compiled_pull_requests.last[:number] == 6

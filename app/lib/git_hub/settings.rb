@@ -30,11 +30,15 @@ module GitHub
     end
 
     def self.client_id
-      OperationCode.fetch_secret_with(name: :git_hub_client_id)
+      Rails.application.secrets.git_hub_client_id
     end
 
     def self.client_secret
-      OperationCode.fetch_secret_with(name: :git_hub_client_secret)
+      Rails.application.secrets.git_hub_client_secret
+    end
+
+    def self.o_auth_2_token
+      Rails.application.secrets.git_hub_oauth_token
     end
 
     # There are three ways to authenticate through GitHub's API v3.

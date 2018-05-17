@@ -1,5 +1,5 @@
 namespace :meetup do
-  desc "Rake task to get Meetup API data"
+  desc 'Rake task to get Meetup API data'
   task :fetch => :environment do
     begin
       Meetup.new.add_events_to_database!

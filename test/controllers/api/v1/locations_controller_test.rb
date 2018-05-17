@@ -6,7 +6,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     @headers = authorization_headers(user)
   end
 
-  test "INVALID :create POST /api/v1/code_schools/:code_school_id/locations" do
+  test 'INVALID :create POST /api/v1/code_schools/:code_school_id/locations' do
     school = create(:code_school)
     params = {
       location: {
@@ -25,7 +25,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
-  test "UNAUTHORIZED :create POST /api/v1/code_schools/:code_school_id/locations" do
+  test 'UNAUTHORIZED :create POST /api/v1/code_schools/:code_school_id/locations' do
     school = create(:code_school)
     params = {
       location: {
@@ -44,7 +44,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
-  test ":create POST /api/v1/code_schools/:code_school_id/locations" do
+  test ':create POST /api/v1/code_schools/:code_school_id/locations' do
     school = create(:code_school)
     params = {
       location: {
@@ -63,7 +63,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "INVALID :update PATCH /api/v1/code_schools/:code_school_id/locations/:id" do
+  test 'INVALID :update PATCH /api/v1/code_schools/:code_school_id/locations/:id' do
     school = create(:code_school)
     location = create(:location, code_school: school)
     params = {
@@ -83,7 +83,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
-  test ":update PATCH /api/v1/code_schools/:code_school_id/locations/:id" do
+  test ':update PATCH /api/v1/code_schools/:code_school_id/locations/:id' do
     school = create(:code_school)
     location = create(:location, code_school: school)
     params = {
@@ -103,7 +103,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "INVALID :destroy DELETE /api/v1/code_schools/:code_school_id/locations/:id" do
+  test 'INVALID :destroy DELETE /api/v1/code_schools/:code_school_id/locations/:id' do
     school = create(:code_school)
     location = create(:location, code_school: school)
 
@@ -112,7 +112,7 @@ class Api::V1::LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 
-  test ":destroy DELETE /api/v1/code_schools/:code_school_id/locations/:id" do
+  test ':destroy DELETE /api/v1/code_schools/:code_school_id/locations/:id' do
     school = create(:code_school)
     location = create(:location, code_school: school)
 

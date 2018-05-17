@@ -9,14 +9,14 @@ class Meetup
     @options = {
       query: {
       key: api_key,
-      sign: "true"
+      sign: 'true'
       }
     }
   end
 
   # GET all Operation Code Pro data. Returns all op-code groups.
   def operationcode_data
-    response = self.class.get("/pro/operationcode/groups", options)
+    response = self.class.get('/pro/operationcode/groups', options)
     return_value_for response
   end
 
@@ -40,7 +40,7 @@ class Meetup
 
   def add_events_to_database!
     event_details_by_group.each do |event|
-      saved_event = Event.find_or_initialize_by(source_id: event[:source_id], source_type: "Meetup")
+      saved_event = Event.find_or_initialize_by(source_id: event[:source_id], source_type: 'Meetup')
       if saved_event.new_record? || saved_event_updated?(saved_event, event)
         saved_event.update!(event)
       end
@@ -54,7 +54,7 @@ class Meetup
   end
 
   def group_names
-    operationcode_data.map { |group| group["urlname"] }
+    operationcode_data.map { |group| group['urlname'] }
   end
 
   def event_duration(event)
@@ -69,7 +69,7 @@ class Meetup
     if response.code.to_i == 200
       response.parsed_response
     else
-      raise "Error fetching data from Meetup API"
+      raise 'Error fetching data from Meetup API'
     end
   end
 
@@ -90,7 +90,7 @@ class Meetup
       state: event['venue']['state'],
       zip: event['venue']['zip'],
       group: event['group']['name'],
-      source_type: "Meetup"
+      source_type: 'Meetup'
     }
   end
 end

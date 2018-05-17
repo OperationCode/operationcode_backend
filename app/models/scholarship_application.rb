@@ -11,7 +11,7 @@ class ScholarshipApplication < ApplicationRecord
 
   def user_is_verified
     unless self.user_verified
-      errors.add(:verified, "Only verified users may submit applications")
+      errors.add(:verified, 'Only verified users may submit applications')
     end
   end
 end

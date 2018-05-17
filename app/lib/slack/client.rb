@@ -1,4 +1,4 @@
-require "net/http"
+require 'net/http'
 
 module Slack
   INVITE_PATH = '/api/users.admin.invite'.freeze
@@ -26,13 +26,13 @@ module Slack
         to: INVITE_PATH,
         payload: {
           email:       email,
-          channels:    channels.join(","),
+          channels:    channels.join(','),
           token:       @token,
-          set_active:  "true",
+          set_active:  'true',
           _attempts:   1
         }
       )
-      if !(body["ok"] || %w(already_in_team already_invited sent_recently).include?(body["error"]))
+      if !(body['ok'] || %w(already_in_team already_invited sent_recently).include?(body['error']))
         raise InviteFailed.new(body.to_s)
       end
 

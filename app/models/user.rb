@@ -28,13 +28,15 @@ class User < ApplicationRecord
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   after_create :welcome_user
+  before_validation :strip_zip_code
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
+  after_save :notify_leaders_on_geocode_update, if: ->(v) { v.zip_changed? }
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
-  validate :zip_code_exists
+  validates :zip, presence: true
 
   has_many :requests
   has_many :votes
@@ -44,6 +46,7 @@ class User < ApplicationRecord
   scope :by_zip, ->(zip) { where(zip: zip) }
   scope :by_state, ->(state) { where(state: state) }
   scope :verified, -> { where(verified: true) }
+
 
   # Returns a count of all users with the passed in zip code(s)
   #
@@ -82,6 +85,12 @@ class User < ApplicationRecord
   #
   def self.count_by_location(location, radius=20)
     near(location, radius.to_i)&.size
+  end
+
+  def self.community_leaders_nearby(latitude, longitude, radius)
+    self
+      .near([latitude, longitude], radius)
+      .tagged_with(LEADER)
   end
 
   # Returns a count of users that were created since the passed in date,
@@ -137,16 +146,11 @@ class User < ApplicationRecord
 
   def welcome_user
     invite_to_slack
-    add_to_airtables
     add_to_send_grid
   end
 
   def invite_to_slack
     SlackJobs::InviterJob.perform_later(email)
-  end
-
-  def add_to_airtables
-    AddUserToAirtablesJob.perform_later(self)
   end
 
   def add_to_send_grid
@@ -202,10 +206,8 @@ class User < ApplicationRecord
 
   private
 
-  def zip_code_exists
-    return if longitude && latitude
-
-    errors.add(:zip_code, 'not found')
+  def strip_zip_code
+    zip.strip! if zip
   end
 
   def upcase_state
@@ -214,5 +216,9 @@ class User < ApplicationRecord
 
   def downcase_email
     email.downcase! if email
+  end
+
+  def notify_leaders_on_geocode_update
+    SendEmailToLeadersJob.perform_later(id)
   end
 end

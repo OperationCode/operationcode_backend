@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  mount ForestLiana::Engine => '/forest'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -26,7 +24,6 @@ Rails.application.routes.draw do
       end
       resources :email_list_recipients, only: :create
       resources :events, only: :index
-      resource :social_users, only: [:create, :show]
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
       resources :resources, only: [:index, :create, :show, :update, :destroy] do
@@ -35,7 +32,12 @@ Rails.application.routes.draw do
       resources :scholarships, only: [:index, :show]
       resources :scholarship_applications, only: :create
       resources :services, only: :index
-      resources :slack_users, only: :create
+      resources :slack_users, only: :create do
+        collection do
+          get :access
+        end
+      end
+      resource :social_users, only: [:create, :show]
       resources :tags, only: :index
       resources :team_members, only: [:index, :create, :update, :destroy]
       resources :users, only: [:index, :create]
@@ -48,6 +50,10 @@ Rails.application.routes.draw do
 
       namespace :users do
         post '/passwords/reset', to: 'passwords#reset'
+      end
+
+      namespace :airtable do
+        resources :mentorships, only: [:index, :create]
       end
     end
   end

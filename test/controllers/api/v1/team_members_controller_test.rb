@@ -6,21 +6,21 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     @headers = authorization_headers(user)
   end
 
-  test ":index endpoint returns a JSON list of all TeamMembers" do
+  test ':index endpoint returns a JSON list of all TeamMembers' do
     john = create(:team_member)
-    alex = create(:team_member, name: "Alex Johnson")
+    alex = create(:team_member, name: 'Alex Johnson')
 
     get api_v1_team_members_url, as: :json
 
     [john.name, alex.name].each do |team_member|
-      assert_equal true, response.parsed_body.any? { |member| member["name"] == team_member }
+      assert_equal true, response.parsed_body.any? { |member| member['name'] == team_member }
     end
   end
 
-  test ":create endpoint creates a new TeamMember" do
+  test ':create endpoint creates a new TeamMember' do
     params = {
-      name: "Alex Johnson",
-      role: "Board Member",
+      name: 'Alex Johnson',
+      role: 'Board Member',
       group: TeamMember::BOARD_GROUP_NAME
     }
 
@@ -30,32 +30,32 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     assert_equal({ 'team_member' => alex.id }, response.parsed_body)
   end
 
-  test ":create endpoint returns error for wrong group name" do
+  test ':create endpoint returns error for wrong group name' do
     params = {
-      name: "Alex Johnson",
-      role: "Board Member",
-      group: "intern"
+      name: 'Alex Johnson',
+      role: 'Board Member',
+      group: 'intern'
     }
 
     post api_v1_team_members_url, headers: @headers, params: params, as: :json
     assert_response :unprocessable_entity
   end
 
-  test ":create endpoint returns error for missing group field" do
+  test ':create endpoint returns error for missing group field' do
     params = {
-      name: "Alex Johnson",
-      role: "Board Member"
+      name: 'Alex Johnson',
+      role: 'Board Member'
     }
 
     post api_v1_team_members_url, headers: @headers, params: params, as: :json
     assert_response :unprocessable_entity
   end
 
-  test ":update endpoint updates an existing TeamMember" do
-    alex = create(:team_member, name: "Alex Johnson")
-    new_description = "Has worked for a lot of good companies"
-    new_image_src = "images/new_image.jpg"
-    new_role = "Legislative Affairs"
+  test ':update endpoint updates an existing TeamMember' do
+    alex = create(:team_member, name: 'Alex Johnson')
+    new_description = 'Has worked for a lot of good companies'
+    new_image_src = 'images/new_image.jpg'
+    new_role = 'Legislative Affairs'
     new_group = TeamMember::BOARD_GROUP_NAME
     params = {
       description: new_description,
@@ -76,8 +76,8 @@ class Api::V1::TeamMembersControllerTest < ActionDispatch::IntegrationTest
     assert_equal alex.role, new_role
   end
 
-  test ":destroy endpoint destroys an existing TeamMember" do
-    alex = create(:team_member, name: "Alex Johnson")
+  test ':destroy endpoint destroys an existing TeamMember' do
+    alex = create(:team_member, name: 'Alex Johnson')
     params = {
       id: alex.id,
       name: alex.name,

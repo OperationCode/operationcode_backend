@@ -12,8 +12,12 @@ module GitHub
     def fetch_and_save!
       get_pull_requests.each do |pr|
         git_hub_user = GitHub::Committer.find_or_create_user! pr[:git_hub_user]
+        p 'git_hub_user:'
+        p git_hub_user
 
-        GitHub::Committer.find_or_create_statistic! pr, pr[:source_type], git_hub_user.id
+        git_hub_pr_stat = GitHub::Committer.find_or_create_statistic! pr, pr[:source_type], git_hub_user.id
+        p 'git_hub_pr_stat:'
+        p git_hub_pr_stat
       end
     end
 
@@ -46,7 +50,7 @@ module GitHub
       }
       response = client.search_for(query)
 
-      if response.headers["link"].present?
+      if response.headers['link'].present?
         GitHub::PageCompiler.new(query, response, client).compile_prs
       else
         response['items']
@@ -73,7 +77,7 @@ module GitHub
       response = client.commits_for(repo, pull_request_number)
       query    = { repo: repo, pr_number: pull_request_number }
 
-      if response.headers["link"].present?
+      if response.headers['link'].present?
         GitHub::PageCompiler.new(query, response, client).compile_commits
       else
         response.parsed_response

@@ -21,7 +21,7 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     end
   end
 
-  test "#oc_totals returns totals across all repositories" do
+  test '#oc_totals returns totals across all repositories' do
     results = GitHub::Presenter.new({}).oc_totals
 
     assert results == {
@@ -35,7 +35,7 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     }
   end
 
-  test "#totals_by_repository returns totals grouped by repository" do
+  test '#totals_by_repository returns totals grouped by repository' do
     GitHubStatistic.stubs(:repositories).returns([@backend, @frontend])
 
     results = GitHub::Presenter.new({}).totals_by_repository
@@ -60,7 +60,7 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     }
   end
 
-  test "#totals_for_user returns totals for a passed in user, across all repositories" do
+  test '#totals_for_user returns totals for a passed in user, across all repositories' do
     jacks_results = GitHub::Presenter.new({ git_hub_login: @jack.git_hub_login }).totals_for_user
     johns_results = GitHub::Presenter.new({ git_hub_login: @john.git_hub_login }).totals_for_user
 
@@ -81,7 +81,7 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     }
   end
 
-  test "#oc_averages returns averages across all repositories" do
+  test '#oc_averages returns averages across all repositories' do
     results = GitHub::Presenter.new({}).oc_averages
 
     assert results == {
@@ -90,7 +90,7 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     }
   end
 
-  test "#totals_for_user_in_repository returns totals for a passed in user and repository" do
+  test '#totals_for_user_in_repository returns totals for a passed in user and repository' do
     john_backend = GitHub::Presenter.new({
       git_hub_login: @john.git_hub_login,
       repository: @backend
@@ -118,14 +118,14 @@ class GitHub::PresenterTest < ActiveSupport::TestCase
     }
   end
 
-  test "passing in optional start_date or end_date params scopes the query to those date ranges" do
+  test 'passing in optional start_date or end_date params scopes the query to those date ranges' do
     week_after = (@date + 1.week).to_s
     with_start = GitHub::Presenter.new({ start_date: week_after }).oc_totals
     with_end   = GitHub::Presenter.new({ end_date: week_after }).oc_totals
     with_both  = GitHub::Presenter.new({ start_date: week_after, end_date: week_after }).oc_totals
 
     assert with_start == {
-      :total_repositories=>2,
+      :total_repositories => 2,
       total_closed_pull_requests: 10,
       total_closed_issues: 10,
       total_commits: 6,

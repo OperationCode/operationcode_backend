@@ -1,4 +1,4 @@
-require "httparty"
+require 'httparty'
 
 module GitHub
 
@@ -59,6 +59,16 @@ module GitHub
       return_value_for response
     end
 
+    # Returns our current rate limit
+    #
+    # @see https://developer.github.com/v3/rate_limit/
+    #
+    def rate_limit
+      response = self.class.get('/rate_limit', options)
+
+      return_value_for response
+    end
+
     private
 
     def base_options
@@ -108,7 +118,7 @@ module GitHub
     def reset_time(response)
       seconds = response.headers['X-RateLimit-Reset'].to_i
 
-      Time.at(seconds).strftime "%-m/%d/%Y at%l:%M:%S%P %Z"
+      Time.at(seconds).strftime '%-m/%d/%Y at%l:%M:%S%P %Z'
     end
   end
 end

@@ -20,5 +20,9 @@ FactoryGirl.define do
     trait :dynamic_zip do
       zip { Faker::Address.postcode }
     end
+
+    trait :verified do
+      verified true
+    end
   end
 end

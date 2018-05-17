@@ -4,29 +4,28 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
 gem 'activeadmin', '~> 1.1'
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 5.0'
+gem 'cancancan', '~> 2.0'
 gem 'devise'
-gem 'forest_liana'
 gem 'geocoder'
 gem 'gibbon'
 gem 'httparty'
 gem 'jwt'
 gem 'lograge'
 gem 'logstash-event'
-gem 'operationcode-airtable'
 gem 'operationcode-slack'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
-gem 'pundit'
 gem 'rack-cors'
 gem 'rails', '~> 5.0.2'
 gem 'redis', '~> 3.0'
+gem 'rubocop', '~> 0.55.0', require: false
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
