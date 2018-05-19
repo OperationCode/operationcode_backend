@@ -4,12 +4,12 @@ ActiveAdmin.register ScholarshipApplication do
     selectable_column
     id_column
 
-    column 'Scholarship' do |scholarship_app|
-      scholarship_app.scholarship.name
+    column 'Scholarship' do |scholarship_id|
+      scholarship_id.scholarship.name
     end
 
     column 'User' do |user_id|
-      user_id.user.email
+      user_id.user.name
     end
 
     column :reason
