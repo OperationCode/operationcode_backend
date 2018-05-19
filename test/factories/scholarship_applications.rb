@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :scholarship_application do
     reason 'MyText'
     terms_accepted false
-    user
+    association :user, factory: :user, verified: true
   end
 end
