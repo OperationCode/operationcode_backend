@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Request.destroy_all
+ScholarshipApplication.destroy_all
+Scholarship.destroy_all
 User.destroy_all
 Service.destroy_all
 TeamMember.destroy_all
@@ -16,7 +18,7 @@ Role.destroy_all
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
 rick = FactoryGirl.create(:mentor, first_name: 'Rick', last_name: 'Rein')
-nell = FactoryGirl.create(:mentor, first_name: 'Nell', last_name: 'Shamrell-Harrington')
+nell = FactoryGirl.create(:mentor, first_name: 'Nell', last_name: 'Shamrell-Harrington', verified: true)
 
 FactoryGirl.create(:request, language: 'Ruby', requested_mentor: rick)
 FactoryGirl.create(:request, language: 'Javascript')
@@ -30,7 +32,7 @@ FactoryGirl.create(:request, assigned_mentor: nell)
 end
 
 # Create team members
-SeedTeamMembers.seed_all 
+SeedTeamMembers.seed_all
 
 # Create Admin (development only)
 super_admin = Role.create!(title: 'super_admin')
@@ -41,11 +43,16 @@ AdminUser.create!(email: 'super_admin@example.com', password: 'password', passwo
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', role_id: admin.id) if Rails.env.development?
 AdminUser.create!(email: 'board@example.com', password: 'password', password_confirmation: 'password', role_id: board.id) if Rails.env.development?
 
+scholarship = FactoryGirl.create(:scholarship)
+FactoryGirl.create(:scholarship_application, user: nell, scholarship: scholarship)
+
 users = User.count
 requests = Request.count
 services = Service.count
 team_members = TeamMember.count
 admin_users = AdminUser.count
+scholarship_count = Scholarship.count
+scholarship_app = ScholarshipApplication.count
 
 puts 'Seeding complete.  Created:'
 p "#{users} users"
@@ -53,3 +60,5 @@ p "#{requests} requests"
 p "#{services} services"
 p "#{team_members} team members"
 p "#{admin_users} admin users"
+p "#{scholarship_count} scholarships"
+p "#{scholarship_app} scholarship applications"

@@ -14,6 +14,8 @@ class Ability
       can :read, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :read, CodeSchool
       can :read, Location
+      can :read, Scholarship
+      can :read, ScholarshipApplication
       can :read, Service
       can :read, TeamMember
       can :read, User
@@ -23,6 +25,8 @@ class Ability
       can :read, :all
       can :manage, CodeSchool
       can :manage, Location
+      can :manage, Scholarship
+      can :manage, ScholarshipApplication
       can :manage, Service
       can :manage, TeamMember
 
