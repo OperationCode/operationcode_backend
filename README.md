@@ -66,7 +66,7 @@ In order to work on the backend of the **Operation Code** site, you will need to
 There are three options for local setup:
 
 - [Docker](/docs/setup/docker_setup.md) (recommended)
-- Native (coming soon)
+- [Native](/docs/setup/native_setup.md)
 - [AWS Virtual Machine](/docs/setup/aws_vm_setup.md)
 
 ## Finding An Issue
