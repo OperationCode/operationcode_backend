@@ -94,7 +94,6 @@ ActiveAdmin.register User do
       f.input :email
       f.input :zip
       f.input :mentor
-      f.input :slack_name
       f.input :first_name
       f.input :last_name
       f.input :timezone
