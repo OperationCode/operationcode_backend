@@ -6,3 +6,8 @@ inherit_from: .rubocop_todo.yml
 Style/StringLiterals:
   Exclude:
     - 'db/**/*'
+
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Exclude:
+      - 'db/schema.rb'
