@@ -7,7 +7,7 @@ FactoryGirl.define do
     state Faker::Address.state
     country Faker::Address.country
     description Faker::Lorem.paragraph
-    status "active"
+    status 'active'
     remote false
   end
 end
