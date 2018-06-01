@@ -10,9 +10,7 @@ class Api::V1::JobsControllerTest < ActionDispatch::IntegrationTest
     get api_v1_jobs_url, as: :json
     i = 0
     response.parsed_body.each do |response|
-      byebug
       assert_equal true, response["title"] == jobs[i].title
-      byebug
       i += 1
     end
   end
