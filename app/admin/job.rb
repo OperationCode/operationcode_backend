@@ -17,4 +17,20 @@ ActiveAdmin.register Job do
 
     actions
   end
+
+  form do |f|
+    f.inputs do
+      f.input :title
+      f.input :source_url
+      f.input :source
+      f.input :city
+      f.input :state
+      f.input :country
+      f.input :description
+      f.input :status
+      f.input :remote
+    end
+
+    f.actions
+  end
 end

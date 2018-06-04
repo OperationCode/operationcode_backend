@@ -14,6 +14,7 @@ Service.destroy_all
 TeamMember.destroy_all
 AdminUser.destroy_all
 Role.destroy_all
+Job.destroy_all
 
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
@@ -56,6 +57,7 @@ team_members = TeamMember.count
 admin_users = AdminUser.count
 scholarship_count = Scholarship.count
 scholarship_app = ScholarshipApplication.count
+jobs = Job.count
 
 puts 'Seeding complete.  Created:'
 p "#{users} users"
@@ -65,3 +67,4 @@ p "#{team_members} team members"
 p "#{admin_users} admin users"
 p "#{scholarship_count} scholarships"
 p "#{scholarship_app} scholarship applications"
+p "#{jobs} jobs"
