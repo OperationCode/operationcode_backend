@@ -69,19 +69,4 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
       assert response.parsed_body['createdTime'].present?
     end
   end
-
-  test ':create when user is not verified it returns a 422 and error message' do
-    user    = create(:user, verified: false)
-    headers = authorization_headers(user)
-
-    post(
-      api_v1_airtable_mentorships_url,
-      params: {},
-      headers: headers,
-      as: :json
-    )
-
-    assert response.status == 422
-    assert response.parsed_body['error'].present?
-  end
 end
