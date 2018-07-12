@@ -6,7 +6,7 @@ ActiveAdmin.register User do
     :last_name, :timezone, :bio, :verified, :state, :address_1, :address_2, :city,
     :username, :volunteer, :branch_of_service, :years_of_service, :pay_grade,
     :military_occupational_specialty, :github, :twitter, :linkedin, :employment_status,
-    :education, :company_role, :company_name, :education_level, :interests
+    :education, :military_status, :company_role, :company_name, :education_level, :interests
 
   scope :all
   scope :mentors
@@ -74,6 +74,7 @@ ActiveAdmin.register User do
     column :linkedin
     column :employment_status
     column :education
+    column :military_status
     column :company_role
     column :company_name
     column :education_level
@@ -112,6 +113,7 @@ ActiveAdmin.register User do
       f.input :linkedin
       f.input :employment_status
       f.input :education
+      f.input :military_status
       f.input :company_role
       f.input :company_name
       f.input :education_level

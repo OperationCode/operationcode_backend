@@ -74,6 +74,7 @@ module Api
           :linked_in,
           :employment_status,
           :education,
+          :military_status,
           :company_role,
           :company_name,
           :education_level,
