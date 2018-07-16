@@ -4,7 +4,7 @@ class User < ApplicationRecord
   CURRENT = 'current'
   VETERAN = 'veteran'
   SPOUSE = 'spouse'
-  MILITARY_STATUSES = [CURRENT, VETERAN, SPOUSE, nil]  
+  MILITARY_STATUSES = [CURRENT, VETERAN, SPOUSE, nil]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
