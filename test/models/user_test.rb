@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
   test 'actions are performed on user create' do
     user = build(:user, user_opts)
 
@@ -259,5 +259,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal data[:email], userInfo[:email]
     assert_equal data[:zip], userInfo[:zip]
     assert_equal '/profile', redirect
+  end
+
+  test 'military status accepts valid states' do
+    assert create(:user, military_status: 'spouse')
+    assert create(:user, military_status: 'veteran')
+    assert create(:user, military_status: 'current')
+    refute create(:user, military_status: 'spaghetti monster')
   end
 end
