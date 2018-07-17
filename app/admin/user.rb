@@ -106,6 +106,7 @@ ActiveAdmin.register User do
       f.input :volunteer
       f.input :branch_of_service
       f.input :years_of_service
+      f.input :military_status, as: :select, collection: User::MILITARY_STATUSES.map { |status| [status, status].compact }.reject(&:empty?), include_blank: true
       f.input :pay_grade
       f.input :military_occupational_specialty
       f.input :github
