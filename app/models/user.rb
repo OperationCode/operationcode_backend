@@ -6,7 +6,7 @@ class User < ApplicationRecord
   VETERAN = 'veteran'
   SPOUSE = 'spouse'
   MILITARY_STATUSES = [CURRENT, VETERAN, SPOUSE, nil]
-  validates :size, inclusion: { in: %w(current veteran spouse),
+  validates :military_status, inclusion: { in: MILITARY_STATUSES }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

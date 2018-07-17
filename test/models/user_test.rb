@@ -265,6 +265,6 @@ class UserTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
     assert create(:user, military_status: 'spouse')
     assert create(:user, military_status: 'veteran')
     assert create(:user, military_status: 'current')
-    refute create(:user, military_status: 'spaghetti monster')
+    refute User.new(military_status: 'spaghetti monster').valid?
   end
 end
