@@ -114,7 +114,6 @@ ActiveAdmin.register User do
       f.input :linkedin
       f.input :employment_status
       f.input :education
-      f.input :military_status
       f.input :company_role
       f.input :company_name
       f.input :education_level
