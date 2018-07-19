@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
+class UserTest < ActiveSupport::TestCase
   test 'actions are performed on user create' do
     user = build(:user, user_opts)
 
