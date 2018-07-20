@@ -262,9 +262,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'military status accepts valid states' do
-    assert create(:user, military_status: 'spouse')
-    assert create(:user, military_status: 'veteran')
-    assert create(:user, military_status: 'current')
+    assert create(:user, military_status: User::CURRENT).valid?
+    assert create(:user, military_status: User::VETERAN).valid?
+    assert create(:user, military_status: User::SPOUSE).valid?
+    assert create(:user, military_status: nil).valid?
     refute User.new(military_status: 'spaghetti monster').valid?
   end
 end
