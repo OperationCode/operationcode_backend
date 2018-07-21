@@ -260,4 +260,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal data[:zip], userInfo[:zip]
     assert_equal '/profile', redirect
   end
+
+  test 'military status accepts valid states' do
+    assert create(:user, military_status: User::CURRENT).valid?
+    assert create(:user, military_status: User::VETERAN).valid?
+    assert create(:user, military_status: User::SPOUSE).valid?
+    assert create(:user, military_status: nil).valid?
+    refute User.new(military_status: 'spaghetti monster').valid?
+  end
 end

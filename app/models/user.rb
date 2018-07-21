@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   LEADER = 'community leader'
 
+  # Validation of military_status
+  CURRENT = 'current'
+  VETERAN = 'veteran'
+  SPOUSE = 'spouse'
+  MILITARY_STATUSES = [CURRENT, VETERAN, SPOUSE, nil]
+  validates :military_status, inclusion: { in: MILITARY_STATUSES }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -11,3 +11,7 @@ Style/StringLiterals:
 Metrics/BlockLength:
   Exclude:
       - 'db/schema.rb'
+
+Metrics/ClassLength:
+  Exclude:
+      - 'test/models/user_test.rb'
