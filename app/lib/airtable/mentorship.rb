@@ -28,6 +28,7 @@ module Airtable
       request_body = {
         'fields' => {
           'Slack User' => body[:slack_user],
+          'Email' => body[:email],
           'Service' => format_for_posting(body[:services]),
           'Skillsets' => format_for_posting(body[:skillsets]),
           'Additional Details' => body[:additional_details],
@@ -51,7 +52,7 @@ module Airtable
       end
     end
 
-    # Converts a comman separated string into an array of strings
+    # Converts a comma separated string into an array of strings
     #
     # @param data_string [String] Comma separated strings of data
     # @return [Array] An array of stripped strings

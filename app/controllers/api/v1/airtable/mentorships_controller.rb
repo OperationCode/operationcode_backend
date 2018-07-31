@@ -25,6 +25,7 @@ module Api
         def mentorship_params
           params.permit(
             :slack_user,
+            :email,
             :services,
             :skillsets,
             :additional_details,
