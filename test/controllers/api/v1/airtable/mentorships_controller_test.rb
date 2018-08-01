@@ -28,6 +28,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
     VCR.use_cassette('airtable/mentorship/post_successful') do
       params = {
         slack_user: 'test_case_1',
+        email: 'test@example.com',
         services: 'rec3ZQMCQsKPKlE2C',
         skillsets: 'Java',
         additional_details: 'Some test description.',
@@ -51,6 +52,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
     VCR.use_cassette('airtable/mentorship/post_multiple_successful') do
       params = {
         slack_user: 'test_case_1',
+        email: 'test@example.com',
         services: 'rec3ZQMCQsKPKlE2C',
         skillsets: 'Java, Study Help, Web (Frontend Development)',
         additional_details: 'Some test description.',
