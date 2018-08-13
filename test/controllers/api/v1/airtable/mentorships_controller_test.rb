@@ -53,10 +53,10 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
       params = {
         slack_user: 'test_case_1',
         email: 'test@example.com',
-        services: 'rec3ZQMCQsKPKlE2C',
-        skillsets: 'Java, Study Help, Web (Frontend Development)',
+        services: 'rec891lUSSaXM4qGC',
+        skillsets: 'Java, Study Help, Web Development (Front-end)',
         additional_details: 'Some test description.',
-        mentor_requested: 'rec0SDZDK2DiW4PY9'
+        mentor_requested: 'recqeVhDDJU5cY8TX'
       }
 
       post(

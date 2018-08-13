@@ -14,14 +14,15 @@ class ClientTest < Minitest::Test
       'fields' => {
         'Slack User' => 'test_case_1',
         'Service' => [
-          'rec3ZQMCQsKPKlE2C'
+          'rec891lUSSaXM4qGC'
         ],
+        'Email' => 'test@example.com',
         'Skillsets' => [
           'Java'
         ],
         'Additional Details' => 'Some test description.',
         'Mentor Requested' => [
-          'rec0SDZDK2DiW4PY9'
+          'recqeVhDDJU5cY8TX'
         ]
       }
     }.to_json

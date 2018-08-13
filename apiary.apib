@@ -672,7 +672,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             error: "Some error message"
         }
 
-## Mentorship | Create [/api/v1/airtable/mentorships{?slack_user,services,skillsets,additional_details,mentor_requested}]
+## Mentorship | Create [/api/v1/airtable/mentorships{?slack_user,services,email,skillsets,additional_details,mentor_requested}]
 
 + Parameters
 
@@ -696,6 +696,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 slack_user: "hpjaj",
                 services: "rec3ZQMCQsKPKlE2C",
                 skillsets: "Javascript",
+                email: "test@email.com",
                 additional_details: "Some additional description.",
                 mentor_requested: "rec0SDZDK2DiW4PY9"
             }
@@ -711,8 +712,9 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   "Service"            => [
                     "rec3ZQMCQsKPKlE2C"
                   ],
+                  "Email"              => "test@email.com",
                   "Skillsets"          => [
-                    "Web (Frontend Development)",
+                    "Web Development (Front-end)",
                     "Java",
                     "Study Help"
                   ],
