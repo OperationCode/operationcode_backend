@@ -10,7 +10,7 @@ http_interactions:
         Requested":["recqeVhDDJU5cY8TX"]}}'
     headers:
       Authorization:
-      - Bearer keyZCwmaMvZvNLULQ
+      - Bearer some_random_key
       Content-Type:
       - application/json
   response:

@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer keyZCwmaMvZvNLULQ
+      - Bearer some_random_key
   response:
     status:
       code: 200
