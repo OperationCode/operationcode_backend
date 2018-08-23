@@ -5,13 +5,17 @@ inherit_from: .rubocop_todo.yml
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Exclude:
-    - 'db/**/*'
+    - "db/**/*"
+
+#turn off end of line checks, git will fix this
+EndOfLine:
+  Enabled: false
 
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/BlockLength:
   Exclude:
-      - 'db/schema.rb'
+    - "db/schema.rb"
 
 Metrics/ClassLength:
   Exclude:
-      - 'test/models/user_test.rb'
+    - "test/models/user_test.rb"
