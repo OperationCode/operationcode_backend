@@ -32,8 +32,13 @@ module Slack
           _attempts:   1
         }
       )
-      if !(body['ok'] || %w(already_in_team already_invited sent_recently).include?(body['error']))
-        raise InviteFailed.new(body.to_s)
+      
+      allowed_error_states = %w(already_in_team already_invited sent_recently)
+
+      if !(body['ok'] || allowed_error_states.include?(body['error']))
+        Raven.capture do
+          raise InviteFailed.new(body.to_s)
+        end
       end
 
       true

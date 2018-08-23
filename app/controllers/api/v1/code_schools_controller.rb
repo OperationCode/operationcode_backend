@@ -4,6 +4,13 @@ module Api
       before_action :authenticate_user!, only: [:create, :update, :destroy]
 
       def index
+        begin
+          Raven.capture do
+           Slack.invite('testing@testing.com')
+          end
+        rescue StandardError => msg
+          puts msg
+        end
         render json: CodeSchool.order(:name)
       end
 
