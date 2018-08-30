@@ -39,7 +39,6 @@ class User < ApplicationRecord
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
-  after_save :notify_leaders_on_geocode_update, if: ->(v) { v.zip_changed? }
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
@@ -152,12 +151,7 @@ class User < ApplicationRecord
   end
 
   def welcome_user
-    invite_to_slack
     add_to_send_grid
-  end
-
-  def invite_to_slack
-    SlackJobs::InviterJob.perform_later(email)
   end
 
   def add_to_send_grid
@@ -223,9 +217,5 @@ class User < ApplicationRecord
 
   def downcase_email
     email.downcase! if email
-  end
-
-  def notify_leaders_on_geocode_update
-    SendEmailToLeadersJob.perform_later(id)
   end
 end
