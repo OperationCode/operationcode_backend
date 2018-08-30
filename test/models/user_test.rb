@@ -4,7 +4,6 @@ class UserTest < ActiveSupport::TestCase
   test 'actions are performed on user create' do
     user = build(:user, user_opts)
 
-    SlackJobs::InviterJob.expects(:perform_later).with(user_opts[:email])
     AddUserToSendGridJob.expects(:perform_later).with(user)
 
     assert_difference('User.count') { user.save }
@@ -107,27 +106,6 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 39.7312095, u.latitude
     assert_equal -104.9826965, u.longitude
     assert_equal 'CO', u.state
-  end
-
-  test 'enqueues the job to notify community leaders if a new user is geocoded' do
-    user = build(:user, latitude: 1, longitude: 1, zip: '97201')
-    user.stubs(:geocode)
-    SendEmailToLeadersJob.expects(:perform_later).once
-    user.save!
-  end
-
-  test 'enqueues the job to notify community leaders if a user has updated geo-coordinates' do
-    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
-    user.stubs(:geocode)
-    SendEmailToLeadersJob.expects(:perform_later).with(user.id).once
-    user.update_attributes!(latitude: 2, longitude: 2, zip: '11101')
-  end
-
-  test 'does not enqueue a job to notify community leaders if geo-coordinates are not updated' do
-    user = create(:user, latitude: 1, longitude: 1, zip: '97201')
-    user.stubs(:geocode)
-    SendEmailToLeadersJob.expects(:perform_later).never
-    user.update_attributes!(email: 'NewEmail@example.com')
   end
 
   def user_opts
