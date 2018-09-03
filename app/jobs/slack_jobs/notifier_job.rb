@@ -3,8 +3,7 @@ class SlackJobs
     queue_as :default
 
     def perform(message, channel: '#general')
-      res = slack_client.post_message_to channel: channel, with_text: message
-      Rails.logger.debug("Notified channel: #{res.inspect}")
+      logger.debug "Deprecated pathway, trying to determine what is placing this on queue."
     end
   end
 end
