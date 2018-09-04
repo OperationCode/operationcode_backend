@@ -1,8 +1,8 @@
 class SlackJobs
   class InviterJob < SlackJobs
-    def perform(email)
+    def perform(_email)
       # Invites user to general channel
-      slack_client.invite(email: email, channels: ['C03GSNF77'])
+      logger.debug 'Deprecated pathway, trying to determine what is placing this on queue.'
     end
   end
 end
