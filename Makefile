@@ -1,7 +1,25 @@
 RAILS_CONTAINER := web
+DOCKER := docker
 
 .PHONY: all
-all: run
+all: run 
+
+
+.PHONY: nuke 
+nuke: 
+	${DOCKER} system prune -a --volumes
+
+.PHONY: rmi
+rmi: 
+	${DOCKER} images -q | xargs docker rmi -f
+
+.PHONY: rmdi
+rmdi: 
+	${DOCKER} images -a --filter=dangling=true -q | xargs ${DOCKER} rmi
+
+.PHONY: rm-exited-containers
+rm-exited-containers: 
+	${DOCKER} ps -a -q -f status=exited | xargs ${DOCKER} rm -v 
 
 .PHONY: console-sandbox
 	console-sandbox:
