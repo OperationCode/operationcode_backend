@@ -30,7 +30,7 @@ services:
     image: redis:latest
 
   sidekiq:
-    build: .
+    image: operationcodebackend_web
     command: sidekiq -C config/sidekiq.yml.erb
     volumes:
       - .:/app
