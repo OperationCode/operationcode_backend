@@ -1,5 +1,6 @@
 RAILS_CONTAINER := web
 DOCKER := docker
+DOCKER_COMPOSE := docker-compose
 
 .PHONY: all
 all: run 
@@ -7,7 +8,7 @@ all: run
 
 .PHONY: nuke 
 nuke: 
-	${DOCKER} system prune -a --volumes
+	${DOCKER_COMPOSE} down --rmi all --volumes
 
 .PHONY: rmi
 rmi: 
