@@ -69,3 +69,15 @@ make
 You can now visit http://localhost:3000 (or run `make open`) and you should see a Rails welcome message!
 
 In case you used the Docker Toolbox, you might have also installed VirtualBox, which creates its own virtual network adapters. In that case, the server might be running on that IP address and may not be reachable via localhost, 127.0.0.1 or even 0.0.0.0. So, you will need to use `netstat` on the command line to figure out the IP address on which the server is bound.
+
+#### Clean Up Docker:
+Once you are finished with any changes and they are commited you can clean up your environment to simulate a fresh start in production.
+
+Run `make minty-fresh` and you can clean up all images, and volumes to ensure a non-persistent state. Any time this action occurs or you run into an issue with any of the containers the recommend first course of action is 
+
+1. `make minty-fresh`
+2. `make setup`
+3. `make test`
+4. `make`
+
+This can be shortened to a make target: `make fresh-restart`
