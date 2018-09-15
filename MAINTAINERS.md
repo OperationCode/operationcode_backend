@@ -16,3 +16,7 @@ Check out [how Operation Code Open Source projects are maintained](https://githu
 # Maintainers
 
 * [William Montgomery](http://www.github.com/wimo7083)
+
+# Founding Contributors
+
+* [Harry Levine](https://github.com/hpjaj)
