@@ -1,5 +1,18 @@
 # Docker Setup
 
+### Quick Reference
+1. Install Dependencies (git, make, docker)
+  a. Install [git](#git) 
+  b. Install [make](#make-for-windows-only)
+  c. Install [docker](#docker)
+2. Retrieve Codebase [repo](#local-development-environment)
+3. Setup Database [database](#database-setup)
+4. Run Codebase [running](#running-operationcode-backend)
+5. Interact With Codebase [interact](#interact-with-backend)
+
+## Install Dependencies
+
+### Docker
 Docker is a container system. Click the appropriate link below to install Docker on your operating system.
 
 * [Mac](https://www.docker.com/docker-mac)
@@ -52,6 +65,7 @@ To run the OperationCode Backend simply type:
 make
 ```
 
+#### Interact With Backend:
 You can now visit http://localhost:3000 (or run `make open`) and you should see a Rails welcome message!
 
 In case you used the Docker Toolbox, you might have also installed VirtualBox, which creates its own virtual network adapters. In that case, the server might be running on that IP address and may not be reachable via localhost, 127.0.0.1 or even 0.0.0.0. So, you will need to use `netstat` on the command line to figure out the IP address on which the server is bound.
