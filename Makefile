@@ -5,9 +5,12 @@ DOCKER_COMPOSE := docker-compose
 .PHONY: all
 all: run 
 
-
-.PHONY: nuke 
+.PHONY:  nuke
 nuke: 
+	${DOCKER} system prune -a --volumes
+
+.PHONY: minty-fresh 
+minty-fresh: 
 	${DOCKER_COMPOSE} down --rmi all --volumes
 
 .PHONY: rmi
