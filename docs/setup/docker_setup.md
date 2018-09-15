@@ -2,6 +2,7 @@
 
 ### Quick Reference
 1. Install Dependencies (git, make, docker)
+    
     i. Install [git](#git) 
 
     ii. Install [make](#make-for-windows-only)
