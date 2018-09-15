@@ -6,12 +6,13 @@ Check out [how Operation Code Open Source projects are maintained](https://githu
 
 # Project Lead
 
-* [Harry Levine](https://github.com/hpjaj)
+* [Nell Shamrell-Harrington](http://www.github.com/nellshamrell)
 
 # Sergeant
 
 * [Colleen Schnettler](http://www.github.com/leenyburger)
+* [Robb Kidd](http://www.github.com/robbkidd)
 
 # Maintainers
 
-* [Nell Shamrell-Harrington](http://www.github.com/nellshamrell)
+* [William Montgomery](http://www.github.com/wimo7083)
