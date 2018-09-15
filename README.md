@@ -70,3 +70,16 @@ Recommended versions of tools used within the repo:
 ## Wiki
 
 We also have a [wiki](https://github.com/OperationCode/operationcode_backend/wiki) that contains common tutorials, tips, workflows and documentation around how to successfully contribute to, and work within, the operationcode_backend repository.
+
+## After Action Reports
+
+<details>
+
+<summary>Click to expand </summary>
+
+As incidents happen that require a great deal of troubleshooting and reveal a certain lack of domain knowledge, we wish to document these issues in way that can be used for contributors to learn. When such an event happens and a Root Cause Analysis is performed these issues will be added here.
+
+<ol>
+<li> Slack User invites Stopped <a href="https://github.com/OperationCode/operationcode_backend/issues/388">link</a></li>
+</ol>
+</details>
