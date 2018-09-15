@@ -2,13 +2,15 @@
 
 ### Quick Reference
 1. Install Dependencies (git, make, docker)
+
   a. Install [git](#git) 
   b. Install [make](#make-for-windows-only)
   c. Install [docker](#docker)
-2. Retrieve Codebase [repo](#local-development-environment)
-3. Setup Database [database](#database-setup)
-4. Run Codebase [running](#running-operationcode-backend)
-5. Interact With Codebase [interact](#interact-with-backend)
+
+2. Retrieve [Codebase](#local-development-environment)
+3. Setup [Database](#database-setup)
+4. Run [Codebase](#running-operationcode-backend)
+5. Interact With [Codebase](#interact-with-backend)
 
 ## Install Dependencies
 
