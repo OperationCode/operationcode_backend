@@ -25,6 +25,9 @@ rmdi:
 rm-exited-containers: 
 	${DOCKER} ps -a -q -f status=exited | xargs ${DOCKER} rm -v 
 
+.PHONY: fresh-restart
+fresh-restart: minty-fresh setup test run
+
 .PHONY: console-sandbox
 	console-sandbox:
 	 docker-compose run ${RAILS_CONTAINER} rails console --sandbox
