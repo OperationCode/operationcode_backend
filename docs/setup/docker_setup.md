@@ -2,10 +2,11 @@
 
 ### Quick Reference
 1. Install Dependencies (git, make, docker)
+    i. Install [git](#git) 
 
-  a. Install [git](#git) 
-  b. Install [make](#make-for-windows-only)
-  c. Install [docker](#docker)
+    ii. Install [make](#make-for-windows-only)
+
+    iii. Install [docker](#docker)
 
 2. Retrieve [Codebase](#local-development-environment)
 3. Setup [Database](#database-setup)
