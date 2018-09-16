@@ -1,13 +1,17 @@
 RAILS_CONTAINER := web
 DOCKER := docker
+DOCKER_COMPOSE := docker-compose
 
 .PHONY: all
 all: run 
 
-
-.PHONY: nuke 
+.PHONY:  nuke
 nuke: 
 	${DOCKER} system prune -a --volumes
+
+.PHONY: minty-fresh 
+minty-fresh: 
+	${DOCKER_COMPOSE} down --rmi all --volumes
 
 .PHONY: rmi
 rmi: 
@@ -20,6 +24,9 @@ rmdi:
 .PHONY: rm-exited-containers
 rm-exited-containers: 
 	${DOCKER} ps -a -q -f status=exited | xargs ${DOCKER} rm -v 
+
+.PHONY: fresh-restart
+fresh-restart: minty-fresh setup test run
 
 .PHONY: console-sandbox
 	console-sandbox:
