@@ -1,5 +1,9 @@
 inherit_from: .rubocop_todo.yml
 
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
@@ -10,11 +14,6 @@ Style/StringLiterals:
 #turn off end of line checks, git will fix this
 EndOfLine:
   Enabled: false
-
-# Configuration parameters: CountComments, ExcludedMethods.
-Metrics/BlockLength:
-  Exclude:
-    - 'db/schema.rb'
 
 Metrics/ClassLength:
   Exclude:
