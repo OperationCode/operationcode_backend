@@ -1,12 +1,15 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test 'actions are performed on user create' do
-    user = build(:user, user_opts)
+  include ActiveJob::TestHelper
 
-    AddUserToSendGridJob.expects(:perform_later).with(user)
-
-    assert_difference('User.count') { user.save }
+  test 'welcoming a user adds them to SendGrid' do
+    user = create(:user, user_opts)
+    assert_enqueued_with(job: AddUserToSendGridJob,
+                         args: [user],
+                         queue: 'default') do
+      user.welcome_user
+    end
   end
 
   test 'must have a valid email' do

@@ -34,7 +34,6 @@ class User < ApplicationRecord
   #
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
-  after_create :welcome_user
   before_validation :strip_zip_code
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
