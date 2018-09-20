@@ -78,8 +78,8 @@ class UserTest < ActiveSupport::TestCase
     u = build(:user, latitude: nil, longitude: nil, zip: nil)
 
     u.update_attributes(zip: 'bad zip code')
-    assert_equal nil, u.latitude
-    assert_equal nil, u.longitude
+    assert_nil u.latitude
+    assert_nil u.longitude
   end
 
   test 'updates geocode after update' do
