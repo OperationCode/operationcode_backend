@@ -1,8 +1,6 @@
 require 'slack/client'
 
-class SlackJobs < ActiveJob::Base
-  queue_as :default
-
+class SlackJobs < ApplicationJob
   private
 
   def slack_client

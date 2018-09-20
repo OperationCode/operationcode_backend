@@ -1,15 +1,19 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  include ActiveJob::TestHelper
+  def setup
+    Sidekiq::Testing.fake!
+  end
+
+  def teardown
+    Sidekiq::Worker.clear_all
+  end
 
   test 'welcoming a user adds them to SendGrid' do
     user = create(:user, user_opts)
-    assert_enqueued_with(job: AddUserToSendGridJob,
-                         args: [user],
-                         queue: 'default') do
-      user.welcome_user
-    end
+    user.welcome_user
+    assert_equal 1, AddUserToSendGridJob.jobs.length
+    assert_equal [user.id], AddUserToSendGridJob.jobs.first['args']
   end
 
   test 'must have a valid email' do
