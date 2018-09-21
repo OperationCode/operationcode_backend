@@ -47,3 +47,17 @@ VCR.configure do |config|
   config.cassette_library_dir = 'test/cassettes'
   config.hook_into :webmock
 end
+
+Geocoder.configure(lookup: :test)
+Geocoder::Lookup::Test.set_default_stub(
+  [{ 'latitude'   => -4,
+     'longitude'  => -4,
+     'address'    => 'a weird default, when real world accuracy does not matter',
+     'state_code' => 'DEFAULT' }]
+)
+Geocoder::Lookup::Test.add_stub(
+  '97201', [{ 'latitude' => 45.505603,
+              'longitude' => -122.6882145,
+              'address'    => 'real world result for the zip used in the user factory',
+              'state_code' => 'OR' }]
+)
