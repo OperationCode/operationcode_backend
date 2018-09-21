@@ -44,11 +44,12 @@ class UserTest < ActiveSupport::TestCase
     assert user.role == some_role
   end
 
-  test 'doesnt geocode until we save' do
+  test 'doesnt geocode until we validate' do
     u = build(:user, latitude: nil, longitude: nil)
-    assert u.valid?
+    assert_nil u.latitude
+    assert_nil u.longitude
 
-    u.save
+    assert u.valid?
     assert_equal 45.505603, u.latitude
     assert_equal -122.6882145, u.longitude
   end
