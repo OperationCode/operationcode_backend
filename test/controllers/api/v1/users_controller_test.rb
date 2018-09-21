@@ -21,15 +21,19 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  def valid_user_params
+    {
+      email: 'test@example.com',
+      first_name: 'new first name',
+      password: 'Password',
+      zip: '97201'
+    }
+  end
+
   test '#create returns error with missing zip code' do
     post api_v1_users_url,
       params: {
-        user: {
-          email: 'test@example.com',
-          first_name: 'new first name',
-          password: 'Password',
-          zip: ''
-        }
+        user: valid_user_params.merge(zip: '')
       },
       as: :json
 
@@ -38,23 +42,23 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#create is successful with valid zip code' do
-    user_params = {
-      email: 'test@example.com',
-      first_name: 'new first name',
-      password: 'Password',
-      zip: '97201'
-    }
-
     post api_v1_users_url,
-      params: { user: user_params },
+      params: { user: valid_user_params },
       as: :json
 
     user = User.first
     assert_response :success
-    assert user_params[:email], user.email
-    assert user_params[:first_name], user.first_name
-    assert user_params[:password], user.password
-    assert user_params[:zip], user.zip
+    assert valid_user_params[:email], user.email
+    assert valid_user_params[:first_name], user.first_name
+    assert valid_user_params[:password], user.password
+    assert valid_user_params[:zip], user.zip
+  end
+
+  test '#create welcomes a new user' do
+    User.any_instance.expects(:welcome_user)
+    post api_v1_users_url,
+      params: { user: valid_user_params },
+      as: :json
   end
 
   test ':by_location returns User.count of users located in the passed in location' do

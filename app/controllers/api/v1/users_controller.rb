@@ -13,6 +13,7 @@ module Api
         user = User.new(user_params)
 
         if user.save
+          user.welcome_user
           UserMailer.welcome(user).deliver unless user.invalid?
           sign_in(user)
           render json: { token: user.token }
