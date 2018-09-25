@@ -29,8 +29,8 @@ rm-exited-containers:
 fresh-restart: minty-fresh setup test run
 
 .PHONY: console-sandbox
-	console-sandbox:
-	 docker-compose run ${RAILS_CONTAINER} rails console --sandbox
+console-sandbox:
+	docker-compose run ${RAILS_CONTAINER} rails console --sandbox
 
 .PHONY: run
 run:
