@@ -35,7 +35,7 @@ module Api
       end
 
       def location_params
-        params.require(:location).permit(:code_school_id, :va_accepted, :address1, :address2, :city, :state, :zip)
+        params.require(:location).permit(:code_school_id, :va_accepted, :address1, :address2, :city, :state, :zip, :provides_housing)
       end
     end
   end

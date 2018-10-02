@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180711212702) do
+ActiveRecord::Schema.define(version: 20181002181535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,8 +124,9 @@ ActiveRecord::Schema.define(version: 20180711212702) do
     t.string   "state"
     t.integer  "zip"
     t.integer  "code_school_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.boolean  "provides_housing"
     t.index ["code_school_id"], name: "index_locations_on_code_school_id", using: :btree
   end
 
