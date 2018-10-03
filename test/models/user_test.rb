@@ -44,21 +44,22 @@ class UserTest < ActiveSupport::TestCase
     assert user.role == some_role
   end
 
-  test 'doesnt geocode until we save' do
+  test 'doesnt geocode until we validate' do
     u = build(:user, latitude: nil, longitude: nil)
-    assert u.valid?
+    assert_nil u.latitude
+    assert_nil u.longitude
 
-    u.save
+    assert u.valid?
     assert_equal 45.505603, u.latitude
     assert_equal -122.6882145, u.longitude
   end
 
   test 'accepts non-us zipcodes (UK)' do
-    u = build(:user, latitude: nil, longitude: nil, zip: nil)
-
-    u.update_attributes(zip: 'HP2 4HG')
+    Geocoder.configure(lookup: :google)
+    u = create(:user, latitude: nil, longitude: nil, zip: 'HP2 4HG')
     assert_equal 51.75592890000001, u.latitude
     assert_equal -0.4447103, u.longitude
+    Geocoder.configure(lookup: :test)
   end
 
   test 'empty spaces on ends of a zip code are stripped out' do
@@ -78,6 +79,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'longitude and longitude are nil for unknown zipcodes' do
+    Geocoder::Lookup::Test.add_stub('bad zip code', [{}])
+
     u = build(:user, latitude: nil, longitude: nil, zip: nil)
 
     u.update_attributes(zip: 'bad zip code')
@@ -86,12 +89,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'updates geocode after update' do
-    u = build(:user, latitude: 40.7143528, longitude: -74.0059731)
+    Geocoder::Lookup::Test.add_stub('new zip code', [{ 'latitude' => 2, 'longitude' => 2, 'state_code' => 'NEW' }])
+    u = build(:user, latitude: 1, longitude: 1)
 
-    u.update_attributes(zip: '80203')
-    assert_equal 39.7312095, u.latitude
-    assert_equal -104.9826965, u.longitude
-    assert_equal 'CO', u.state
+    u.update_attributes(zip: 'new zip code')
+    assert_equal 2, u.latitude
+    assert_equal 2, u.longitude
+    assert_equal 'NEW', u.state
   end
 
   test 'only geocodes if zip is updated' do
@@ -104,11 +108,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 1, u.longitude
     assert_equal u.zip, '97201'
 
+    Geocoder::Lookup::Test.add_stub('new zip code', [{ 'latitude' => 2, 'longitude' => 2, 'state_code' => 'NEW' }])
     u.stubs(:zip_changed?).returns(true)
-    u.update_attributes(zip: '80203')
-    assert_equal 39.7312095, u.latitude
-    assert_equal -104.9826965, u.longitude
-    assert_equal 'CO', u.state
+    u.update_attributes(zip: 'new zip code')
+    assert_equal 2, u.latitude
+    assert_equal 2, u.longitude
+    assert_equal 'NEW', u.state
   end
 
   def user_opts
@@ -131,18 +136,21 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '.count_by_location returns a count of all users within the passed in city, or latitude/longitude, and radius from that location' do
-    tom = create :user, zip: '78705'
-    sam = create :user, zip: '78756'
-    bob = create :user, zip: '83704'
+    coordinates = { 'first zip' => [30.285648, -97.742052],
+                    'near the first zip' => [30.312601, -97.738591],
+                    'not near the first zip' => [43.606690, -116.282246] }
 
-    tom.update latitude: 30.285648, longitude: -97.742052
-    sam.update latitude: 30.312601, longitude: -97.738591
-    bob.update latitude: 43.606690, longitude: -116.282246
+    coordinates.each do |zip_stub, lat_log|
+      Geocoder::Lookup::Test.add_stub(
+        zip_stub, [{ 'latitude' => lat_log.first, 'longitude' => lat_log.second }]
+      )
+      create :user, zip: zip_stub
+    end
 
-    results = User.count_by_location [30.285648, -97.742052]
+    results = User.count_by_location coordinates['first zip']
     assert_equal 2, results
 
-    results = User.count_by_location [43.606690, -116.282246]
+    results = User.count_by_location coordinates['not near the first zip']
     assert_equal 1, results
 
     results = User.count_by_location ''
