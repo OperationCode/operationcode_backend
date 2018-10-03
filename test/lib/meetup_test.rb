@@ -23,6 +23,25 @@ class MeetupTest < ActiveSupport::TestCase
     assert_raises(Exception) { Meetup.new.operationcode_data }
   end
 
+  test 'members response code of 200 returns response' do
+    Meetup.stubs(:get).with('/pro/operationcode/members', options).returns(member_endpoint_response)
+
+    assert_nothing_raised { Meetup.new.members }
+  end
+
+  test 'members response code not equal to 200 raises error' do
+    Meetup.stubs(:get).with('/pro/operationcode/members', options).returns(build_response(400))
+
+    assert_raises(Exception) { Meetup.new.members }
+  end
+
+  test 'members by email returns a hash indexed by email addresses from the response' do
+    Meetup.stubs(:get).with('/pro/operationcode/members', options).returns(member_endpoint_response)
+
+    members_by_email = Meetup.new.members_by_email
+    refute_nil members_by_email['test@operationcode.org']
+  end
+
   test 'event response code of 200 returns response' do
     url = 'Operation-Code-Hampton-Roads'
 

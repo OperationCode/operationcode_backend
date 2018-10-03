@@ -20,6 +20,40 @@ class Meetup
     return_value_for response
   end
 
+  # GET all Operation Code Pro members
+  ### Member
+  # chapters - Pro organization groups that the member belongs to
+  #   id - Id of the group
+  #   name - Name of the group
+  #   urlname - Urlname used to identify the group on meetup.com
+  # city - City of the member
+  # country - Country of the member
+  # email - Email address of the member if the member opted to share it with the organization
+  # events_attended - The number of attended events
+  # is_organizer - Organizer status of the member
+  # join_time - The time when the member joined Meetup
+  # last_access_time - The time when the last activity occured
+  # lat - Latitude
+  # lon - Longitude
+  # member_id - Id of the member
+  # member_name - Name of the member
+  # photo_thumb_url - Url of the photo thumbnail of the member
+  # state - State of the member, if in US or Canada
+  def members
+    response = self.class.get('/pro/operationcode/members', options)
+    return_value_for response
+  end
+
+  # List of members indexed by email for easy access
+  def members_by_email
+    member_map = {}
+    members.map do |member|
+      member_map[member['email']] = member
+    end
+
+    member_map
+  end
+
   # GET events for each group
   def get_events_for(urlname)
     response = self.class.get("/#{urlname}/events", options)
