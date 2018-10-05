@@ -33,7 +33,7 @@ FactoryGirl.create(:request, assigned_mentor: nell)
 end
 
 # Create jobs
-Job.create!(title: "A great job", source_url: "www.applyhere.com", source: "Company A", city: "Virginia Beach", state: "VA", country: "USA", description: "Our job is fun!", status: "active", remote: "false")
+Job.create!(title: "A great job", source_url: "www.applyhere.com", source: "Company A", city: "Virginia Beach", state: "VA", country: "USA", description: "Our job is fun!", is_open: true, remote: false)
 
 # Create team members
 SeedTeamMembers.seed_all

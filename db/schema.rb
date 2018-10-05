@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20180531004341) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -123,7 +124,7 @@ ActiveRecord::Schema.define(version: 20180531004341) do
     t.string   "state"
     t.string   "country"
     t.text     "description"
-    t.string   "status"
+    t.boolean  "is_open",        default: true
     t.boolean  "remote",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
