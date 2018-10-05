@@ -12,7 +12,7 @@ ActiveAdmin.register Job do
     column :state
     column :country
     column :description
-    column :open
+    column :is_open
     column :remote
 
     actions
@@ -27,7 +27,7 @@ ActiveAdmin.register Job do
       f.input :state
       f.input :country
       f.input :description
-      f.input :open
+      f.input :is_open
       f.input :remote
     end
 

@@ -1,9 +1,10 @@
 RAILS_CONTAINER:= web
 DOCKER_COMPOSE:= docker-compose
+DOCKER:= docker
 RED=\033[0;31m
+GREEN=\032[0;32m
 NC=\033[0m 
 
 
-.PHONY: all run bg open build console routes db_create db_migrate db_rollback db_seed db_status test rubocop bundle build publish 
 .DELETE_ON_ERROR:
 .SILENT:
