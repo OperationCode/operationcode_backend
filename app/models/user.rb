@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   LEADER = 'community leader'
 
+  # Validation of military_status
+  CURRENT = 'current'
+  VETERAN = 'veteran'
+  SPOUSE = 'spouse'
+  MILITARY_STATUSES = [CURRENT, VETERAN, SPOUSE, nil]
+  validates :military_status, inclusion: { in: MILITARY_STATUSES }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,12 +34,10 @@ class User < ApplicationRecord
   #
   VALID_EMAIL = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
-  after_create :welcome_user
   before_validation :strip_zip_code
   before_validation :geocode, if: ->(v) { v.zip.present? && v.zip_changed? }
   before_save :upcase_state
   before_save :downcase_email
-  after_save :notify_leaders_on_geocode_update, if: ->(v) { v.zip_changed? }
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
@@ -145,16 +150,11 @@ class User < ApplicationRecord
   end
 
   def welcome_user
-    invite_to_slack
     add_to_send_grid
   end
 
-  def invite_to_slack
-    SlackJobs::InviterJob.perform_later(email)
-  end
-
   def add_to_send_grid
-    AddUserToSendGridJob.perform_later(self)
+    AddUserToSendGridJob.perform_async(self.id)
   end
 
   def token
@@ -216,9 +216,5 @@ class User < ApplicationRecord
 
   def downcase_email
     email.downcase! if email
-  end
-
-  def notify_leaders_on_geocode_update
-    SendEmailToLeadersJob.perform_later(id)
   end
 end

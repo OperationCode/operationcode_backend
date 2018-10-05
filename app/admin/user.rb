@@ -2,11 +2,11 @@ ActiveAdmin.register User do
   permit_params :id, :email, :zip, :latitude, :longitude, :created_at, :updated_at,
     :encrypted_password, :reset_password_token, :reset_password_sent_at,
     :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at,
-    :current_sign_in_ip, :last_sign_in_ip, :mentor, :slack_name, :first_name,
+    :current_sign_in_ip, :last_sign_in_ip, :mentor, :first_name,
     :last_name, :timezone, :bio, :verified, :state, :address_1, :address_2, :city,
     :username, :volunteer, :branch_of_service, :years_of_service, :pay_grade,
     :military_occupational_specialty, :github, :twitter, :linkedin, :employment_status,
-    :education, :company_role, :company_name, :education_level, :interests
+    :education, :military_status, :company_role, :company_name, :education_level, :interests
 
   scope :all
   scope :mentors
@@ -56,7 +56,6 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :last_sign_in_at
     column :mentor
-    column :slack_name
     column :first_name
     column :last_name
     column :timezone
@@ -75,6 +74,7 @@ ActiveAdmin.register User do
     column :linkedin
     column :employment_status
     column :education
+    column :military_status
     column :company_role
     column :company_name
     column :education_level
@@ -83,19 +83,18 @@ ActiveAdmin.register User do
   end
 
   preserve_default_filters!
-  filter :state, as: :select, collection: ->{ User.uniq_states }
+  filter :state, as: :select, collection: -> { User.uniq_states }
   remove_filter :tags
   remove_filter :base_tags
   remove_filter :taggings
   remove_filter :tag_taggings
-  filter :with_tags, label: 'Tagged With', as: :select, collection: ->{ User.all_tag_names }
+  filter :with_tags, label: 'Tagged With', as: :select, collection: -> { User.all_tag_names }
 
   form do |f|
     f.inputs do
       f.input :email
       f.input :zip
       f.input :mentor
-      f.input :slack_name
       f.input :first_name
       f.input :last_name
       f.input :timezone
@@ -107,6 +106,7 @@ ActiveAdmin.register User do
       f.input :volunteer
       f.input :branch_of_service
       f.input :years_of_service
+      f.input :military_status, as: :select, collection: User::MILITARY_STATUSES.map { |status| [status, status].compact }.reject(&:empty?), include_blank: true
       f.input :pay_grade
       f.input :military_occupational_specialty
       f.input :github

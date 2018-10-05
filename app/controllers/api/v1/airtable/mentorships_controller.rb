@@ -13,8 +13,6 @@ module Api
         end
 
         def create
-          verify_user!
-
           mentor_request = ::Airtable::Mentorship.new.create_mentor_request(mentorship_params)
 
           render json: mentor_request, status: :created
@@ -27,15 +25,12 @@ module Api
         def mentorship_params
           params.permit(
             :slack_user,
+            :email,
             :services,
             :skillsets,
             :additional_details,
             :mentor_requested
           )
-        end
-
-        def verify_user!
-          raise ::Airtable::Error, 'User must be verified to request mentor services' unless current_user.verified?
         end
       end
     end

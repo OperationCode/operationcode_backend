@@ -28,6 +28,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
     VCR.use_cassette('airtable/mentorship/post_successful') do
       params = {
         slack_user: 'test_case_1',
+        email: 'test@example.com',
         services: 'rec3ZQMCQsKPKlE2C',
         skillsets: 'Java',
         additional_details: 'Some test description.',
@@ -51,10 +52,11 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
     VCR.use_cassette('airtable/mentorship/post_multiple_successful') do
       params = {
         slack_user: 'test_case_1',
-        services: 'rec3ZQMCQsKPKlE2C',
-        skillsets: 'Java, Study Help, Web (Frontend Development)',
+        email: 'test@example.com',
+        services: 'rec891lUSSaXM4qGC',
+        skillsets: 'Java, Study Help, Web Development (Front-end)',
         additional_details: 'Some test description.',
-        mentor_requested: 'rec0SDZDK2DiW4PY9'
+        mentor_requested: 'recqeVhDDJU5cY8TX'
       }
 
       post(
@@ -68,20 +70,5 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
       assert response.parsed_body['id'].present?
       assert response.parsed_body['createdTime'].present?
     end
-  end
-
-  test ':create when user is not verified it returns a 422 and error message' do
-    user    = create(:user, verified: false)
-    headers = authorization_headers(user)
-
-    post(
-      api_v1_airtable_mentorships_url,
-      params: {},
-      headers: headers,
-      as: :json
-    )
-
-    assert response.status == 422
-    assert response.parsed_body['error'].present?
   end
 end

@@ -8,7 +8,7 @@ services:
     volumes_from:
       - bundle
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     depends_on:
       - operationcode-psql
       - redis
@@ -30,7 +30,7 @@ services:
     image: redis:latest
 
   sidekiq:
-    build: .
+    image: operationcodebackend_web
     command: sidekiq -C config/sidekiq.yml.erb
     volumes:
       - .:/app
