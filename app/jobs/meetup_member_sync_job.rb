@@ -1,4 +1,4 @@
-class MeetupMemberSync
+class MeetupMemberSyncJob
   include Sidekiq::Worker
 
   def perform
