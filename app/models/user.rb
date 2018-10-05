@@ -154,7 +154,7 @@ class User < ApplicationRecord
   end
 
   def add_to_send_grid
-    AddUserToSendGridJob.perform_later(self)
+    AddUserToSendGridJob.perform_async(self.id)
   end
 
   def token

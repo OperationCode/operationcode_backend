@@ -1,5 +1,5 @@
-class AddGuestToSendGridJob < ApplicationJob
-  queue_as :default
+class AddGuestToSendGridJob
+  include Sidekiq::Worker
 
   # Adds the passed guest to our Contact List in SendGrid.
   #
