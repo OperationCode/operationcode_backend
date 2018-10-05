@@ -10,8 +10,8 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
 
     body = JSON.parse(response.body)
 
-    assert response.status == 200
-    assert body == { 'message' => 'You have access!' }
+    assert_equal response.status, 200
+    assert_equal body, { 'message' => 'You have access!' }
   end
 
   test ':access returns a 401 with an incorrect token' do
@@ -23,8 +23,8 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
 
     body = JSON.parse(response.body)
 
-    assert response.status == 401
-    assert body == { 'errors' => ['Auth token is invalid'] }
+    assert_equal response.status, 401
+    assert_equal body, { 'errors' => ['Auth token is invalid'] }
   end
 
   test ':access returns a 401 with an expired token' do
@@ -36,8 +36,8 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
 
     body = JSON.parse(response.body)
 
-    assert response.status == 401
-    assert body == { 'errors' => ['Auth token has expired'] }
+    assert_equal response.status, 401
+    assert_equal body, { 'errors' => ['Auth token has expired'] }
   end
 
   test ':access returns a 401 with a malformed token' do
@@ -49,8 +49,8 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
 
     body = JSON.parse(response.body)
 
-    assert response.status == 401
-    assert body == { 'errors' => ['Invalid auth token'] }
+    assert_equal response.status, 401
+    assert_equal body, { 'errors' => ['Invalid auth token'] }
   end
 end
 

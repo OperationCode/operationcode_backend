@@ -45,7 +45,7 @@ class UserTest < ActiveSupport::TestCase
 
     some_role = create :role
     user.update! role_id: some_role.id
-    assert user.role == some_role
+    assert_equal some_role, user.role
   end
 
   test 'doesnt geocode until we validate' do
@@ -75,11 +75,11 @@ class UserTest < ActiveSupport::TestCase
   test 'validates the presence of a zip' do
     user = build :user, zip: nil
     refute user.valid?
-    assert user.errors.full_messages == ["Zip can't be blank"]
+    assert_equal ["Zip can't be blank"], user.errors.full_messages
 
     user = build :user, zip: ''
     refute user.valid?
-    assert user.errors.full_messages == ["Zip can't be blank"]
+    assert ["Zip can't be blank"], user.errors.full_messages
   end
 
   test 'longitude and longitude are nil for unknown zipcodes' do
