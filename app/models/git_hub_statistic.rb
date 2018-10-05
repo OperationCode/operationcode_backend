@@ -13,8 +13,8 @@ class GitHubStatistic < ApplicationRecord
   scope :pull_requests, -> { where(source_type: GitHubStatistic::PR) }
   scope :issues, -> { where(source_type: GitHubStatistic::ISSUE) }
   scope :commits, -> { where(source_type: GitHubStatistic::COMMIT) }
-  scope :closed, -> { where(state: 'closed') }
-  scope :open, -> { where(state: 'open') }
+  scope :is_closed, -> { where(state: 'closed') }
+  scope :is_open, -> { where(state: 'open') }
   scope :for_git_hub_user, -> git_hub_user { where(git_hub_user_id: git_hub_user.id) }
   scope :for_repository, -> repository { where(repository: repository) }
 
@@ -62,7 +62,7 @@ class GitHubStatistic < ApplicationRecord
   #
   def self.users_closed_a_pr
     self
-      .closed
+      .is_closed
       .pull_requests
       .pluck(:git_hub_user_id)
       .uniq
@@ -91,7 +91,7 @@ class GitHubStatistic < ApplicationRecord
   end
 
   def self.average_closed_prs_per_user
-    grouped_records = pull_requests.closed.group_by(&:git_hub_user_id)
+    grouped_records = pull_requests.is_closed.group_by(&:git_hub_user_id)
 
     return 0 unless grouped_records.present?
 
@@ -122,7 +122,7 @@ class GitHubStatistic < ApplicationRecord
 
   def self.last_closed_date
     self
-      .closed
+      .is_closed
       .order(completed_on: :desc)
       .first
       .try(:completed_on)
