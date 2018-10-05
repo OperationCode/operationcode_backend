@@ -2,7 +2,7 @@ module Api
   module V1
     class ResourcesController < ApiController
       before_action :authenticate_user!, except: [:index, :show]
-      before_filter :set_resource, only: [:show, :update, :destroy]
+      before_action :set_resource, only: [:show, :update, :destroy]
 
       def index
         resources = Resource.with_tags params[:tags]

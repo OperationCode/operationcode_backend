@@ -35,7 +35,7 @@ class IssuesTest < Minitest::Test
   end
 
   def test_fetch_and_save
-    @issue_instance.fetch_and_save!
+    @issue_instance.fetch_and_save!(print_results: false)
 
     assert GitHubStatistic.for_repository(@backend).count == 28
     assert GitHubStatistic.for_repository(@backend).issues.count == 28
