@@ -1,5 +1,5 @@
 ActiveAdmin.register Job do
-  permit_params :title, :source_url, :source, :city, :state, :country, :description, :open, :remote
+  permit_params :title, :source_url, :source, :city, :state, :country, :description, :is_open, :remote
 
   index do
     selectable_column
