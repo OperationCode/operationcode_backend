@@ -6,10 +6,16 @@ all: run
 .PHONY: setup
 setup: build db_create db_migrate
 
+.PHONY: console
+console:
+	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rails console
+
 .PHONY: console-sandbox
 console-sandbox:
 	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rails console --sandbox
 
+
+#### Utility
 .PHONY: run
 run:
 	$(DOCKER_COMPOSE) up --build
@@ -26,10 +32,6 @@ open:
 build:
 	$(DOCKER_COMPOSE) build
 
-.PHONY: console
-console:
-	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rails console
-
 .PHONY: routes
 routes:
 	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rake routes
@@ -38,9 +40,7 @@ routes:
 bundle:
 	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) bash -c 'cd /app && bundle'
 
-
-
-#### Database Targets
+#### Database
 .PHONY: db_create
 db_create:
 	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rake db:create
@@ -77,7 +77,7 @@ rubocop_auto_correct:
 	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rubocop -a --auto-correct
 
 
-#### Cleanup Targets
+#### Cleanup
 .PHONY: nuke
 nuke: 
 	$(DOCKER) system prune -a --volumes
@@ -102,7 +102,7 @@ rm-exited-containers:
 fresh-restart: minty-fresh setup test run
 
 
-#### Deployment targets
+#### Deployment
 publish: build
 	bin/publish
 
