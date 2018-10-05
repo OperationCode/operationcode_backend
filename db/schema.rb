@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 20180711212702) do
     t.string   "state"
     t.string   "country"
     t.text     "description"
-    t.boolean  "is_open",        default: true
+    t.datetime "closed_at",   default: nil 
     t.boolean  "remote",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

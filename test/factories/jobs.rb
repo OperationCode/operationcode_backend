@@ -7,7 +7,7 @@ FactoryGirl.define do
     state Faker::Address.state
     country Faker::Address.country
     description Faker::Lorem.paragraph
-    is_open true
+    closed_at nil
     remote false
   end
 end

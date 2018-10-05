@@ -8,7 +8,7 @@ class CreateJobs < ActiveRecord::Migration[5.0]
       t.string :state
       t.string :country
       t.text :description
-      t.boolean :is_open, default: true
+      t.datetime :closed_at, default: nil
       t.boolean :remote, default: false
 
       t.timestamps
