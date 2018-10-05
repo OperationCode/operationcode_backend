@@ -1,5 +1,5 @@
 ActiveAdmin.register Job do
-  permit_params :title, :source_url, :source, :city, :state, :country, :description, :status, :remote
+  permit_params :title, :source_url, :source, :city, :state, :country, :description, :open, :remote
 
   index do
     selectable_column
@@ -12,7 +12,7 @@ ActiveAdmin.register Job do
     column :state
     column :country
     column :description
-    column :status
+    column :open
     column :remote
 
     actions
@@ -27,7 +27,7 @@ ActiveAdmin.register Job do
       f.input :state
       f.input :country
       f.input :description
-      f.input :status
+      f.input :open
       f.input :remote
     end
 

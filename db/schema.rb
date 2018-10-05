@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180531004341) do
+ActiveRecord::Schema.define(version: 20180711212702) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -123,7 +124,7 @@ ActiveRecord::Schema.define(version: 20180531004341) do
     t.string   "state"
     t.string   "country"
     t.text     "description"
-    t.string   "status"
+    t.boolean  "active",      default: true
     t.boolean  "remote",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
@@ -297,6 +298,7 @@ ActiveRecord::Schema.define(version: 20180531004341) do
     t.string   "interests"
     t.boolean  "scholarship_info",                default: false
     t.integer  "role_id"
+    t.string   "military_status"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["role_id"], name: "index_users_on_role_id", using: :btree
