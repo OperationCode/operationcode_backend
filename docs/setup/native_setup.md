@@ -1,9 +1,59 @@
 # Native Setup
 
+### Quick Reference
+1. Install Dependencies (git, rails, redis, ...) 
+    
+    i. Install [git](#git) 
+
+    ii. Install [rails](#rails-setup)
+
+    iii. Install [ruby](#ruby-setup)
+
+    iv. Install [postgres](#postgres)
+
+    v. Install [redis](#redis)
+
+2. Retrieve [codebase](#code-base)
+3. Setup [database](#database-setup)
+4. Setup [environment](#local-development-environment)
+4. Run [codebase](#running-operationcode-backend)
+4. Run [tests](#testing)
+5. Interact With [Codebase](#interact-with-backend)
+
+## Install Dependencies 
+
+
 ### Git
 Git is a distributed version control system. This is how our code is stored and managed. Git can be frustrating, but it is an essential tool. If you want to learn more about Git, a great resource is [Think Like a Git](http://think-like-a-git.net/). If you find yourself in a real git pickle, see ["Oh, shit, git!"](http://ohshitgit.com/). If you have already installed Git as a part of the Docker Toolbox, you don't need to install it again using the following link.
 
 * [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+### Rails Setup
+Rails is required to run locally.
+
+Mac: COMING SOON 
+
+Windows: COMING SOON
+
+Linux: COMING SOON
+
+### Ruby Setup
+Rails is required to run locally.
+
+Mac: https://gorails.com/setup/osx/10.13-high-sierra
+
+Windows: COMING SOON
+
+Linux: COMING SOON
+
+### Redis Setup:
+Redis is required to run locally.
+
+Mac: COMING SOON 
+
+Windows: COMING SOON
+
+Linux: COMING SOON
 
 ### Code Base
 You are now ready for the actual **OperationCode Backend** code base.
@@ -14,6 +64,8 @@ You are now ready for the actual **OperationCode Backend** code base.
 * The following commands will pull down the source code from your forked repo.
 * Make sure to replace `[YOUR-GITHUB-NAME]` with your GitHub name. (example: https://github.com/iserbit/operationcode_backend.git)
 
+### Running Backend 
+---
 #### Local Development Environment
 _Fork the repo first._
 ```bash
@@ -28,13 +80,13 @@ git remote add upstream https://github.com/OperationCode/operationcode_backend.g
 
 #### Database Setup:
 
-
+1a. Run redis in separate tab.
 1. Run `cp config/database.yml. config/native_setup_database.yml`.
 2. Run `bin/rake db:create`.
 3. Run `bin/rake db:migrate`.
-4. Run `bin/rake db:seed` --> **This is where I am getting errors** :sweat_smile:.
+4. Run `bin/rake db:seed`  
 
-### Testing
+#### Testing
 1. Run `RAILS_ENV=test rake db:test:prepare`.
 2. Run `bin/rake test & rubocop`.
 
@@ -44,4 +96,6 @@ To run the OperationCode Backend simply type:
 rails s
 ```
 
-You can now visit http://localhost:3000 and you should see the "Yay! You're on Rails!" welcome message.
+#### Interact With Backend:
+You can now visit http://localhost:3000 (or run `make open`) and you should see a Rails welcome message!
+
