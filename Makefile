@@ -82,8 +82,8 @@ rubocop_auto_correct:
 nuke: 
 	$(DOCKER) system prune -a --volumes
 
-.PHONY:
-minty-fresh: minty-fresh
+.PHONY: minty-fresh
+minty-fresh: 
 	$(DOCKER_COMPOSE) down --rmi all --volumes
 
 .PHONY: rmi
