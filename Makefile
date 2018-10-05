@@ -1,7 +1,30 @@
 include Makefile.in
 
 .PHONY: all
-all: run
+all: run 
+
+.PHONY:  nuke
+nuke: 
+	${DOCKER} system prune -a --volumes
+
+.PHONY: minty-fresh 
+minty-fresh: 
+	${DOCKER_COMPOSE} down --rmi all --volumes
+
+.PHONY: rmi
+rmi: 
+	${DOCKER} images -q | xargs docker rmi -f
+
+.PHONY: rmdi
+rmdi: 
+	${DOCKER} images -a --filter=dangling=true -q | xargs ${DOCKER} rmi
+
+.PHONY: rm-exited-containers
+rm-exited-containers: 
+	${DOCKER} ps -a -q -f status=exited | xargs ${DOCKER} rm -v 
+
+.PHONY: fresh-restart
+fresh-restart: minty-fresh setup test run
 
 .PHONY: nuke
 nuke: 
@@ -28,7 +51,7 @@ fresh-restart: minty-fresh setup test run
 
 .PHONY: console-sandbox
 console-sandbox:
-	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rails console --sandbox
+ 	$(DOCKER_COMPOSE) run $(RAILS_CONTAINER) rails console --sandbox
 
 .PHONY: run
 run:

@@ -3,6 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'mocha/mini_test'
 require 'factory_girl'
+require 'sidekiq/testing'
 require 'vcr'
 
 class ActiveSupport::TestCase
@@ -43,7 +44,21 @@ class ActiveSupport::TestCase
 end
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
+  config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = 'test/cassettes'
   config.hook_into :webmock
 end
+
+Geocoder.configure(lookup: :test)
+Geocoder::Lookup::Test.set_default_stub(
+  [{ 'latitude'   => -4,
+     'longitude'  => -4,
+     'address'    => 'a weird default, when real world accuracy does not matter',
+     'state_code' => 'DEFAULT' }]
+)
+Geocoder::Lookup::Test.add_stub(
+  '97201', [{ 'latitude' => 45.505603,
+              'longitude' => -122.6882145,
+              'address'    => 'real world result for the zip used in the user factory',
+              'state_code' => 'OR' }]
+)

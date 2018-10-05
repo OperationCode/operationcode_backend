@@ -701,7 +701,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             error: "Some error message"
         }
 
-## Mentorship | Create [/api/v1/airtable/mentorships{?slack_user,services,skillsets,additional_details,mentor_requested}]
+## Mentorship | Create [/api/v1/airtable/mentorships{?slack_user,services,email,skillsets,additional_details,mentor_requested}]
 
 + Parameters
 
@@ -725,6 +725,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 slack_user: "hpjaj",
                 services: "rec3ZQMCQsKPKlE2C",
                 skillsets: "Javascript",
+                email: "test@email.com",
                 additional_details: "Some additional description.",
                 mentor_requested: "rec0SDZDK2DiW4PY9"
             }
@@ -740,8 +741,9 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                   "Service"            => [
                     "rec3ZQMCQsKPKlE2C"
                   ],
+                  "Email"              => "test@email.com",
                   "Skillsets"          => [
-                    "Web (Frontend Development)",
+                    "Web Development (Front-end)",
                     "Java",
                     "Study Help"
                   ],
@@ -1825,7 +1827,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
-## User | Update [/api/v1/users{?education_level,mentor,scholarship_info,employment_status,company_name,company_role,volunteer,branch_of_service,interests}]
+## User | Update [/api/v1/users{?education_level,mentor,scholarship_info,employment_status,company_name,company_role,volunteer,military_status,branch_of_service,interests}]
 
 + Parameters
 
@@ -1836,6 +1838,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + company_name (string, optional) - Users name of employer in the form on a string
     + company_role (string, optional) - Users role at company in the form of a string
     + volunteer (boolean, optional) - Is User wanting to volunteer in the form of a boolean
+    + military_status (string, optional) - Users military status, either current, veteran, spouse, or blank
     + branch_of_service (string, optional) - Users branch of service in the form of a string
     + interests (string, optional) - User interests in the form of a string.
 
@@ -1856,6 +1859,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 employment_status: "Employed",
                 company_name: "Comcast",
                 company_role: "Developer",
+                military_status: "spouse",
                 volunteer: "false",
                 branch_of_service: "Air Force",
                 interests: "Python, Python, Python, Python"
@@ -1877,6 +1881,7 @@ API endpoints that Operation Code's Rails backend makes available to its React f
                 employment_status: "Employed",
                 company_name: "Comcast",
                 company_role: "Developer",
+                military_status: "spouse",
                 volunteer: "false",
                 branch_of_service: "Air Force",
                 interests: "Python, Python, Python, Python"

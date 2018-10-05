@@ -298,6 +298,7 @@ ActiveRecord::Schema.define(version: 20180531004341) do
     t.string   "interests"
     t.boolean  "scholarship_info",                default: false
     t.integer  "role_id"
+    t.string   "military_status"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["role_id"], name: "index_users_on_role_id", using: :btree

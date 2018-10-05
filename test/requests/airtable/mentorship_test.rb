@@ -44,16 +44,18 @@ class MentorshipTest < Minitest::Test
     VCR.use_cassette('airtable/mentorship/post_successful') do
       request_body = {
         slack_user: 'test_case_1',
-        services: 'rec3ZQMCQsKPKlE2C',
+        email: 'agreatperson@email.com',
+        services: 'rec891lUSSaXM4qGC',
         skillsets: 'Java',
         additional_details: 'Some test description.',
-        mentor_requested: 'rec0SDZDK2DiW4PY9'
+        mentor_requested: 'recqeVhDDJU5cY8TX'
       }
 
       response = Airtable::Mentorship.new.create_mentor_request(request_body)
 
       assert response['id'].present?
       assert response.dig('fields', 'Slack User') == request_body[:slack_user]
+      assert response.dig('fields', 'Email') == request_body[:email]
       assert response.dig('fields', 'Service') == [request_body[:services]]
       assert response.dig('fields', 'Skillsets') == [request_body[:skillsets]]
       assert response.dig('fields', 'Additional Details') == request_body[:additional_details]
