@@ -12,6 +12,12 @@ def event_endpoint_response
   response
 end
 
+def member_endpoint_response
+  response = build_response
+  response.parsed_response = member_parsed_response
+  response
+end
+
 def build_response(code = 200)
   response_struct = OpenStruct.new
   response_struct.code = code
@@ -319,6 +325,33 @@ def group_endpoint_parsed_response
         "type": 'event',
         "base_url": 'https://secure.meetupstatic.com'
       }
+    }
+  ].as_json
+end
+
+def member_parsed_response
+  [
+    {
+      "chapters": [
+        {
+          "id": 1,
+          "name": 'group',
+          "urlname": 'groupname'
+        }
+      ],
+      "city": 'Virginia Beach',
+      "country": 'us',
+      "email": 'test@operationcode.org',
+      "events_attended": 4,
+      "is_organizer": false,
+      "join_time": 1483543375000,
+      "last_access_time": 1506171600000,
+      "lat": 36.844764709472656,
+      "lon": -75.97899627685547,
+      "member_id": 10,
+      "member_name": 'test account',
+      "photo_thumb_url": 'https://secure.meetupstatic.com/photos/event/b/d/1/4/600_457308404.jpeg',
+      "state": 'VA'
     }
   ].as_json
 end
