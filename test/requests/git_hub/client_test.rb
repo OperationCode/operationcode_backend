@@ -5,7 +5,6 @@ class ClientTest < Minitest::Test
     @client = GitHub::Client.new
     @oc = GitHub::Settings::OC
     @pr_number = 753
-    Time.zone = ActiveSupport::TimeZone['UTC']
   end
 
   def test_successful_search_for_prs_for_multi_page
