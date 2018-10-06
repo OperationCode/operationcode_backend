@@ -134,12 +134,10 @@ class ClientTest < Minitest::Test
     response = VCR.use_cassette('git_hub/commits/successful') do
       @client.commits_for(@oc, @pr_number, 1)
     end
-
-    reset_time = Time.at(1503866476).strftime '%-m/%d/%Y at%l:%M:%S%P %Z'
-
+    
     assert_equal '57', response.headers['X-RateLimit-Remaining']
     assert_equal '60', response.headers['X-RateLimit-Limit']
     assert_equal '1503866476', response.headers['X-RateLimit-Reset']
-    assert_equal reset_time, @client.send(:reset_time, response)
+    assert_equal '8/27/2017 at 8:41:16pm UTC', @client.send(:reset_time, response)
   end
 end

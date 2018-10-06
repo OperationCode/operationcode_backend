@@ -118,7 +118,7 @@ module GitHub
     def reset_time(response)
       seconds = response.headers['X-RateLimit-Reset'].to_i
 
-      Time.at(seconds).strftime '%-m/%d/%Y at%l:%M:%S%P %Z'
+      Time.at(seconds).utc.strftime '%-m/%d/%Y at%l:%M:%S%P %Z'
     end
   end
 end
