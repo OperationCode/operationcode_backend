@@ -1,4 +1,5 @@
 require 'sidekiq'
+require 'sidekiq-cron'
 
 Sidekiq.configure_server do |config|
   # https://stackoverflow.com/questions/28412913/disable-automatic-retry-with-activejob-used-with-sidekiq
@@ -10,4 +11,10 @@ Sidekiq.configure_server do |config|
   }
   Rails.logger = Sidekiq::Logging.logger
   ActiveRecord::Base.logger = Sidekiq::Logging.logger
+end
+
+schedule_file = "config/job_schedule.yml"
+
+if File.exist?(schedule_file) && Sidekiq.server?
+  Sidekiq::Cron::Job.load_from_hash YAML.load_file(schedule_file)
 end

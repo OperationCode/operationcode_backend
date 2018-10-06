@@ -1,0 +1,20 @@
+## Examples of job configurations
+
+#my_first_job:
+#  cron: "*/5 * * * *"
+#  class: "HardWorker"
+#  queue: hard_worker
+#
+#second_job:
+#  cron: "*/30 * * * *" # execute at every 30 minutes
+#  class: "HardWorker"
+#  queue: hard_worker_long
+#  args:
+#    hard: "stuff"
+
+
+# At 04:00 every day run the meetup member sync job
+meetup_member_sync_job:
+  cron: "0 4 * * *"
+  class: "MeetupMemberSyncJob"
+  queue: "default"

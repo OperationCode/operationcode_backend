@@ -90,6 +90,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubis (2.7.0)
+    et-orbi (1.1.6)
+      tzinfo
     execjs (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
@@ -104,6 +106,9 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    fugit (1.1.6)
+      et-orbi (~> 1.1, >= 1.1.6)
+      raabro (~> 1.1)
     geocoder (1.4.3)
     gibbon (3.0.1)
       faraday (>= 0.9.1)
@@ -185,6 +190,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.0)
     puma (3.8.2)
+    raabro (1.1.6)
     rack (2.0.5)
     rack-cors (0.4.1)
     rack-protection (2.0.3)
@@ -251,6 +257,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    sidekiq-cron (1.0.4)
+      fugit (~> 1.1)
+      sidekiq (>= 4.2.1)
     skylight (1.5.0)
       activesupport (>= 3.0.0)
     spring (2.0.1)
@@ -313,6 +322,7 @@ DEPENDENCIES
   sendgrid-ruby
   sentry-raven
   sidekiq
+  sidekiq-cron
   skylight
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -320,4 +330,4 @@ DEPENDENCIES
   webmock (~> 3.0, >= 3.0.1)
 
 BUNDLED WITH
-   1.16.4
+   1.16.5

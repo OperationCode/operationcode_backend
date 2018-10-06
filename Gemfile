@@ -29,6 +29,7 @@ gem 'rubocop', '~> 0.55.0', require: false
 gem 'sendgrid-ruby'
 gem 'sentry-raven'
 gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'skylight'
 gem 'pry-rails'
 
