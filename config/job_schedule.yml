@@ -18,3 +18,9 @@ meetup_member_sync_job:
   cron: "0 4 * * *"
   class: "MeetupMemberSyncJob"
   queue: "default"
+
+# At 03:00 every day run the github collect statistics job
+github_collect_statistics_job:
+  cron: "0 3 * * *"
+  class: "GithubCollectStatisticsJob"
+  queue: "default"
