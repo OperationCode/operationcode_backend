@@ -9,13 +9,15 @@ module GitHub
       @date = GitHubStatistic.last_pr_completed_on
     end
 
-    def fetch_and_save!
+    def fetch_and_save!(print_results: true)
       get_pull_requests.each do |pr|
         git_hub_user = GitHub::Committer.find_or_create_user! pr[:git_hub_user]
+        git_hub_pr_stat = GitHub::Committer.find_or_create_statistic! pr, pr[:source_type], git_hub_user.id
+
+        next unless print_results
         p 'git_hub_user:'
         p git_hub_user
 
-        git_hub_pr_stat = GitHub::Committer.find_or_create_statistic! pr, pr[:source_type], git_hub_user.id
         p 'git_hub_pr_stat:'
         p git_hub_pr_stat
       end

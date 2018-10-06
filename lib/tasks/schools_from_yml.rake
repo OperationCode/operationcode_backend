@@ -30,9 +30,6 @@ namespace :schools do
         puts message
         Rails.logger.error message
       end
-
-      p "Created #{CodeSchool.count} code schools"
-      p "Created #{Location.count} locations"
     end
   end
 end

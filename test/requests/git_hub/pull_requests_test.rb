@@ -51,7 +51,7 @@ class PullRequestsTest < Minitest::Test
   end
 
   def test_fetch_and_save
-    @pr_instance.fetch_and_save!
+    @pr_instance.fetch_and_save!(print_results: false)
 
     assert GitHubStatistic.for_repository(@slash).count == 4
     assert GitHubStatistic.for_repository(@slash).pull_requests.count == 2
