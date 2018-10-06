@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MeetupMemberSyncTest < ActiveSupport::TestCase
+class MeetupMemberSyncJobTest < ActiveSupport::TestCase
   member = {
     'email' => 'test@test.com',
     'lat' => 36.900001525878906,
@@ -10,7 +10,7 @@ class MeetupMemberSyncTest < ActiveSupport::TestCase
   }
 
   test 'it only updates nil fields on a found user' do
-    job = MeetupMemberSync.new
+    job = MeetupMemberSyncJob.new
     user_id = FactoryGirl.create(:user, email: 'test@test.com', city: nil).id
     Meetup.any_instance.expects(:members_by_email).returns('test@test.com' => member)
     job.perform
@@ -21,7 +21,7 @@ class MeetupMemberSyncTest < ActiveSupport::TestCase
   end
 
   test 'it only updates users with matching emails' do
-    job = MeetupMemberSync.new
+    job = MeetupMemberSyncJob.new
     FactoryGirl.create(:user, email: 'test@test.com', city: nil)
     user2 = FactoryGirl.create(:user, email: 'test2@test.com', city: nil)
 
