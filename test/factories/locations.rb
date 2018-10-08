@@ -7,5 +7,6 @@ FactoryGirl.define do
     city { Faker::Address.city }
     state { Faker::Address.state }
     zip { Faker::Address.zip_code }
+    provides_housing { [true, false].sample }
   end
 end
