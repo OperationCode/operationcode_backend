@@ -2,7 +2,7 @@ module Api
   module V1
     class ScholarshipsController < ApiController
       def index
-        render json: Scholarship.all
+        render json: Scholarship.unexpired
       end
 
       def show
