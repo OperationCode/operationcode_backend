@@ -124,9 +124,9 @@ ActiveRecord::Schema.define(version: 20181002181535) do
     t.string   "state"
     t.integer  "zip"
     t.integer  "code_school_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.boolean  "provides_housing"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "provides_housing", default: false
     t.index ["code_school_id"], name: "index_locations_on_code_school_id", using: :btree
   end
 
