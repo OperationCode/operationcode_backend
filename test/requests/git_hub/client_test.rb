@@ -134,7 +134,7 @@ class ClientTest < Minitest::Test
     response = VCR.use_cassette('git_hub/commits/successful') do
       @client.commits_for(@oc, @pr_number, 1)
     end
-    
+
     assert_equal '57', response.headers['X-RateLimit-Remaining']
     assert_equal '60', response.headers['X-RateLimit-Limit']
     assert_equal '1503866476', response.headers['X-RateLimit-Reset']
