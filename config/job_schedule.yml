@@ -15,12 +15,14 @@
 
 # At 04:00 every day run the meetup member sync job
 meetup_member_sync_job:
-  cron: "0 4 * * *"
+  #cron: "0 4 * * *"
+  cron: "0 0 5 31 2 ?" # only run Feb 31
   class: "MeetupMemberSyncJob"
   queue: "default"
 
 # At 03:00 every day run the github collect statistics job
 github_collect_statistics_job:
-  cron: "0 3 * * *"
+  #cron: "0 3 * * *"
+  cron: "0 0 5 31 2 ?" # only run Feb 31
   class: "GithubCollectStatisticsJob"
   queue: "default"
