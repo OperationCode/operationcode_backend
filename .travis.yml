@@ -1,4 +1,7 @@
 sudo: false
+branches:
+  only:
+    - master
 language: ruby
 bundler_args: "--jobs 7"
 
