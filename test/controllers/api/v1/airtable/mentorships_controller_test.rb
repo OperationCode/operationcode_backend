@@ -10,8 +10,8 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
     VCR.use_cassette('airtable/mentorship/successful') do
       get api_v1_airtable_mentorships_path, headers: @headers, as: :json
 
-      assert response.status == 200
-      assert response.parsed_body.keys.sort == ['mentors', 'services', 'skillsets']
+      assert_equal 200, response.status
+      assert_equal ['mentors', 'services', 'skillsets'], response.parsed_body.keys.sort
     end
   end
 
@@ -19,7 +19,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
     VCR.use_cassette('airtable/mentorship/exceeded_rate_limit') do
       get api_v1_airtable_mentorships_path, headers: @headers, as: :json
 
-      assert response.status == 422
+      assert_equal 422, response.status
       assert response.parsed_body['error'].present?
     end
   end
@@ -42,7 +42,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
         as: :json
       )
 
-      assert response.status == 201
+      assert_equal 201, response.status
       assert response.parsed_body['id'].present?
       assert response.parsed_body['createdTime'].present?
     end
@@ -66,7 +66,7 @@ class Api::V1::Airtable::MentorshipsControllerTest < ActionDispatch::Integration
         as: :json
       )
 
-      assert response.status == 201
+      assert_equal 201, response.status
       assert response.parsed_body['id'].present?
       assert response.parsed_body['createdTime'].present?
     end

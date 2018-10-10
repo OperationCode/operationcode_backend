@@ -25,12 +25,12 @@ class ClientTest < Minitest::Test
     ## link presence means there are multiple pages of results
     assert response.headers['link'].present?
     assert response['items'].present?
-    assert response.code.to_i == 200
-    assert pr['html_url'] == 'https://github.com/OperationCode/operationcode/pull/753'
-    assert pr['id'] == 240032714
-    assert pr['number'] == @pr_number
-    assert pr['title'] == 'Revert "waffle.io Badge"'
-    assert pr['state'] == 'closed'
+    assert_equal 200, response.code.to_i
+    assert_equal 'https://github.com/OperationCode/operationcode/pull/753', pr['html_url']
+    assert_equal 240032714, pr['id']
+    assert_equal @pr_number, pr['number']
+    assert_equal 'Revert "waffle.io Badge"', pr['title']
+    assert_equal 'closed', pr['state']
   end
 
   def test_successful_search_for_prs_for_single_page
@@ -49,14 +49,14 @@ class ClientTest < Minitest::Test
     pr = response['items'].first
 
     ## link absence means there is only one page of results
-    assert response.headers['link'].present? == false
+    refute response.headers['link'].present?
     assert response['items'].present?
-    assert response.code.to_i == 200
-    assert pr['html_url'] == 'https://github.com/OperationCode/operationcode_slashbot/pull/7'
-    assert pr['id'] == 221728378
-    assert pr['number'] == 7
-    assert pr['title'] == 'Add /android case'
-    assert pr['state'] == 'closed'
+    assert_equal 200, response.code.to_i
+    assert_equal 'https://github.com/OperationCode/operationcode_slashbot/pull/7', pr['html_url']
+    assert_equal 221728378, pr['id']
+    assert_equal 7, pr['number']
+    assert_equal 'Add /android case', pr['title']
+    assert_equal 'closed', pr['state']
   end
 
   def test_successful_search_for_issues
@@ -75,15 +75,15 @@ class ClientTest < Minitest::Test
     issue = response['items'].first
 
     ## link absence means there is only one page of results
-    assert response.headers['link'].present? == false
+    refute response.headers['link'].present?
     assert response['items'].present?
-    assert response['items'].size == 59
-    assert response.code.to_i == 200
-    assert issue['html_url'] == 'https://github.com/OperationCode/operationcode_backend/issues/140'
-    assert issue['id'] == 250032036
-    assert issue['number'] == 140
-    assert issue['title'] == "Correct the spelling for 'distributions' in the contribution guide"
-    assert issue['state'] == 'closed'
+    assert_equal 59, response['items'].size
+    assert_equal 200, response.code.to_i
+    assert_equal 'https://github.com/OperationCode/operationcode_backend/issues/140', issue['html_url']
+    assert_equal 250032036, issue['id']
+    assert_equal 140, issue['number']
+    assert_equal "Correct the spelling for 'distributions' in the contribution guide", issue['title']
+    assert_equal 'closed', issue['state']
   end
 
   def test_successful_single_pull_request
@@ -93,19 +93,19 @@ class ClientTest < Minitest::Test
 
     pr = response.parsed_response
 
-    assert pr['id'] == 128533020
-    assert pr['number'] == 753
-    assert pr['additions'] == 0
-    assert pr['deletions'] == 3
-    assert pr['html_url'] == 'https://github.com/OperationCode/operationcode/pull/753'
-    assert pr['title'] == 'Revert "waffle.io Badge"'
-    assert pr['merged_at'] == '2017-07-02T20:32:11Z'
+    assert_equal 128533020, pr['id']
+    assert_equal 753, pr['number']
+    assert_equal 0, pr['additions']
+    assert_equal 3, pr['deletions']
+    assert_equal 'https://github.com/OperationCode/operationcode/pull/753', pr['html_url']
+    assert_equal 'Revert "waffle.io Badge"', pr['title']
+    assert_equal '2017-07-02T20:32:11Z', pr['merged_at']
 
-    assert pr['user']['login'] == 'hollomancer'
-    assert pr['user']['avatar_url'] == 'https://avatars3.githubusercontent.com/u/9288648?v=4'
-    assert pr['user']['url'] == 'https://api.github.com/users/hollomancer'
-    assert pr['user']['html_url'] == 'https://github.com/hollomancer'
-    assert pr['user']['id'] == 9288648
+    assert_equal 'hollomancer', pr['user']['login']
+    assert_equal 'https://avatars3.githubusercontent.com/u/9288648?v=4', pr['user']['avatar_url']
+    assert_equal 'https://api.github.com/users/hollomancer', pr['user']['url']
+    assert_equal 'https://github.com/hollomancer', pr['user']['html_url']
+    assert_equal 9288648, pr['user']['id']
   end
 
   def test_successful_commits_for
@@ -116,18 +116,18 @@ class ClientTest < Minitest::Test
     commit = response.parsed_response.first
 
     assert response.headers['link'].nil?
-    assert response.parsed_response.class == Array
-    assert response.parsed_response.size == 1
-    assert commit['sha'] == '3d4ff7164a33fa1c6006d34942872d1c22594b99'
-    assert commit['html_url'] == 'https://github.com/OperationCode/operationcode/commit/3d4ff7164a33fa1c6006d34942872d1c22594b99'
-    assert commit['commit']['message'] == "Revert \"waffle.io Badge (#752)\"\n\nThis reverts commit ac38898ddeae5ddd17cdb6addba1b52fc6da923a."
-    assert commit['commit']['committer']['date'] == '2017-07-02T20:31:56Z'
+    assert_equal Array, response.parsed_response.class
+    assert_equal 1, response.parsed_response.size
+    assert_equal '3d4ff7164a33fa1c6006d34942872d1c22594b99', commit['sha']
+    assert_equal 'https://github.com/OperationCode/operationcode/commit/3d4ff7164a33fa1c6006d34942872d1c22594b99', commit['html_url']
+    assert_equal "Revert \"waffle.io Badge (#752)\"\n\nThis reverts commit ac38898ddeae5ddd17cdb6addba1b52fc6da923a.", commit['commit']['message']
+    assert_equal '2017-07-02T20:31:56Z', commit['commit']['committer']['date']
 
-    assert commit['author']['login'] == 'hollomancer'
-    assert commit['author']['avatar_url'] == 'https://avatars3.githubusercontent.com/u/9288648?v=4'
-    assert commit['author']['url'] == 'https://api.github.com/users/hollomancer'
-    assert commit['author']['html_url'] == 'https://github.com/hollomancer'
-    assert commit['author']['id'] == 9288648
+    assert_equal 'hollomancer', commit['author']['login']
+    assert_equal 'https://avatars3.githubusercontent.com/u/9288648?v=4', commit['author']['avatar_url']
+    assert_equal 'https://api.github.com/users/hollomancer', commit['author']['url']
+    assert_equal 'https://github.com/hollomancer', commit['author']['html_url']
+    assert_equal 9288648, commit['author']['id']
   end
 
   def test_rate_limit_presence
@@ -135,9 +135,9 @@ class ClientTest < Minitest::Test
       @client.commits_for(@oc, @pr_number, 1)
     end
 
-    assert response.headers['X-RateLimit-Remaining'] == '57'
-    assert response.headers['X-RateLimit-Limit'] == '60'
-    assert response.headers['X-RateLimit-Reset'] == '1503866476'
-    assert @client.send(:reset_time, response) == '8/27/2017 at 8:41:16pm UTC'
+    assert_equal '57', response.headers['X-RateLimit-Remaining']
+    assert_equal '60', response.headers['X-RateLimit-Limit']
+    assert_equal '1503866476', response.headers['X-RateLimit-Reset']
+    assert_equal '8/27/2017 at 8:41:16pm UTC', @client.send(:reset_time, response)
   end
 end

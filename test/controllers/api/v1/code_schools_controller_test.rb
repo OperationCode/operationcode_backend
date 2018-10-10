@@ -64,11 +64,11 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     dojo = code_schools[0]
     wynode = code_schools[1]
 
-    assert dojo['name'] == coding_dojo.name
-    assert wynode['name'] == wynode_academy.name
+    assert_equal dojo['name'], coding_dojo.name
+    assert_equal wynode['name'], wynode_academy.name
 
-    assert cities_for(dojo) == [dojo_la.city, dojo_san_fran.city]
-    assert cities_for(wynode) == [wynode_denver.city, wynode_dallas.city]
+    assert_equal cities_for(dojo), [dojo_la.city, dojo_san_fran.city]
+    assert_equal cities_for(wynode), [wynode_denver.city, wynode_dallas.city]
   end
 
   test ':create endpoint creates a CodeSchool successfully' do

@@ -8,7 +8,7 @@ class MentorshipTest < Minitest::Test
   end
 
   def test_mentor_request_data_returns_correct_keys
-    assert @successful_response.keys.sort == %i[mentors services skillsets]
+    assert_equal %i[mentors services skillsets], @successful_response.keys.sort
   end
 
   def test_mentor_request_data_returns_correct_mentor_data
@@ -54,12 +54,12 @@ class MentorshipTest < Minitest::Test
       response = Airtable::Mentorship.new.create_mentor_request(request_body)
 
       assert response['id'].present?
-      assert response.dig('fields', 'Slack User') == request_body[:slack_user]
-      assert response.dig('fields', 'Email') == request_body[:email]
-      assert response.dig('fields', 'Service') == [request_body[:services]]
-      assert response.dig('fields', 'Skillsets') == [request_body[:skillsets]]
-      assert response.dig('fields', 'Additional Details') == request_body[:additional_details]
-      assert response.dig('fields', 'Mentor Requested') == [request_body[:mentor_requested]]
+      assert_equal request_body[:slack_user], response.dig('fields', 'Slack User')
+      assert_equal request_body[:email], response.dig('fields', 'Email')
+      assert_equal [request_body[:services]], response.dig('fields', 'Service')
+      assert_equal [request_body[:skillsets]], response.dig('fields', 'Skillsets')
+      assert_equal request_body[:additional_details], response.dig('fields', 'Additional Details')
+      assert_equal [request_body[:mentor_requested]], response.dig('fields', 'Mentor Requested')
     end
   end
 
@@ -67,12 +67,12 @@ class MentorshipTest < Minitest::Test
     instance = Airtable::Mentorship.new
 
     converted = instance.send(:format_for_posting, 'this , and long ')
-    assert converted == ['this', 'and long']
+    assert_equal ['this', 'and long'], converted
 
     converted = instance.send(:format_for_posting, 'this,that')
-    assert converted == ['this', 'that']
+    assert_equal ['this', 'that'], converted
 
     converted = instance.send(:format_for_posting, 'this')
-    assert converted == ['this']
+    assert_equal ['this'], converted
   end
 end

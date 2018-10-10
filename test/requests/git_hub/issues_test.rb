@@ -37,11 +37,11 @@ class IssuesTest < Minitest::Test
   def test_fetch_and_save
     @issue_instance.fetch_and_save!(print_results: false)
 
-    assert GitHubStatistic.for_repository(@backend).count == 28
-    assert GitHubStatistic.for_repository(@backend).issues.count == 28
-    assert GitHubStatistic.for_repository(@backend).pluck(:title).uniq.count == 28
-    assert GitHubStatistic.for_repository(@backend).pluck(:number).uniq.count == 28
-    assert GitHubUser.count == 4
+    assert_equal 28, GitHubStatistic.for_repository(@backend).count
+    assert_equal 28, GitHubStatistic.for_repository(@backend).issues.count
+    assert_equal 28, GitHubStatistic.for_repository(@backend).pluck(:title).uniq.count
+    assert_equal 28, GitHubStatistic.for_repository(@backend).pluck(:number).uniq.count
+    assert_equal 4, GitHubUser.count
   end
 
   def stub_client_calls
@@ -50,13 +50,13 @@ class IssuesTest < Minitest::Test
   end
 
   def issues_assertions
-    assert @issue_instance.compiled_issues.size == 28
-    assert @issue_instance.compiled_issues.map { |stat| stat[:source_type] }.uniq == ['Issue']
-    assert @issue_instance.compiled_issues.map { |stat| stat[:state] }.uniq == ['closed']
-    assert @issue_instance.compiled_issues.map { |stat| stat[:repository] }.uniq == ['operationcode_backend']
-    assert @issue_instance.compiled_issues.first[:url] == 'https://github.com/OperationCode/operationcode_backend/issues/133'
-    assert @issue_instance.compiled_issues.first[:title] == 'Support for multi step profiles'
-    assert @issue_instance.compiled_issues.first[:number] == 133
-    assert @issue_instance.compiled_issues.first[:source_id] == 248273181
+    assert_equal 28, @issue_instance.compiled_issues.size
+    assert_equal ['Issue'], @issue_instance.compiled_issues.map { |stat| stat[:source_type] }.uniq
+    assert_equal ['closed'], @issue_instance.compiled_issues.map { |stat| stat[:state] }.uniq
+    assert_equal ['operationcode_backend'], @issue_instance.compiled_issues.map { |stat| stat[:repository] }.uniq
+    assert_equal 'https://github.com/OperationCode/operationcode_backend/issues/133', @issue_instance.compiled_issues.first[:url]
+    assert_equal 'Support for multi step profiles', @issue_instance.compiled_issues.first[:title]
+    assert_equal 133, @issue_instance.compiled_issues.first[:number]
+    assert_equal 248273181, @issue_instance.compiled_issues.first[:source_id]
   end
 end

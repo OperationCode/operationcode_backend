@@ -6,7 +6,7 @@ class CodeSchoolTest < ActiveSupport::TestCase
   end
 
   test 'is_partner should be present and default to false' do
-    assert @code_school.is_partner == false
+    assert_not @code_school.is_partner
   end
 
   test 'rep_name should be present' do
