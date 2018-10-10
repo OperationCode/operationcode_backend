@@ -678,7 +678,6 @@ Style/RescueStandardError:
     - 'app/lib/json_web_token.rb'
     - 'app/lib/send_grid_client.rb'
     - 'config/initializers/core_extensions/devise/strategies/json_web_token.rb'
-    - 'lib/tasks/git_hub.rake'
     - 'lib/tasks/meetup.rake'
     - 'lib/tasks/resource.rake'
     - 'lib/tasks/users.rake'

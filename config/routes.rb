@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   require 'sidekiq/web'
-  authenticate :admin_user, ->(u) { u.role.super_admin? } do
+  require 'sidekiq/cron/web'
+  authenticate :admin_user, ->(u) { u.role.admin_accessible? } do
     mount Sidekiq::Web => '/admin/sidekiq'
   end
 
