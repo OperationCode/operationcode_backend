@@ -75,7 +75,7 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
 
   test ':create endpoint creates a new SlackUser with User reference' do
     slack_email = 'slack@user.com'
-    create(:user, email: slack_email) # create user to reference when generating slack user
+    user = create(:user, email: slack_email)
     params = {
       slack_id: '23fjiofisfd',
       slack_name: 'Test Slack User',
@@ -89,6 +89,7 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
     slack_user = SlackUser.last
     assert_equal response.status, 201
     assert_equal({ 'action' => 'none', 'slack_user' => slack_user.id }, response.parsed_body)
+    assert_equal(slack_user.user_id, user.id)
   end
 
   test ':update endpoint updates an existing Slack User without User Reference' do
@@ -122,6 +123,7 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal 201, response.status
     assert_equal({ 'action' => 'request_email_update', 'slack_user' => @slack_user.id }, response.parsed_body)
     assert_equal @slack_user.slack_email, new_email
+    assert_equal @slack_user.user_id, user.id
   end
 
   test ':update endpoint updates an existing SlackUser with a User reference that has same email' do
@@ -140,6 +142,7 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal 201, response.status
     assert_equal({ 'action' => 'none', 'slack_user' => @slack_user.id }, response.parsed_body)
     assert_equal @slack_user.slack_email, new_email
+    assert_equal @slack_user.user_id, user.id
   end
 end
 

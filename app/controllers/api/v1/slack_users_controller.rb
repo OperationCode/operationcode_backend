@@ -9,6 +9,7 @@ module Api
 
         ActiveRecord::Base.transaction do
           slack_user = SlackUser.new slack_user_params
+          slack_user.user_id = user.id unless user.nil?
           slack_user.save!
 
           render json: { action: generate_client_action(user, params[:slack_email]), slack_user: slack_user.id }, status: :created
