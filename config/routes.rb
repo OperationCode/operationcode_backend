@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       resources :scholarships, only: [:index, :show]
       resources :scholarship_applications, only: :create
       resources :services, only: :index
-      resources :slack_users, only: :create do
+      resources :slack_users, only: [:create, :update] do
         collection do
           get :access
         end
