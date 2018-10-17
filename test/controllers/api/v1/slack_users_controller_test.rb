@@ -70,7 +70,7 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
     post api_v1_slack_users_url, headers: @headers, params: params, as: :json
 
     slack_user = SlackUser.last
-    assert_equal({ 'action' => 'request_email_update', 'slack_user' => slack_user.id }, response.parsed_body)
+    assert_equal({ 'action' => 'request_account_verification', 'slack_user' => slack_user.id }, response.parsed_body)
   end
 
   test ':create endpoint creates a new SlackUser with User reference' do
@@ -103,7 +103,7 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
 
     @slack_user.reload
     assert_equal 201, response.status
-    assert_equal({ 'action' => 'request_email_update', 'slack_user' => @slack_user.id }, response.parsed_body)
+    assert_equal({ 'action' => 'request_account_verification', 'slack_user' => @slack_user.id }, response.parsed_body)
     assert_equal @slack_user.slack_email, new_email
   end
 
@@ -121,7 +121,7 @@ class Api::V1::SlackUsersControllerTest < ActionDispatch::IntegrationTest
 
     @slack_user.reload
     assert_equal 201, response.status
-    assert_equal({ 'action' => 'request_email_update', 'slack_user' => @slack_user.id }, response.parsed_body)
+    assert_equal({ 'action' => 'request_account_verification', 'slack_user' => @slack_user.id }, response.parsed_body)
     assert_equal @slack_user.slack_email, new_email
     assert_equal @slack_user.user_id, user.id
   end

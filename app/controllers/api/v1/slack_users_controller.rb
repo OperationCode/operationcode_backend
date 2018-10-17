@@ -52,7 +52,7 @@ module Api
       end
 
       def generate_client_action(user, email)
-        user.nil? || user.email != email ? 'request_email_update' : 'none'
+        user.nil? || user.email != email ? 'request_account_verification' : 'none'
       end
 
       def slack_user_params
