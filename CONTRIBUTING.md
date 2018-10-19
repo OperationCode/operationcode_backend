@@ -24,22 +24,17 @@ Being an open source project involving contributors of varying levels of experie
 	- [What Is The Back-End?](#what-is-the-back-end)
 	- [What is REST? What is an API?](#what-is-rest-what-is-an-api)
 - [Technologies](#technologies)
+- [Gems](#gems)
 - [Development Workflow](#development-workflow)
-	- [Installing Dependencies](#installing-dependencies)
-	- [Run The Development Server](#run-the-development-server)
+	- [Setting Up Your Environment](#installing-dependencies)
+	- [Finding An Issue](#finding-an-issue)
 	- [Returning To Work After A Break](#returning-to-work-after-a-break)
 	- [File Structure](#file-structure)
-	- [npm Scripts With Explanations](#api-documentation)
-- [Mocking Back-end Server API](#mocking-back-end-server-api)
+- [API Documentation](#api-documentation)
 - [Resources](#resources)
 - [Navigating Operating System Differences](#navigating-operating-system-differences)
 	- [MacOS](#macos)
-		- [Update your mac](#update-your-mac)
-		- [Xcode Command Line Tools](#xcode-command-line-tools)
-		- [Homebrew](#homebrew)
-		- [Git](#git)
 	- [Windows](#windows)
-		- [Git](#git-1)
 
 
 ## Git and GitHub
@@ -88,14 +83,14 @@ The back-end is responsible for providing data for the front-end to display. Thi
 
 Here is a breakdown and summary of the main technologies our project utilizes in alphabetic order:
 
-- [Ruby](https://www.ruby-lang.org/en/documentation/quickstart/) - The programming language this application is written in. 
+- [Ruby](https://www.ruby-lang.org/en/documentation/quickstart/) - The programming language this application is written in.
 - [Rails](https://guides.rubyonrails.org) - The web framework we use to interact with ruby. This reduces the amount of boilerplate code and increases developer efficiency [Rails Quickstart](https://www.ruby-lang.org/en/documentation/quickstart/)
-- [Active Job](https://guides.rubyonrails.org/v4.2/active_job_basics.html) - Jobs that are performed in the background (Queued, Async) or at time of request (Immediate, Synchronous). 
+- [Active Job](https://guides.rubyonrails.org/v4.2/active_job_basics.html) - Jobs that are performed in the background (Queued, Async) or at time of request (Immediate, Synchronous).
 - [Redis](https://redislabs.com/lp/redis-ruby/) - This is how the foreground and background tasks can communicate with each other to ensure that communication problems such as [Two General's Problem](https://en.wikipedia.org/wiki/Two_Generals%27_Problem) doesn't affect the reliability of the system.
-- [Docker](https://opensource.com/resources/what-docker) - This is how we ensure that the build artifacts on your system and your system configuration doesn't affect how this is run on any other system. 
-- [Postgres](https://www.postgresql.org/about/) - Our data is stored in a postgres instance. Locally you can use a containerized postgres. 
-- Various External [APIs](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82) - Such as Airtable, Slack, Github, Meetup and other operation code resources. 
-- [Make](https://www.gnu.org/software/make/) - We use various `make` command scripts to ensure you as a user don't have to waste your time. Our <a href="https://github.com/OperationCode/operationcode_backend/blob/master/Makefile">Makefile</a> includes these various scripts. 
+- [Docker](https://opensource.com/resources/what-docker) - This is how we ensure that the build artifacts on your system and your system configuration doesn't affect how this is run on any other system.
+- [Postgres](https://www.postgresql.org/about/) - Our data is stored in a postgres instance. Locally you can use a containerized postgres.
+- Various External [APIs](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82) - Such as Airtable, Slack, Github, Meetup and other operation code resources.
+- [Make](https://www.gnu.org/software/make/) - We use various `make` command scripts to ensure you as a user don't have to waste your time. Our <a href="https://github.com/OperationCode/operationcode_backend/blob/master/Makefile">Makefile</a> includes these various scripts.
 
 ## Gems
 
@@ -118,7 +113,7 @@ Various modularized ruby packages are used to aid in the development process the
 
 ## Development Workflow
 
-### Setting Up Your Environment 
+### Setting Up Your Environment
 
 
 <details>
@@ -198,7 +193,7 @@ Some issues take awhile to code a solution for. It is very normal to take a larg
 // TODO: include file structure (generate with "tree")
 ```
 
-## API Documentation 
+## API Documentation
 
 We are using [Apiary.io](http://docs.operationcodeapi.apiary.io) for documentation. Any change to the API requires updating the documentation. This is to assist users in the future. To use, navigate to http://docs.operationcodeapi.apiary.io.
 
@@ -282,7 +277,7 @@ You can also install Github Desktop for the Graphical interface into github.  Th
 
 Follow the steps found in the [Quick Start Guide](https://github.com/OperationCode/front-end/blob/master/Dockerfile)
 
-Occasionally you will deal with path issues this is fixed within windows by adding the appropriate key value pair to the path. 
+Occasionally you will deal with path issues this is fixed within windows by adding the appropriate key value pair to the path.
 
 To add them in your path, you can go to your Control Panel by clicking on the `Start` > type in: `Control Panel` > click on `System and Security` > click on `System` > on the left hand side, click on `Advanced System Settings` > near the bottom of the window, click on the `Environment Variables` and then under the `User variables for {USER}` click on the `Path` table and click on `Edit..`.
 
@@ -292,12 +287,12 @@ You can also install Github Desktop for a GUI Interface to Github.  If you do th
 
 - [Github for Desktop](https://desktop.github.com/)
 
-#### Ruby and Rails 
+#### Ruby and Rails
 // TODO: include local setup for these
 </details>
 
 
-### Linux 
+### Linux
 
 <details>
   <summary>Click to Expand</summary>
