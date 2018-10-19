@@ -54,6 +54,7 @@ Recommended versions of tools used within the repo:
   </ul>
 
 <li> <a href="https://github.com/OperationCode/operationcode_backend/blob/master/docs/setup/docker_setup.md#local-development-environment"> Retrieve Codebase</a> </li>
+<li> <a href="https://github.com/OperationCode/operationcode_backend/blob/master/docs/setup/docker_setup.md#database-setup"> Setup Database</a> </li>
 <li> <a href="https://github.com/OperationCode/operationcode_backend/blob/master/docs/setup/docker_setup.md#running-operationcode-backend"> Setup Codebase</a> </li>
 <li> <a href="https://github.com/OperationCode/operationcode_backend/blob/master/docs/setup/docker_setup.md#interact-with-backend"> Interact with Codebase</a> </li>
 
