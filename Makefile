@@ -3,27 +3,27 @@ DOCKER := docker
 DOCKER_COMPOSE := docker-compose
 
 .PHONY: all
-all: run 
+all: run
 
 .PHONY:  nuke
-nuke: 
+nuke:
 	${DOCKER} system prune -a --volumes
 
-.PHONY: minty-fresh 
-minty-fresh: 
+.PHONY: minty-fresh
+minty-fresh:
 	${DOCKER_COMPOSE} down --rmi all --volumes
 
 .PHONY: rmi
-rmi: 
+rmi:
 	${DOCKER} images -q | xargs docker rmi -f
 
 .PHONY: rmdi
-rmdi: 
+rmdi:
 	${DOCKER} images -a --filter=dangling=true -q | xargs ${DOCKER} rmi
 
 .PHONY: rm-exited-containers
-rm-exited-containers: 
-	${DOCKER} ps -a -q -f status=exited | xargs ${DOCKER} rm -v 
+rm-exited-containers:
+	${DOCKER} ps -a -q -f status=exited | xargs ${DOCKER} rm -v
 
 .PHONY: fresh-restart
 fresh-restart: minty-fresh setup test run
@@ -95,7 +95,10 @@ bundle:
 
 setup: build db_create db_migrate
 
-publish: build
+migrate_if_needed:
+	bash -c 'if docker-compose run ${RAILS_CONTAINER} rake db:migrate:status | grep "^\s*down"; then docker-compose run ${RAILS_CONTAINER} rake db:migrate; fi'
+
+publish: build migrate_if_needed
 	bin/publish
 
 upgrade: publish
