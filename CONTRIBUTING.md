@@ -123,7 +123,7 @@ There are three options for local setup:
 
 <ul>
 <li> <a href="/docs/setup/docker_setup.md">Docker</a> (recommended)</li>
-<li> Native (coming soon)</li>
+<li> <a href="/docs/setup/native_setup.md">Native</a> </li>
 <li> <a href="/docs/setup/aws_vm_setup.md">AWS Virtual Machine</a> </li>
 </ul>
 </details>
