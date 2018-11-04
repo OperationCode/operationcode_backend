@@ -26,7 +26,7 @@ Being an open source project involving contributors of varying levels of experie
 - [Technologies](#technologies)
 - [Gems](#gems)
 - [Development Workflow](#development-workflow)
-	- [Setting Up Your Environment](#installing-dependencies)
+	- [Setting Up Your Environment](#setting-up-your-environment)
 	- [Finding An Issue](#finding-an-issue)
 	- [Returning To Work After A Break](#returning-to-work-after-a-break)
 	- [File Structure](#file-structure)
