@@ -14,7 +14,6 @@ Being an open source project involving contributors of varying levels of experie
 
 **Lastly, If an instruction begins with "Run ...", that means to type the text in place of ... within your command line interface.**
 
-
 ## Table Of Contents
 - [Git and GitHub](#git-and-github)
 	- [Git](#git)
@@ -207,7 +206,6 @@ Example use:
 - You can now copy and paste that into your front-end to test your code.
 - Don't forget to remove the mock endpoint url when committing your changes for production. Reset your values and select `Production` to get the correct endpoint url.
 
-
 ## Resources
 
 - [Operation Code Backend API Endpoints](http://docs.operationcodeapi.apiary.io/#)
@@ -217,7 +215,6 @@ Example use:
 ## Navigating Operating System Differences
 
 ### MacOS
-
 
 <details>
   <summary>Click to Expand</summary>
@@ -282,6 +279,7 @@ You can also install Github Desktop for the Graphical interface into github.  Th
   <summary>Click to Expand</summary>
 
 #### Git
+
 - Install the full version of [CMDER](http://cmder.net/). This is a versatile terminal that wraps bash-like commands around Command Prompt by using Git for Windows. You have many options for getting Git on Windows.  We recommend using Git for Windows as it gives you a bash shell which can be very powerful and help you start to learn linux commands.
 
 Follow the steps found in the [Quick Start Guide](https://github.com/OperationCode/front-end/blob/master/Dockerfile)
@@ -297,9 +295,10 @@ You can also install Github Desktop for a GUI Interface to Github.  If you do th
 - [Github for Desktop](https://desktop.github.com/)
 
 #### Ruby and Rails
-// TODO: include local setup for these
-</details>
 
+// TODO: include local setup for these
+
+</details>
 
 ### Linux
 
