@@ -44,7 +44,6 @@ There are many resources in the wild to learn about all forms of version control
 
 ### GitHub Workflow
 
-
 <details>
 <summary>Click to Expand</summary>
 <ol>
@@ -77,7 +76,6 @@ The back-end is responsible for providing data for the front-end to display. Thi
 [What is REST?](https://www.codecademy.com/articles/what-is-rest)
 
 [What is an API?](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
-
 
 ## Technologies
 
