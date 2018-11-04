@@ -15,6 +15,7 @@ Being an open source project involving contributors of varying levels of experie
 **Lastly, If an instruction begins with "Run ...", that means to type the text in place of ... within your command line interface.**
 
 ## Table Of Contents
+
 - [Git and GitHub](#git-and-github)
 	- [Git](#git)
 	- [GitHub Workflow](#github-workflow)
@@ -33,7 +34,6 @@ Being an open source project involving contributors of varying levels of experie
 - [Navigating Operating System Differences](#navigating-operating-system-differences)
 	- [MacOS](#macos)
 	- [Windows](#windows)
-
 
 ## Git and GitHub
 
