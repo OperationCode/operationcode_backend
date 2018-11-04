@@ -30,6 +30,7 @@ Before contributing, please review our [Contributing Guide](CONTRIBUTING.md)
 For information about the maintainers of the project, check out [MAINTAINERS.md](MAINTAINERS.md).
 
 ## Quick Start
+
 If you're unsure of how to start this app or code for it, don't worry! You're our target audience!
 Please read our [Contributing Guide](CONTRIBUTING.md) to learn everything you need to be able to ask the right questions on our Slack team.
 

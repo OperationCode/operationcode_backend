@@ -15,6 +15,7 @@ You are now ready for the actual **OperationCode Backend** code base.
 * Make sure to replace `[YOUR-GITHUB-NAME]` with your GitHub name. (example: https://github.com/iserbit/operationcode_backend.git)
 
 #### Local Development Environment
+
 _Fork the repo first._
 ```bash
 git clone https://github.com/[YOUR-GITHUB-NAME]/operationcode_backend.git operationcode-upstream
@@ -28,18 +29,24 @@ git remote add upstream https://github.com/OperationCode/operationcode_backend.g
 
 #### Database Setup:
 
-
-1. Run `cp config/database.yml. config/native_setup_database.yml`.
-2. Run `bin/rake db:create`.
-3. Run `bin/rake db:migrate`.
-4. Run `bin/rake db:seed` --> **This is where I am getting errors** :sweat_smile:.
+1. Run `bin/rails db:create`.
+2. Run `bin/rails db:migrate`.
+3. Run `bin/rails db:seed`.
 
 ### Testing
-1. Run `RAILS_ENV=test rake db:test:prepare`.
-2. Run `bin/rake test & rubocop`.
+
+1. Run `RAILS_ENV=test rails db:test:prepare`.
+2. Run `bin/rails test`
+
+### Linting
+
+1. Run `rubocop`.
+2. To autocorrect run `rubocop -a`.
 
 #### Running OperationCode Backend:
+
 To run the OperationCode Backend simply type:
+
 ```bash
 rails s
 ```
