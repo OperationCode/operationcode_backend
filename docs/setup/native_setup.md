@@ -35,7 +35,7 @@ git remote add upstream https://github.com/OperationCode/operationcode_backend.g
 
 ### Testing
 
-1. Run `RAILS_ENV=test rails db:test:prepare`.
+1. Run `RAILS_ENV=test bin/rails db:test:prepare`.
 2. Run `bin/rails test`
 
 ### Linting
@@ -48,7 +48,7 @@ git remote add upstream https://github.com/OperationCode/operationcode_backend.g
 To run the OperationCode Backend simply type:
 
 ```bash
-rails s
+bin/rails s
 ```
 
-You can now visit http://localhost:3000 and you should see the "Yay! You're on Rails!" welcome message.
+You can now visit any route available from `bin/rails routes`. For example `http://localhost:3000/users` and you should see the corresponding data returned.
