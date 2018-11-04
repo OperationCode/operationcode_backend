@@ -84,3 +84,7 @@ For the purpose of security we need to ensure that no data is added to AAR that 
 <li> Slack User invites Stopped <a href="https://github.com/OperationCode/operationcode_backend/issues/388">link</a></li>
 </ol>
 </details>
+
+## License
+
+MIT Licensed , see [LICENSE](LICENSE) for details
