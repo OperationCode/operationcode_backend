@@ -29,7 +29,6 @@ Being an open source project involving contributors of varying levels of experie
 	- [Setting Up Your Environment](#setting-up-your-environment)
 	- [Finding An Issue](#finding-an-issue)
 	- [Returning To Work After A Break](#returning-to-work-after-a-break)
-	- [File Structure](#file-structure)
 - [API Documentation](#api-documentation)
 - [Resources](#resources)
 - [Navigating Operating System Differences](#navigating-operating-system-differences)
@@ -186,12 +185,6 @@ Some issues take awhile to code a solution for. It is very normal to take a larg
 <li> <a href="https://help.github.com/articles/syncing-a-fork/">Keep your fork in sync with Operation Code's master branch.</a></li>
 <li> Run <code>make minty-fresh</code> to perform a complete reset of dependencies and build. </li>
 </details>
-
-### File Structure
-
-```
-// TODO: include file structure (generate with "tree")
-```
 
 ## API Documentation
 
