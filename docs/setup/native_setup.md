@@ -52,3 +52,4 @@ bin/rails s
 ```
 
 You can now visit any route available from `bin/rails routes`. For example `http://localhost:3000/users` and you should see the corresponding data returned.
+
