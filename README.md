@@ -62,9 +62,6 @@ Recommended versions of tools used within the repo:
 
 </details >
 
-## Description
-If you'd like to learn more about what this project is what a Backend is you can read about this in our [Introduction Guide](INTRODUCTION.md).
-
 ## Wiki
 
 We also have a [wiki](https://github.com/OperationCode/operationcode_backend/wiki) that contains common tutorials, tips, workflows and documentation around how to successfully contribute to, and work within, the operationcode_backend repository.
