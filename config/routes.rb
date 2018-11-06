@@ -58,6 +58,7 @@ Rails.application.routes.draw do
       namespace :users do
         post '/passwords/forgot', to: 'passwords#forgot'
         post '/passwords/reset', to: 'passwords#reset'
+        put '/password/update', to: 'password#update'
       end
 
       namespace :airtable do
