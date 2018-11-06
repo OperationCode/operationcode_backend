@@ -31,6 +31,16 @@ module Api
             render json: { error: ['Link not valid or expired. Try generating a new link.'] }, status: :not_found
           end
         end
+
+        def update
+          render json: { error: 'Password not present' }, status: :unprocessable_entity unless params[:password].present
+
+          if current_user.reset_password(params[:password])
+            render json: { status: 'ok' }, status: :ok
+          else
+            render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
+          end
+        end
       end
     end
   end
