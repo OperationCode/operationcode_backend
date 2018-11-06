@@ -14,9 +14,9 @@
 4. Run [tests](#testing)
 5. Check [style](#linting)
 
-### Install Dependencies
+## Install Dependencies
 
-#### Git
+### Git
 
 Git is a distributed version control system. This is how our code is stored and managed. Git can be frustrating, but it is an essential tool. If you want to learn more about Git, a great resource is [Think Like a Git](http://think-like-a-git.net/). If you find yourself in a real git pickle, see ["Oh, shit, git!"](http://ohshitgit.com/). If you have already installed Git as a part of the Docker Toolbox, you don't need to install it again using the following link.
 
@@ -36,7 +36,7 @@ cd operationcode-upstream
 git remote add upstream https://github.com/OperationCode/operationcode_backend.git
 ```
 
-#### Ruby Version Manager
+### Ruby Version Manager
 
 RVM is a command-line tool which allows you to easily install, manage, and work with multiple ruby environments.
 
@@ -45,26 +45,26 @@ RVM is a command-line tool which allows you to easily install, manage, and work 
 3. Install the ruby version specified in the [`.ruby-version`](/.ruby-version) file. You can check the version by running `ruby -v`
 4. Ensure ruby gemset from [`.ruby-gemset`](/.ruby-gemset) is applied. Run `rvm gemset list`. If a different gemset is applied, just run ``dir=`pwd` && cd .. && cd $dir``
 
-#### Bundler
+### Bundler
 
 Bundler is a dependency manager that ensures that the gems you need are present in the environment.
 
 1. Install [Bundler](https://bundler.io/) `gem install bundler`
-2. Run `bundle install` to install all of the gems in your [Gemfile](Gemfile).
+2. Run `bundle install` to install all of the gems in your [Gemfile](/Gemfile).
 
-#### Postgres
+### Postgres
 
 Postgres is an open source object-relational database.
 
 - Download and install [PostgreSQL](https://www.postgresql.org/download/) if you don't have it already.
 
-### Database Setup:
+## Database Setup
 
 1. Run `bin/rails db:create`
 2. Run `bin/rails db:migrate`
 3. Run `bin/rails db:seed`
 
-### Start Server:
+## Start Server
 
 To run the OperationCode Backend development environment simply type:
 
@@ -74,14 +74,14 @@ bin/rails server
 
 You can now visit any route available from `bin/rails routes`. For example `http://localhost:3000/api/v1/status` and you should see the corresponding data returned.
 
-### Testing
+## Testing
 
-Unit tests are utilized with [minitest](https://github.com/seattlerb/minitest) gem. All the tests are defined in the [`test`](test) folder.
+Unit tests are utilized with [minitest](https://github.com/seattlerb/minitest) gem. All the tests are defined in the [`test`](/test) folder.
 
 1. Run `RAILS_ENV=test bin/rails db:test:prepare`
 2. Run `bin/rails test`
 
-### Linting
+## Linting
 
 Use [rubocop](https://github.com/rubocop-hq/rubocop) to check ruby code style and formatting. It's appying the rules from the [Ruby Style Guide](https://github.com/rubocop-hq/ruby-style-guide).
 

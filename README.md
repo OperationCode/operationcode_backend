@@ -38,7 +38,7 @@ Please read our [Contributing Guide](CONTRIBUTING.md) to learn everything you ne
 
 Recommended versions of tools used within the repo:
 
-* Ruby: See [.ruby-version](https://github.com/OperationCode/operationcode_backend/blob/master/.ruby-version)
+* Ruby: See [.ruby-version](/.ruby-version)
 * `ruby@2.3.3`
 * `git@2.17.0` or greater
 
