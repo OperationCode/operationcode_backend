@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       end
 
       namespace :users do
+        post '/passwords/forgot', to: 'passwords#forgot'
         post '/passwords/reset', to: 'passwords#reset'
       end
 
