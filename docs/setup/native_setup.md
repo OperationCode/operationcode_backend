@@ -28,30 +28,30 @@ RVM is a command-line tool which allows you to easily install, manage, and work 
 
 1. [Install RVM](https://rvm.io/).
 2. You may need to restart terminal after the installation for the changes to take effect.
-3. Install the ruby version specified in the [`.ruby-version`](/.ruby-version) file. You can check the version by running `ruby -v`.
-4. Ensure ruby gemset from [`.ruby-gemset`](/.ruby-gemset) is applied. Run `rvm gemset list`. If a different gemset is applied, just run ``dir=`pwd` && cd .. && cd $dir``.
+3. Install the ruby version specified in the [`.ruby-version`](/.ruby-version) file. You can check the version by running `ruby -v`
+4. Ensure ruby gemset from [`.ruby-gemset`](/.ruby-gemset) is applied. Run `rvm gemset list`. If a different gemset is applied, just run ``dir=`pwd` && cd .. && cd $dir``
 
 ### Install Dependencies
 
-1. Install [Bundler](https://bundler.io/) `gem install bundler`.
+1. Install [Bundler](https://bundler.io/) `gem install bundler`
 2. Run `bundle install` to install all of the gems in your [Gemfile](Gemfile).
 3. Download and install [PostgreSQL](https://www.postgresql.org/download/) if you don't have it already.
 
 #### Database Setup:
 
-1. Run `bin/rails db:create`.
-2. Run `bin/rails db:migrate`.
-3. Run `bin/rails db:seed`.
+1. Run `bin/rails db:create`
+2. Run `bin/rails db:migrate`
+3. Run `bin/rails db:seed`
 
 ### Testing
 
-1. Run `RAILS_ENV=test bin/rails db:test:prepare`.
+1. Run `RAILS_ENV=test bin/rails db:test:prepare`
 2. Run `bin/rails test`
 
 ### Linting
 
-1. Run `rubocop`.
-2. To autocorrect run `rubocop -a`.
+1. Run `rubocop`
+2. To autocorrect run `rubocop -a`
 
 #### Running OperationCode Backend:
 
