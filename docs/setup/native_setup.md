@@ -61,5 +61,5 @@ To run the OperationCode Backend simply type:
 bin/rails s
 ```
 
-You can now visit any route available from `bin/rails routes`. For example `http://localhost:3000/users` and you should see the corresponding data returned.
+You can now visit any route available from `bin/rails routes`. For example `http://localhost:3000/api/v1/status` and you should see the corresponding data returned.
 
