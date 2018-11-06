@@ -42,7 +42,6 @@ Recommended versions of tools used within the repo:
 * `ruby@2.3.3`
 * `git@2.17.0` or greater
 
-
 <details>
   <summary>Expand To View Quickstart</summary>
 <ol>
@@ -62,6 +61,10 @@ Recommended versions of tools used within the repo:
 </ol>
 
 </details >
+
+## Description
+
+If you'd like to learn more about what this project is what a Backend is you can read about this in our [Introduction Guide](CONTRIBUTING.md#explanations).
 
 ## Wiki
 
