@@ -205,19 +205,16 @@ class User < ApplicationRecord
   end
 
   def generate_password_token!
-    puts "*********** before"
-    puts self.reset_password_token
-    raw, enc = Devise.token_generator.generate(User, :reset_password_token)
-    self.reset_password_token = enc 
+    _raw, enc = Devise.token_generator.generate(User, :reset_password_token)
+    self.reset_password_token = enc
     self.reset_password_sent_at = Time.now.utc
     self.save(validate: false)
-    puts "*************************generated token"
-    return raw
   end
 
-  def reset_password!(password)
+  def reset_password!(new_password)
+    @password = new_password
+    self.encrypted_password = password_digest(@password) if @password.present?
     self.reset_password_token = nil
-    self.encrypted_password = password
     save!
   end
 
@@ -225,7 +222,7 @@ class User < ApplicationRecord
     (self.reset_password_sent_at + 4.hours) > Time.now.utc
   end
 
- private
+  private
 
   def strip_zip_code
     zip.strip! if zip
@@ -238,5 +235,4 @@ class User < ApplicationRecord
   def downcase_email
     email.downcase! if email
   end
-
 end

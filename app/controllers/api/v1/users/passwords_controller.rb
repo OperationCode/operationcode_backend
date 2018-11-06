@@ -7,42 +7,30 @@ module Api
         #
         # @see http://www.rubydoc.info/github/plataformatec/devise/master/Devise/Models/Recoverable
         #
-        def forgot 
+        def forgot
           user = User.find_by email: params[:email]
-
           raise 'Could not find a user with that email address' unless user.present?
           user.generate_password_token!
-          puts user.send_reset_password_instructions
-          puts user
+          user.send_reset_password_instructions
           render json: { status: :ok }
         rescue StandardError => e
-          puts e.message
           render json: { errors: e.message }, status: :unprocessable_entity
         end
 
         def reset
           token = params[:reset_password_token].to_s
-          puts 'params'
-          puts token
-          puts params
           user = User.with_reset_password_token(token)
-          puts 'here'
-          puts user.reset_password_token
-          begin
-            if user.present? && user.password_token_valid?
-              if user.reset_password!(params[:password])
-                render json: {status: 'ok'}, status: :ok
-              else
-                render json: {error: user.errors.full_messages}, status: :unprocessable_entity
-              end
-
+          user.reset_password_token
+          if user.present? && user.password_token_valid?
+            if user.reset_password!(params[:password])
+              render json: { status: 'ok' }, status: :ok
             else
-              render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
+              render json: { error: user.errors.full_messages }, status: :unprocessable_entity
             end
-          rescue StandardError => e
-            puts e.message
+          else
+            render json: { error: ['Link not valid or expired. Try generating a new link.'] }, status: :not_found
           end
-        end 
+        end
       end
     end
   end
