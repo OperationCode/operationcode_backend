@@ -10,7 +10,7 @@
   - Install [Postgres](#postgres)
 
 2. Setup [database](#database-setup)
-3. Start [server](#run-server)
+3. Start [server](#start-server)
 4. Run [tests](#testing)
 5. Check [style](#linting)
 
