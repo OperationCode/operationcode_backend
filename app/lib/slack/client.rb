@@ -20,7 +20,7 @@ module Slack
       @domain = "#{subdomain}.slack.com"
     end
 
-    def invite(email:, channels: [])
+    def invite(extra_message:, email:, channels: [])
       Rails.logger.info "Inviting user with email '#{email}'"
       body = send_api_request(
         to: INVITE_PATH,
@@ -29,6 +29,7 @@ module Slack
           channels:    channels.join(','),
           token:       @token,
           set_active:  'true',
+          extra_message: extra_message,
           _attempts:   1
         }
       )

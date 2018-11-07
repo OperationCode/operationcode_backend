@@ -16,6 +16,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal [user.id], AddUserToSendGridJob.jobs.first['args']
   end
 
+  test 'welcoming a user adds them to SlackInvite' do
+    user = create(:user, user_opts)
+    user.welcome_user
+    assert_equal 1, InviterJob.jobs.length
+    assert_equal [user.id], InviterJob.jobs.first['args']
+  end 
+
   test 'must have a valid email' do
     refute User.new(email: 'bogusemail', password: 'password', zip: '97201').valid?
     assert User.new(email: 'goodemail@example.com', password: 'password', zip: '97201').valid?
