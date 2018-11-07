@@ -209,6 +209,24 @@ class User < ApplicationRecord
     Role.find_by id: role_id
   end
 
+  def generate_password_token!
+    _raw, enc = Devise.token_generator.generate(User, :reset_password_token)
+    self.reset_password_token = enc
+    self.reset_password_sent_at = Time.now.utc
+    self.save(validate: false)
+  end
+
+  def reset_password!(new_password)
+    @password = new_password
+    self.encrypted_password = password_digest(@password) if @password.present?
+    self.reset_password_token = nil
+    save!
+  end
+
+  def password_token_valid?
+    (self.reset_password_sent_at + 4.hours) > Time.now.utc
+  end
+
   private
 
   def strip_zip_code

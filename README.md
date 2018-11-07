@@ -3,7 +3,7 @@
   <a href="https://operationcode.org">
     <img
       alt="Operation Code Hacktoberfest Banner"
-      src="https://s3.amazonaws.com/operationcode-assets/operationcode-hacktoberfest-2018.png"
+      src="https://s3.amazonaws.com/operationcode-assets/branding/logos/large-blue-logo.png"
     >
   </a>
   <br />
@@ -30,6 +30,7 @@ Before contributing, please review our [Contributing Guide](CONTRIBUTING.md)
 For information about the maintainers of the project, check out [MAINTAINERS.md](MAINTAINERS.md).
 
 ## Quick Start
+
 If you're unsure of how to start this app or code for it, don't worry! You're our target audience!
 Please read our [Contributing Guide](CONTRIBUTING.md) to learn everything you need to be able to ask the right questions on our Slack team.
 
@@ -37,10 +38,9 @@ Please read our [Contributing Guide](CONTRIBUTING.md) to learn everything you ne
 
 Recommended versions of tools used within the repo:
 
-* Ruby: See [.ruby-version](https://github.com/OperationCode/operationcode_backend/blob/master/.ruby-version)
+* Ruby: See [.ruby-version](/.ruby-version)
 * `ruby@2.3.3`
 * `git@2.17.0` or greater
-
 
 <details>
   <summary>Expand To View Quickstart</summary>
@@ -63,7 +63,8 @@ Recommended versions of tools used within the repo:
 </details >
 
 ## Description
-If you'd like to learn more about what this project is what a Backend is you can read about this in our [Introduction Guide](INTRODUCTION.md).
+
+If you'd like to learn more about what this project is what a Backend is you can read about this in our [Introduction Guide](CONTRIBUTING.md#explanations).
 
 ## Wiki
 
@@ -84,3 +85,7 @@ For the purpose of security we need to ensure that no data is added to AAR that 
 <li> Slack User invites Stopped <a href="https://github.com/OperationCode/operationcode_backend/issues/388">link</a></li>
 </ol>
 </details>
+
+## License
+
+MIT Licensed , see [LICENSE](LICENSE) for details
