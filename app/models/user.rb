@@ -215,7 +215,7 @@ class User < ApplicationRecord
     @password = new_password
     self.encrypted_password = password_digest(@password) if @password.present?
     self.reset_password_token = nil
-    save!
+    self.save!(validate: false)
   end
 
   def password_token_valid?
