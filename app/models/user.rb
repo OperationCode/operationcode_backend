@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
-  validates :zip, presence: true
+  validates :zip, presence: true, :on => :create
 
   has_many :requests
   has_many :votes
