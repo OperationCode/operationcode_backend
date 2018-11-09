@@ -82,6 +82,22 @@ class UserTest < ActiveSupport::TestCase
     assert ["Zip can't be blank"], user.errors.full_messages
   end
 
+  test 'longitude and longitude are nil for nil zipcodes' do
+    Geocoder::Lookup::Test.add_stub('bad zip code', [{}])
+    u = build(:user, latitude: nil, longitude: nil, zip: nil)
+    u.update_attributes(zip: nil)
+    assert_nil u.latitude
+    assert_nil u.longitude
+  end
+
+  test 'longitude and longitude are nil for empty zipcodes' do
+    Geocoder::Lookup::Test.add_stub('bad zip code', [{}])
+    u = build(:user, latitude: nil, longitude: nil, zip: '')
+    u.update_attributes(zip: '')
+    assert_nil u.latitude
+    assert_nil u.longitude
+  end
+
   test 'longitude and longitude are nil for unknown zipcodes' do
     Geocoder::Lookup::Test.add_stub('bad zip code', [{}])
 
