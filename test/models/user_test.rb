@@ -19,9 +19,9 @@ class UserTest < ActiveSupport::TestCase
   test 'welcoming a user adds them to SlackInvite' do
     user = create(:user, user_opts)
     user.welcome_user
-    assert_equal 1, InviterJob.jobs.length
-    assert_equal [user.id], InviterJob.jobs.first['args']
-  end 
+    assert_equal 1, SlackJobs::InviterJob.jobs.length
+    assert_equal [user.email], SlackJobs::InviterJob.jobs.first['args']
+  end
 
   test 'must have a valid email' do
     refute User.new(email: 'bogusemail', password: 'password', zip: '97201').valid?
