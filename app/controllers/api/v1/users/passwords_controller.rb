@@ -21,10 +21,6 @@ module Api
           token = params[:reset_password_token].to_s
           user = User.with_reset_password_token(token)
 
-<<<<<<< HEAD
-          user.reset_password_token
-=======
->>>>>>> 5c10ceb39f41c19e678082269b91da88cb2f1782
           if user.present? && user.password_token_valid?
             if user.reset_password!(params[:password])
               render json: { status: 'ok' }, status: :ok
