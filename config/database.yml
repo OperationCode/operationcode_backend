@@ -35,6 +35,4 @@ test:
 production:
   <<: *default
   host: <%= ENV['POSTGRES_HOST'].present? ? ENV['POSTGRES_HOST'] : 'operationcode-psql-postgresql' %>
-  user: <%= ENV['POSTGRES_USER'] %>
   database: operationcode_production
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
