@@ -151,6 +151,11 @@ class User < ApplicationRecord
 
   def welcome_user
     add_to_send_grid
+    invite_to_slack
+  end
+
+  def invite_to_slack
+    SlackJobs::InviterJob.perform_async(self.email)
   end
 
   def add_to_send_grid
