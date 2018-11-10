@@ -22,7 +22,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   user: <%= ENV['POSTGRES_USER'] %>
   host: <%= ENV['POSTGRES_HOST'] %>
-  password: <%= OperationCode.fetch_secret_with name: :postgres_password %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 development:
   <<: *default
@@ -36,4 +36,3 @@ production:
   <<: *default
   host: <%= ENV['POSTGRES_HOST'].present? ? ENV['POSTGRES_HOST'] : 'operationcode-psql-postgresql' %>
   database: operationcode_production
-  user: opcode_superuser
