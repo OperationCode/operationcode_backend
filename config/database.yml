@@ -36,4 +36,3 @@ production:
   <<: *default
   host: <%= ENV['POSTGRES_HOST'].present? ? ENV['POSTGRES_HOST'] : 'operationcode-psql-postgresql' %>
   database: operationcode_production
-  user: opcode_superuser
