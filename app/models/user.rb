@@ -213,14 +213,14 @@ class User < ApplicationRecord
     _raw, enc = Devise.token_generator.generate(User, :reset_password_token)
     self.reset_password_token = enc
     self.reset_password_sent_at = Time.now.utc
-    self.save(validate: false)
+    self.save
   end
 
   def reset_password!(new_password)
     @password = new_password
     self.encrypted_password = password_digest(@password) if @password.present?
     self.reset_password_token = nil
-    self.save!(validate: false)
+    self.save!
   end
 
   def password_token_valid?
