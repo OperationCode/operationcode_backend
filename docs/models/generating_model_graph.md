@@ -2,13 +2,14 @@
 
 We use [Rails ERD](https://github.com/voormedia/rails-erd) to automatically generate a graph of the projects data models whenever migrations are run.
 
-
 ## Generating a Graph
 
 ### Automatically
+
 This happens when migrations are run during `make setup`
 
 ### Manually
+
 If you need to regenerate the graph, first make sure the docker containers are running, then use this command:
 `docker-compose run web bundle exec erd`
 
@@ -34,9 +35,11 @@ Graph options are controled by the `.erdconfig` yaml file. Rails-ERD has documen
 | warn                   | show or hide warnings when generating the graph, `true` or `false`                                                                            |
 
 ### Notation Types
+
 There are a few differences between the notation types. The basics are detailed here, but for more indepth examples see the documentation [here](https://voormedia.github.io/rails-erd/gallery.html#notations).
 
 #### Simple
+
 | relationship           | model relationship        | line type                                                                                                                                                             |
 | ---------------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | One to One             | `has_one`, `belongs_to`   | straight line, no arrows or decoration                                                                                                                                |
