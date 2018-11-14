@@ -51,12 +51,12 @@ class PullRequestsTest < Minitest::Test
   end
 
   def test_fetch_and_save
-    @pr_instance.fetch_and_save!
+    @pr_instance.fetch_and_save!(print_results: false)
 
-    assert GitHubStatistic.for_repository(@slash).count == 4
-    assert GitHubStatistic.for_repository(@slash).pull_requests.count == 2
-    assert GitHubStatistic.for_repository(@slash).commits.count == 2
-    assert GitHubUser.count == 2
+    assert_equal 4, GitHubStatistic.for_repository(@slash).count
+    assert_equal 2, GitHubStatistic.for_repository(@slash).pull_requests.count
+    assert_equal 2, GitHubStatistic.for_repository(@slash).commits.count
+    assert_equal 2, GitHubUser.count
     assert GitHubStatistic.for_repository(@slash).pull_requests.find_by(number: @pr_6_response.parsed_response['number'].to_s)
     assert GitHubStatistic.for_repository(@slash).pull_requests.find_by(number: @pr_7_response.parsed_response['number'].to_s)
   end
@@ -71,18 +71,18 @@ class PullRequestsTest < Minitest::Test
   end
 
   def pull_requests_assertions
-    assert @pr_instance.compiled_pull_requests.size == 4
-    assert @pr_instance.compiled_pull_requests.first[:source_type] == 'PullRequest'
-    assert @pr_instance.compiled_pull_requests.first[:number] == 7
-    assert @pr_instance.compiled_pull_requests.first[:repository] == 'operationcode_slashbot'
+    assert_equal 4, @pr_instance.compiled_pull_requests.size
+    assert_equal 'PullRequest', @pr_instance.compiled_pull_requests.first[:source_type]
+    assert_equal 7, @pr_instance.compiled_pull_requests.first[:number]
+    assert_equal 'operationcode_slashbot', @pr_instance.compiled_pull_requests.first[:repository]
 
-    assert @pr_instance.compiled_pull_requests.second[:source_type] == 'Commit'
-    assert @pr_instance.compiled_pull_requests.second[:title] == 'Add /android case'
+    assert_equal 'Commit', @pr_instance.compiled_pull_requests.second[:source_type]
+    assert_equal 'Add /android case', @pr_instance.compiled_pull_requests.second[:title]
 
-    assert @pr_instance.compiled_pull_requests.third[:source_type] == 'Commit'
-    assert @pr_instance.compiled_pull_requests.third[:title] == 'Change environment variable for node'
+    assert_equal 'Commit', @pr_instance.compiled_pull_requests.third[:source_type]
+    assert_equal 'Change environment variable for node', @pr_instance.compiled_pull_requests.third[:title]
 
-    assert @pr_instance.compiled_pull_requests.last[:source_type] == 'PullRequest'
-    assert @pr_instance.compiled_pull_requests.last[:number] == 6
+    assert_equal 'PullRequest', @pr_instance.compiled_pull_requests.last[:source_type]
+    assert_equal 6, @pr_instance.compiled_pull_requests.last[:number]
   end
 end

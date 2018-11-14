@@ -1,11 +1,12 @@
 require 'test_helper'
 
-class AddUserToSendGridJobTest < ActiveJob::TestCase
+class AddUserToSendGridJobTest < ActiveSupport::TestCase
   test 'it adds a user to send grid' do
-    user = FactoryGirl.build(:user)
+    job = AddUserToSendGridJob.new
+    user = FactoryGirl.create(:user)
 
     SendGridClient.any_instance.expects(:add_user).with(user)
 
-    AddUserToSendGridJob.perform_now(user)
+    job.perform(user.id)
   end
 end

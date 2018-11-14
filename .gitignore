@@ -24,6 +24,17 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 
+# VSCode
+.vscode/*
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+tags
+
 # Gradle:
 .idea/**/gradle.xml
 .idea/**/libraries

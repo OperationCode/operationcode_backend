@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   validates_format_of :email, :with => VALID_EMAIL
   validates :email, uniqueness: true
-  validates :zip, presence: true
+  validates :zip, presence: true, :on => :create
 
   has_many :requests
   has_many :votes
@@ -151,10 +151,15 @@ class User < ApplicationRecord
 
   def welcome_user
     add_to_send_grid
+    invite_to_slack
+  end
+
+  def invite_to_slack
+    SlackJobs::InviterJob.perform_async(self.email)
   end
 
   def add_to_send_grid
-    AddUserToSendGridJob.perform_later(self)
+    AddUserToSendGridJob.perform_async(self.id)
   end
 
   def token
@@ -202,6 +207,24 @@ class User < ApplicationRecord
     return if role_id.blank?
 
     Role.find_by id: role_id
+  end
+
+  def generate_password_token!
+    _raw, enc = Devise.token_generator.generate(User, :reset_password_token)
+    self.reset_password_token = enc
+    self.reset_password_sent_at = Time.now.utc
+    self.save
+  end
+
+  def reset_password!(new_password)
+    @password = new_password
+    self.encrypted_password = password_digest(@password) if @password.present?
+    self.reset_password_token = nil
+    self.save!
+  end
+
+  def password_token_valid?
+    (self.reset_password_sent_at + 4.hours) > Time.now.utc
   end
 
   private

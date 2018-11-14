@@ -10,24 +10,23 @@ class SendGridClient::GuestTest < ActiveSupport::TestCase
   test "#user creates an :id method that defaults to 'guest-id'" do
     guest = SendGridClient::Guest.user(valid_email)
 
-    assert guest.id == 'guest-id'
+    assert 'guest-id', guest.id
   end
 
   test '#user creates an :email method that is set to the passed email address' do
     guest = SendGridClient::Guest.user(valid_email)
 
-    assert guest.email == valid_email
+    assert_equal valid_email, guest.email
   end
 
   test "#attributes returns JSON for the Struct's id, first_name, last_name, and email" do
     guest = SendGridClient::Guest.user(valid_email)
 
-    assert guest.attributes == {
-      'id' => 'guest-id',
-      'email' => valid_email,
-      'first_name' => '',
-      'last_name' => ''
-    }
+    assert_equal guest.attributes,
+                 'id' => 'guest-id',
+                 'email' => valid_email,
+                 'first_name' => '',
+                 'last_name' => ''
   end
 end
 
