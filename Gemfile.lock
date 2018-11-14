@@ -324,7 +324,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.2)
-  rails-erd (= 1.5.2)
+  rails-erd
   redis (~> 3.0)
   rubocop (~> 0.55.0)
   sendgrid-ruby
@@ -338,4 +338,4 @@ DEPENDENCIES
   webmock (~> 3.0, >= 3.0.1)
 
 BUNDLED WITH
-   1.16.5
+   1.16.6

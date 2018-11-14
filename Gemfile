@@ -46,7 +46,7 @@ end
 
 group :development do
   gem 'listen', '~> 3.0.5'
-  gem 'rails-erd', '1.5.2'
+  gem 'rails-erd'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
