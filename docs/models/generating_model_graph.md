@@ -30,7 +30,7 @@ Graph options are controled by the `.erdconfig` yaml file. Rails-ERD has documen
 | attribute/inheritance  | the single table inheritance column, typically `type`                                                                                         |
 | attribute/content      | all other columns                                                                                                                             |
 | notation               | the type of documentation, can be either `simple` or `bachman`                                                                                |
-| orientation            | `vertical` or `horrizontal`, which direction the graph will favor when organizing itself                                                      |
+| orientation            | `vertical` or `horizontal`, which direction the graph will favor when organizing itself                                                      |
 | warn                   | show or hide warnings when generating the graph, `true` or `false`                                                                            |
 
 ### Notation Types

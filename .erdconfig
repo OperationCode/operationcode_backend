@@ -10,6 +10,6 @@ attribute:
   - content
 # uses a notation style with more information built in. See documentation in docs/models/generating_model_graph.md
 notation: bachman
-orientation: horrizontal
+orientation: horizontal
 # hides warnings from output when generating diagram
 warn: false
