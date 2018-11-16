@@ -9,10 +9,7 @@ class SlackJobs
       slack_client.invite(
         email: email,
         channels: ['C1T66M57G'],
-        extra_message: 'Welcome to Operation Code!\n'\
-        'Once you log in, please take a moment to introduce yourself in the #general channel - a bit about who you are, where you\'re coming from, and where you\'re interested in going next.\n'\
-        'Thank you for joining us!\n'\
-        '-from the OC volunteer team\n'\
+        extra_message: 'Welcome to Operation Code! After logging in, please introduce yourself in the #general channel - a bit about who you are, where you\'re coming from, and where you\'re interested in going next.'
       )
     end
   end
