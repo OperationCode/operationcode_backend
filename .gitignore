@@ -299,3 +299,6 @@ $RECYCLE.BIN/
 
 # redis local dump file
 dump.rdb
+
+# Model Graph image generated
+docs/models/model_graph.png

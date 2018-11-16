@@ -1,0 +1,15 @@
+filename: docs/models/model_graph
+filetype: png
+title: "OperationCode Backend Domain Models"
+# List of model attributes to include in graph
+attribute:
+  - foreign_keys
+  - primary_keys
+  - timestamps
+  - inheritance
+  - content
+# uses a notation style with more information built in. See documentation in docs/models/generating_model_graph.md
+notation: bachman
+orientation: horizontal
+# hides warnings from output when generating diagram
+warn: false
