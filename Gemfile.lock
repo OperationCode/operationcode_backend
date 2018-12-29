@@ -192,7 +192,7 @@ GEM
     public_suffix (3.0.0)
     puma (3.8.2)
     raabro (1.1.6)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-cors (0.4.1)
     rack-protection (2.0.3)
       rack
@@ -338,4 +338,4 @@ DEPENDENCIES
   webmock (~> 3.0, >= 3.0.1)
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
