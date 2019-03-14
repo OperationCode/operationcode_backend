@@ -1713,16 +1713,39 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
-## User | Create [/api/v1/users{?first_name,last_name,email,zip,password,mentor}]
+## User | Create [/api/v1/users{?first_name,last_name,email,zip,password,bio,verified,state,address1,address2,city,username,volunteer,branch_of_service,years_of_service,pay_grade,military_occupational_speciality,github,twitter,linked_in,mentor,employment_status,education,military_status,company_role,company_name,education_level,scholarship_info,interests}]
 
 + Parameters
 
-    + first_name (string, required) - First Name of the user in the form of an string
-    + last_name (string, required) - Last Name of the user in the form of an string
     + email (string, required) - Email of the User in the form of a string
     + zip (string, required) - Zipcode of the User in the form of a string
+    + first_name (string, required) - First Name of the user in the form of an string
+    + last_name (string, required) - Last Name of the user in the form of an string
+    + mentor (string, optional) - in the form of a string
     + password (string, required) - Password of the User in the form on a string
-    + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
+    + bio (string, optional) - in the form of a string
+    + verified (string, optional) - in the form of a string
+    + state (string, optional) - in the form of a string
+    + address1 (string, optional) - in the form of a string
+    + address2 (string, optional) - in the form of a string
+    + city (string, optional) - in the form of a string
+    + username (string, optional) - in the form of a string
+    + volunteer (string, optional) - in the form of a string
+    + branch_of_service (string, optional) - in the form of a string
+    + years_of_service (string, optional) - in the form of a string
+    + pay_grade (string, optional) - in the form of a string
+    + military_occupational_speciality (string, optional) - in the form of a string
+    + github (string, optional) - in the form of a string
+    + twitter (string, optional) - in the form of a string
+    + linked_in (string, optional) - in the form of a string
+    + employment_status (string, optional) - in the form of a string
+    + education (string, optional) - in the form of a string
+    + military_status (string, optional) - in the form of a string
+    + company_role (string, optional) - in the form of a string
+    + company_name (string, optional) - in the form of a string
+    + education_level (string, optional) - in the form of a string
+    + scholarship_info (boolean, optional) - in the form of a string
+    + interests (string, optional) - in the form of a string
 
 ### Create new user record [POST]
 
@@ -1731,11 +1754,37 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
+                email: "dreams@operationcode.org",
+                password: "hunter2",
+                zip: "80020",
                 first_name: "Mike",
                 last_name: "Johnson",
-                email: "dreams@operationcode.org",
-                zip: "80020",
-                mentor: "true"
+                bio: "Information",
+                verified: false,
+                state: "NC",
+                address1: "My address",
+                address2: "PO BOX",
+                city: "My city",
+                username: "mike house" 
+                volunteer: "false",
+                branch_of_service: "Air Force",
+                years_of_service: "100", 
+                pay_grade: "0",
+                military_occupational_speciality: "3N",
+                github: "user_name",
+                twitter: "user_name",
+                linked_in: "user_name",
+                mentor: "true",
+                education_level: "College Graduate",
+                scholarship_info: "true",
+                employment_status: "Employed",
+                education: "BS",
+                military_status: "spouse",
+                company_role: "Developer",
+                company_name: "Comcast",
+                education_level: "BS",
+                scholarship_info: "True",
+                interests: "Python, Python, Python, Python"
             }
 
 
@@ -1750,6 +1799,96 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
+
+## User | Exists [/api/v1/users/email/{email}]
+
++ Parameters
+
+    + email (string, required) - User email in form of a string
+
+### Checks if a user currently exists [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                status: "ok"
+            }
+
++ Response 422 (application/json)
+    + Body
+
+            {
+                status: "Unprocessable Entity" 
+            }
+
+## User | Me [/api/v1/users{?email}]
+
++ Parameters
+
+    + email (string, required) - Email of the User in the form of a string
+
+### Get full details for a specific user [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer Access-Token
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                email: "dreams@operationcode.org",
+                zip: "80020",
+                first_name: "Mike",
+                last_name: "Johnson",
+                bio: "Information",
+                verified: false,
+                state: "NC",
+                address1: "My address",
+                address2: "PO BOX",
+                city: "My city",
+                username: "mike house" 
+                volunteer: "false",
+                branch_of_service: "Air Force",
+                years_of_service: "100", 
+                pay_grade: "0",
+                military_occupational_speciality: "3N",
+                github: "user_name",
+                twitter: "user_name",
+                linked_in: "user_name",
+                mentor: "true",
+                education_level: "College Graduate",
+                scholarship_info: "true",
+                employment_status: "Employed",
+                education: "BS",
+                military_status: "spouse",
+                company_role: "Developer",
+                company_name: "Comcast",
+                education_level: "BS",
+                scholarship_info: "True",
+                interests: "Python, Python, Python, Python"
+            }
+
++ Response 422 (application/json)
+
+    + Body
+
+            {
+                status: "Unprocessable Entity" 
+            }
+            
++ Response 404 (application/json)
+
+            {
+                error: 'No such record'
+            }
+
 
 ## User | Reset Password [/api/v1/users/passwords/reset{?email}]
 
@@ -1798,20 +1937,39 @@ API endpoints that Operation Code's Rails backend makes available to its React f
         {
             errors: "Some error message"
         }
-## User | Update [/api/v1/users{?education_level,mentor,scholarship_info,employment_status,company_name,company_role,volunteer,military_status,branch_of_service,interests}]
+## User | Update [/api/v1/users{?first_name,last_name,email,zip,password,mentor,bio,verified,state,address1,address2,city,username,volunteer,branch_of_service,years_of_service,pay_grade,military_occupational_speciality,github,twitter,linked_in,employment_status,education,military_status,company_role,company_name,education_level,scholarship_info,interests}]
 
 + Parameters
 
-    + education_level (string, optional) - Users highest level of education in the form of a string
+    + first_name (string, required) - First Name of the user in the form of an string
+    + last_name (string, required) - Last Name of the user in the form of an string
+    + email (string, required) - Email of the User in the form of a string
+    + zip (string, required) - Zipcode of the User in the form of a string
+    + password (string, required) - Password of the User in the form on a string
     + mentor (boolean, optional) - Is User requesting mentor in the form of a boolean
-    + scholarship_info (boolean, optional) - Is User interested in scholarship info in the form of a boolean
-    + employment_status (string, optional) - Users employment status in the form of a string
-    + company_name (string, optional) - Users name of employer in the form on a string
-    + company_role (string, optional) - Users role at company in the form of a string
-    + volunteer (boolean, optional) - Is User wanting to volunteer in the form of a boolean
-    + military_status (string, optional) - Users military status, either current, veteran, spouse, or blank
-    + branch_of_service (string, optional) - Users branch of service in the form of a string
-    + interests (string, optional) - User interests in the form of a string.
+    + bio (string, optional) - in the form of a string
+    + verified (string, optional) - in the form of a string
+    + state (string, optional) - in the form of a string
+    + address1 (string, optional) - in the form of a string
+    + address2 (string, optional) - in the form of a string
+    + city (string, optional) - in the form of a string
+    + username (string, optional) - in the form of a string
+    + volunteer (string, optional) - in the form of a string
+    + branch_of_service (string, optional) - in the form of a string
+    + years_of_service (string, optional) - in the form of a string
+    + pay_grade (string, optional) - in the form of a string
+    + military_occupational_speciality (string, optional) - in the form of a string
+    + github (string, optional) - in the form of a string
+    + twitter (string, optional) - in the form of a string
+    + linked_in (string, optional) - in the form of a string
+    + employment_status (string, optional) - in the form of a string
+    + education (string, optional) - in the form of a string
+    + military_status (string, optional) - in the form of a string
+    + company_role (string, optional) - in the form of a string
+    + company_name (string, optional) - in the form of a string
+    + education_level (string, optional) - in the form of a string
+    + scholarship_info (boolean, optional) - in the form of a string
+    + interests (string, optional) - in the form of a string
 
 ### Update user record [PATCH]
 
@@ -1824,15 +1982,36 @@ API endpoints that Operation Code's Rails backend makes available to its React f
     + Body
 
             {
-                education_level: "College Graduate" ,
-                mentor: "true",
-                scholarship_info: "true",
-                employment_status: "Employed",
-                company_name: "Comcast",
-                company_role: "Developer",
-                military_status: "spouse",
+                email: "dreams@operationcode.org",
+                password: "hunter2",
+                zip: "80020",
+                first_name: "Mike",
+                last_name: "Johnson",
+                bio: "Information",
+                verified: false,
+                state: "NC",
+                address1: "My address",
+                address2: "PO BOX",
+                city: "My city",
+                username: "mike house" 
                 volunteer: "false",
                 branch_of_service: "Air Force",
+                years_of_service: "100", 
+                pay_grade: "0",
+                military_occupational_speciality: "3N",
+                github: "user_name",
+                twitter: "user_name",
+                linked_in: "user_name",
+                mentor: "true",
+                education_level: "College Graduate",
+                scholarship_info: "true",
+                employment_status: "Employed",
+                education: "BS",
+                military_status: "spouse",
+                company_role: "Developer",
+                company_name: "Comcast",
+                education_level: "BS",
+                scholarship_info: "True",
                 interests: "Python, Python, Python, Python"
             }
 

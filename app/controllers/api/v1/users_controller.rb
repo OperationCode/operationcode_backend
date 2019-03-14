@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApiController
-      before_action :authenticate_user!, only: %i[update]
+      before_action :authenticate_user!, only: %i[update me]
 
       def index
         render json: { user_count: User.count }, status: :ok
@@ -13,7 +13,8 @@ module Api
         user = User.new(user_params)
 
         if user.save
-          user.welcome_user
+          user.invite_to_slack
+          user.add_to_send_grid
           UserMailer.welcome(user).deliver unless user.invalid?
           sign_in(user)
           render json: { token: user.token }
@@ -49,6 +50,23 @@ module Api
         render json: { errors: e.message }, status: :unprocessable_entity
       end
 
+      def by_email
+        User.find(params[:email])
+        Rails.logger.debug "search by email successful #{request.env}"
+        render json: { status: :ok }, status: :ok
+      rescue StandardError => e
+        Rails.logger.debug "search by email encountered error: #{e} from request: #{request.env}"
+        render json: { status: :not_found }, status: :not_found
+      end
+
+      def me
+        Rails.logger.debug "search by email for authed user email: #{current_user}"
+        render json: ComplexUserSerializer.new(current_user), status: :ok
+      rescue StandardError => e
+        Rails.logger.debug "search by email errored: #{current_user} error: #{e}"
+        render json: { status: :unprocessable_entity }, status: :unprocessable_entity
+      end
+
       private
 
       def user_params
@@ -64,6 +82,7 @@ module Api
           :state,
           :address1,
           :address2,
+          :city,
           :username,
           :volunteer,
           :branch_of_service,
@@ -80,7 +99,6 @@ module Api
           :company_name,
           :education_level,
           :scholarship_info,
-          :role_id,
           interests: []
         )
       end

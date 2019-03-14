@@ -54,11 +54,57 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert valid_user_params[:zip], user.zip
   end
 
-  test '#create welcomes a new user' do
-    User.any_instance.expects(:welcome_user)
+  test '#create calls add_to_send_grid job queue addition' do
+    User.any_instance.expects(:add_to_send_grid)
     post api_v1_users_url,
       params: { user: valid_user_params },
       as: :json
+  end
+
+
+  test '#create calls invite_to_slack job queue addition' do
+    User.any_instance.expects(:invite_to_slack)
+    post api_v1_users_url,
+      params: { user: valid_user_params },
+      as: :json
+  end
+
+  test '#by_email returns success when user exists' do
+    tom = create(:user)
+
+    get api_v1_users_email_path(tom), headers: @headers, as: :json
+    assert_equal({ 'status' => :ok }, response.parsed_body)
+    assert_equal 200, response.status
+  end
+
+  test '#by_email returns failure user when doesn\'t exist' do
+    tom = create(:user)
+    sam = create(:user)
+
+    get api_v1_users_email_path(sam), headers: @headers, as: :json
+    assert_not_equal(tom.email, sam.email)
+    assert_equal({ 'status' => :unprocessable_entity }, response.parsed_body)
+    assert_equal 404, response.status
+  end
+
+  test '#me requires auth token to get valid response' do
+    user_good = create(:user)
+    user_bad = create(:user)
+    headers_good = authorization_headers(user_good)
+    headers_bad = authorization_headers(user_bad)
+
+    get api_v1_users_me_url, params: { email: user_bad.email }, headers: headers_bad, as: :json
+    assert_equal 422, response.status
+
+  end
+
+  test '#me with valid auth token returns success' do
+    user = create(:user)
+    headers = authorization_headers(user)
+    @current_user = user
+    refute_equal 'new first name', user.first_name
+    get api_v1_users_me_url, params: { email: user.email }, headers: headers, as: :json
+    assert_response :success
   end
 
   test ':by_location returns User.count of users located in the passed in location' do

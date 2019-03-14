@@ -11,14 +11,14 @@ class UserTest < ActiveSupport::TestCase
 
   test 'welcoming a user adds them to SendGrid' do
     user = create(:user, user_opts)
-    user.welcome_user
+    user.add_to_send_grid
     assert_equal 1, AddUserToSendGridJob.jobs.length
     assert_equal [user.id], AddUserToSendGridJob.jobs.first['args']
   end
 
   test 'welcoming a user adds them to SlackInvite' do
     user = create(:user, user_opts)
-    user.welcome_user
+    user.invite_to_slack
     assert_equal 1, SlackJobs::InviterJob.jobs.length
     assert_equal [user.email], SlackJobs::InviterJob.jobs.first['args']
   end
