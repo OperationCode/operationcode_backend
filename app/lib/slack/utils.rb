@@ -3,9 +3,8 @@
 module Slack
   # Utilities class for running methods and discovery on Client
   class Utils
-    def email_is_registered?(email)
-      user_response = client.lookupByEmail(email)
-      user_response['ok']
+    def email_is_registered(email)
+      client.validate_user_email(email)
     end
 
     def client
