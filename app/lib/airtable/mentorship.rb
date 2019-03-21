@@ -35,12 +35,7 @@ module Airtable
           'Mentor Requested' => format_for_posting(body[:mentor_requested])
         }
       }.to_json
-
-      unless Slack::Utils.new.email_is_registered?(body[:email])
-        raise Airtable::Error, "#{body[:email]} is not registered on slack"
-      end
-
-
+      validate_user(body[:email])
       client.post_record('Mentor Request', request_body)
     end
 
@@ -54,6 +49,13 @@ module Airtable
           id: record['id'],
           name: record.dig('fields', name_key)
         }
+      end
+    end
+
+    def validate_user(email)
+      return if Rails.env.test?
+      unless Slack::Utils.new.email_is_registered?(email)
+        raise Airtable::Error, "#{email} is not registered on slack"
       end
     end
 
