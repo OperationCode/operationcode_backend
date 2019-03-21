@@ -51,12 +51,14 @@ module Api
       end
 
       def by_email
-        User.find(params[:email])
-        Rails.logger.debug "search by email successful #{request.env}"
-        render json: { status: :ok }, status: :ok
-      rescue StandardError => e
-        Rails.logger.debug "search by email encountered error: #{e} from request: #{request.env}"
-        render json: { status: :not_found }, status: :not_found
+        user = User.find_by(email: params[:email])
+        if user
+          Rails.logger.debug "search by email successful #{request.env}"
+          render json: { status: :ok }, status: :ok
+        else
+          Rails.logger.debug "search by email not found from request: #{request.env}"
+          render json: { status: :not_found }, status: :not_found
+        end
       end
 
       def me

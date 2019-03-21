@@ -71,7 +71,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test '#by_email returns success when user exists' do
     tom = create(:user)
-
+    puts api_v1_users_email_path(tom)
     get api_v1_users_email_path(tom), as: :json
     assert_equal({ 'status' => :ok }, response.parsed_body)
     assert_equal 200, response.status
@@ -81,9 +81,10 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     tom = create(:user)
     sam = create(:user)
 
+    puts api_v1_users_email_path(sam)
     get api_v1_users_email_path(sam), as: :json
     assert_not_equal(tom.email, sam.email)
-    assert_equal({ 'status' => :unprocessable_entity }, response.parsed_body)
+    assert_equal({ 'status' => :not_found}, response.parsed_body)
     assert_equal 404, response.status
   end
 
