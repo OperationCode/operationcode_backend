@@ -14,8 +14,8 @@ module Slack
     private
 
     def set_client
-      Slack::Client.new(
-        subdomain: OperationCode.fetch_secret_with(name: :slack_subdomain),	
+      Slack::Client.new
+        subdomain: OperationCode.fetch_secret_with(name: :slack_subdomain),
         token:     OperationCode.fetch_secret_with(name: :slack_legacy_admin_token)
       )
     end
