@@ -53,8 +53,8 @@ module Airtable
     end
 
     def validate_user(email)
-      return if Rails.env.test?
-      return unless Slack::Utils.new.email_is_registered?(email)
+      return if Rails.env.test? # I really don't like this, TODO: replace with a proper mock
+      return unless Slack::Utils.new.validate_user_email?(email)
       raise Airtable::Error, "#{email} is not registered on slack"
     end
 

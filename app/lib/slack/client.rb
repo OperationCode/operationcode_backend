@@ -4,6 +4,7 @@ module Slack
   INVITE_PATH = '/api/users.admin.invite'.freeze
   POST_MESSAGE_PATH = '/api/chat.postMessage'.freeze
   USERS_LIST_PATH = '/api/users.list'.freeze
+  LOOKUP_BY_EMAIL_PATH = '/api/users.lookupByEmail'.freeze
   BOT_USERNAME = 'OpCodeBot'.freeze
 
   class Client
@@ -11,6 +12,7 @@ module Slack
     InviteFailed = Class.new(StandardError)
     PostMessageFailed = Class.new(StandardError)
     FetchUsersListFailed = Class.new(StandardError)
+    LookupUserEmailFailed = Class.new(StandardError)
 
     attr_reader :domain
 
@@ -53,6 +55,18 @@ module Slack
 
       return true if body['ok'] == true || body['ok'] == 'true'
       raise PostMessageFailed.new(body.to_s)
+    end
+
+    def validate_user_email(email:)
+      body = send_api_request(
+        to: LOOKUP_BY_EMAIL_PATH,
+        payload: {
+          token:    @token,
+          email: email
+        }
+      )
+
+      raise LookupUserEmailFailed.new(body.to_s) unless body ['ok'] == true || body['ok'] == 'true'
     end
 
     def fetch_users_list(presence: 0)
