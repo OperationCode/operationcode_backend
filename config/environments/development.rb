@@ -46,12 +46,4 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Logstash.new
-
-
-
-    Raven.configure do |config|	
-
-      config.dsn = 'https://18c34f50d97446499e49273e069a801c:8bde64055eef42298cdab3185cd87884@sentry.io/1264356'
-      #config.dsn = 'https://d85c1b1efbd54287996ab632fb279cc7:9a90b74c47b24de389fcc5971b047c4c@sentry.io/219717'	
-    end   
 end
