@@ -15,8 +15,8 @@ module Slack
 
     def set_client
       Slack::Client.new(
-        subdomain: ENV.fetch('SLACK_SUBDOMAIN'),
-        token:     ENV.fetch('SLACK_LEGACY_ADMIN_TOKEN') # admin token required to invite
+        subdomain: OperationCode.fetch_secret_with(name: :slack_subdomain),	
+        token:     OperationCode.fetch_secret_with(name: :slack_legacy_admin_token)
       )
     end
   end
