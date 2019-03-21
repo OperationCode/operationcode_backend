@@ -4,11 +4,8 @@ module Slack
   # Utilities class for running methods and discovery on Client
   class Utils
     def email_is_registered?(email)
-      users_list = client.fetch_users_list
-      users_list['members'].each do |m|
-        return true if m['profile']['email'] == email
-      end
-      false
+      user_response = client.lookupByEmail(email)
+      user_response['ok']
     end
 
     def client
