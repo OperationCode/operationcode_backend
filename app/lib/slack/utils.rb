@@ -4,11 +4,8 @@ module Slack
   # Utilities class for running methods and discovery on Client
   class Utils
     def email_is_registered?(email)
-      users_list = client.fetch_users_list
-      users_list['members'].each do |m|
-        return true if m['profile']['email'] == email
-      end
-      false
+      user_response = client.lookupByEmail(email)
+      user_response['ok']
     end
 
     def client
@@ -19,8 +16,8 @@ module Slack
 
     def set_client
       Slack::Client.new(
-        subdomain: OperationCode.fetch_secret_with(name: :slack_domain),
-        token:     OperationCode.fetch_secret_with(name: :slack_legacy_admin_token)
+        subdomain: ENV.fetch('SLACK_SUBDOMAIN'),
+        token:     ENV.fetch('SLACK_LEGACY_ADMIN_TOKEN') # admin token required to invite
       )
     end
   end
