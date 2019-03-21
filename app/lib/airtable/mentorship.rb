@@ -54,9 +54,8 @@ module Airtable
 
     def validate_user(email)
       return if Rails.env.test?
-      unless Slack::Utils.new.email_is_registered?(email)
-        raise Airtable::Error, "#{email} is not registered on slack"
-      end
+      return unless Slack::Utils.new.email_is_registered?(email)
+      raise Airtable::Error, "#{email} is not registered on slack"
     end
 
     # Converts a comma separated string into an array of strings
