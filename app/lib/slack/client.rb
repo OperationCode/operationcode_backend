@@ -66,7 +66,7 @@ module Slack
         }
       )
 
-      raise LookupUserEmailFailed.new(body.to_s) unless body ['ok'] == true || body['ok'] == 'true'
+      raise LookupUserEmailFailed.new(body.to_s) unless body['ok'] == true || body['ok'] == 'true'
     end
 
     def fetch_users_list(presence: 0)
