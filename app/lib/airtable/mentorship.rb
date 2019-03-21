@@ -36,7 +36,10 @@ module Airtable
         }
       }.to_json
 
-      raise Airtable::Error("#{body[:slack_user]} is not a valid slack username") unless Slack::Utils.new.username_is_registered?(body[:slack_user])
+      unless Slack::Utils.new.email_is_registered?(body[:email])
+        raise Airtable::Error, "#{body[:email]} is not registered on slack"
+      end
+
 
       client.post_record('Mentor Request', request_body)
     end

@@ -51,7 +51,7 @@ class MentorshipTest < Minitest::Test
         mentor_requested: 'recqeVhDDJU5cY8TX'
       }
 
-      Slack::Utils.new.stubs(:username_is_registered?).returns(true)
+      Slack::Utils.new.stubs(:email_is_registered?).returns(true)
 
       response = Airtable::Mentorship.new.create_mentor_request(request_body)
 
