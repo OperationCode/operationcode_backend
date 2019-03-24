@@ -84,7 +84,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     puts api_v1_users_email_path(sam)
     get api_v1_users_email_path(sam), as: :json
     assert_not_equal(tom.email, sam.email)
-    assert_equal({ 'status' => :not_found}, response.parsed_body)
+    assert_equal({ 'status' => "not_found"}, response.parsed_body)
     assert_equal 404, response.status
   end
 
