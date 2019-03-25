@@ -22,7 +22,7 @@ module Slack
 
     def invite(extra_message:, email:, channels: [])
       # unsure if some string expansion is causing an error here
-      Rails.logger.info "Inviting slack user user"
+      Rails.logger.info 'Inviting slack user user'
       Rails.logger.info "Inviting slack user user with email #{email}"
       body = send_api_request(
         to: INVITE_PATH,
@@ -41,7 +41,7 @@ module Slack
 
       true
     rescue StandardError => e
-      Rails.logger.warn "Some Exception occured while inviting slack user #{e}"      
+      Rails.logger.warn "Some Exception occured while inviting slack user #{e}"
       # want to reraise the exception so the job retries
       raise
     end

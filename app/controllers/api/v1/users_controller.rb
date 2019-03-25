@@ -62,7 +62,7 @@ module Api
       end
 
       def me
-        Rails.logger.debug "search by email for authed user email: #{current_user}"
+        # Rails.logger.debug "search by email for authed user email: #{current_user}"
         render json: ComplexUserSerializer.new(current_user), status: :ok
       rescue StandardError => e
         Rails.logger.debug "search by email errored: #{current_user} error: #{e}"

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get '/status/protected', to: 'status#protected'
 
       get '/users/by_location', to: 'users#by_location'
+      get '/users/by_email', to: 'users#by_email'
       post '/users/profile/verify', to: 'users#verify'
 
       resources :code_schools do
@@ -33,8 +34,8 @@ Rails.application.routes.draw do
       resources :events, only: :index
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
-      resources :resources, only: [:index, :create, :show, :update, :destroy] do
-        resources :votes, only: [:create, :destroy]
+      resources :resources, lonly: [:index, :create, :show, :update, :destroy] do
+        resources :votes, ony: [:create, :destroy]
       end
       resources :scholarships, only: [:index, :show]
       resources :scholarship_applications, only: :create
@@ -49,8 +50,7 @@ Rails.application.routes.draw do
       resources :team_members, only: [:index, :create, :update, :destroy]
       resources :users, only: [:index, :create]
       patch '/users', to: 'users#update'
-      get '/users/email', to: 'users#by_email'
-      get '/users/me', to: 'users#me'
+      post '/users/me', to: 'users#me'
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
         get '/sessions/sso', to: 'sessions#sso'
