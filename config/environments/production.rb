@@ -78,8 +78,6 @@ Rails.application.configure do
 
   config.lograge.enabled = true
 
-  config.secret_path = '/run/secrets'
-
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.sendgrid.net',
