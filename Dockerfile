@@ -9,8 +9,8 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-ADD Gemfile $APP_HOME/
-ADD Gemfile.lock $APP_HOME/
+COPY Gemfile $APP_HOME/
+COPY Gemfile.lock $APP_HOME/
 
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
   BUNDLE_JOBS=2 \
@@ -18,6 +18,6 @@ ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
 
 RUN bundle install --system
 
-ADD . $APP_HOME/
+COPY . $APP_HOME/
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
