@@ -88,7 +88,7 @@ class SendGridClient
   end
 
   def api_key
-    OperationCode.fetch_secret_with(name: :sendgrid_api_key)
+    ENV['SENDGRID_API_KEY'] || 'fake_sengrid_token'
   end
 
   # The method chains in these request methods represents the path of the API request.

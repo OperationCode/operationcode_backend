@@ -5,7 +5,7 @@ class Meetup
   attr_reader :options
 
   def initialize
-    api_key  = OperationCode.fetch_secret_with(name: :meetup_api_key)
+    api_key  = ENV['MEETUP_API_KEY'] || 'fake_sendgrid_token'
     @options = {
       query: {
       key: api_key,
