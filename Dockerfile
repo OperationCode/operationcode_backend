@@ -1,6 +1,12 @@
 FROM ruby:2.4.6-stretch
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs graphviz
+RUN apt-get update -qq \
+    && apt-get install -y \
+      build-essential \
+      dpkg-dev \
+      graphviz
+      libpq-dev \
+      nodejs \
 
 ENV APP_HOME /app
 
