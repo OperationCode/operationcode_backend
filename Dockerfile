@@ -4,9 +4,9 @@ RUN apt-get update -qq \
     && apt-get install -y \
       build-essential \
       dpkg-dev \
-      graphviz
+      graphviz \
       libpq-dev \
-      nodejs \
+      nodejs
 
 ENV APP_HOME /app
 
