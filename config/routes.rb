@@ -50,7 +50,7 @@ Rails.application.routes.draw do
       resources :team_members, only: [:index, :create, :update, :destroy]
       resources :users, only: [:index, :create]
       patch '/users', to: 'users#update'
-      post '/users/me', to: 'users#me'
+      get '/users/me', to: 'users#me'
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
         get '/sessions/sso', to: 'sessions#sso'

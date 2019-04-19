@@ -83,16 +83,17 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal 404, response.status
   end
 
-  # test '#me requires auth token to get valid response' do
-  #   user_good = create(:user)
-  #   user_bad = create(:user)
-  #   headers_good = authorization_headers(user_good)
-  #   headers_bad = authorization_headers(user_bad)
+  test '#me requires auth token to get valid response' do
+    user_good = create(:user)
+    user_bad = create(:user)
+    headers_good = authorization_headers(user_good)
+    headers_bad = authorization_headers(user_bad)
+    user_good.valid?
+    debugger user_good.errors.messages
+    get api_v1_users_me_url, params: { email: user_bad.email }, headers: headers_good , as: :json
+    assert_equal 422, response.status
 
-  #   get api_v1_users_me_url, params: { email: user_bad.email }, headers: headers_bad, as: :json
-  #   assert_equal 422, response.status
-
-  # end
+  end
 
   # test '#me with valid auth token returns success' do
   #   user = create(:user)
