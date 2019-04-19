@@ -84,13 +84,13 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.sendgrid.net',
     port:                 '587',
-    user_name:            OperationCode.fetch_secret_with(name: 'sendgrid_username'),
-    password:             OperationCode.fetch_secret_with(name: 'sendgrid_password'),
+    user_name:            ENV['SENDGRID_USERNAME'] || 'fake_sendgrid_username'
+    password:             ENV['SENDGRID_PASSWORD'] || 'fake_sendgrid_password'
     domain:               'operationcode.org',
     authentication:       :plain,
     enable_starttls_auto: true
   }
   config.action_mailer.default_url_options = { host: 'operationcode.org' }
 
-  Raven.configure {  |config| config.dsn = "https://#{OperationCode.fetch_secret_with(name: 'sentry_credentials')}@sentry.io/147247" }
+  Raven.configure {  |config| config.dsn = "https://#{ENV['SENTRY_CREDENTIALS']}@sentry.io/147247" }
 end
