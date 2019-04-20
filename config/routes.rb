@@ -34,8 +34,8 @@ Rails.application.routes.draw do
       resources :events, only: :index
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
-      resources :resources, lonly: [:index, :create, :show, :update, :destroy] do
-        resources :votes, ony: [:create, :destroy]
+      resources :resources, only: [:index, :create, :show, :update, :destroy] do
+        resources :votes, only: [:create, :destroy]
       end
       resources :scholarships, only: [:index, :show]
       resources :scholarship_applications, only: :create
