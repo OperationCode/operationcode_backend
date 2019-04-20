@@ -43,7 +43,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :zip, presence: true, :on => :create
 
-  after_validation :log_errors, :if => Proc.new {|m| m.errors}
+  after_validation :log_errors, :if => proc { |m| m.errors }
 
   has_many :requests
   has_many :votes
@@ -246,5 +246,4 @@ class User < ApplicationRecord
   def log_errors
     Rails.logger.debug self.errors.full_messages.join("\n")
   end
-
 end
