@@ -12,11 +12,15 @@ module Api
       def create
         user = User.new(user_params)
 
-        user.save
-        user.welcome_user
-        UserMailer.welcome(user).deliver unless user.invalid?
-        sign_in(user)
-        render json: { token: user.token }
+        if user.save
+          user.welcome_user
+          UserMailer.welcome(user).deliver unless user.invalid?
+          sign_in(user)
+          render json: { token: user.token }
+        else
+          Rails.logger.debug 'Cannot save User'
+          render json: user.errors, status: :unprocessable_entity
+        end
       rescue => e
         Rails.logger.debug "Create Error '#{e}'"
         render json: user.errors, status: :unprocessable_entity
