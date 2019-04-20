@@ -31,7 +31,7 @@ services:
 
   sidekiq:
     image: operationcodebackend_web
-    command: sidekiq -C config/sidekiq.yml.erb
+    command: bundle exec sidekiq -C config/sidekiq.yml.erb
     volumes:
       - .:/app
     volumes_from:
