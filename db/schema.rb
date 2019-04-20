@@ -116,6 +116,20 @@ ActiveRecord::Schema.define(version: 20180711212702) do
     t.index ["user_id"], name: "index_git_hub_users_on_user_id", using: :btree
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string   "title"
+    t.string   "source_url"
+    t.string   "source"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.text     "description"
+    t.datetime "closed_at",   default: nil 
+    t.boolean  "remote",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.boolean  "va_accepted"
     t.string   "address1"

@@ -1,0 +1,10 @@
+RAILS_CONTAINER:= web
+DOCKER_COMPOSE:= docker-compose
+DOCKER:= docker
+RED=\033[0;31m
+GREEN=\032[0;32m
+NC=\033[0m 
+
+
+.DELETE_ON_ERROR:
+.SILENT:

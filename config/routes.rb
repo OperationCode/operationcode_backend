@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       end
       resources :email_list_recipients, only: :create
       resources :events, only: :index
+      resources :jobs, only: :index
       resources :mentors, only: [:index, :create, :show]
       resources :requests, only: [:index, :create, :show, :update]
       resources :resources, only: [:index, :create, :show, :update, :destroy] do

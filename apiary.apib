@@ -435,6 +435,35 @@ API endpoints that Operation Code's Rails backend makes available to its React f
             errors: "Some error message"
         }
 
+## Jobs | Collection [/api/v1/jobs]
+
+## List all Jobs [GET]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "id": 1,
+            "title": "A great job",
+            "source_url": "www.applyhere.com",
+            "source": "Company A",
+            "city": "Virginia Beach",
+            "state": "VA",
+            "country": "USA",
+            "description": "Our job is fun!",
+            "is_open": false, 
+            "remote": false,
+            "created_at": "2018-06-01T16:21:59.462Z",
+            "updated_at": "2018-06-01T16:21:59.462Z"
+          }
+        ]
+
++ Response 422 (application/json)
+
+        {
+          errors: "Some error message"
+        }
+
 
 ## Location | Create [/api/v1/code_schools/:code_school_id/locations{?code_school_id,va_accepted,address1,address2,city,state,zip}]
 

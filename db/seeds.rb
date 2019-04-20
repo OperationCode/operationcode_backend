@@ -14,6 +14,7 @@ Service.destroy_all
 TeamMember.destroy_all
 AdminUser.destroy_all
 Role.destroy_all
+Job.destroy_all
 
 FactoryGirl.create(:user)
 FactoryGirl.create(:user)
@@ -30,6 +31,9 @@ FactoryGirl.create(:request, assigned_mentor: nell)
 ["General Guidance - Voice Chat", "General Guidance - Slack Chat", "Pair Programming", "Code Review", "Mock Interview", "Resume Interview"].each do |service|
   Service.create!(:name => service)
 end
+
+# Create jobs
+Job.create!(title: "A great job", source_url: "www.applyhere.com", source: "Company A", city: "Virginia Beach", state: "VA", country: "USA", description: "Our job is fun!", is_open: true, remote: false)
 
 # Create team members
 SeedTeamMembers.seed_all
@@ -53,6 +57,7 @@ team_members = TeamMember.count
 admin_users = AdminUser.count
 scholarship_count = Scholarship.count
 scholarship_app = ScholarshipApplication.count
+jobs = Job.count
 
 puts 'Seeding complete.  Created:'
 p "#{users} users"
@@ -62,3 +67,4 @@ p "#{team_members} team members"
 p "#{admin_users} admin users"
 p "#{scholarship_count} scholarships"
 p "#{scholarship_app} scholarship applications"
+p "#{jobs} jobs"
