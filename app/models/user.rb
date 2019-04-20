@@ -43,6 +43,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :zip, presence: true, :on => :create
 
+  after_validation :log_errors, :if => Proc.new {|m| m.errors}
+
   has_many :requests
   has_many :votes
   has_many :scholarship_applications
@@ -240,4 +242,9 @@ class User < ApplicationRecord
   def downcase_email
     email.downcase! if email
   end
+
+  def log_errors
+    Rails.logger.debug self.errors.full_messages.join("\n")
+  end
+
 end
