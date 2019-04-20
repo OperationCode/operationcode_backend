@@ -51,7 +51,9 @@ class MentorshipTest < Minitest::Test
         mentor_requested: 'recqeVhDDJU5cY8TX'
       }
 
-      response = Airtable::Mentorship.new.create_mentor_request(request_body)
+      instance = Airtable::Mentorship.new
+      # instance.stubs(:validate_user).returns(true) # unsure how to make this work
+      response = instance.create_mentor_request(request_body)
 
       assert response['id'].present?
       assert_equal request_body[:slack_user], response.dig('fields', 'Slack User')

@@ -32,16 +32,6 @@ class Api::V1::ServicesControllerTest < ActionDispatch::IntegrationTest
     assert_equal '/profile', json['redirect_to']
   end
 
-  test 'it returns a redirect_to path to discourse for an sso login' do
-    post api_v1_sessions_url, params: @user_params.merge(sso_params), as: :json
-    json = response.parsed_body
-    assert_match /^https:\/\/community\.operationcode\.org\/session\/sso_login\?sso=.*sig=.*$/, json['redirect_to']
-  end
-
-  def discourse_sso_url
-    'https://community.operationcode.org?sso=bm9uY2U9Y2I2ODI1MWVlZmI1MjExZTU4YzAwZmYxMzk1ZjBjMGImbmFtZT1M%0AaWxpYW4rUm9tYWd1ZXJhJnVzZXJuYW1lPWFpZGElNDBiZWVyLmluZm8mZW1h%0AaWw9YWlkYSU0MGJlZXIuaW5mbyZyZXF1aXJlX2FjdGl2YXRpb249dHJ1ZSZl%0AeHRlcm5hbF9pZD0yOA%3D%3D%0A&sig=e57b3554b951149981433a63738891892e2da9499125b57ba8084f57cc035de4'
-  end
-
   def sso_params
     {
       sso: 'bm9uY2U9Y2I2ODI1MWVlZmI1MjExZTU4YzAwZmYxMzk1ZjBjMGImbmFtZT1zYW0mdXNlcm5hbWU9c2Ftc2FtJmVtYWlsPXRlc3QlNDB0ZXN0LmNvbSZleHRlcm5hbF9pZD1oZWxsbzEyMyZyZXF1aXJlX2FjdGl2YXRpb249dHJ1ZQ==',

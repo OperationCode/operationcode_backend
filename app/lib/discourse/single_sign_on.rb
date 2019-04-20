@@ -11,7 +11,7 @@ module Discourse
     BOOLS = [:avatar_force_update, :admin, :moderator, :require_activation, :suppress_welcome_message]
     NONCE_EXPIRY_TIME = 10.minutes
 
-    SECRET = OperationCode.fetch_secret_with name: :discourse_sso_secret
+    SECRET = 'fake_secret'
 
     attr_accessor(*ACCESSORS)
     attr_accessor :sso_secret, :sso_url

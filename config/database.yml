@@ -32,7 +32,11 @@ test:
   <<: *default
   database: operationcode_test
 
+staging:
+  <<: *default
+  database: operationcode_production
+
 production:
   <<: *default
-  host: <%= ENV['POSTGRES_HOST'].present? ? ENV['POSTGRES_HOST'] : 'operationcode-psql-postgresql' %>
+  host: <%= ENV['POSTGRES_HOST'].present? ? ENV['POSTGRES_HOST'] : 'invalid_postgres_host' %>
   database: operationcode_production

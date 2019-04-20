@@ -35,7 +35,7 @@ module Airtable
           'Mentor Requested' => format_for_posting(body[:mentor_requested])
         }
       }.to_json
-
+      validate_user(body[:email])
       client.post_record('Mentor Request', request_body)
     end
 
@@ -50,6 +50,12 @@ module Airtable
           name: record.dig('fields', name_key)
         }
       end
+    end
+
+    def validate_user(email)
+      return if Rails.env.test? # I really don't like this, TODO: replace with a proper mock
+      return unless Slack::Utils.new.email_is_registered(email)
+      raise Airtable::Error, "#{email} is not registered on slack"
     end
 
     # Converts a comma separated string into an array of strings

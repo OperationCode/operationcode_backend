@@ -1,5 +1,7 @@
 FROM ruby:2.3.3
 
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
+
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs graphviz
 
 ENV APP_HOME /app
@@ -7,8 +9,8 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-ADD Gemfile $APP_HOME/
-ADD Gemfile.lock $APP_HOME/
+COPY Gemfile $APP_HOME/
+COPY Gemfile.lock $APP_HOME/
 
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
   BUNDLE_JOBS=2 \
@@ -16,6 +18,6 @@ ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
 
 RUN bundle install --system
 
-ADD . $APP_HOME/
+COPY . $APP_HOME/
 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
