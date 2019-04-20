@@ -66,6 +66,7 @@ Layout/EmptyLines:
     - 'Gemfile'
     - 'app/models/user.rb'
     - 'config/environments/development.rb'
+    - 'config/environments/staging.rb'
     - 'config/environments/production.rb'
     - 'db/migrate/20170420033746_add_devise_to_users.rb'
     - 'db/migrate/20171013230050_devise_create_admin_users.rb'
