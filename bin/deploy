@@ -44,5 +44,9 @@ EOF
 # Container names come from:
 # https://github.com/OperationCode/operationcode_infra/blob/master/kubernetes/operationcode_backend/deployment.yml
 #
+# current-context
 KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend app=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER}
 KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend operationcode-sidekiq=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER}
+# specifically do staging 
+KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend app=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER} -n operationcode-staging
+KUBECONFIG=${KUBE_CONFIG} ./kubectl set image deployment/operationcode-backend operationcode-sidekiq=operationcode/operationcode_backend:${TRAVIS_BUILD_NUMBER} -n operationcode-staging
