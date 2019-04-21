@@ -1,7 +1,7 @@
 namespace :schools do
   desc 'Reads from the ./config/code_schools.yml and creates records in the database.'
   task populate: :environment do
-    schools = YAML::load_file(File.join('./config', 'code_schools.yml'))
+    schools = YAML::load_file(File.join('./config', 'code_schools.yml'), 'r')
     schools.each do |school|
       begin
         object = CodeSchool.create!(
