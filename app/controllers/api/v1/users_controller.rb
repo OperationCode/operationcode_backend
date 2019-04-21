@@ -16,6 +16,7 @@ module Api
           user.welcome_user
           UserMailer.welcome(user).deliver unless user.invalid?
           sign_in(user)
+          cookies[:token] = resource.token
           render json: { token: user.token }
         else
           Rails.logger.debug 'Cannot save User'
