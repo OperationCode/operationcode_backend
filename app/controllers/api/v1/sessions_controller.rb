@@ -9,13 +9,16 @@ module Api
         self.resource = warden.authenticate!(auth_options)
         sign_in(resource_name, resource)
 
-        set_sso_response if sso_request?
-        @redirect_path ||= '/profile'
+        cookies[:token] = resource.token
+
+        @redirect_path_login ||= '/profile'
 
         render json: {
           token: resource.token,
           user: UserSerializer.new(current_user),
-          redirect_to: @redirect_path
+          redirect_to: @redirect_path_login
+        }
+      end
         }
       end
 
