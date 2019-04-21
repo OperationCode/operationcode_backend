@@ -16,7 +16,9 @@ ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
   BUNDLE_JOBS=2 \
   BUNDLE_PATH=/bundle
 
-RUN bundle install --system
+RUN gem update --system && \
+  gem install bundler --no-document --version $(tail -n 1 Gemfile.lock) | sed -e 's/^[[:space:]]*//' && \
+  bundle install --system
 
 COPY . $APP_HOME/
 
