@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
+        delete '/sessions',  to: 'sessions#destroy'
         get '/sessions/sso', to: 'sessions#sso'
       end
 

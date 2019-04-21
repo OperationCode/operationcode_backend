@@ -19,6 +19,16 @@ module Api
           redirect_to: @redirect_path_login
         }
       end
+
+      def destroy
+        sign_out @user
+
+        cookies.delete :token
+
+        @redirect_path_logout ||= '/login'
+
+        render json: {
+          redirect_to: @redirect_path_logout
         }
       end
 
