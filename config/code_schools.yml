@@ -19,813 +19,1149 @@
 #   Each entry must start on a new line with "- name:"
 #   Each location must start on a new line with "- va_accepted:"
 ---
-- name: Wyncode Academy
-  url: http://wyncode.co
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/wyncode.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: weare@wyncode.co
-  locations:
-    - va_accepted: true
-      address1: 549 NW 28th Street
-      city: Miami
-      state: FL
-      zip: 33127
-
-- name: Nashville Software School
-  url: http://nashvillesoftwareschool.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/nss.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: info@nashvillesoftwareschool.com
-  locations:
-    - va_accepted: true
-      address1: 500 Interstate Blvd S
-      address2: Suite 300
-      city: Nashville
-      state: TN
-      zip: 37210
-
-- name: Galvanize
-  url: https://new.galvanize.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/galvanize.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: info@galvanize.com
-  locations:
-    - va_accepted: false
-      address1: 44 Tehama Street
-      city: San Francisco
-      state: CA
-      zip: 94015
-    - va_accepted: true
-      address1: 1062 Delaware Street
-      city: Denver
-      state: CO
-      zip: 80204
-    - va_accepted: false
-      address1: 1644 Platte Street
-      city: Denver
-      state: CO
-      zip: 80202
-    - va_accepted: true
-      address1: 1023 Walnut Street
-      city: Boulder
-      state: CO
-      zip: 80302
-    - va_accepted: false
-      address1: 119 Nueces Street
-      city: Austin
-      state: TX
-      zip: 78701
-    - va_accepted: false
-      address1: 315 Hudson Street
-      city: New York
-      state: NY
-      zip: 10013
-    - va_accepted: false
-      address1: 515 E Grant Street
-      city: Phoenix
-      state: AZ
-      zip: 85004
-    - va_accepted: false
-      address1: 111 S Jackson Street
-      city: Seattle
-      state: WA
-      zip: 98104
-
-- name: Hack Reactor
-  url: http://www.hackreactor.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/hack_reactor.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  email: admissions@hackreactor.com
-  locations:
-    - va_accepted: false
-      address1: 944 Market Street
-      address2: 8th Floor
-      city: San Francisco
-      state: CA
-      zip: 94102
-    - va_accepted: false
-      address1: 800 Brazos Street
-      address2: Suite 500
-      city: Austin
-      state: TX
-      zip: 78701
-    - va_accepted: false
-      address1: 6060 Center Drive
-      address2: Suite 950
-      city: Los Angeles
-      state: CA
-      zip: 90045
-    - va_accepted: false
-      address1: 369 Lexington Avenue
-      address2: 11th Floor
-      city: New York
-      state: NY
-      zip: 10017
-
-- name: Sabio
-  url: http://sabio.la/veterans
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/sabio.png
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  email: join@sabio.la
-  notes: Sabio enables Operation Code veterans to learn the skills needed to secure a full-time position in an awesome tech company in six months all while earning college credits towards an undergraduate degree. The New GI Bill is an option for non-BA degree holders.
-  locations:
-    - va_accepted: true
-      address1: 400 Corporate Pointe
-      city: Culver City
-      state: CA
-      zip: 90230
-    - va_accepted: false
-      address1: 110 Newport Center Drive
-      city: Newport Beach
-      state: CA
-      zip: 92660
-
-- name: Tradecraft
-  url: http://tradecrafted.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/tradecraft.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  locations:
-    - va_accepted: false
-      address1: 150 Minna Street
-      city: San Fransisco
-      state: CA
-      zip: 94105
-
-- name: Turing School of Software & Design
-  url: http://turing.io/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/turing.jpg
-  full_time: true
-  hardware_included: true
-  has_online: false
-  online_only: false
-  email: contact@turing.io
-  notes: <strong> Turing offers two diversity scholarships each cohort that veterans are eligible to apply for. This funding will be used as tuition credit to offset tuition costs. </strong>
-  locations:
-    - va_accepted: true
-      address1: 1331 17th Street
-      address2: Suite LL100
-      city: Denver
-      state: CO
-      zip: 80202
-
-- name: General Assembly
-  url: https://generalassemb.ly
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/general_assembly.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  email: hello@generalassemb.ly
-  locations:
-    - va_accepted: false
-      address1: 675 Ponce de Leon Avenue NE
-      address2: 2nd Floor
-      city: Atlanta
-      state: GA
-      zip: 30308
-    - va_accepted: false
-      address1: 1218 3rd Avenue
-      address2: 3rd Floor
-      city: Seattle
-      state: WA
-      zip: 98109
-    - va_accepted: false
-      address1: 1133 15th Street NW
-      address2: 8th Floor
-      city: Washington
-      state: DC
-      zip: 20005
-    - va_accepted: false
-      address1: 2231 Crystal Drive
-      address2: 10th Floor
-      city: Arlington
-      state: VA
-      zip: 22202
-    - va_accepted: false
-      address1: 600 Congress Avenue
-      address2: 14th Floor
-      city: Austin
-      state: TX
-      zip: 78701
-    - va_accepted: false
-      address1: 125 Summer Street
-      address2: 13th Floor
-      city: Boston
-      state: MA
-      zip: 02110
-    - va_accepted: false
-      address1: 444 N Wabash Avenue
-      address2: 5th Floor
-      city: Chicago
-      state: IL
-      zip: 60611
-    - va_accepted: false
-      address1: 80 Washington Street, Room 423
-      address2: URI Feinstein College of Education and Professional Studies
-      city: Providence
-      state: RI
-      zip: 02903
-    - va_accepted: false
-      address1: 10 E 21st Street (Classes)
-      city: New York
-      state: NY
-      zip: 10010
-    - va_accepted: false
-      address1: 902 Broadway
-      address2: 4th Floor (HQ)
-      city: New York
-      state: NY
-      zip: 10010
-    - va_accepted: false
-      address1: 35 E 21st Street (Lofts)
-      city: New York
-      state: NY
-      zip: 10010
-    - va_accepted: false
-      address1: 360 E 2nd Street
-      address2: Suite 400
-      city: Los Angeles
-      state: CA
-      zip: 90012
-    - va_accepted: false
-      address1: 1520 2nd Street
-      city: Santa Monica
-      state: CA
-      zip: 90401
-    - va_accepted: false
-      address1: 1621 Alton Parkway
-      city: Irvine
-      state: CA
-      zip: 92606
-    - va_accepted: false
-      address1: 2420 17th Street
-      address2: 3rd Floor
-      city: Denver
-      state: CO
-      zip: 80202
-    - va_accepted: false
-      address1: 225 Bush Street
-      address2: 5th Floor (East Entrance)
-      city: San Francisco
-      state: CA
-      zip: 94104
-    - va_accepted: false
-      address1: 75 E Santa Clara Street
-      address2: 6th Floor
-      city: San Jose
-      state: CA
-      zip: 95113
-
-- name: Deep Dive Fullstack
-  url: https://deepdivecoding.com/fullstack/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/deep_dive_fullstack.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: info@deepdivecoding.com
-  locations:
-    - va_accepted: true
-      address1: 20 First Plaza Center NW
-      address2: Suite 200
-      city: Albuquerque
-      state: NM
-      zip: 87102
-
-- name: Deep Dive Java + Android + Salesforce
-  url: https://deepdivecoding.com/java-android-salesforce/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/deep_dive_fullstack.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: info@deepdivecoding.com
-  locations:
-    - va_accepted: true
-      address1: 20 First Plaza Center NW
-      address2: Suite 200
-      city: Albuquerque
-      state: NM
-      zip: 87102
-
-- name: Fullstack Academy
-  url: http://fullstackacademy.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/fullstack_academy.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  email: hello@fullstackacademy.com
-  locations:
-    - va_accepted: false
-      address1: 5 Hanover Square
-      address2: Floor 25
-      city: New York
-      state: NY
-      zip: 10004
-    - va_accepted: false
-      address1: 222 W Merchandise Mart Plaza
-      address2: Suite 1212
-      city: Chicago
-      state: IL
-      zip: 60654
-
-- name: The Flatiron School
-  url: http://flatironschool.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/flatiron_school.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  email: info@flatironschool.com
-  locations:
-    - va_accepted: false
-      address1: 11 Broadway
-      address2: 2nd Floor
-      city: New York
-      state: NY
-      zip: 10004
-
-- name: Thinkful
-  url: http://www.thinkful.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/thinkful.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: true
-  email: hello@thinkful.com
-  locations:
-    - va_accepted: false
-      address1: 55 Prospect Street
-      city: Brooklyn
-      state: NY
-      zip: 11201
-
-- name: RMOTR
-  url: https://rmotr.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/rmotr.jpg
-  full_time: false
-  hardware_included: false
-  has_online: true
-  online_only: true
-  email: questions@rmotr.com
-  locations:
-    - va_accepted: false
-      address1: 2035 Sunset Lake Road
-      address2: Suite B-2
-      city: Newark
-      state: DE
-      zip: 19702
-
-- name: Code Fellows
-  url: https://www.codefellows.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_fellows.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: admissions@codefellows.com
-  locations:
-    - va_accepted: true
-      address1: 2901 3rd Avenue
-      address2: Suite 300
-      city: Seattle
-      state: WA
-      zip: 98121
-
-- name: Epicodus
-  url: http://www.epicodus.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/epicodus.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  notes: (Also see, <a href="http://www.learnhowtoprogram.com/lessons/learn-how-to-program">Learn how to program</a>.)
-  email: hi@epicodus.com
-  locations:
-    - va_accepted: false
-      address1: 400 SW 6th Avenue
-      address2: Suite 800
-      city: Portland
-      state: OR
-      zip: 97204
-    - va_accepted: false
-      address1: 1201 3rd Avenue
-      address2: Suite 1600
-      city: Seattle
-      state: WA
-      zip: 98101
-
-- name: PDX Code Guild
-  url: http://pdxcodeguild.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/pdx_code_guild.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: sheri@pdxcodeguild.com
-  locations:
-    - va_accepted: true
-      address1: 2828 SW Corbett Avenue
-      address2: Suite 208
-      city: Portland
-      state: OR
-      zip: 97201
-
 - name: Ada Developers Academy
   url: http://adadevelopersacademy.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/ada_developers.jpg
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/ada_developers.jpg
   full_time: true
   hardware_included: false
   has_online: false
   online_only: false
-  notes: <strong>Women-only and tuition-free</strong>. One-year program.
-  email: contact@adadevelopersacademy.org
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
   locations:
-    - va_accepted: false
-      address1: 1215 4th Avenue
-      address2: Suite 1050
-      city: Seattle
-      state: WA
-      zip: 98161
-
-- name: Operation Spark
-  url: https://operationspark.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/operation_spark.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: admission@operationspark.org
-  locations:
-    - va_accepted: false
-      address1: 748 Camp Street
-      address2: 2nd Floor
-      city: New Orleans
-      state: LA
-      zip: 70130
-
-- name: Startup Institute
-  url: https://www.startupinstitute.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/startup_institute.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: info@startupinstitute.com
-  locations:
-    - va_accepted: false
-      address1: 50 Milk Street
-      address2: 15th Floor
-      city: Boston
-      state: MA
-      zip: 02109
-    - va_accepted: false
-      address1: 25 Broadway
-      address2: 10th Floor
-      city: New York
-      state: NY
-      zip: 10004
-
-- name: Codeup
-  url: http://codeup.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/codeup.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: info@codeup.com
-  locations:
-    - va_accepted: true
-      address1: 600 Navarro Street
-      address2: Suite 350
-      city: San Antonio
-      state: TX
-      zip: 78205
-
-- name: DeVry Bootcamp
-  url: http://bootcamp.devry.edu/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/devry_bootcamp.jpg
-  full_time: true
-  hardware_included: true
-  has_online: false
-  online_only: false
-  email: devrysocial@devry.edu
-  locations:
-    - va_accepted: false
-      address1: 1870 W 122nd Avenue
-      city: Westminster
-      state: CO
-      zip: 80235
-    - va_accepted: false
-      address1: 225 W Washington Street
-      address2: Suite 100
-      city: Chicago
-      state: IL
-      zip: 60606
-
+  - va_accepted: false
+    address1: 1215 4th Avenue
+    address2: Suite 1050
+    city: Seattle
+    state: WA
+    zip: 98161
 - name: App Academy
   url: https://www.appacademy.io/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/app_academy.jpg
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/app_academy.jpg
   full_time: true
   hardware_included: false
   has_online: false
   online_only: false
-  notes: Deferred financing system (20% of your first year's salary)
-  email: contact@appacademy.io
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
   locations:
-    - va_accepted: false
-      address1: 825 Battery Street
-      address2: 3rd Floor
-      city: San Francisco
-      state: CA
-      zip: 94111
-    - va_accepted: false
-      address1: 22 W 38th Street
-      city: New York
-      state: NY
-      zip: 10018
-
-- name: Tech Elevator
-  url: http://www.techelevator.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/tech_elevator.jpg
-  full_time: true
-  hardware_included: true
-  has_online: false
-  online_only: false
-  email: hello@techelevator.com
-  locations:
-    - va_accepted: false
-      address1: 7100 Euclid Avenue
-      address2: Suite 140
-      city: Cleveland
-      state: OH
-      zip: 44103
-    - va_accepted: false
-      address1: 1275 Kinnear Road
-      address2: Suite 121
-      city: Columbus
-      state: OH
-      zip: 43212
-    - va_accepted: false
-      address1: 1776 Mentor Avenue
-      city: Cincinnati
-      state: OH
-      zip: 45212
-
-- name: Code Immersives
-  url: https://www.codeimmersives.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_immersives.jpg
-  full_time: true
-  hardware_included: true
-  has_online: false
-  online_only: false
-  notes: (Also see, <a href="https://web1.codeimmersives.com/students/veterans"> Veteran Student </a>.)
-  email: admissions@codeimmersives.com
-  locations:
-    - va_accepted: true
-      address1: 630 9th Avenue
-      address2: Suite 901
-      city: New York
-      state: NY
-      zip: 10036
-
-- name: Coding Dojo
-  url: http://www.codingdojo.com
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/coding_dojo.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  email: info@codingdojo.com
-  locations:
-    - va_accepted: false
-      address1: 1775 Greensboro Station Place
-      address2: Suite 210
-      city: McLean
-      state: VA
-      zip: 22102
-    - va_accepted: false
-      address1: 1920 Zanker Road
-      address2: Suite 20
-      city: San Jose
-      state: CA
-      zip: 95112
-    - va_accepted: false
-      address1: 10777 Main Street
-      address2: Suite 300
-      city: Bellevue
-      state: WA
-      zip: 98004
-    - va_accepted: false
-      address1: 175 E Olive Avenue
-      address2: 3rd Floor
-      city: Burbank
-      state: CA
-      zip: 91502
-    - va_accepted: false
-      address1: 900 Jackson Street
-      address2: Suite 410
-      city: Dallas
-      state: TX
-      zip: 75202
-    - va_accepted: false
-      address1: 213 W Institute Place
-      address2: Suite 610
-      city: Chicago
-      state: IL
-      zip: 60610
-    - va_accepted: false
-      address1: 36 E Cameron Street
-      city: Tulsa
-      state: OK
-      zip: 74103
-
-- name: Coder Camps
-  url: https://www.codercamps.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/coder_camps.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  notes: Coder Camps offers two paths to taking a Full Stack Web Development course. A <strong>12 week</strong> full time Immersive on-campus/online program and a <strong>24 week</strong> part time Structured Online program.  Active military and veterans receive a <strong>20 percent discount</strong> on tuition, we are able to accept Chapter 31 &amp; 35 benefits.
-  email: howdy@codercamps.com
-  locations:
-    - va_accepted: false
-      address1: 8444 N 90th Street
-      address2: Suite 105/110
-      city: Scottsdale
-      state: AZ
-      zip: 85258
-    - va_accepted: false
-      address1: 7530 164th Avenue NE
-      address2: Suite A112
-      city: Redmond
-      state: WA
-      zip: 98052
-
+  - va_accepted: false
+    address1: 825 Battery Street
+    address2: 3rd Floor
+    city: San Francisco
+    state: CA
+    zip: 94111
+  - va_accepted: false
+    address1: 22 W 38th Street
+    address2: 
+    city: New York
+    state: NY
+    zip: 10018
 - name: Bloc
   url: https://bloc.io
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/bloc.jpg
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/bloc.jpg
   full_time: false
   hardware_included: false
   has_online: true
   online_only: true
-  email: hello@bloc.io
+  mooc: false
+  is_partner: true
+  rep_name: 
+  rep_email: 
   locations:
-    - va_accepted: false
-      address1: 785 Market Street
-      address2: 5th Floor
-      city: San Francisco
-      state: CA
-      zip: 94103
-
-- name: LaunchCode
-  url: http://www.launchcode.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/launch_code.jpg
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  notes: Completely free for accepted applicants. This is a non-profit code school.
-  email: info@launchcode.org
-  locations:
-    - va_accepted: false
-      address1: 4811 Delmar Boulevard
-      city: Saint Louis
-      state: MO
-      zip: 63108
-    - va_accepted: false
-      address1: 315 NE 2nd Avenue
-      city: Miami
-      state: FL
-      zip: 33132
-    - va_accepted: false
-      address1: 210 W 19th Terrace
-      city: Kansas City
-      state: MO
-      zip: 64108
-    - va_accepted: false
-      address1: 80 Washington Street
-      address2: University of Rhode Island - Providence
-      city: Providence
-      state: RI
-      zip: 02903
-    - va_accepted: false
-      address1: TBA
-      city: Portland
-      state: OR
-      zip: 97204
-    - va_accepted: false
-      address1: TBA
-      city: Seattle
-      state: WA
-      zip: 98121
-
-- name: Code Platoon
-  url: https://www.codeplatoon.org
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/code_platoon.jpg
-  full_time: true
-  hardware_included: false
-  has_online: true
-  online_only: false
-  notes: Completely free for accepted applicants. This is a non-profit code school.
-  email: info@codeplatoon.org
-  locations:
-    - va_accepted: false
-      address1: 73 W Monroe Street
-      address2: Suite 303
-      city: Chicago
-      state: IL
-      zip: 60603
-
-- name: DevPoint Labs
-  url: http://www.devpointlabs.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/DPL_logo.png
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: contact@devpointlabs.com
-  locations:
-    - va_accepted: true
-      address1: 370 South 300 East
-      city: Salt Lake City
-      state: UT
-      zip: 84111
-
-- name: Rithm School
-  url: rithmschool.com?utm_source=OperationCode&utm_medium=logo&utm_campaign=root
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/rithm_school.png
-  full_time: true
-  hardware_included: false
-  has_online: false
-  online_only: false
-  email: admissions@rithmschool.com
-  locations:
-    - va_accepted: false
-      address1: 3338 17th Street
-      address2: Suite 100
-      city: San Francisco
-      state: CA
-      zip: 94110
-
+  - va_accepted: false
+    address1: 785 Market Street
+    address2: 5th Floor
+    city: San Francisco
+    state: CA
+    zip: 94103
 - name: Cincy Code IT Bootcamps
   url: https://maxtrain.com/career-2/veterans-gi-bill-career-changers/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/cincy_code_it_bootcamps.jpg
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/cincy_code_it_bootcamps.jpg
   full_time: true
   hardware_included: true
   has_online: false
   online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
   locations:
-    - va_accepted: true
-      address1: 4900 Parkway Dr
-      address2: Suite 160
-      city: Cincinnati
-      state: OH
-      zip: 45040
-
-- name: SecureSet
-  url: https://secureset.com/
-  logo: https://raw.githubusercontent.com/OperationCode/operationcode_frontend/master/src/images/codeSchoolLogos/secureset.jpg
+  - va_accepted: true
+    address1: 4900 Parkway Dr
+    address2: Suite 160
+    city: Cincinnati
+    state: OH
+    zip: 45040
+- name: Claim Academy
+  url: https://claimacademystl.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/claim_academy.png
   full_time: true
   hardware_included: false
   has_online: false
   online_only: false
-  notes: Offers full-time and part-time evening courses.
+  mooc: false
+  is_partner: false
+  rep_name: Ola Ayeni
+  rep_email: info@claimacademystl.com
   locations:
-    - va_accepted: true
-      address1: 2228 Blake Street
-      address2: Suite 100
-      city: Denver
-      state: CO
-      zip: 80205
-    - va_accepted: true
-      address1: 523 S Cascade Ave
-      address2: Suite 140
-      city: Co Springs
-      state: CO
-      zip: 80903
-    - va_accepted: false
-      address1: 1915 N. Ave Republica de Cuba
-      city: Tampa
-      state: FL
-      zip: 33605
+  - va_accepted: true
+    address1: 2113 - 2119 Olive Street , 2nd floor
+    address2: ''
+    city: St. Louis
+    state: MO
+    zip: 63103
+- name: Code Fellows
+  url: https://www.codefellows.org
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/code_fellows.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 2901 3rd Avenue
+    address2: Suite 300
+    city: Seattle
+    state: WA
+    zip: 98121
+- name: Code Immersives
+  url: https://www.codeimmersives.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/code_immersives.jpg
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 630 9th Avenue
+    address2: Suite 901
+    city: New York
+    state: NY
+    zip: 10036
+- name: Code Platoon
+  url: https://www.codeplatoon.org
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/code_platoon.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: true
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 73 W Monroe Street
+    address2: Suite 303
+    city: Chicago
+    state: IL
+    zip: 60603
+- name: Codeup
+  url: http://codeup.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/codeup.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 600 Navarro Street
+    address2: Suite 350
+    city: San Antonio
+    state: TX
+    zip: 78205
+- name: Coding Dojo
+  url: http://www.codingdojo.com
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/coding_dojo.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 175 E Olive Avenue
+    address2: 3rd Floor
+    city: Burbank
+    state: CA
+    zip: 91502
+  - va_accepted: false
+    address1: 1920 Zanker Road
+    address2: Suite 20
+    city: San Jose
+    state: CA
+    zip: 95112
+  - va_accepted: false
+    address1: 213 W Institute Place
+    address2: Suite 610
+    city: Chicago
+    state: IL
+    zip: 60610
+  - va_accepted: false
+    address1: 36 E Cameron Street
+    address2: 
+    city: Tulsa
+    state: OK
+    zip: 74103
+  - va_accepted: false
+    address1: 900 Jackson Street
+    address2: Suite 410
+    city: Dallas
+    state: TX
+    zip: 75202
+  - va_accepted: false
+    address1: 1775 Greensboro Station Place
+    address2: Suite 210
+    city: McLean
+    state: VA
+    zip: 22102
+  - va_accepted: false
+    address1: 10777 Main Street
+    address2: Suite 300
+    city: Bellevue
+    state: WA
+    zip: 98004
+- name: Deep Dive Coding
+  url: https://deepdivecoding.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/deep_dive_coding.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: ''
+  rep_email: ''
+  locations:
+  - va_accepted: true
+    address1: 20 First Plaza Center NW
+    address2: Suite 200
+    city: Albuquerque
+    state: NM
+    zip: 87102
+- name: devCodeCamp
+  url: https://devcodecamp.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/devcodecamp.png
+  full_time: false
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 313 North Plankinton Avenue
+    address2: 
+    city: Milwaukee
+    state: WI
+    zip: 53203
+- name: DevLeague
+  url: https://www.devleague.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/devleague.png
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: true
+  mooc: false
+  is_partner: false
+  rep_name: Victor Lee
+  rep_email: victor@devleague.com
+  locations:
+  - va_accepted: true
+    address1: 2800 Woodlawn Drive
+    address2: ''
+    city: Honolulu
+    state: HI
+    zip: 96822
+- name: DevPoint Labs
+  url: http://www.devpointlabs.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/DPL_logo.png
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 370 South 300 East
+    address2: 
+    city: Salt Lake City
+    state: UT
+    zip: 84111
+- name: DeVry Bootcamp
+  url: http://bootcamp.devry.edu/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/devry_bootcamp.jpg
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 1870 W 122nd Avenue
+    address2: 
+    city: Westminster
+    state: CO
+    zip: 80235
+  - va_accepted: false
+    address1: 225 W Washington Street
+    address2: Suite 100
+    city: Chicago
+    state: IL
+    zip: 60606
+- name: Eleven Fifty Academy
+  url: https://www.elevenfifty.org/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/eleven_fifty_academy.jpeg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Carol Gilliam
+  rep_email: cgilliam@elevenfifty.org
+  locations:
+  - va_accepted: false
+    address1: 12175 Visionary Way
+    address2: ''
+    city: Fishers
+    state: IN
+    zip: 46038
+- name: Epicodus
+  url: http://www.epicodus.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/epicodus.png
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Debbie Cravey
+  rep_email: hi@epicodus.com
+  locations:
+  - va_accepted: false
+    address1: 400 SW 6th Avenue
+    address2: Suite 800
+    city: Portland
+    state: OR
+    zip: 97204
+  - va_accepted: false
+    address1: 1201 3rd Avenue
+    address2: Suite 1600
+    city: Seattle
+    state: WA
+    zip: 98101
+- name: Firehose Project
+  url: https://thefirehoseproject.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/firehose_project.jpg
+  full_time: false
+  hardware_included: false
+  has_online: true
+  online_only: true
+  mooc: false
+  is_partner: false
+  rep_name: ''
+  rep_email: questions@thefirehoseproject.com
+  locations:
+  - va_accepted: false
+    address1: 1355 Market St
+    address2: Suite 488
+    city: San Francisco
+    state: CA
+    zip: 94103
+- name: First Step Coding
+  url: https://www.firststepcoding.com
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/first_step.png
+  full_time: false
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Calli Rothberg
+  rep_email: hello@firststepcoding.com
+  locations:
+  - va_accepted: false
+    address1: 525 Mission st
+    address2: ''
+    city: San Francisco
+    state: CA
+    zip: 94105
+- name: Fullstack Academy
+  url: http://fullstackacademy.com
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/fullstack_academy.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: true
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 222 W Merchandise Mart Plaza
+    address2: Suite 1212
+    city: Chicago
+    state: IL
+    zip: 60654
+  - va_accepted: false
+    address1: 5 Hanover Square
+    address2: Floor 25
+    city: New York
+    state: NY
+    zip: 10004
+- name: Galvanize
+  url: https://www.galvanize.com/vets
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/galvanize.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: ''
+  rep_email: ''
+  locations:
+  - va_accepted: false
+    address1: 515 E Grant Street
+    address2: 
+    city: Phoenix
+    state: AZ
+    zip: 85004
+  - va_accepted: false
+    address1: 44 Tehama Street
+    address2: 
+    city: San Francisco
+    state: CA
+    zip: 94015
+  - va_accepted: true
+    address1: 1023 Walnut Street
+    address2: 
+    city: Boulder
+    state: CO
+    zip: 80302
+  - va_accepted: false
+    address1: 1644 Platte Street
+    address2: 
+    city: Denver
+    state: CO
+    zip: 80202
+  - va_accepted: true
+    address1: 1062 Delaware Street
+    address2: 
+    city: Denver
+    state: CO
+    zip: 80204
+  - va_accepted: false
+    address1: 315 Hudson Street
+    address2: 
+    city: New York
+    state: NY
+    zip: 10013
+  - va_accepted: false
+    address1: 119 Nueces Street
+    address2: 
+    city: Austin
+    state: TX
+    zip: 78701
+  - va_accepted: false
+    address1: 111 S Jackson Street
+    address2: 
+    city: Seattle
+    state: WA
+    zip: 98104
+- name: General Assembly
+  url: https://generalassemb.ly/gi-bill?utm_medium=affiliate-lead-gen-global&utm_campaign=2018-q4-affiliate-lead-gen-[global]-operation-code-affiliate&utm_source=operation-code
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/general_assembly.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: ''
+  rep_email: ''
+  locations:
+  - va_accepted: false
+    address1: 1621 Alton Parkway
+    address2: 
+    city: Irvine
+    state: CA
+    zip: 92606
+  - va_accepted: false
+    address1: 360 E 2nd Street
+    address2: Suite 400
+    city: Los Angeles
+    state: CA
+    zip: 90012
+  - va_accepted: false
+    address1: 225 Bush Street
+    address2: 5th Floor (East Entrance)
+    city: San Francisco
+    state: CA
+    zip: 94104
+  - va_accepted: false
+    address1: 75 E Santa Clara Street
+    address2: 6th Floor
+    city: San Jose
+    state: CA
+    zip: 95113
+  - va_accepted: false
+    address1: 1520 2nd Street
+    address2: 
+    city: Santa Monica
+    state: CA
+    zip: 90401
+  - va_accepted: false
+    address1: 2420 17th Street
+    address2: 3rd Floor
+    city: Denver
+    state: CO
+    zip: 80202
+  - va_accepted: true
+    address1: 1133 15th Street NW
+    address2: 8th Floor
+    city: Washington
+    state: DC
+    zip: 20005
+  - va_accepted: false
+    address1: 675 Ponce de Leon Avenue NE
+    address2: 2nd Floor
+    city: Atlanta
+    state: GA
+    zip: 30308
+  - va_accepted: true
+    address1: 444 N Wabash Avenue
+    address2: 5th Floor
+    city: Chicago
+    state: IL
+    zip: 60611
+  - va_accepted: false
+    address1: 125 Summer Street
+    address2: 13th Floor
+    city: Boston
+    state: MA
+    zip: 1096
+  - va_accepted: true
+    address1: 10 E 21st Street (Classes)
+    address2: 
+    city: New York
+    state: NY
+    zip: 10010
+  - va_accepted: false
+    address1: 80 Washington Street, Room 423
+    address2: URI Feinstein College of Education and Professional Studies
+    city: Providence
+    state: RI
+    zip: 2903
+  - va_accepted: false
+    address1: 600 Congress Avenue
+    address2: 14th Floor
+    city: Austin
+    state: TX
+    zip: 78701
+  - va_accepted: false
+    address1: 2231 Crystal Drive
+    address2: 10th Floor
+    city: Arlington
+    state: VA
+    zip: 22202
+  - va_accepted: false
+    address1: 1218 3rd Avenue
+    address2: 3rd Floor
+    city: Seattle
+    state: WA
+    zip: 98109
+- name: Hack Reactor
+  url: http://www.hackreactor.com
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/hack_reactor.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 6060 Center Drive
+    address2: Suite 950
+    city: Los Angeles
+    state: CA
+    zip: 90045
+  - va_accepted: false
+    address1: 944 Market Street
+    address2: 8th Floor
+    city: San Francisco
+    state: CA
+    zip: 94102
+  - va_accepted: false
+    address1: 369 Lexington Avenue
+    address2: 11th Floor
+    city: New York
+    state: NY
+    zip: 10017
+  - va_accepted: false
+    address1: 800 Brazos Street
+    address2: Suite 500
+    city: Austin
+    state: TX
+    zip: 78701
+- name: Interface
+  url: https://aiminterfaceschool.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/interface.png
+  full_time: false
+  hardware_included: true
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Ellen Myer, Director
+  rep_email: emyer@aiminstitute.org
+  locations:
+  - va_accepted: true
+    address1: 1902 Howard St
+    address2: ''
+    city: Omaha
+    state: NE
+    zip: 68102
+- name: LaunchCode
+  url: http://www.launchcode.org
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/launch_code.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 315 NE 2nd Avenue
+    address2: 
+    city: Miami
+    state: FL
+    zip: 33132
+  - va_accepted: false
+    address1: 210 W 19th Terrace
+    address2: 
+    city: Kansas City
+    state: MO
+    zip: 64108
+  - va_accepted: false
+    address1: 4811 Delmar Boulevard
+    address2: 
+    city: Saint Louis
+    state: MO
+    zip: 63108
+  - va_accepted: false
+    address1: TBA
+    address2: 
+    city: Portland
+    state: OR
+    zip: 97204
+  - va_accepted: false
+    address1: 80 Washington Street
+    address2: University of Rhode Island - Providence
+    city: Providence
+    state: RI
+    zip: 2903
+  - va_accepted: false
+    address1: TBA
+    address2: 
+    city: Seattle
+    state: WA
+    zip: 98121
+- name: Loyola University New Orleans
+  url: http://www.business.loyno.edu/cecd/learn-code
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/loyola.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Kate McCrery
+  rep_email: kymccrer@loyno.edu
+  locations:
+  - va_accepted: true
+    address1: 6363 St. Charles Avenue
+    address2: Box 15
+    city: New Orleans
+    state: LA
+    zip: 70118
+- name: Metis
+  url: http://www.thisismetis.com
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/metis.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Leah Nicolai Higgins
+  rep_email: leah@thisismetis.com
+  locations:
+  - va_accepted: true
+    address1: 79 Madison Ave.
+    address2: ''
+    city: New York
+    state: New York
+    zip: 10016
+- name: Momentum Learning
+  url: http://www.momentumlearn.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/momentum.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 334 Blackwell Street
+    address2: Suite B001
+    city: Durham
+    state: NC
+    zip: 27701
+- name: Nashville Software School
+  url: http://nashvillesoftwareschool.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/nss.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 500 Interstate Blvd S
+    address2: Suite 300
+    city: Nashville
+    state: TN
+    zip: 37210
+- name: Operation Spark
+  url: https://operationspark.org
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/operation_spark.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 748 Camp Street
+    address2: 2nd Floor
+    city: New Orleans
+    state: LA
+    zip: 70130
+- name: PDX Code Guild
+  url: http://pdxcodeguild.com
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/pdx_code_guild.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 2828 SW Corbett Avenue
+    address2: Suite 208
+    city: Portland
+    state: OR
+    zip: 97201
+- name: Rithm School
+  url: rithmschool.com?utm_source=OperationCode&utm_medium=logo&utm_campaign=root
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/rithm_school.png
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 3338 17th Street
+    address2: Suite 100
+    city: San Francisco
+    state: CA
+    zip: 94110
+- name: RMOTR
+  url: https://rmotr.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/rmotr.jpg
+  full_time: false
+  hardware_included: false
+  has_online: true
+  online_only: true
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 2035 Sunset Lake Road
+    address2: Suite B-2
+    city: Newark
+    state: DE
+    zip: 19702
+- name: Sabio
+  url: http://sabio.la/veterans
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/sabio.png
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: true
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 400 Corporate Pointe
+    address2: 
+    city: Culver City
+    state: CA
+    zip: 90230
+  - va_accepted: false
+    address1: 110 Newport Center Drive
+    address2: 
+    city: Newport Beach
+    state: CA
+    zip: 92660
+- name: San Diego Code School
+  url: https://www.sdcs.io
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/sdcs.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Michael Roberts Jr
+  rep_email: mike@sdcs.io
+  locations:
+  - va_accepted: true
+    address1: 140 N Escondido Blvd
+    address2: ''
+    city: Escondido
+    state: CA
+    zip: 92025
+- name: San Diego Global Knowledge University
+  url: 'http://fullstack.sdgku.edu/ '
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/san_diego_global_knowledge_university.png
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: Dr. Miguel Cardenas Jr
+  rep_email: mcardenasjr@sdgku.com
+  locations:
+  - va_accepted: true
+    address1: 1095 K St.
+    address2: Suite B
+    city: San Diego
+    state: CA
+    zip: 92101
+- name: SecureSet
+  url: https://secureset.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/secureset.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 523 S Cascade Ave
+    address2: Suite 140
+    city: Co Springs
+    state: CO
+    zip: 80903
+  - va_accepted: true
+    address1: 2228 Blake Street
+    address2: Suite 100
+    city: Denver
+    state: CO
+    zip: 80205
+  - va_accepted: false
+    address1: 1915 N. Ave Republica de Cuba
+    address2: 
+    city: Tampa
+    state: FL
+    zip: 33605
+- name: Skill Distillery
+  url: https://skilldistillery.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/skill_distillery.png
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 7400 East Orchard Road
+    address2: 
+    city: Greenwood Village
+    state: CO
+    zip: 80111
+- name: Startup Institute
+  url: https://www.startupinstitute.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/startup_institute.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: true
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 50 Milk Street
+    address2: 15th Floor
+    city: Boston
+    state: MA
+    zip: 2109
+  - va_accepted: false
+    address1: 25 Broadway
+    address2: 10th Floor
+    city: New York
+    state: NY
+    zip: 10004
+- name: Tech Elevator
+  url: http://www.techelevator.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/tech_elevator.jpg
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 1776 Mentor Avenue
+    address2: 
+    city: Cincinnati
+    state: OH
+    zip: 45212
+  - va_accepted: true
+    address1: 7100 Euclid Avenue
+    address2: Suite 140
+    city: Cleveland
+    state: OH
+    zip: 44103
+  - va_accepted: true
+    address1: 1275 Kinnear Road
+    address2: Suite 121
+    city: Columbus
+    state: OH
+    zip: 43212
+  - va_accepted: false
+    address1: 901 Pennsylvania Ave.
+    address2: Suite 3A
+    city: Pittsburgh
+    state: PA
+    zip: 15233
+- name: The Flatiron School
+  url: http://flatironschool.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/flatiron_school.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: true
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 11 Broadway
+    address2: 2nd Floor
+    city: New York
+    state: NY
+    zip: 10004
+- name: The Software Guild
+  url: https://www.thesoftwareguild.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/software_guild.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 252 East Market Street
+    address2: 
+    city: Louisville
+    state: KY
+    zip: 40202
+- name: Thinkful
+  url: http://www.thinkful.com
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/thinkful.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: true
+  mooc: false
+  is_partner: true
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 55 Prospect Street
+    address2: 
+    city: Brooklyn
+    state: NY
+    zip: 11201
+- name: Tradecraft
+  url: http://tradecrafted.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/tradecraft.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: false
+    address1: 150 Minna Street
+    address2: 
+    city: San Fransisco
+    state: CA
+    zip: 94105
+- name: Turing School of Software & Design
+  url: http://turing.io/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/turing.jpg
+  full_time: true
+  hardware_included: true
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 1331 17th Street
+    address2: Suite LL100
+    city: Denver
+    state: CO
+    zip: 80202
+- name: V School
+  url: http://vschool.io/veterans/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/v_school.jpg
+  full_time: true
+  hardware_included: true
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: ''
+  rep_email: ''
+  locations:
+  - va_accepted: true
+    address1: 150 State St.
+    address2: Suite 1
+    city: Salt Lake City
+    state: UT
+    zip: 84111
+- name: Woz U
+  url: https://woz-u.com/
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/coder_camps.jpg
+  full_time: true
+  hardware_included: false
+  has_online: true
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: ''
+  rep_email: ''
+  locations:
+  - va_accepted: false
+    address1: 8444 N 90th Street
+    address2: Suite 105/110
+    city: Scottsdale
+    state: AZ
+    zip: 85258
+  - va_accepted: false
+    address1: 7530 164th Avenue NE
+    address2: Suite A112
+    city: Redmond
+    state: WA
+    zip: 98052
+- name: Wyncode Academy
+  url: http://wyncode.co
+  logo: https://s3.amazonaws.com/operationcode-assets/codeSchoolLogos/wyncode.jpg
+  full_time: true
+  hardware_included: false
+  has_online: false
+  online_only: false
+  mooc: false
+  is_partner: false
+  rep_name: 
+  rep_email: 
+  locations:
+  - va_accepted: true
+    address1: 549 NW 28th Street
+    address2: 
+    city: Miami
+    state: FL
+    zip: 33127
