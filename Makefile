@@ -79,7 +79,7 @@ db_seed:
 .PHONY: test
 test: bg
 	docker-compose run operationcode-psql bash -c "while ! psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do sleep 5; done;"
-	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && bundle exec rake db:test:prepare && bundle exec rake test && bundle exec rubocop'
+	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && bundle exec rake db:test:prepare && bundle exec rake test && rubocop'
 
 .PHONY: rubocop
 rubocop:
