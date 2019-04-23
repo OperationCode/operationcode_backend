@@ -1,6 +1,7 @@
 class SlackJobs
   class InviterJob < SlackJobs
     include Sidekiq::Worker
+    sidekiq_options retry: 5
 
     def perform(email)
       Raven.user_context email: email
