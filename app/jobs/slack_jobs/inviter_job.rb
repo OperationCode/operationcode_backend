@@ -6,7 +6,7 @@ class SlackJobs
       Raven.user_context email: email
       Raven.tags_context slack_invite: 'yes'
 
-      PybotSlackClient.new.invite(email)
+      SlackService::Client.new.invite(email)
     end
   end
 end
