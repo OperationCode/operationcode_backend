@@ -40,8 +40,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'mocha'
-  gem 'vcr', '~> 3.0', '>= 3.0.3'
-  gem 'webmock', '~> 3.0', '>= 3.0.1'
+  gem 'vcr', '~> 4.0.0'
+  gem 'webmock', '~> 3.5.1'
 end
 
 group :development do

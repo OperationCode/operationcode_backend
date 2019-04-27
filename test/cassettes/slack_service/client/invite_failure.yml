@@ -1,0 +1,32 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://pybot.operationcode.org:8080/pybot/api/v1/slack/invite
+    body:
+      encoding: UTF-8
+      string: '{"email":"test@example.com"}'
+    headers:
+      Authorization:
+      - Bearer XXXX
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Tue, 23 Apr 2019 03:47:09 GMT
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Server:
+      - Python/3.7 aiohttp/3.5.4
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 23 Apr 2019 03:47:09 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,32 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://pybot.operationcode.org:8080/pybot/api/v1/slack/invite
+    body:
+      encoding: UTF-8
+      string: '{"email":"test@example.com"}'
+    headers:
+      Authorization:
+      - Bearer some_random_key
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 22 Apr 2019 23:34:40 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '12'
+      Connection:
+      - keep-alive
+      Server:
+      - Python/3.7 aiohttp/3.5.4
+    body:
+      encoding: UTF-8
+      string: '{"ok": true}'
+    http_version: 
+  recorded_at: Mon, 22 Apr 2019 23:34:40 GMT
+recorded_with: VCR 4.0.0
