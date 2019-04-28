@@ -54,12 +54,52 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert valid_user_params[:zip], user.zip
   end
 
-  test '#create welcomes a new user' do
-    User.any_instance.expects(:welcome_user)
+  test '#create calls add_to_send_grid job queue addition' do
+    User.any_instance.expects(:add_to_send_grid)
     post api_v1_users_url,
       params: { user: valid_user_params },
       as: :json
   end
+
+  test '#create calls invite_to_slack job queue addition' do
+    User.any_instance.expects(:invite_to_slack)
+    post api_v1_users_url,
+      params: { user: valid_user_params },
+      as: :json
+  end
+
+  test '#by_email returns success when user exists' do
+    tom = create(:user)
+    params = { email: tom.email }
+    get api_v1_users_by_email_path(params), as: :json
+    assert_equal({ 'status' => 'ok' }, response.parsed_body)
+    assert_equal 200, response.status
+  end
+
+  test '#by_email returns failure user when doesn\'t exist' do
+    params = { email: 'fake_email@gmail.com' }
+    get api_v1_users_by_email_url(params), as: :json
+    assert_equal({ 'status' => 'not_found'}, response.parsed_body)
+    assert_equal 404, response.status
+  end
+
+  # test '#me requires auth token to get valid response' do
+  #   user_good = create(:user)
+  #   user_bad = create(:user)
+  #   headers_good = authorization_headers(user_good)
+  #   headers_bad = authorization_headers(user_bad)
+  #   user_good.valid?
+  #   debugger user_good.errors.messages
+  #   get api_v1_users_me_url, params: { email: user_bad.email }, headers: headers_good , as: :json
+  #   assert_equal 422, response.status
+  # end
+
+  # test '#me with valid auth token returns success' do
+  #   user = create(:user)
+  #   headers = authorization_headers(user)
+  #   post api_v1_users_me_url, params: { email: user.email }, headers: headers, as: :json
+  #   assert_equal 200, response.status
+  # end
 
   test ':by_location returns User.count of users located in the passed in location' do
     tom = create :user

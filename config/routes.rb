@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get '/status/protected', to: 'status#protected'
 
       get '/users/by_location', to: 'users#by_location'
+      get '/users/by_email', to: 'users#by_email'
       post '/users/profile/verify', to: 'users#verify'
 
       resources :code_schools do
@@ -49,7 +50,7 @@ Rails.application.routes.draw do
       resources :team_members, only: [:index, :create, :update, :destroy]
       resources :users, only: [:index, :create]
       patch '/users', to: 'users#update'
-
+      get '/users/me', to: 'users#me'
       devise_scope :user do
         post '/sessions', to: 'sessions#create'
         get '/sessions/sso', to: 'sessions#sso'

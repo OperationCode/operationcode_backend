@@ -151,17 +151,16 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def welcome_user
-    add_to_send_grid
-    invite_to_slack
-  end
-
   def invite_to_slack
     SlackJobs::InviterJob.perform_async(self.email)
+  rescue StandardError => e
+    Rails.logger.warn "Error occured when trying to add to job queue for slack invite #{e}"
   end
 
   def add_to_send_grid
     AddUserToSendGridJob.perform_async(self.id)
+  rescue StandardError => e
+    Rails.logger.warn "Error occured when trying to add to job queue for sendgrid #{e}"
   end
 
   def token
