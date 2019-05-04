@@ -79,7 +79,12 @@ db_seed:
 .PHONY: test
 test: bg
 	docker-compose run operationcode-psql bash -c "while ! psql --host=operationcode-psql --username=postgres -c 'SELECT 1'; do sleep 5; done;"
-	docker-compose run ${RAILS_CONTAINER} bash -c 'export RAILS_ENV=test && bundle exec rake db:test:prepare && bundle exec rake test && bundle exec rubocop'
+	docker-compose run ${RAILS_CONTAINER} bash -xc 'export RAILS_ENV=test && bundle exec rake db:test:prepare && bundle exec rake test && bundle exec rubocop'
+	# change the appropriate portion of above to enable verbose test output
+	# bundle exec rake test TESTOPTS='-v'
+	#
+	# This one allows you to run one test file at a time by changing the file path to a specific test file
+	# bundle exec rake test TEST=test/controllers/api/v1/code_schools_controller_test.rb TESTOPTS='-v'
 
 .PHONY: rubocop
 rubocop:

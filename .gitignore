@@ -302,3 +302,5 @@ dump.rdb
 
 # Model Graph image generated
 docs/models/model_graph.png
+.vscode
+OpCodeBackEnd.code-workspace

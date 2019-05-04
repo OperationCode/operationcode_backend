@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :code_school do
     name { Faker::Company.name }
-    url { Faker::Internet.url }
+    url { Faker::Internet.url(Faker::Internet.domain_name, '', 'https') }
     logo { Faker::Internet.url }
     full_time { Faker::Boolean.boolean }
     hardware_included { Faker::Boolean.boolean }
