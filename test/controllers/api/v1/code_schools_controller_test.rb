@@ -29,7 +29,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
     assert errors.include? "Url can't be blank"
   end
 
-  test ":validates CodeSchool uses HTTPS for URL" do
+  test ':validates CodeSchool uses HTTPS for URL' do
     params = {
       code_school: {
         name: '1337School',
@@ -42,7 +42,7 @@ class Api::V1::CodeSchoolsControllerTest < ActionDispatch::IntegrationTest
       as: :json
 
     errors = JSON.parse(response.body)['errors']
-    assert errors.include? "URL must be HTTPS, if unable please secure your site"
+    assert errors.include? 'Url must be HTTPS, if unable please secure your site'
   end
 
   test ':index endpoint returns a JSON list of all CodeSchools' do
