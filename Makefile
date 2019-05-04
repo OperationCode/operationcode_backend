@@ -95,7 +95,10 @@ bundle:
 
 setup: build db_create db_migrate
 
-publish: build
+migrate_if_needed:
+	bash -c 'if docker-compose run ${RAILS_CONTAINER} rake db:migrate:status | grep "^\s*down"; then docker-compose run ${RAILS_CONTAINER} rake db:migrate; fi'
+
+publish: build migrate_if_needed
 	bin/publish
 
 upgrade: publish
