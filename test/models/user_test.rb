@@ -269,4 +269,16 @@ class UserTest < ActiveSupport::TestCase
     assert create(:user, military_status: nil).valid?
     refute User.new(military_status: 'spaghetti monster').valid?
   end
+
+  test 'generate_password_token! does what it says' do
+    user = create :user
+    assert_nil user.reset_password_token
+    assert_nil user.reset_password_sent_at
+
+    user.generate_password_token!
+
+    user.reload
+    assert_not_nil user.reset_password_token
+    assert_not_nil user.reset_password_sent_at
+  end
 end
