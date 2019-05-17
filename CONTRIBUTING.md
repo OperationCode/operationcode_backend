@@ -296,7 +296,15 @@ You can also install Github Desktop for a GUI Interface to Github.  If you do th
 
 #### Ruby and Rails
 
-// TODO: include local setup for these
+To install the [RubyInstaller for Windows](https://rubyinstaller.org/downloads/) and read the directions on the right to choose the best installation for yourself. RubyInstaller is a self-contained Windows-based installer that contains a Ruby language execution, a baseline set of requried RubyGems and extensions, and integrates into a MSYS2 installation. This will also prompt you to install MSYS2 if not already installed. 
+
+You can see if if it was successfully installed by opening CMD (or Start Command Prompt with Ruby if on Windows 10) prompt and typing `ruby -v`.
+
+With the Ruby installation complete, you can install Rails by entering `gem install rails` in the cmd prompt. Rails is a service-side web application framework written in Ruby and is a model-view-controller framework.
+
+You can verify installation of Rails by typing `rails -v` in the cmd prompt.
+
+You now have installed Ruby and Rails -- Ruby on Rails. 
 
 </details>
 
